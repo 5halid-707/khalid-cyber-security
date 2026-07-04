@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cairo, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import MatrixRain from "@/components/site/matrix-rain";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -41,8 +42,9 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="dark" suppressHydrationWarning>
       <body
-        className={`${cairo.variable} ${shareTechMono.variable} antialiased bg-bg text-fg overflow-x-hidden`}
+        className={`${cairo.variable} ${shareTechMono.variable} antialiased text-fg overflow-x-hidden`}
       >
+        <MatrixRain />
         {children}
         <Toaster />
       </body>

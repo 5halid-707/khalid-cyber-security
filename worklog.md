@@ -239,3 +239,31 @@ Stage Summary:
 - كل خدمة أكاديمية مربوطة بمسار Coventry المحدد + نسبة إنجازه + شارة "مدعوم بـ Coventry University".
 - المساعد الذكي يميّز بين الخدمات الأساسية و premium ويرشّح المناسب حسب طلب العميل.
 - التموضع التسويقي: التعليم الأكاديمي = ميزة تنافسية تبرّر أسعار premium.
+
+---
+Task ID: 8
+Agent: main (Z.ai Code)
+Task: إضافة خلفية أكواد متحركة (Matrix rain) + شعارات كل الأدوات والمنصات من شهادات المستخدم.
+
+Work Log:
+- أنشأت مكوّن matrix-rain.tsx: canvas كامل الشاشة يرسم أمطار أكواد متحركة بخليط من الحروف العربية واللاتينية والرموز السيبرانية، بألوان نيون أخضر مع توهج أبيض-أخضر للرأس. يعمل بـ requestAnimationFrame مع trail fade.
+- أضفت MatrixRain إلى layout.tsx كخلفية ثابتة (fixed -z-10 opacity-60).
+- واجهت مشكلة: خلفية body الصلبة (#05080f) كانت تخفي الـ matrix. الحل: أضفت قاعدة `html, body { background: transparent !important; }` خارج أي layer لتجاوز Tailwind preflight.
+- أزلت bg-bg من body و main wrapper. جعلت خلفية body شفافة بالكامل.
+- حدّثت Hero: أزلت صورة الخلفية (hero-khalid.png) واستبدلت overlay شبه شفاف (0.55-0.75 opacity) ليظهر الـ matrix من خلاله.
+- أعدت كتابة tools-marquee.tsx بالكامل:
+  • صف 1: شعارات devicon (IBM, Cisco, Kali, Python, Flutter, MySQL, WordPress, Photoshop, Premiere) — 9 شعارات.
+  • صف 2: شرائح نصية ملونة لكل المنصات من شهادات خالد: Coventry University, FutureLearn, Credly, TryHackMe, CPD UK, Alison — 6 منصات بألوان مميزة ونقاط توهج.
+  • الصفان يتحركان في اتجاهين متعاكسين بسرعات مختلفة (35s و 40s).
+- تحققت عبر VLM:
+  • Hero: matrix rain visible + text readable ✓
+  • About: matrix rain visible behind portrait + text readable ✓
+  • Tools: صفّا شعارات يتحركان في اتجاهين متعاكسين ✓
+- تحققت من DOM: body background = transparent ✓
+- ESLint نظيف. لا أخطاء.
+
+Stage Summary:
+- الموقع الآن بخلفية matrix rain متحركة (أكواد خضراء تسقط) مرئية عبر كل الأقسام.
+- قسم الأدوات يعرض الآن 15 شعاراً/منصة: 9 شعارات تقنية + 6 منصات اعتماد (Coventry, FutureLearn, Credly, TryHackMe, CPD UK, Alison).
+- المحتوى مقروء تماماً فوق الخلفية المتحركة بفضل overlays شبه شفافة وبطاقات صلبة.
+- الأداء: canvas بـ requestAnimationFrame، opacity 60%، لا يؤثر على التفاعل (pointer-events-none).

@@ -50,18 +50,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 cyber-grid-bg overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 overflow-hidden"
     >
-      {/* Background image + overlay */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/hero-khalid.png)" }}
-      />
+      {/* Gradient overlay (semi-transparent so matrix rain shows through) */}
       <div
         className="absolute inset-0 z-0"
         style={{
           background:
-            "linear-gradient(rgba(5,8,15,0.92), rgba(5,8,15,0.96)), radial-gradient(circle at 50% 30%, rgba(0,255,204,0.15), transparent 60%)",
+            "radial-gradient(circle at 50% 30%, rgba(0,168,232,0.15), transparent 60%), radial-gradient(circle at 80% 80%, rgba(255,0,204,0.10), transparent 55%), linear-gradient(rgba(5,8,15,0.55), rgba(5,8,15,0.75))",
         }}
       />
 

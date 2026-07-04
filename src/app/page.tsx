@@ -12,7 +12,7 @@ import Chatbot from "@/components/site/chatbot";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-bg text-fg">
+    <div className="min-h-screen flex flex-col text-fg">
       <Navbar />
       <main className="flex-1">
         <Hero />

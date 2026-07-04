@@ -145,6 +145,13 @@
 /* ============================================================
    BASE
    ============================================================ */
+/* Force body transparent so matrix rain canvas (-z-10) is visible.
+   Tailwind's preflight sets a dark bg via --color-background; override it. */
+html,
+body {
+  background: transparent !important;
+}
+
 @layer base {
   * {
     border-color: var(--edge);
@@ -153,7 +160,7 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-bg);
+    background-color: transparent;
     color: var(--color-fg);
     font-family: var(--font-cairo), "Cairo", sans-serif;
     line-height: 1.6;
