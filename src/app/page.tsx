@@ -19,7 +19,7 @@ export default function Home() {
         <Hero />
         <About />
         <Products />
-        <VideoShowcase />
+        <VideoShowcase videoSrc="/marketing-video.mp4" />
         <ToolsMarquee />
         <Credentials />
         <AcademicCredentials />

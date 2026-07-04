@@ -18,7 +18,7 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
   const { lang, t } = useI18n();
   const isAr = lang === "ar";
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(true);
 
   const togglePlay = () => {
@@ -26,10 +26,11 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
     if (!v) return;
     if (playing) {
       v.pause();
+      setPlaying(false);
     } else {
       v.play();
+      setPlaying(true);
     }
-    setPlaying(!playing);
   };
 
   const toggleMute = () => {
@@ -72,11 +73,12 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                   ref={videoRef}
                   src={videoSrc}
                   className="w-full aspect-video bg-black object-cover"
+                  autoPlay
                   loop
                   muted={muted}
                   playsInline
-                  preload="metadata"
-                  poster=""
+                  preload="auto"
+                  poster="/marketing-video-poster.png"
                 />
                 {/* Custom controls overlay */}
                 <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
