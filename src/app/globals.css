@@ -69,6 +69,11 @@
 }
 
 :root {
+  /* Plain neon aliases (so var(--neon-green) works everywhere, not just --color-neon-green) */
+  --neon-green: #00ffcc;
+  --neon-blue: #00a8e8;
+  --neon-pink: #ff00cc;
+
   --radius: 0.625rem;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
