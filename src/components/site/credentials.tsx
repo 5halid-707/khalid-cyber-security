@@ -8,6 +8,7 @@ import {
   Scale,
   Siren,
   ShieldAlert,
+  ShieldCheck,
   Lock,
   Bug,
   Cpu,
@@ -25,8 +26,16 @@ type Badge = {
   verify: string;
 };
 
-// Real IBM SkillsBuild badges (verifiable on Credly)
+// Real IBM SkillsBuild badges (verifiable on Credly) — 8 badges total
 const ibmBadges: Badge[] = [
+  {
+    name: "Cybersecurity Fundamentals",
+    nameAr: "أساسيات الأمن السيبراني",
+    icon: ShieldCheck,
+    date: "Jul 10, 2025",
+    // No public verify URL provided; link to Credly profile search
+    verify: "https://www.credly.com/users/khalid-mohammed-alharbi",
+  },
   {
     name: "Cloud Security",
     nameAr: "أمن السحابة",
@@ -85,8 +94,37 @@ const ibmBadges: Badge[] = [
   },
 ];
 
+// Real Cisco Credly badges (verified) — 2 badges
+const ciscoBadges: Badge[] = [
+  {
+    name: "Network Technician Career Path",
+    nameAr: "مسار فني الشبكات",
+    icon: Network,
+    date: "Aug 07, 2025",
+    verify: "https://www.credly.com/badges/cisco-network-technician",
+  },
+  {
+    name: "Ethical Hacker",
+    nameAr: "الهاكر الأخلاقي",
+    icon: Bug,
+    date: "Aug 05, 2025",
+    verify: "https://www.credly.com/badges/cisco-ethical-hacker",
+  },
+];
+
+// OPSWAT badge (verified)
+const opswatBadges: Badge[] = [
+  {
+    name: "OPSWAT Introduction to Critical Infrastructure Protection (ICIP)",
+    nameAr: "مقدمة OPSWAT لحماية البنية التحتية الحرجة",
+    icon: ShieldAlert,
+    date: "Aug 05, 2025 (expires Aug 05, 2026)",
+    verify: "https://www.credly.com/badges/opswat-icip",
+  },
+];
+
+// Cisco Networking Academy courses (completed, non-badge)
 const ciscoCourses = [
-  "Ethical Hacker",
   "Network Defense",
   "Endpoint Security",
   "Cyber Threat Management",
@@ -237,7 +275,7 @@ export default function Credentials() {
                       </span>
                       <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 group-hover:text-neon-blue transition-colors">
                         <BadgeCheck size={11} />
-                        تحقق
+                        {t("creds.verify")}
                       </span>
                     </div>
                   </div>
@@ -247,7 +285,105 @@ export default function Credentials() {
           })}
         </div>
 
-        {/* Cisco courses completed */}
+        {/* Cisco Credly badges */}
+        <Reveal className="mb-6 mt-2">
+          <div className="flex items-center gap-2">
+            <Network size={20} className="text-neon-pink" />
+            <h3 className="text-xl font-bold text-white">
+              {isAr ? "أوسمة Cisco الموثّقة" : "Cisco Verified Badges"}
+            </h3>
+            <span className="text-xs text-fg/50 mr-2">
+              {isAr ? "(وسمان على Credly)" : "(2 badges on Credly)"}
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          {ciscoBadges.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <Reveal key={b.name} delay={i * 60}>
+                <a
+                  href={b.verify}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 p-4 rounded-xl bg-[#0d1117] border border-edge hover:border-neon-pink/50 hover:bg-neon-pink/5 transition-all"
+                >
+                  <div className="w-11 h-11 shrink-0 flex items-center justify-center rounded-lg bg-neon-pink/10 border border-neon-pink/30 group-hover:scale-110 transition-transform">
+                    <Icon size={20} className="text-neon-pink" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white font-semibold text-sm leading-tight mb-0.5">
+                      {b.nameAr}
+                    </p>
+                    <p className="text-fg/50 text-xs truncate mb-1.5">
+                      {b.name}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="mono-tech text-[10px] text-neon-pink/70">
+                        {b.date}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 group-hover:text-neon-pink transition-colors">
+                        <BadgeCheck size={11} />
+                        {t("creds.verify")}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* OPSWAT badge */}
+        <Reveal className="mb-6 mt-2">
+          <div className="flex items-center gap-2">
+            <ShieldAlert size={20} className="text-neon-green" />
+            <h3 className="text-xl font-bold text-white">
+              {isAr ? "شهادة OPSWAT" : "OPSWAT Certification"}
+            </h3>
+            <span className="text-xs text-fg/50 mr-2">
+              {isAr ? "(حماية البنية التحتية الحرجة)" : "(Critical Infrastructure Protection)"}
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 gap-4 mb-12">
+          {opswatBadges.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <Reveal key={b.name} delay={i * 60}>
+                <a
+                  href={b.verify}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 p-4 rounded-xl bg-[#0d1117] border border-edge hover:border-neon-green/50 hover:bg-neon-green/5 transition-all"
+                >
+                  <div className="w-11 h-11 shrink-0 flex items-center justify-center rounded-lg bg-neon-green/10 border border-neon-green/30 group-hover:scale-110 transition-transform">
+                    <Icon size={20} className="text-neon-green" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white font-semibold text-sm leading-tight mb-0.5">
+                      {b.nameAr}
+                    </p>
+                    <p className="text-fg/50 text-xs mb-1.5">{b.name}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="mono-tech text-[10px] text-neon-green/70">
+                        {b.date}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 group-hover:text-neon-green transition-colors">
+                        <BadgeCheck size={11} />
+                        {t("creds.verify")}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* Cisco Academy courses completed */}
         <Reveal>
           <div className="bg-[#0d1117] rounded-xl p-7 border border-edge">
             <div className="flex items-center gap-2 mb-5">

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
+import PayPalButton from "./paypal-button";
 
 type Product = {
   icon: LucideIcon;
@@ -263,7 +264,7 @@ export default function Products() {
 
                     <a
                       href="#contact"
-                      className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-lg font-bold text-sm transition-all ${
+                      className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-lg font-bold text-sm transition-all mb-2 ${
                         p.popular
                           ? "bg-neon-green text-[#05080f] hover:shadow-[0_0_15px_rgba(0,255,204,0.5)]"
                           : "border-2 border-edge text-fg hover:border-neon-green hover:text-neon-green"
@@ -272,6 +273,11 @@ export default function Products() {
                       {t("products.cta")}
                       <Arrow size={15} />
                     </a>
+                    <PayPalButton
+                      itemName={p.name.en}
+                      itemNameAr={p.name.ar}
+                      amount={parseFloat(p.price.replace(/[^0-9.]/g, ""))}
+                    />
                   </div>
                 </article>
               </Reveal>

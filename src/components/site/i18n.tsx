@@ -52,7 +52,7 @@ const dict: Record<Lang, Record<string, string>> = {
     "about.eyebrow": "// ABOUT ME",
     "about.title": "مهندس أمن سيبراني معتمد",
     "about.nameplate.role": "// CYBER SECURITY ENGINEER",
-    "about.nameplate.name": "م. خالد العضاض الحربي",
+    "about.nameplate.name": "م. خالد عودة الحربي",
     "about.nameplate.rolefull": "Cyber Security Specialist",
     "about.chip.cpd_top": "معتمد من",
     "about.chip.cpd_val": "CPD UK",

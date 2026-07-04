@@ -181,7 +181,7 @@ export default function About() {
             <p className="text-fg/75 leading-relaxed mb-5">
               {isAr ? (
                 <>
-                  أنا المهندس خالد محمد العضاض الحربي، متخصص في الأمن السيبراني حاصل
+                  أنا المهندس خالد محمد عودة الحربي، متخصص في الأمن السيبراني حاصل
                   على شهادة{" "}
                   <span className="text-neon-green font-semibold">CPD</span>{" "}
                   المعتمدة من المملكة المتحدة بعد إتمام 250 ساعة تدريب متخصص. أمتلك

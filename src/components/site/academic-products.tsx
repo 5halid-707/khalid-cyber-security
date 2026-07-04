@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
+import PayPalButton from "./paypal-button";
 
 type AcademicProduct = {
   icon: LucideIcon;
@@ -203,7 +204,7 @@ export default function AcademicProducts() {
 
                       <a
                         href="#contact"
-                        className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg font-bold text-sm transition-all"
+                        className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg font-bold text-sm transition-all mb-2"
                         style={{
                           backgroundColor: p.color,
                           color: "#05080f",
@@ -212,6 +213,10 @@ export default function AcademicProducts() {
                         {t("aproducts.cta")}
                         <Arrow size={15} />
                       </a>
+                      <PayPalButton
+                        itemName={p.name}
+                        amount={parseFloat(p.price.replace(/[^0-9.]/g, ""))}
+                      />
                     </div>
                   </div>
                 </article>

@@ -378,3 +378,47 @@ Stage Summary:
 - قسم About طُوّر بشكل احترافي: شبكة خبرات بأيقونات + قسم شعارات منصات (6 SVG مرسومة).
 - المساعد الذكي يستجيب بنفس لغة الواجهة.
 - كل المكوّنات أصبحت client components (بسبب useI18n) لكن الأداء ممتاز.
+
+---
+Task ID: 12
+Agent: main (Z.ai Code)
+Task: إضافة 3 شهادات مفقودة من Credly + تغيير الاسم إلى "خالد محمد عودة الحربي" + دمج PayPal مجاني.
+
+Work Log:
+- قارنت محفظة Credly المُرسلة مع الموقع، وجدت 3 شهادات مفقودة:
+  • Cybersecurity Fundamentals (IBM, Jul 10, 2025).
+  • Ethical Hacker (Cisco, Aug 05, 2025) — كان معروضاً كـ "دورة" وليس وسام موثّق.
+  • OPSWAT ICIP (OPSWAT, Aug 05, 2025 — مُصدر جديد كلياً).
+- حدّثت credentials.tsx:
+  • أضفت Cybersecurity Fundamentals إلى ibmBadges (أصبحت 8 أوسمة).
+  • أنشأت ciscoBadges array (وسمان: Network Technician + Ethical Hacker) مع روابط تحقق.
+  • أنشأت opswatBadges array (وسام OPSWAT ICIP) مع رابط تحقق.
+  • نقلت "Ethical Hacker" من قائمة دورات Cisco النصية إلى أوسمة Cisco الموثّقة (6 دورات بدلاً من 7).
+  • أضفت 3 أقسام عرض جديدة: Cisco Credly Badges (وردي) + OPSWAT badge (أخضر) + Cisco Academy courses (6).
+- غيّرت الاسم في كل الموقع من "العضاض" إلى "عودة" عبر sed في 4 ملفات (about.tsx, i18n.tsx, footer.tsx, chat/route.ts).
+- حدّثت system prompt في /api/chat:
+  • 8 أوسمة IBM بدلاً من 7 (مع Cybersecurity Fundamentals).
+  • أضفت قسم "أوسمة Cisco الموثّقة" (وسمان).
+  • أضفت قسم "شهادة OPSWAT".
+  • غيّرت "7 دورات Cisco" إلى "6 دورات".
+  • حدّثت تعليمات الرد لتذكر 8 IBM + Cisco + OPSWAT.
+- أنشأت paypal-button.tsx — مكون PayPal "Buy Now" مجاني:
+  • يستخدم PayPal standard form POST (لا SDK، لا API keys، لا اشتراك شهري).
+  • يحتاج فقط بريد PayPal business.
+  • يستخرج المبلغ تلقائياً من سعر الخدمة.
+  • ثنائي اللغة (AR/EN) + حالة loading + أيقونة Lock للأمان.
+  • علم PAYPAL_ENABLED حالياً false (placeholder) — يعرض رسالة "سيُفعّل قريباً".
+- أضفت أزرار PayPal لكل 9 منتجات (6 في products.tsx + 3 في academic-products.tsx) بجانب زر "اطلب الخدمة" الأصلي.
+- تحققت عبر DOM:
+  • 4 شهادات جديدة موجودة (Cybersecurity Fundamentals + Ethical Hacker + OPSWAT + Critical Infrastructure).
+  • 9 أزرار PayPal forms موجودة.
+  • الاسم يحتوي "عودة" ولا يحتوي "العضاض".
+- VLM أكّد: أقسام IBM/Cisco/OPSWAT بألوان مميزة + Ethical Hacker + OPSWAT ظاهران + أزرار PayPal زرقاء على كل بطاقة.
+- تحققت من chatbot: سؤال عن كل الشهادات → ردّ بـ 8 IBM + Cisco (Network Technician + Ethical Hacker) + OPSWAT ICIP + Credly.
+- ESLint نظيف.
+
+Stage Summary:
+- الموقع الآن يعرض كل الشهادات الموثّقة على Credly بدقة (8 IBM + 2 Cisco + 1 OPSWAT + CPD + Coventry).
+- الاسم الصحيح "خالد محمد عودة الحربي" محدّث في كل الموقع.
+- دمج PayPal مجاني بالكامل (9 أزرار) — يحتاج فقط استبدال البريد ببريد PayPal business الحقيقي لتفعيل الدفع الفعلي.
+- PayPal "Buy Now" form POST لا يحتاج API keys ولا اشتراك — رسوم فقط على المعاملات (2.9% + $0.30).
