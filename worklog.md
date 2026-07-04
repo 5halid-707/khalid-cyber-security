@@ -738,3 +738,37 @@ Stage Summary:
 - معرض الأعمال قابل للتوسعة — المستخدم يمكنه إرسال روابط أعماله الأخرى وسأضيفها بنفس الأسلوب.
 - التصميم احترافي: شارة LIVE نابضة + فئة ملوّنة + tech tags + تأثيرات hover.
 - رابط "أعمالي" في الـ Navbar يسهّل الوصول للقسم.
+
+---
+Task ID: 22
+Agent: main (Z.ai Code)
+Task: إضافة 3 مواقع حقيقية إضافية لمعرض الأعمال (Amazon, Instagram, WhatsApp clones).
+
+Work Log:
+- قرأت المواقع الثلاثة عبر page_reader:
+  • Amazon: title "React App" → متجر إلكتروني بتصميم Amazon.
+  • Instagram: title "Instagarm App" → تطبيق اجتماعي (تسجيل دخول + إنشاء حساب).
+  • WhatsApp: title "Chat WhatsApp" → تطبيق محادثات (تسجيل + محادثات).
+- حمّلت favicons للمواقع الثلاثة.
+- ولّدت صور معاينة احترافية بالـ AI لكل موقع:
+  • work-amazon-preview.png (Amazon orange, product grid).
+  • work-insta-preview.png (Instagram gradient, login screen).
+  • work-whatsapp-preview.png (WhatsApp green, chat interface).
+- حدّثت previous-works.tsx لإضافة 3 مشاريع جديدة (أصبحت 4 إجمالاً):
+  1. Netflix Clone (أحمر #e50914) — Film icon.
+  2. Amazon Clone (برتقالي #ff9900) — ShoppingBag icon.
+  3. Instagram Clone (وردي #e1306c) — Camera icon.
+  4. WhatsApp Clone (أخضر #25d366) — MessageCircle icon.
+- كل بطاقة: صورة معاينة + شارة LIVE خضراء نابضة + شارة فئة ملوّنة + وصف عربي/إنجليزي + tech tags + زر "معاينة الموقع مباشرة" يفتح الرابط الحقيقي.
+- تحققت عبر DOM: 5 بطاقات (4 مشاريع + 1 "more coming") + 4 روابط netlify تشير للمواقع الحقيقية ✓.
+- VLM أكّد: كل المشاريع الأربعة مرئية (Netflix, Amazon, Instagram, WhatsApp) بشارات LIVE وأزرار View Live Site.
+- ESLint نظيف.
+
+Stage Summary:
+- معرض الأعمال الآن يعرض 4 مشاريع حقيقية منجزة بروابط مباشرة:
+  1. Netflix clone (بث أفلام).
+  2. Amazon clone (متجر إلكتروني).
+  3. Instagram clone (تطبيق اجتماعي).
+  4. WhatsApp clone (تطبيق محادثات).
+- كل مشروع: صورة معاينة + LIVE badge + فئة ملوّنة + وصف + tech tags + زر يفتح الموقع الحقيقي.
+- بطاقة "المزيد قريباً" ما زالت موجودة لاستقبال أعمال إضافية.

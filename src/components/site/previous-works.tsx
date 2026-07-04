@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Github, Globe, Film, ArrowUpLeft } from "lucide-react";
+import { ExternalLink, Github, Globe, Film, ShoppingBag, Camera, MessageCircle, ArrowUpLeft } from "lucide-react";
 import Reveal from "./reveal";
 import TypedHeading from "./typed-heading";
 import { useI18n } from "./i18n";
@@ -31,6 +31,48 @@ const works: Work[] = [
     liveUrl: "https://bright-5halid-nettflix.netlify.app/",
     preview: "/work-netflix-preview.png",
     icon: Film,
+  },
+  {
+    title: "Amazon Clone — E-Commerce Store",
+    titleAr: "أمازون — متجر إلكتروني",
+    category: { ar: "متجر إلكتروني", en: "E-Commerce Store" },
+    categoryColor: "#ff9900",
+    description: {
+      ar: "متجر إلكتروني متكامل بتصميم Amazon — بحث منتجات، سلة تسوق، صفحات منتجات تفصيلية، نظام طلبات. مبني بـ React مع واجهة مستخدم احترافية.",
+      en: "Complete e-commerce store with Amazon design — product search, shopping cart, detailed product pages, order system. Built with React + professional UI.",
+    },
+    tech: ["React", "JavaScript", "CSS3", "Cart System", "Product Catalog"],
+    liveUrl: "https://bright-5halid-amazon.netlify.app/",
+    preview: "/work-amazon-preview.png",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Instagram Clone — Social App",
+    titleAr: "إنستغرام — تطبيق اجتماعي",
+    category: { ar: "تطبيق تواصل اجتماعي", en: "Social Media App" },
+    categoryColor: "#e1306c",
+    description: {
+      ar: "تطبيق تواصل اجتماعي بتصميم Instagram — تسجيل دخول وإنشاء حساب، مشاركات صور، تفاعل (إعجابات/تعليقات)، واجهة مستخدم عصرية بالعربية والإنجليزية.",
+      en: "Social media app with Instagram design — login & signup, photo posts, interactions (likes/comments), modern UI in Arabic & English.",
+    },
+    tech: ["React", "JavaScript", "CSS3", "Auth", "Bilingual UI"],
+    liveUrl: "https://bright-khalid-insta-app.netlify.app/",
+    preview: "/work-insta-preview.png",
+    icon: Camera,
+  },
+  {
+    title: "WhatsApp Clone — Chat Messenger",
+    titleAr: "واتساب — تطبيق محادثات",
+    category: { ar: "تطبيق محادثات", en: "Chat Messenger" },
+    categoryColor: "#25d366",
+    description: {
+      ar: "تطبيق محادثات فورية بتصميم WhatsApp — تسجيل دخول، قائمة جهات اتصال، فتح محادثات، فقاعات رسائل، واجهة دركن مودرن. مبني بـ React.",
+      en: "Real-time chat messenger with WhatsApp design — login, contact list, chat conversations, message bubbles, modern dark UI. Built with React.",
+    },
+    tech: ["React", "JavaScript", "CSS3", "Auth", "Real-time Chat"],
+    liveUrl: "https://bright-khalid-whats-app.netlify.app/",
+    preview: "/work-whatsapp-preview.png",
+    icon: MessageCircle,
   },
 ];
 
