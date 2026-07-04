@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="dark" suppressHydrationWarning>
       <body
-        className={`${cairo.variable} ${shareTechMono.variable} font-sans antialiased bg-bg text-fg overflow-x-hidden`}
+        className={`${cairo.variable} ${shareTechMono.variable} antialiased bg-bg text-fg overflow-x-hidden`}
       >
         {children}
         <Toaster />

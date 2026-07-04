@@ -55,7 +55,7 @@ export default function ToolsMarquee() {
       id="tools"
       className="relative py-12 bg-surface border-y border-edge overflow-hidden"
     >
-      <p className="text-center font-mono text-xs text-fg/50 tracking-[0.3em] mb-6">
+      <p className="text-center mono-tech text-xs text-fg/50 tracking-[0.3em] mb-6">
         {"// TECH STACK WE MASTER"}
       </p>
       <div className="relative">

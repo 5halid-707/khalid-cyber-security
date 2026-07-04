@@ -30,7 +30,7 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
-        <a href="#home" className="font-mono text-xl md:text-2xl text-glow-green">
+        <a href="#home" className="mono-tech text-xl md:text-2xl text-glow-green">
           &lt;EliteTech/&gt;
         </a>
 

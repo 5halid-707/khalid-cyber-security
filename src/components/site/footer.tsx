@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <a
               href="#home"
-              className="font-mono text-2xl text-glow-green inline-block mb-3"
+              className="mono-tech text-2xl text-glow-green inline-block mb-3"
             >
               &lt;EliteTech/&gt;
             </a>

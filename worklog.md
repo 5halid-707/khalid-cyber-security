@@ -37,3 +37,36 @@ Stage Summary:
 - التقنيات: Next.js 16 App Router + TypeScript + Tailwind 4 + shadcn/ui + Lucide icons + z-ai-web-dev-sdk (LLM).
 - الثيم: سايبربانك داكن بنفس ألوان النيون الأصلية، RTL عربي، خطوط Cairo + Share Tech Mono.
 - جميع التفاعلات مُتحقَّق منها في المتصفح: المحادثة الذكية، FAB، قائمة الموبايل، الفوتر الثابت، التجاوب.
+
+---
+Task ID: 2
+Agent: main (Z.ai Code)
+Task: إصلاح الأخطاء التي أبلغ عنها المستخدم: الدردشة لا تعمل، أيقونة المحادثة غير مرئية، الأيقونات متشابكة، الصور معلّقة، الأنميشن اختفى.
+
+Work Log:
+- شخّصت المشكلة الجذرية عبر Agent Browser + فحص الـ stylesheet المُولّد: utility classes المخصّصة في Tailwind v4 (`bg-neon-green`, `bg-surface`, `text-neon-green`, `border-edge`, `text-glow-green`) لم تكن مُولّدة إطلاقاً بسبب استخدام `@theme inline` مع إشارات إلى CSS variables خارجية.
+- أعدت كتابة `globals.css` بالكامل:
+  - استخدمت `@theme` (non-inline) بقيم hex مباشرة للألوان النيونية والأسطح → يُولّد utilities مضمونة (`bg-neon-green`, `text-neon-green`, `bg-surface`, `border-edge` + opacity modifiers).
+  - أبقيت `@theme inline` لـ shadcn mappings فقط.
+  - نقلت كل الـ classes المخصّصة (`.text-glow-green`, `.cyber-grid-bg`, `.animate-marquee`, `.reveal`, `.shine-wrap`, `.mono-tech`) إلى `@layer components`.
+- اكتشفت أن Tailwind v4 لا يُولّد `--font-sans`/`--font-mono` من `@theme` (الافتراضي يهيمن)، فأزلت `font-sans` من body className واعتمدت على قاعدة `@layer base { body { font-family: var(--font-cairo)... } }` → خط Cairo يُحمّل الآن.
+- اكتشفت أن Tailwind v4 يُسقط قواعد `@layer components` التي تُشير إلى runtime `var()` غير معروفة وقت البناء (مثل `var(--font-tech-mono)`) → غيّرت `.mono-tech` لاستخدام اسم الخط الحرفي `"Share Tech Mono"` (next/font يُحمّل @font-face بهذا الاسم) → يعمل الآن.
+- أصلحت z-index في Hero: غيّرت overlay من `-z-10` إلى `z-0` ولفّفت المحتوى في `relative z-10` container → الخلفية والأقسام ظاهرة.
+- أضفت `allowedDevOrigins` في `next.config.ts` لمعالجة تحذير cross-origin من نطاق المعاينة.
+- بدّلت `font-mono` → `mono-tech` في كل المكوّنات (navbar, hero, services, portfolio, tools-marquee, footer).
+- تحققت عبر VLM (glm-4.6v) بتحليل لقطات شاشة:
+  - Hero + عنوان + نص الكتابة الأخضر ✅
+  - 3 بطاقات خدمات بأيقونات ملونة وخلفيات داكنة ✅
+  - شريط الأدوات المتحرك ✅
+  - صور معرض الأعمال تُحمّل وتُعرض (ليست معلّقة) ✅
+  - زر المحادثة الأخضر (يمين) + زر المشاركة الأزرق (يسار) ظاهران وغير متشابكين ✅
+  - الفوتر بأيقونات التواصل ✅
+  - لا توجد عناصر متداخلة أو نصوص خفية ✅
+  - الموبايل: متجاوب، hamburger menu، بطاقات متراصة، أزرار غير متداخلة ✅
+- تحققت من الدردشة end-to-end: أرسلت "ما هي خدماتكم وأسعارها؟" → ردّ الـ AI بالخدمات الثلاث + الأسعار ($1500/$3500) بالعربية مع إيموجي ✅
+- ESLint نظيف بدون أخطاء.
+
+Stage Summary:
+- جميع مشاكل المستخدم حُلّت: الدردشة تعمل، الأيقونات ظاهرة وغير متشابكة، الصور تُحمّل، الأنميشن (كتابة + marquee + reveal + pulse) يعمل، الخطوط (Cairo + Share Tech Mono) تُحمّل.
+- السبب الجذري كان `@theme inline` في Tailwind v4 لا يُولّد utilities للقيم المرتبطة بـ CSS variables خارجية + عدم إصدار `--font-*` overrides.
+- الحل: `@theme` مباشر بقيم hex + قاعدة base layer للخط + `@layer components` لـ classes المخصّصة بأسماء خطوط حرفية.

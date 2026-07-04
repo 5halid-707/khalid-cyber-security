@@ -30,7 +30,7 @@ export default function Services() {
     <section id="services" className="py-24 px-5">
       <div className="mx-auto max-w-6xl">
         <Reveal className="text-center mb-14">
-          <p className="font-mono text-xs text-neon-green/70 tracking-[0.3em] mb-3">
+          <p className="mono-tech text-xs text-neon-green/70 tracking-[0.3em] mb-3">
             {"// OUR SERVICES"}
           </p>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
