@@ -5,41 +5,41 @@ import { Music, Volume2, VolumeX, Play, Pause, X } from "lucide-react";
 import { useI18n } from "./i18n";
 
 /**
- * Upbeat, energetic marketing/cinematic promo music player.
- * Generates driving electronic promo music programmatically using the Web
- * Audio API — no copyright issues, no downloads, infinite seamless loop.
+ * Chill reggae/lounge music player — Bob Marley + Michael Bublé vibe.
+ * Generates relaxed, warm, groovy music programmatically using the Web Audio
+ * API — no copyright issues, no downloads, infinite seamless loop.
  *
- * Sound design (energetic marketing vibe):
- * - Driving 4-on-the-floor kick + off-beat hi-hats
- * - Pulsing bass line
- * - Bright saw-wave synth chords (suspended → resolved)
- * - Lead arpeggios shimmering above
- * - Side-chain-style pumping for energy
- * - Faster tempo (~120 BPM) for excitement
+ * Sound design (chill / laid-back vibe):
+ * - Warm guitar-like chords (slow strums, triangle waves with vibrato)
+ * - Soft walking bass line (root → fifth → octave)
+ * - Gentle reggae-style off-beat skank
+ * - Slow tempo (~70 BPM) for relaxation
+ * - Reverb + low-pass for warm, mellow tone
+ * - Major key (C major) for uplifting-yet-calm feeling
  */
 
-// Energetic promo chord progression (frequencies in Hz)
-// vi–IV–I–V in A minor: Am → F → C → G  (uplifting pop/edm progression)
+// Chill reggae/lounge progression in C major
+// I → vi → IV → V  (C → Am → F → G) — classic laid-back feel
 const CHORDS = [
-  // Am: A C E
-  { root: 110.0, notes: [220.0, 261.63, 329.63] },
-  // F: F A C
-  { root: 87.31, notes: [174.61, 220.0, 261.63] },
-  // C: C E G
-  { root: 130.81, notes: [261.63, 329.63, 392.0] },
-  // G: G B D
-  { root: 98.0, notes: [196.0, 246.94, 293.66] },
+  // C major: C E G
+  { root: 65.41, fifth: 98.0, notes: [261.63, 329.63, 392.0] },
+  // A minor: A C E
+  { root: 55.0, fifth: 82.41, notes: [220.0, 261.63, 329.63] },
+  // F major: F A C
+  { root: 43.65, fifth: 65.41, notes: [174.61, 220.0, 261.63] },
+  // G major: G B D
+  { root: 49.0, fifth: 73.42, notes: [196.0, 246.94, 293.66] },
 ];
-const CHORD_DURATION = 2.0; // 2s per chord = 120 BPM (1 bar each)
-const BPM = 120;
-const BEAT = 60 / BPM; // 0.5s per beat
+const BPM = 72; // slow, relaxed
+const BEAT = 60 / BPM; // ~0.83s per beat
+const BAR = BEAT * 4; // ~3.33s per bar
 
 export default function MusicPlayer() {
   const { lang } = useI18n();
   const isAr = lang === "ar";
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState(0.32);
   const [expanded, setExpanded] = useState(false);
 
   const ctxRef = useRef<AudioContext | null>(null);
@@ -67,34 +67,25 @@ export default function MusicPlayer() {
     if (ctx.state === "suspended") await ctx.resume();
 
     const master = masterGainRef.current!;
-    // Fade in quickly (energetic)
+    // Smooth fade in (relaxed)
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
-    master.gain.linearRampToValueAtTime(muted ? 0 : volume, ctx.currentTime + 0.4);
+    master.gain.linearRampToValueAtTime(muted ? 0 : volume, ctx.currentTime + 1.2);
 
-    // Master compressor for punch
-    const compressor = ctx.createDynamicsCompressor();
-    compressor.threshold.value = -18;
-    compressor.knee.value = 24;
-    compressor.ratio.value = 4;
-    compressor.attack.value = 0.003;
-    compressor.release.value = 0.25;
-    compressor.connect(master);
-
-    // High-pass for clarity + low-pass for warmth (band-pass style)
+    // Warm low-pass filter (mellow tone)
     const filter = ctx.createBiquadFilter();
     filter.type = "lowpass";
-    filter.frequency.value = 6000;
-    filter.Q.value = 0.5;
-    filter.connect(compressor);
+    filter.frequency.value = 2200;
+    filter.Q.value = 0.4;
+    filter.connect(master);
 
-    // Reverb-like delay
+    // Reverb-ish delay (warm space)
     const delay = ctx.createDelay();
-    delay.delayTime.value = BEAT * 0.75; // dotted-eighth delay
+    delay.delayTime.value = BEAT * 1.5;
     const feedback = ctx.createGain();
-    feedback.gain.value = 0.3;
+    feedback.gain.value = 0.28;
     const wetGain = ctx.createGain();
-    wetGain.gain.value = 0.25;
+    wetGain.gain.value = 0.35;
     delay.connect(feedback);
     feedback.connect(delay);
     delay.connect(wetGain);
@@ -102,110 +93,115 @@ export default function MusicPlayer() {
 
     const activeNodes: { osc: OscillatorNode; gain: GainNode }[] = [];
     let chordIndex = 0;
-    let nextBarTime = ctx.currentTime + 0.05;
+    let nextBarTime = ctx.currentTime + 0.1;
     let stopped = false;
 
-    // === KICK DRUM (4-on-the-floor) ===
-    const playKick = (time: number) => {
-      const osc = ctx.createOscillator();
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(150, time);
-      osc.frequency.exponentialRampToValueAtTime(50, time + 0.1);
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0.6, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.18);
-      osc.connect(g);
-      g.connect(compressor);
-      osc.start(time);
-      osc.stop(time + 0.2);
-      activeNodes.push({ osc, gain: g });
-    };
-
-    // === HI-HAT (off-beats) ===
-    const playHat = (time: number) => {
-      const bufferSize = ctx.sampleRate * 0.05;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-      const noise = ctx.createBufferSource();
-      noise.buffer = buffer;
-      const hp = ctx.createBiquadFilter();
-      hp.type = "highpass";
-      hp.frequency.value = 7000;
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0.12, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.04);
-      noise.connect(hp);
-      hp.connect(g);
-      g.connect(filter);
-      noise.start(time);
-      noise.stop(time + 0.05);
-    };
-
-    // === BASS LINE (driving pulse) ===
-    const playBass = (freq: number, time: number, duration: number) => {
-      const osc = ctx.createOscillator();
-      osc.type = "sawtooth";
-      osc.frequency.value = freq;
-      const lp = ctx.createBiquadFilter();
-      lp.type = "lowpass";
-      lp.frequency.value = 400;
-      lp.Q.value = 2;
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0, time);
-      g.gain.linearRampToValueAtTime(0.25, time + 0.02);
-      g.gain.setValueAtTime(0.25, time + duration - 0.05);
-      g.gain.exponentialRampToValueAtTime(0.001, time + duration);
-      osc.connect(lp);
-      lp.connect(g);
-      g.connect(compressor);
-      osc.start(time);
-      osc.stop(time + duration + 0.05);
-      activeNodes.push({ osc, gain: g });
-    };
-
-    // === SYNTH CHORDS (bright, saw) ===
-    const playChord = (notes: number[], time: number) => {
+    // === WARM GUITAR CHORD STRUMS (slow, mellow) ===
+    const playGuitarChord = (notes: number[], time: number) => {
+      // Strum: notes triggered slightly after each other (like a real strum)
       notes.forEach((freq, i) => {
         const osc = ctx.createOscillator();
-        osc.type = "sawtooth";
+        osc.type = "triangle";
         osc.frequency.value = freq;
-        osc.detune.value = (i - 1) * 8; // slight spread
-        const lp = ctx.createBiquadFilter();
-        lp.type = "lowpass";
-        lp.frequency.setValueAtTime(2000, time);
-        lp.frequency.linearRampToValueAtTime(4000, time + 0.3);
+        // Gentle vibrato for warmth
+        const vibrato = ctx.createOscillator();
+        const vibratoGain = ctx.createGain();
+        vibrato.frequency.value = 4.5;
+        vibratoGain.gain.value = 2;
+        vibrato.connect(vibratoGain);
+        vibratoGain.connect(osc.detune);
+        vibrato.start(time);
+        vibrato.stop(time + BAR + 0.2);
+
+        const noteStart = time + i * 0.04; // strum delay
         const g = ctx.createGain();
-        g.gain.setValueAtTime(0, time);
-        g.gain.linearRampToValueAtTime(0.07, time + 0.05);
-        g.gain.setValueAtTime(0.07, time + CHORD_DURATION - 0.3);
-        g.gain.linearRampToValueAtTime(0, time + CHORD_DURATION);
-        osc.connect(lp);
-        lp.connect(g);
+        g.gain.setValueAtTime(0, noteStart);
+        g.gain.linearRampToValueAtTime(0.09, noteStart + 0.03);
+        g.gain.exponentialRampToValueAtTime(0.001, noteStart + BAR * 0.9);
+
+        osc.connect(g);
         g.connect(filter);
         g.connect(delay);
-        osc.start(time);
-        osc.stop(time + CHORD_DURATION + 0.1);
+        osc.start(noteStart);
+        osc.stop(noteStart + BAR);
         activeNodes.push({ osc, gain: g });
       });
     };
 
-    // === LEAD ARPEGGIO (shimmer) ===
-    const playLead = (time: number) => {
+    // === SOFT WALKING BASS (root → fifth → octave) ===
+    const playBass = (root: number, fifth: number, time: number) => {
+      const playBassNote = (freq: number, t: number, dur: number) => {
+        const osc = ctx.createOscillator();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.22, t + 0.05);
+        g.gain.setValueAtTime(0.22, t + dur - 0.1);
+        g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+        osc.connect(g);
+        g.connect(master);
+        osc.start(t);
+        osc.stop(t + dur + 0.05);
+        activeNodes.push({ osc, gain: g });
+      };
+      // Root on beat 1, fifth on beat 2, root on beat 3, octave on beat 4
+      playBassNote(root, time, BEAT * 0.9);
+      playBassNote(fifth, time + BEAT, BEAT * 0.9);
+      playBassNote(root, time + BEAT * 2, BEAT * 0.9);
+      playBassNote(root * 2, time + BEAT * 3, BEAT * 0.9);
+    };
+
+    // === REGGAE SKANK (off-beat chord stabs) ===
+    const playSkank = (notes: number[], time: number) => {
+      notes.forEach((freq) => {
+        const osc = ctx.createOscillator();
+        osc.type = "triangle";
+        osc.frequency.value = freq * 2; // up an octave for brightness
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0, time);
+        g.gain.linearRampToValueAtTime(0.05, time + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.001, time + 0.18);
+        const hp = ctx.createBiquadFilter();
+        hp.type = "highpass";
+        hp.frequency.value = 800;
+        osc.connect(hp);
+        hp.connect(g);
+        g.connect(filter);
+        g.connect(delay);
+        osc.start(time);
+        osc.stop(time + 0.2);
+        activeNodes.push({ osc, gain: g });
+      });
+    };
+
+    // === GENTLE MELODY (sparse, relaxing) ===
+    const playMelody = (time: number) => {
       const chord = CHORDS[chordIndex];
+      // Pick a chord tone, up an octave
       const note = chord.notes[Math.floor(Math.random() * chord.notes.length)] * 2;
       const osc = ctx.createOscillator();
-      osc.type = "triangle";
+      osc.type = "sine";
       osc.frequency.value = note;
+      // Slow vibrato
+      const vibrato = ctx.createOscillator();
+      const vibratoGain = ctx.createGain();
+      vibrato.frequency.value = 5;
+      vibratoGain.gain.value = 3;
+      vibrato.connect(vibratoGain);
+      vibratoGain.connect(osc.detune);
+      vibrato.start(time);
+      vibrato.stop(time + 1.5);
+
       const g = ctx.createGain();
       g.gain.setValueAtTime(0, time);
-      g.gain.linearRampToValueAtTime(0.08, time + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.4);
+      g.gain.linearRampToValueAtTime(0.08, time + 0.1);
+      g.gain.exponentialRampToValueAtTime(0.001, time + 1.2);
       osc.connect(g);
       g.connect(delay);
       g.connect(filter);
       osc.start(time);
-      osc.stop(time + 0.5);
+      osc.stop(time + 1.3);
       activeNodes.push({ osc, gain: g });
     };
 
@@ -214,24 +210,22 @@ export default function MusicPlayer() {
       if (stopped) return;
       while (nextBarTime < ctx.currentTime + 0.3) {
         const chord = CHORDS[chordIndex];
-        // Kick on every beat (4 per bar)
-        for (let b = 0; b < 4; b++) playKick(nextBarTime + b * BEAT);
-        // Hi-hats on off-beats (8th notes)
-        for (let h = 0; h < 8; h++) playHat(nextBarTime + h * BEAT * 0.5 + BEAT * 0.25);
-        // Bass: root on beats 1 and 3, octave on 4
-        playBass(chord.root, nextBarTime, BEAT * 2);
-        playBass(chord.root * 2, nextBarTime + BEAT * 3, BEAT);
-        // Synth chord (whole bar)
-        playChord(chord.notes, nextBarTime);
-        // Lead arpeggios on beats 2, 3, 4
-        playLead(nextBarTime + BEAT);
-        playLead(nextBarTime + BEAT * 2);
-        playLead(nextBarTime + BEAT * 3);
+        // Warm guitar chord strum at start of bar
+        playGuitarChord(chord.notes, nextBarTime);
+        // Walking bass line (root-fifth-root-octave)
+        playBass(chord.root, chord.fifth, nextBarTime);
+        // Reggae skank on beats 2 and 4 (off-beats)
+        playSkank(chord.notes, nextBarTime + BEAT * 1.5);
+        playSkank(chord.notes, nextBarTime + BEAT * 3.5);
+        // Sparse melody on beat 3 (occasionally)
+        if (Math.random() > 0.4) {
+          playMelody(nextBarTime + BEAT * 2);
+        }
 
-        nextBarTime += CHORD_DURATION;
+        nextBarTime += BAR;
         chordIndex = (chordIndex + 1) % CHORDS.length;
       }
-      setTimeout(scheduleBar, 100);
+      setTimeout(scheduleBar, 120);
     };
     scheduleBar();
 
@@ -240,7 +234,7 @@ export default function MusicPlayer() {
       const now = ctx.currentTime;
       master.gain.cancelScheduledValues(now);
       master.gain.setValueAtTime(master.gain.value, now);
-      master.gain.linearRampToValueAtTime(0, now + 0.3);
+      master.gain.linearRampToValueAtTime(0, now + 0.6);
       setTimeout(() => {
         activeNodes.forEach((n) => {
           try {
@@ -249,7 +243,7 @@ export default function MusicPlayer() {
             // already stopped
           }
         });
-      }, 400);
+      }, 700);
     };
   };
 
@@ -277,7 +271,7 @@ export default function MusicPlayer() {
     setMuted(newMuted);
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
-    master.gain.linearRampToValueAtTime(newMuted ? 0 : volume, ctx.currentTime + 0.2);
+    master.gain.linearRampToValueAtTime(newMuted ? 0 : volume, ctx.currentTime + 0.3);
   };
 
   const handleVolume = (v: number) => {
@@ -288,7 +282,7 @@ export default function MusicPlayer() {
     if (!muted) {
       master.gain.cancelScheduledValues(ctx.currentTime);
       master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
-      master.gain.linearRampToValueAtTime(v, ctx.currentTime + 0.15);
+      master.gain.linearRampToValueAtTime(v, ctx.currentTime + 0.2);
     }
   };
 
@@ -303,7 +297,6 @@ export default function MusicPlayer() {
         setPlaying(true);
         setMuted(false);
       } catch {
-        // user gesture not yet, retry on next interaction
         started = false;
       }
       cleanup();
@@ -316,10 +309,8 @@ export default function MusicPlayer() {
       document.removeEventListener("scroll", tryStart);
     };
 
-    // Try immediately (works if context already resumed)
     tryStart();
 
-    // Fallback: any user gesture
     if (!playing) {
       document.addEventListener("click", tryStart, { once: true });
       document.addEventListener("keydown", tryStart, { once: true });
@@ -341,13 +332,13 @@ export default function MusicPlayer() {
     <div className="fixed bottom-24 left-6 z-[998] flex flex-col items-start gap-2">
       {/* Expanded volume slider */}
       {expanded && playing && (
-        <div className="bg-surface/95 backdrop-blur-md border border-neon-pink/40 rounded-xl p-3 shadow-[0_0_20px_rgba(255,0,204,0.2)] mb-1">
+        <div className="bg-surface/95 backdrop-blur-md border border-neon-green/40 rounded-xl p-3 shadow-[0_0_20px_rgba(0,255,204,0.2)] mb-1">
           <div className="flex items-center gap-2 mb-2">
-            <Volume2 size={14} className="text-neon-pink" />
+            <Volume2 size={14} className="text-neon-green" />
             <span className="text-[10px] text-fg/60 mono-tech">
               {isAr ? "مستوى الصوت" : "Volume"}
             </span>
-            <span className="text-[10px] text-neon-pink mono-tech ml-auto">
+            <span className="text-[10px] text-neon-green mono-tech ml-auto">
               {Math.round(volume * 100)}%
             </span>
           </div>
@@ -358,40 +349,40 @@ export default function MusicPlayer() {
             step="0.01"
             value={volume}
             onChange={(e) => handleVolume(parseFloat(e.target.value))}
-            className="w-32 accent-[#ff00cc]"
+            className="w-32 accent-[#00ffcc]"
             aria-label="Volume"
           />
         </div>
       )}
 
-      {/* Now-playing badge (only when playing) */}
+      {/* Now-playing badge (chill vibe) */}
       {playing && (
-        <div className="bg-surface/90 backdrop-blur-md border border-neon-pink/40 rounded-lg px-3 py-1.5 flex items-center gap-2 mb-1 animate-pulse">
+        <div className="bg-surface/90 backdrop-blur-md border border-neon-green/40 rounded-lg px-3 py-1.5 flex items-center gap-2 mb-1">
           <span className="flex items-end gap-0.5 h-3">
-            <span className="w-0.5 bg-neon-pink rounded-full" style={{ height: "30%", animation: "eq 0.6s ease-in-out infinite alternate" }} />
-            <span className="w-0.5 bg-neon-pink rounded-full" style={{ height: "70%", animation: "eq 0.5s ease-in-out 0.1s infinite alternate" }} />
-            <span className="w-0.5 bg-neon-pink rounded-full" style={{ height: "50%", animation: "eq 0.7s ease-in-out 0.2s infinite alternate" }} />
-            <span className="w-0.5 bg-neon-pink rounded-full" style={{ height: "90%", animation: "eq 0.4s ease-in-out 0.05s infinite alternate" }} />
+            <span className="w-0.5 bg-neon-green rounded-full" style={{ height: "30%", animation: "chill-eq 1.2s ease-in-out infinite alternate" }} />
+            <span className="w-0.5 bg-neon-green rounded-full" style={{ height: "60%", animation: "chill-eq 1s ease-in-out 0.2s infinite alternate" }} />
+            <span className="w-0.5 bg-neon-green rounded-full" style={{ height: "45%", animation: "chill-eq 1.4s ease-in-out 0.4s infinite alternate" }} />
+            <span className="w-0.5 bg-neon-green rounded-full" style={{ height: "70%", animation: "chill-eq 1.1s ease-in-out 0.1s infinite alternate" }} />
           </span>
-          <span className="text-[10px] text-neon-pink mono-tech font-bold">
-            {isAr ? "موسيقى تسويقية" : "PROMO MUSIC"}
+          <span className="text-[10px] text-neon-green mono-tech font-bold">
+            {isAr ? "موسيقى رايقة" : "CHILL VIBES"}
           </span>
           <style>{`
-            @keyframes eq { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
+            @keyframes chill-eq { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
           `}</style>
         </div>
       )}
 
       {/* Main control cluster */}
       <div className="flex items-center gap-2">
-        {/* Play/Pause button */}
+        {/* Play/Pause button (chill green) */}
         <button
           onClick={togglePlay}
           aria-label={playing ? "Pause music" : "Play music"}
-          className={`w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_18px_var(--neon-pink)] hover:scale-110 transition-transform ${
+          className={`w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_18px_var(--neon-green)] hover:scale-110 transition-transform ${
             playing
-              ? "bg-neon-pink text-white"
-              : "bg-neon-pink text-white animate-pulse"
+              ? "bg-neon-green text-[#05080f]"
+              : "bg-neon-green text-[#05080f] animate-pulse"
           }`}
         >
           {playing ? <Pause size={20} /> : <Play size={20} className="ml-0.5" />}
@@ -413,7 +404,7 @@ export default function MusicPlayer() {
           <button
             onClick={() => setExpanded((v) => !v)}
             aria-label="Volume controls"
-            className="w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-pink transition-colors"
+            className="w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-green transition-colors"
           >
             {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
           </button>
@@ -423,9 +414,9 @@ export default function MusicPlayer() {
       {/* Idle hint */}
       {!playing && (
         <div className="bg-surface/80 backdrop-blur-md border border-edge rounded-lg px-2.5 py-1 flex items-center gap-1.5">
-          <Music size={11} className="text-neon-pink" />
+          <Music size={11} className="text-neon-green" />
           <span className="text-[10px] text-fg/60 mono-tech">
-            {isAr ? "موسيقى تسويقية" : "Promo Music"}
+            {isAr ? "موسيقى رايقة" : "Chill Vibes"}
           </span>
         </div>
       )}

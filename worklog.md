@@ -607,3 +607,39 @@ Stage Summary:
 - أيقونة إيقاف حمراء واضحة (X) بجانب زر التشغيل.
 - شارة "PROMO MUSIC" متحركة مع equalizer bars.
 - تحكم كامل: play/pause + stop + mute + مستوى الصوت.
+
+---
+Task ID: 18
+Agent: main (Z.ai Code)
+Task: تغيير الموسيقى لعزف رايق (Bob Marley + Michael Bublé vibe).
+
+Work Log:
+- أعدت كتابة music-player.tsx بالكامل بعزف رايق/هادئ:
+  • تقدم كوردات C major: C → Am → F → G (I-vi-IV-V — كلاسيكي رايق).
+  • tempo بطيء 72 BPM (راحة بدلاً من 120 الحماسي).
+  • warm guitar chord strums: موجات triangle + vibrato بطيء (4.5Hz) + strum delay بين النغمات (محاكاة عزف جيتار حقيقي).
+  • walking bass line ناعم: root → fifth → root → octave (sine waves).
+  • reggae skank: chord stabs على off-beats 2 و 4 (high-pass filtered للوضوح).
+  • sparse melody ناعمة: نغمات chord عشوائية + vibrato بطيء.
+  • low-pass filter عند 2200Hz (نغمة دافئة م一刀).
+  • reverb delay (BEAT * 1.5 + 28% feedback) للإحساس الواسع.
+  • fade in/out سلس (1.2s) للراحة.
+- غيّرت الألوان من وردي إلى أخضر نيون (رايق بدلاً من حماسي):
+  • زر play/pause أخضر نيون.
+  • شارة "CHILL VIBES / موسيقى رايقة" بأعمدة equalizer خضراء بطيئة (1.2s بدلاً من 0.6s).
+  • volume slider بـ accent أخضر.
+- أبقيت: autoplay تلقائي + زر stop أحمر + تحكم كامل بالصوت.
+- تحققت عبر Agent Browser:
+  • HTTP 200 ✓.
+  • بعد النقر على Play: أزرار Pause (أخضر) + Stop (أحمر) + Volume كلها تظهر ✓.
+  • شارة "CHILL VIBES" ظاهرة ✓.
+  • لا أخطاء console ✓.
+- VLM أكّد: زر pause أخضر + زر stop أحمر + زر volume + شارة CHILL VIBES بـ equalizer bars.
+- ESLint نظيف.
+
+Stage Summary:
+- الموسيقى الآن رايقة/هادئة بأسلوب Bob Marley + Michael Bublé (reggae/lounge chill).
+- عناصر العزف: جيتار دافئ + walking bass + reggae skank + melody ناعم.
+- tempo بطيء 72 BPM (راحة) + reverb واسع + low-pass للدفء.
+- الألوان أخضر نيون (رايق) بدلاً من وردي (حماسي).
+- autoplay + stop + volume كلها تعمل.
