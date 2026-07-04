@@ -670,3 +670,36 @@ Stage Summary:
 - 25MB MP3، loop لا نهائي، جودة 128kbps stereo.
 - كل التحكمات تعمل: autoplay + play/pause + stop + volume + mute.
 - المشغّل أبسط وأكثر موثوقية (HTML5 audio بدلاً من Web Audio API المعقد).
+
+---
+Task ID: 20
+Agent: main (Z.ai Code)
+Task: استبدال الأغنية بأغاني R&B رايقة royalty-free (بدلاً من Backstreet Boys المحمية).
+
+Work Log:
+- رفضت طلب استخدام أغاني Backstreet Boys (محمية بحقوق الطبع — مخاطر قانونية).
+- اقترحت 4 بدائل قانونية، اختار المستخدم "الخيار 1: royalty-free بنفس الـ vibe".
+- بحثت عبر web_search عن instrumental R&B ballads royalty-free → وجدت "Loyalty Freak Music - INSTRUMENTAL R&B BEATS TO SING OR RAP ON" على archive.org.
+- حمّلت مقطعين R&B رايقين:
+  • public/chill-song.mp3: "Sensual Melancholia" (6.8MB, 128kbps stereo).
+  • public/chill-song-2.mp3: "The Candle" (5.6MB, 128kbps stereo).
+- أعدت كتابة music-player.tsx ليدعم playlist من أغنيتين:
+  • playlist array مع {src, titleAr, titleEn}.
+  • auto-advance: عند انتهاء أغنية تنتقل تلقائياً للتالية.
+  • أزرار skip previous/next للتبديل اليدوي.
+  • شارة "R&B VIBES / أغاني R&B رايقة" + اسم الأغنية الحالية + equalizer bars زرقاء.
+  • ألوان أزرق نيون (R&B vibe بدلاً من أخضر chill).
+  • أبقيت: autoplay + stop أحمر + volume slider + mute.
+- تحققت من تقديم الملفات: كلاهما HTTP 206, audio/mpeg ✓.
+- تحققت عبر Agent Browser:
+  • بعد النقر على Play: Pause + Stop + Next + Previous + Volume كلها تظهر ✓.
+  • شارة "R&B VIBES" + اسم "Sensual Melancholia" ظاهران ✓.
+  • بعد النقر على Next: انتقل لـ "The Candle" ✓.
+- VLM أكّد: زر pause أزرق + أزرار skip + زر stop أحمر + شارة R&B VIBES بـ equalizer.
+- ESLint نظيف.
+
+Stage Summary:
+- الموقع الآن يشغّل playlist من أغنيتين R&B رايقتين (instrumental ballads) بدلاً من LoFi.
+- الأغاني: Loyalty Freak Music (royalty-free، لا حقوق نشر) — vibe مشابه لـ Backstreet Boys ballads لكن بدون كلمات وبدون مخاطر قانونية.
+- playlist كامل: autoplay + auto-advance + skip next/previous + stop + volume.
+- المشغّل احترافي بشارة R&B VIBES + اسم الأغنية + equalizer متحرك.
