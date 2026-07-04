@@ -528,3 +528,42 @@ Stage Summary:
 - المشكلة الجذرية: middleware.ts مهمل في Next.js 16 → يسبب بطء/أخطاء توجيه → توقف الخادم.
 - الحل: استبدال middleware.ts بـ proxy.ts (الاسم الجديد في Next.js 16) + إعادة تشغيل الخادم.
 - الموقع يعمل الآن بالكامل بدون أخطاء + كل الحماية الأمنية مفعّلة.
+
+---
+Task ID: 16
+Agent: main (Z.ai Code)
+Task: إضافة موسيقى خلفية فاخرة بأسلوب الفنادق العالمية.
+
+Work Log:
+- أنشأت music-player.tsx: مولّد موسيقى lounge/ambient فاخرة باستخدام Web Audio API (لا حقوق نشر، لا تنزيلات، تكرار لا نهائي سلس).
+- تصميم الصوت:
+  • تقدم和弦 jazz/lounge (Dm7 → G7 → Cmaj7 → Am7) بموجات sine ناعمة.
+  • detune خفيف لكل نغمة لإضافة دفء.
+  • arpeggio بموجات triangle على الـ off-beats (C5 E5 G5 C6).
+  • low-pass filter عند 1800Hz لإزالة الحدة.
+  • LFO بطيء (0.08Hz) على cutoff filter للحركة.
+  • delay + feedback (35%) لتأثير reverb-like.
+  • fade in/out سلس (1.5s) عند التشغيل/الإيقاف.
+- واجهة المستخدم:
+  • زر دائري وردي نيون (bottom-24 left-6) فوق زر المشاركة لتجنب التداخل.
+  • يبدأ muted افتراضياً (سياسات autoplay تتطلب تفاعل مستخدم).
+  • عند التشغيل: يظهر زر volume إضافي + عند الضغط عليه ينزلق شريط التحكم بالصوت (0-60%).
+  • شارة "موسيقى فاخرة / Lounge Music" تظهر بجانب الزر قبل التشغيل.
+  • ثنائي اللغة.
+- أضفت MusicPlayer إلى page.tsx في قائمة الـ floating widgets.
+- تحققت عبر Agent Browser:
+  • HTTP 200 ✓.
+  • زر Play music ظاهر + شارة موسيقى فاخرة ✓.
+  • بعد النقر: زر Pause music ظهر + زر Volume controls ظهر ✓.
+  • بعد فتح الـ volume: شريط تمرير + نسبة 35% ✓.
+  • AudioContext مدعوم ✓.
+  • لا أخطاء console ✓.
+- VLM أكّد: زر وردي + شارة "موسيقى فاخرة" + شريط التحكم بنسبة 35% كلها ظاهرة.
+- ESLint نظيف.
+
+Stage Summary:
+- الموقع الآن يبث موسيقى lounge فاخرة بأسلوب الفنادق العالمية (Ritz/Hilton/Marriott).
+- مولّدة برمجياً بالكامل → لا حقوق نشر، لا تنزيلات، تكرار لا نهائي سلس.
+- مطفأة افتراضياً (احترام لتفضيلات الزائر) + زر تشغيل واضح.
+- تحكم كامل: play/pause + mute/unmute + مستوى الصوت (0-60%).
+- الموسيقى: تقدم jazz/lounge chords + arpeggios + reverb + LFO filter movement.

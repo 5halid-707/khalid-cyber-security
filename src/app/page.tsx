@@ -11,6 +11,7 @@ import Footer from "@/components/site/footer";
 import FloatingContact from "@/components/site/floating-contact";
 import Chatbot from "@/components/site/chatbot";
 import ScrollArrows from "@/components/site/scroll-arrows";
+import MusicPlayer from "@/components/site/music-player";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       {/* Floating widgets */}
       <ScrollArrows />
       <FloatingContact />
+      <MusicPlayer />
       <Chatbot />
     </div>
   );
