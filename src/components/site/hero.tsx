@@ -1,26 +1,53 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, MessagesSquare, ShieldCheck, BadgeCheck } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  MessagesSquare,
+  ShieldCheck,
+  BadgeCheck,
+} from "lucide-react";
+import { useI18n } from "./i18n";
 
-const WORDS = [
-  "أحمي شبكتك من الاختراق...",
-  "أكشف ثغرات أنظمتك قبل المهاجمين...",
-  "أؤمّن بياناتك الحساسة احترافياً...",
-  "أبني درعاً سيبرانياً لا يُخترق...",
-];
+const WORDS = {
+  ar: [
+    "أحمي شبكتك من الاختراق...",
+    "أكشف ثغرات أنظمتك قبل المهاجمين...",
+    "أؤمّن بياناتك الحساسة احترافياً...",
+    "أبني درعاً سيبرانياً لا يُخترق...",
+  ],
+  en: [
+    "Protecting your network from breaches...",
+    "Detecting vulnerabilities before attackers...",
+    "Securing your sensitive data professionally...",
+    "Building an impenetrable cyber shield...",
+  ],
+};
 
 export default function Hero() {
+  const { lang, t } = useI18n();
+  const words = WORDS[lang];
   const [text, setText] = useState("");
   const indexRef = useRef(0);
   const charRef = useRef(0);
   const deletingRef = useRef(false);
 
+  // Reset typing animation when language changes
+  useEffect(() => {
+    indexRef.current = 0;
+    charRef.current = 0;
+    deletingRef.current = false;
+    // Use a microtask to avoid synchronous setState in effect
+    const id = setTimeout(() => setText(""), 0);
+    return () => clearTimeout(id);
+  }, [lang]);
+
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
 
     const tick = () => {
-      const current = WORDS[indexRef.current];
+      const current = words[indexRef.current];
       if (deletingRef.current) {
         charRef.current -= 1;
         setText(current.substring(0, charRef.current));
@@ -36,7 +63,7 @@ export default function Hero() {
         deletingRef.current = true;
       } else if (deletingRef.current && charRef.current === 0) {
         deletingRef.current = false;
-        indexRef.current = (indexRef.current + 1) % WORDS.length;
+        indexRef.current = (indexRef.current + 1) % words.length;
         speed = 500;
       }
 
@@ -45,7 +72,9 @@ export default function Hero() {
 
     timeout = setTimeout(tick, 600);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [words]);
+
+  const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
 
   return (
     <section
@@ -71,25 +100,27 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-neon-green/40 bg-neon-green/5 backdrop-blur-sm">
           <BadgeCheck size={16} className="text-neon-green" />
           <span className="text-xs md:text-sm text-neon-green font-medium">
-            معتمد CPD — المملكة المتحدة • 250 ساعة تدريب
+            {t("hero.cpd_badge")}
           </span>
         </div>
 
         <p className="mono-tech text-sm md:text-base text-neon-green/80 mb-4 tracking-widest">
-          {"// CYBER SECURITY ENGINEER"}
+          {lang === "ar"
+            ? "// CYBER SECURITY ENGINEER"
+            : "// CYBER SECURITY ENGINEER"}
         </p>
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white text-glow-white mb-3 leading-tight">
-          م. خالد الحربي
+          {lang === "ar" ? "م. خالد الحربي" : "Eng. Khalid Al-harbi"}
         </h1>
 
         <p className="text-lg md:text-2xl text-fg/70 font-medium mb-8">
-          مهندس أمن سيبراني • خبير حماية البيانات والشبكات
+          {t("hero.subtitle")}
         </p>
 
         <div className="h-12 md:h-14 mb-10 flex justify-center">
           <div
-            dir="rtl"
+            dir={lang === "ar" ? "rtl" : "ltr"}
             className="mono-tech text-2xl md:text-3xl text-neon-green border-r-4 border-neon-green pr-3 cursor-blink min-h-[1.2em]"
             style={{ textShadow: "0 0 8px rgba(0,255,204,0.7)" }}
           >
@@ -103,24 +134,25 @@ export default function Hero() {
             className="inline-flex items-center justify-center gap-2 bg-neon-green text-[#05080f] font-bold px-8 py-3 rounded-md shadow-[0_0_15px_rgba(0,255,204,0.4)] hover:shadow-[0_0_25px_rgba(0,255,204,0.7)] hover:-translate-y-0.5 transition-all"
           >
             <ShieldCheck size={18} />
-            اكتشف خدماتي
+            {t("hero.cta.services")}
           </a>
           <a
             href="#contact"
             className="inline-flex items-center justify-center gap-2 border-2 border-neon-blue text-neon-blue font-bold px-8 py-3 rounded-md hover:bg-neon-blue/10 transition-all"
           >
             <MessagesSquare size={18} />
-            تواصل معي
+            {t("hero.cta.contact")}
+            <Arrow size={16} />
           </a>
         </div>
 
         {/* Quick stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10 mt-14">
           {[
-            { num: "35+", label: "اعتماد موثّق" },
-            { num: "9", label: "خدمات احترافية" },
-            { num: "3", label: "مسارات Coventry" },
-            { num: "250+", label: "ساعة CPD" },
+            { num: "35+", label: t("hero.stats.creds") },
+            { num: "9", label: t("hero.stats.services") },
+            { num: "3", label: t("hero.stats.tracks") },
+            { num: "250+", label: t("hero.stats.cpd") },
           ].map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-2xl md:text-4xl font-black text-neon-green mono-tech">
@@ -136,7 +168,7 @@ export default function Hero() {
 
       {/* Scroll hint */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-fg/40">
-        <span className="text-xs mono-tech">SCROLL</span>
+        <span className="text-xs mono-tech">{t("hero.scroll")}</span>
         <div className="w-px h-10 bg-gradient-to-b from-neon-green to-transparent" />
       </div>
     </section>

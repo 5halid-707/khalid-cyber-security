@@ -3,6 +3,7 @@ import { Cairo, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import MatrixRain from "@/components/site/matrix-rain";
+import { I18nProvider } from "@/components/site/i18n";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -45,7 +46,7 @@ export default function RootLayout({
         className={`${cairo.variable} ${shareTechMono.variable} antialiased text-fg overflow-x-hidden`}
       >
         <MatrixRain />
-        {children}
+        <I18nProvider>{children}</I18nProvider>
         <Toaster />
       </body>
     </html>

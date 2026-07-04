@@ -1,13 +1,17 @@
+"use client";
+
 import {
   ShieldCheck,
   Code2,
   Network,
   GraduationCap,
   ArrowLeft,
+  ArrowRight,
   CheckCircle2,
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "./reveal";
+import { useI18n } from "./i18n";
 
 type AcademicProduct = {
   icon: LucideIcon;
@@ -81,6 +85,10 @@ const products: AcademicProduct[] = [
 ];
 
 export default function AcademicProducts() {
+  const { lang, t } = useI18n();
+  const isAr = lang === "ar";
+  const Arrow = isAr ? ArrowLeft : ArrowRight;
+
   return (
     <section id="academic-products" className="py-24 px-5 relative">
       {/* Premium gradient background */}
@@ -96,17 +104,13 @@ export default function AcademicProducts() {
       <div className="relative mx-auto max-w-6xl">
         <Reveal className="text-center mb-14">
           <p className="mono-tech text-xs text-neon-green/70 tracking-[0.3em] mb-3">
-            {"// ACADEMIC-BACKED PREMIUM SERVICES"}
+            {t("aproducts.eyebrow")}
           </p>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            خدمات استشارية مدعومة بالتعليم الأكاديمي
+            {t("aproducts.title")}
           </h2>
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
-            باقات premium مستوحاة من مسارات{" "}
-            <span className="text-neon-green font-semibold">
-              Coventry University
-            </span>{" "}
-            — تدمج العمق الأكاديمي مع التطبيق المهني لتقديم حلول عالية الجودة
+            {t("aproducts.subtitle")}
           </p>
           <div className="w-20 h-1 mx-auto bg-neon-green rounded-full shadow-[0_0_10px_var(--neon-green)]" />
         </Reveal>
@@ -126,7 +130,9 @@ export default function AcademicProducts() {
                   >
                     <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#05080f]">
                       <GraduationCap size={13} />
-                      <span style={{ color: p.color }}>{p.badge}</span>
+                      <span style={{ color: p.color }}>
+                        {isAr ? p.badge : "Backed by Coventry University"}
+                      </span>
                     </span>
                     <span
                       className="mono-tech text-[10px] font-bold"
@@ -203,8 +209,8 @@ export default function AcademicProducts() {
                           color: "#05080f",
                         }}
                       >
-                        اطلب الاستشارة
-                        <ArrowLeft size={15} />
+                        {t("aproducts.cta")}
+                        <Arrow size={15} />
                       </a>
                     </div>
                   </div>
@@ -218,13 +224,7 @@ export default function AcademicProducts() {
         <Reveal className="text-center mt-10">
           <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surface border border-neon-green/30">
             <GraduationCap size={16} className="text-neon-green" />
-            <p className="text-sm text-fg/70">
-              كل خدمة مدعومة بمعرفة أكاديمية موثّقة من{" "}
-              <span className="text-neon-green font-semibold">
-                Coventry University
-              </span>{" "}
-              البريطانية
-            </p>
+            <p className="text-sm text-fg/70">{t("aproducts.trust")}</p>
           </div>
         </Reveal>
       </div>

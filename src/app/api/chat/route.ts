@@ -104,17 +104,25 @@ export async function POST(req: Request) {
     const body = await req.json().catch(() => ({}));
     const message: string | undefined = body?.message;
     const sessionId: string = body?.sessionId || "default";
+    const lang: "ar" | "en" = body?.lang === "en" ? "en" : "ar";
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return NextResponse.json(
-        { error: "الرسالة مطلوبة." },
+        { error: lang === "en" ? "Message is required." : "الرسالة مطلوبة." },
         { status: 400 }
       );
     }
 
     let history = conversationStore.get(sessionId);
     if (!history) {
-      history = [{ role: "assistant", content: SYSTEM_PROMPT }];
+      // Prefix system prompt with a language instruction
+      const langInstruction =
+        lang === "en"
+          ? `\n\nIMPORTANT: Always respond in English unless the user writes in Arabic.`
+          : `\n\nمهم: أجب دائماً باللغة العربية الفصحى المبسطة.`;
+      history = [
+        { role: "assistant", content: SYSTEM_PROMPT + langInstruction },
+      ];
       conversationStore.set(sessionId, history);
     }
 

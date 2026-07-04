@@ -1,3 +1,5 @@
+"use client";
+
 import {
   GraduationCap,
   BookOpen,
@@ -10,6 +12,7 @@ import {
   Info,
 } from "lucide-react";
 import Reveal from "./reveal";
+import { useI18n } from "./i18n";
 
 type Course = { name: string; progress: number };
 type Track = {
@@ -127,22 +130,19 @@ function ProgressRing({ value, color }: { value: number; color: string }) {
 }
 
 export default function AcademicCredentials() {
+  const { t } = useI18n();
   return (
     <section id="academic" className="py-24 px-5 relative">
       <div className="mx-auto max-w-6xl">
         <Reveal className="text-center mb-14">
           <p className="mono-tech text-xs text-neon-green/70 tracking-[0.3em] mb-3">
-            {"// ACADEMIC EDUCATION"}
+            {t("academic.eyebrow")}
           </p>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            التعليم الأكاديمي المعتمد
+            {t("academic.title")}
           </h2>
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
-            3 مسارات احترافية و15 دورة من{" "}
-            <span className="text-neon-green font-semibold">
-              Coventry University
-            </span>{" "}
-            البريطانية عبر منصة FutureLearn العالمية
+            {t("academic.subtitle")}
           </p>
           <div className="w-20 h-1 mx-auto bg-neon-green rounded-full shadow-[0_0_10px_var(--neon-green)]" />
         </Reveal>
@@ -288,7 +288,7 @@ export default function AcademicCredentials() {
           <div className="bg-surface/50 rounded-xl p-6 border border-edge">
             <div className="flex items-center gap-2 mb-4">
               <ScrollText size={18} className="text-neon-blue" />
-              <h3 className="text-white font-bold">المهارات المكتسبة</h3>
+              <h3 className="text-white font-bold">{t("academic.skills_title")}</h3>
             </div>
             <div className="flex flex-wrap gap-2">
               {[
@@ -325,14 +325,9 @@ export default function AcademicCredentials() {
               <div>
                 <p className="text-sm text-fg/80 leading-relaxed">
                   <span className="text-neon-blue font-bold">
-                    توضيح شفاف:
+                    {t("academic.clarify.title")}
                   </span>{" "}
-                  مسارات <span className="text-white font-semibold">ExpertTrack</span>{" "}
-                  هي برامج تدريبية عالية المستوى تقدمها Coventry University عبر
-                  FutureLearn — تركز على المهارات العملية المتقدمة وتختلف عن
-                  الشهادات الجامعية التقليدية (البكالوريوس/الماجستير). هي تعكس
-                  التزامي بالتطوير المهني المستمر في الأمن السيبراني، لا لقباً
-                  أكاديمياً.
+                  {t("academic.clarify.body")}
                 </p>
               </div>
             </div>

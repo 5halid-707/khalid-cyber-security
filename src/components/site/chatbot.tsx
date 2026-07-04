@@ -2,27 +2,48 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Bot, MessageSquare, Send, X } from "lucide-react";
+import { useI18n } from "./i18n";
 
 type Msg = { role: "bot" | "user"; text: string };
 
-const WELCOME: Msg = {
-  role: "bot",
-  text: "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — مهندس الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
+const WELCOME = {
+  ar: "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — مهندس الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
+  en: "Welcome! 👋 I'm Eng. Khalid Al-harbi's assistant — a certified Cyber Security Engineer.\nHow can I help you today? Ask me about services, pricing, or credentials.",
 };
 
-const QUICK = [
-  "ما هي خدماتك؟",
-  "أسعار اختبار الاختراق",
-  "ما هي مؤهلاتك؟",
-  "أريد حماية شبكتي",
-];
+const QUICK = {
+  ar: [
+    "ما هي خدماتك؟",
+    "أسعار اختبار الاختراق",
+    "ما هي مؤهلاتك؟",
+    "أريد حماية شبكتي",
+  ],
+  en: [
+    "What are your services?",
+    "Penetration testing price",
+    "What are your credentials?",
+    "I want to secure my network",
+  ],
+};
 
 export default function Chatbot() {
+  const { lang, t } = useI18n();
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Msg[]>([WELCOME]);
+  const [messages, setMessages] = useState<Msg[]>([
+    { role: "bot", text: WELCOME[lang] },
+  ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
+
+  // Reset welcome message when language changes
+  useEffect(() => {
+    const id = setTimeout(
+      () => setMessages([{ role: "bot", text: WELCOME[lang] }]),
+      0
+    );
+    return () => clearTimeout(id);
+  }, [lang]);
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -42,20 +63,23 @@ export default function Chatbot() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: content }),
+        body: JSON.stringify({ message: content, lang }),
       });
 
       if (!res.ok) throw new Error("network");
 
       const data = await res.json();
-      const reply: string = data.reply ?? "عذراً، لم أتمكن من الرد الآن.";
+      const reply: string = data.reply ?? "Sorry, I couldn't respond right now.";
       setMessages((prev) => [...prev, { role: "bot", text: reply }]);
     } catch {
       setMessages((prev) => [
         ...prev,
         {
           role: "bot",
-          text: "عذراً، حدث خطأ في الاتصال. تأكد من اتصالك بالإنترنت وحاول مجدداً. 🛠️",
+          text:
+            lang === "ar"
+              ? "عذراً، حدث خطأ في الاتصال. تأكد من اتصالك بالإنترنت وحاول مجدداً. 🛠️"
+              : "Sorry, a connection error occurred. Please check your internet and try again. 🛠️",
         },
       ]);
     } finally {
@@ -81,17 +105,17 @@ export default function Chatbot() {
             </div>
             <div>
               <p className="text-neon-green font-bold text-sm">
-                مساعد م. خالد الذكي
+                {t("chatbot.title")}
               </p>
               <p className="text-fg/50 text-[10px] flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-neon-green inline-block" />
-                متصل الآن
+                {t("chatbot.online")}
               </p>
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            aria-label="إغلاق"
+            aria-label="Close"
             className="text-fg/60 hover:text-white transition-colors"
           >
             <X size={18} />
@@ -127,7 +151,7 @@ export default function Chatbot() {
           {/* Quick replies (only show at start) */}
           {messages.length === 1 && !loading && (
             <div className="flex flex-wrap gap-2 mt-2 self-start">
-              {QUICK.map((q) => (
+              {QUICK[lang].map((q) => (
                 <button
                   key={q}
                   onClick={() => send(q)}
@@ -152,17 +176,17 @@ export default function Chatbot() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="اكتب استفسارك هنا..."
+            placeholder={t("chatbot.placeholder")}
             className="flex-1 bg-[#0d1117] border border-edge rounded-lg px-3 py-2 text-sm text-white placeholder:text-fg/40 focus:outline-none focus:border-neon-green/60 transition-colors"
-            dir="rtl"
+            dir={lang === "ar" ? "rtl" : "ltr"}
           />
           <button
             type="submit"
             disabled={loading || !input.trim()}
-            aria-label="إرسال"
+            aria-label="Send"
             className="bg-neon-green text-[#05080f] rounded-lg px-3 flex items-center justify-center disabled:opacity-40 hover:shadow-[0_0_10px_rgba(0,255,204,0.5)] transition-shadow"
           >
-            <Send size={18} className="rotate-180" />
+            <Send size={18} className={lang === "ar" ? "rotate-180" : ""} />
           </button>
         </form>
       </div>
@@ -170,7 +194,7 @@ export default function Chatbot() {
       {/* Toggler */}
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "إغلاق المحادثة" : "فتح المحادثة"}
+        aria-label={open ? "Close chat" : "Open chat"}
         className="w-14 h-14 rounded-full bg-neon-green text-[#05080f] flex items-center justify-center shadow-[0_0_15px_var(--neon-green)] animate-pulse-bot hover:scale-110 transition-transform"
       >
         {open ? <X size={24} /> : <MessageSquare size={24} />}

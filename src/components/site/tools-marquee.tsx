@@ -1,3 +1,7 @@
+"use client";
+
+import { useI18n } from "./i18n";
+
 const TOOLS = [
   // === Credentials & Education platforms ===
   {
@@ -55,6 +59,7 @@ const TEXT_PLATFORMS = [
 ];
 
 export default function ToolsMarquee() {
+  const { t } = useI18n();
   // Duplicate both lists for seamless infinite scroll
   const loop = [...TOOLS, ...TOOLS];
   const textLoop = [...TEXT_PLATFORMS, ...TEXT_PLATFORMS];
@@ -65,7 +70,7 @@ export default function ToolsMarquee() {
       className="relative py-14 bg-[#05080f]/80 backdrop-blur-sm border-y border-edge overflow-hidden"
     >
       <p className="text-center mono-tech text-xs text-fg/50 tracking-[0.3em] mb-7">
-        {"// ECOSYSTEM & CREDENTIAL PLATFORMS"}
+        {t("tools.eyebrow")}
       </p>
 
       {/* Row 1: Devicon logos */}

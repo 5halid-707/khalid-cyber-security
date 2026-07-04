@@ -2,19 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { href: "#home", label: "الرئيسية" },
-  { href: "#about", label: "نبذة عني" },
-  { href: "#products", label: "خدماتي" },
-  { href: "#academic-products", label: "استشارات أكاديمية" },
-  { href: "#credentials", label: "الشهادات" },
-  { href: "#contact", label: "تواصل" },
-];
+import { useI18n } from "./i18n";
+import LanguageToggle from "./language-toggle";
 
 export default function Navbar() {
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "#home", label: t("nav.home") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#products", label: t("nav.products") },
+    { href: "#academic-products", label: t("nav.academic") },
+    { href: "#credentials", label: t("nav.credentials") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,30 +34,28 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2.5 group">
-          {/* Real avatar in navbar */}
+      <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between gap-4">
+        <a href="#home" className="flex items-center gap-2.5 group shrink-0">
           <span className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-neon-green/60 group-hover:border-neon-green transition-colors">
             <img
               src="/khalid-avatar.jpg"
-              alt="م. خالد الحربي"
+              alt="Eng. Khalid Al-harbi"
               className="w-full h-full object-cover"
             />
-            {/* Online indicator dot */}
             <span className="absolute bottom-0 left-0 w-2.5 h-2.5 bg-neon-green rounded-full border-2 border-[#05080f] shadow-[0_0_6px_var(--neon-green)]" />
           </span>
           <span className="flex flex-col leading-tight">
             <span className="mono-tech text-base md:text-lg text-glow-green">
-              K.Al-harbi
+              {t("brand.name")}
             </span>
             <span className="text-[9px] text-fg/50 hidden sm:block">
-              Cyber Security Eng.
+              {t("brand.role")}
             </span>
           </span>
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-7">
+        <ul className="hidden lg:flex items-center gap-6">
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -67,19 +68,21 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden p-2 text-fg"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="القائمة"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
+          <button
+            className="lg:hidden p-2 text-fg"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#05080f]/95 backdrop-blur-md border-b border-edge">
+        <div className="lg:hidden bg-[#05080f]/95 backdrop-blur-md border-b border-edge">
           <ul className="flex flex-col px-5 py-4 gap-3">
             {links.map((l) => (
               <li key={l.href}>

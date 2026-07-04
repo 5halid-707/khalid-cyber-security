@@ -332,3 +332,49 @@ Stage Summary:
 - صورتان: صورة كبيرة في About (بإطار نيون احترافي + زوايا + شارات) + صورة رمزية دائرية في Navbar (مع نقطة online).
 - الصور محسّنة بـ sharp (124KB + 7.7KB) للأداء السريع.
 - التصميم يدمج الصورة الحقيقية مع الأثر السيبراني (scan-lines + نيون + زوايا) للحفاظ على هوية الموقع.
+
+---
+Task ID: 11
+Agent: main (Z.ai Code)
+Task: جعل العربية أساسية + ترجمة للإنجليزية + تطوير قسم About باحترافية + إضافة شعارات.
+
+Work Log:
+- أنشأت نظام i18n كامل (src/components/site/i18n.tsx):
+  • I18nProvider بـ React Context.
+  • قاموس ترجمات AR + EN لكل نصوص الموقع (nav, hero, about, products, academic, credentials, footer, chatbot).
+  • دالة t(key) لاستخراج النص حسب اللغة.
+  • تحديث dir (rtl/ltr) و lang على <html> ديناميكياً.
+  • العربية هي الافتراضية.
+- أنشأت LanguageToggle component: زر AR/EN بأيقونة Languages + توهج أخضر على اللغة النشطة.
+- حدّثت كل المكوّنات لاستخدام useI18n:
+  • Navbar: روابط + اسم + سطر فرعي مترجم + LanguageToggle مدمج.
+  • Hero: اسم، عنوان فرعي، عبارات الكتابة (4 AR + 4 EN)، إحصائيات، أزرار.
+  • About: نص كامل ثنائي اللغة + شبكة خبرات (8 عناصر بأيقونات) + قسم شعارات منصات جديد.
+  • Products: 6 منتجات بـ name/desc/features/period ثنائية اللغة.
+  • Credentials: عناوين + ملاحظات مترجمة.
+  • AcademicCredentials + AcademicProducts: عناوين + شارات + توضيحات مترجمة.
+  • ToolsMarquee: عنوان قسم مترجم.
+  • Footer: كل النصوص مترجمة.
+  • Chatbot: رسالة ترحيب + ردود سريعة + placeholder ثنائية اللغة.
+- طوّرت قسم About باحترافية:
+  • شبكة 8 خبرات بأيقونات Lucide ملوّنة (ShieldCheck, Bug, Network, Globe, Server, Lock, Eye, Code2) في حاويات نيون.
+  • قسم جديد "منصات الاعتماد والشركاء" بـ 6 شعارات SVG مرسومة يدوياً: Coventry (checkmark), IBM (rect), Cisco (circle), CPD (star), FutureLearn (waves), Credly (badge) — كل بشعار ملوّن + اسم + دور.
+- حدّثت /api/chat لقبول معامل lang:
+  • إذا lang=en → يضيف تعليمة "Always respond in English" للـ system prompt.
+  • إذا lang=ar → يضيف "أجب باللغة العربية".
+- أضفت "use client" لكل المكوّنات التي تستخدم useI18n (academic-credentials, academic-products, credentials, products, tools-marquee).
+- أصلحت خطأ lint: set-state-in-effect في hero.tsx و chatbot.tsx (استخدمت setTimeout).
+- تحققت عبر VLM:
+  • AR mode: toggle ظاهر، محتوى عربي، اسم مرئي ✓
+  • About: صورة احترافية + شعارات منصات + خبرات بأيقونات ✓
+  • EN mode: محتوى إنجليزي، "Eng. Khalid Al-harbi"، toggle EN نشط، dir LTR ✓
+- تحققت من DOM: html lang/dir يتغيران (ar→rtl, en→ltr) ✓
+- تحققت من chatbot EN: سؤال "What are your services?" → ردّ بالإنجليزية بكل 6 خدمات + أسعار + دعوة واتساب ✓
+- ESLint نظيف.
+
+Stage Summary:
+- الموقع الآن ثنائي اللغة بالكامل: عربي (افتراضي، RTL) + إنجليزي (LTR) بضغطة زر.
+- زر التبديل AR/EN في الـ Navbar يغيّر كل النصوص فوراً + اتجاه الصفحة.
+- قسم About طُوّر بشكل احترافي: شبكة خبرات بأيقونات + قسم شعارات منصات (6 SVG مرسومة).
+- المساعد الذكي يستجيب بنفس لغة الواجهة.
+- كل المكوّنات أصبحت client components (بسبب useI18n) لكن الأداء ممتاز.

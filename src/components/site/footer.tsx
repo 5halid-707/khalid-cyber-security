@@ -1,17 +1,30 @@
+"use client";
+
 import { Github, Linkedin, Mail, MessageCircle, ShieldCheck, MapPin } from "lucide-react";
+import { useI18n } from "./i18n";
 
 export default function Footer() {
+  const { lang, t } = useI18n();
+  const isAr = lang === "ar";
+
+  const quickLinks = [
+    { href: "#about", label: t("nav.about") },
+    { href: "#products", label: t("nav.products") },
+    { href: "#academic-products", label: t("nav.academic") },
+    { href: "#credentials", label: t("nav.credentials") },
+    { href: "#academic", label: t("nav.education") },
+  ];
+
   return (
     <footer id="contact" className="mt-auto border-t border-edge bg-[#070b14]">
       <div className="mx-auto max-w-6xl px-5 py-12">
         {/* CTA banner */}
         <div className="text-center mb-12 pb-12 border-b border-edge">
           <h2 className="text-2xl md:text-3xl font-black text-white mb-3">
-            جاهز لحماية أعمالك؟
+            {t("footer.cta.title")}
           </h2>
           <p className="text-fg/60 mb-6 max-w-xl mx-auto">
-            تواصل معي اليوم للحصول على استشارة أمنية مجانية وعرض سعر مخصص
-            لاحتياجات منشأتك
+            {t("footer.cta.subtitle")}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -21,14 +34,14 @@ export default function Footer() {
               className="inline-flex items-center justify-center gap-2 bg-neon-green text-[#05080f] font-bold px-7 py-3 rounded-md hover:shadow-[0_0_20px_rgba(0,255,204,0.5)] transition-all"
             >
               <MessageCircle size={18} />
-              تواصل عبر واتساب
+              {t("footer.cta.whatsapp")}
             </a>
             <a
               href="mailto:khalid@example.com"
               className="inline-flex items-center justify-center gap-2 border-2 border-neon-blue text-neon-blue font-bold px-7 py-3 rounded-md hover:bg-neon-blue/10 transition-all"
             >
               <Mail size={18} />
-              راسلني بريدياً
+              {t("footer.cta.email")}
             </a>
           </div>
         </div>
@@ -39,49 +52,40 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-3">
               <ShieldCheck size={22} className="text-neon-green" />
               <span className="mono-tech text-xl text-glow-green">
-                K.Al-harbi
+                {t("brand.name")}
               </span>
             </div>
             <p className="text-fg/60 text-sm leading-relaxed mb-3">
-              م. خالد محمد الحربي — مهندس أمن سيبراني معتمد CPD. أحمي أنظمتك
-              وبياناتك من التهديدات السيبرانية باحترافية.
+              {isAr
+                ? "م. خالد محمد العضاض الحربي — مهندس أمن سيبراني معتمد CPD. أحمي أنظمتك وبياناتك من التهديدات السيبرانية باحترافية."
+                : "Eng. Khalid Mohammed Al-harbi — CPD-certified Cyber Security Engineer. I protect your systems and data from cyber threats with professionalism."}
             </p>
             <p className="flex items-center gap-1.5 text-xs text-fg/40">
               <MapPin size={13} />
-              المملكة العربية السعودية
+              {isAr ? "المملكة العربية السعودية" : "Saudi Arabia"}
             </p>
           </div>
 
           {/* Quick links */}
           <div className="md:text-center">
-            <h4 className="text-white font-bold mb-4">روابط سريعة</h4>
+            <h4 className="text-white font-bold mb-4">{t("footer.quick_links")}</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#about" className="text-fg/60 hover:text-neon-green transition-colors">
-                  نبذة عني
-                </a>
-              </li>
-              <li>
-                <a href="#products" className="text-fg/60 hover:text-neon-green transition-colors">
-                  خدماتي ومنتجاتي
-                </a>
-              </li>
-              <li>
-                <a href="#credentials" className="text-fg/60 hover:text-neon-green transition-colors">
-                  الشهادات والاعتمادات
-                </a>
-              </li>
-              <li>
-                <a href="#tools" className="text-fg/60 hover:text-neon-green transition-colors">
-                  الأدوات والتقنيات
-                </a>
-              </li>
+              {quickLinks.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="text-fg/60 hover:text-neon-green transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Socials */}
           <div className="md:text-left">
-            <h4 className="text-white font-bold mb-4">تواصل معنا</h4>
+            <h4 className="text-white font-bold mb-4">{t("footer.contact")}</h4>
             <div className="flex gap-3 md:justify-start justify-start">
               <a
                 href="https://wa.me/9665XXXXXXX"
@@ -123,8 +127,7 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-edge text-center">
           <p className="text-fg/40 text-sm">
-            &copy; {new Date().getFullYear()} م. خالد الحربي — Cyber Security
-            Services. جميع الحقوق محفوظة.
+            &copy; {new Date().getFullYear()} {t("footer.copyright")}
           </p>
         </div>
       </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Award,
   BadgeCheck,
@@ -13,6 +15,7 @@ import {
   Network,
 } from "lucide-react";
 import Reveal from "./reveal";
+import { useI18n } from "./i18n";
 
 type Badge = {
   name: string;
@@ -93,6 +96,9 @@ const ciscoCourses = [
 ];
 
 export default function Credentials() {
+  const { lang, t } = useI18n();
+  const isAr = lang === "ar";
+
   return (
     <section
       id="credentials"
@@ -101,14 +107,13 @@ export default function Credentials() {
       <div className="mx-auto max-w-6xl">
         <Reveal className="text-center mb-14">
           <p className="mono-tech text-xs text-neon-blue/70 tracking-[0.3em] mb-3">
-            {"// VERIFIED CREDENTIALS"}
+            {t("creds.eyebrow")}
           </p>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            الشهادات والاعتمادات الموثّقة
+            {t("creds.title")}
           </h2>
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
-            أكثر من 16 اعتماداً وشهادة موثّقة من مؤسسات عالمية — كل شهادة
-            قابلة للتحقق إلكترونياً
+            {t("creds.subtitle")}
           </p>
           <div className="w-20 h-1 mx-auto bg-neon-blue rounded-full shadow-[0_0_10px_var(--neon-blue)]" />
         </Reveal>
@@ -197,10 +202,10 @@ export default function Credentials() {
           <div className="mb-6 flex items-center gap-2">
             <GraduationCap size={20} className="text-neon-blue" />
             <h3 className="text-xl font-bold text-white">
-              أوسمة IBM SkillsBuild المهارية
+              {t("creds.ibm.title")}
             </h3>
             <span className="text-xs text-fg/50 mr-2">
-              (7 أوسمة قابلة للتحقق على Credly)
+              {t("creds.ibm.subtitle")}
             </span>
           </div>
         </Reveal>
@@ -248,9 +253,11 @@ export default function Credentials() {
             <div className="flex items-center gap-2 mb-5">
               <Network size={18} className="text-neon-pink" />
               <h3 className="text-white font-bold">
-                دورات Cisco Networking Academy المكتملة
+                {t("creds.cisco.title")}
               </h3>
-              <span className="text-xs text-fg/50 mr-2">(7 دورات)</span>
+              <span className="text-xs text-fg/50 mr-2">
+                {t("creds.cisco.subtitle")}
+              </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {ciscoCourses.map((c) => (
@@ -270,10 +277,7 @@ export default function Credentials() {
         <Reveal>
           <div className="mt-8 flex items-center justify-center gap-2 text-center">
             <BadgeCheck size={16} className="text-neon-green" />
-            <p className="text-sm text-fg/50">
-              جميع الأوسمة موثّقة على منصة Credly العالمية ويمكن التحقق منها
-              إلكترونياً بالضغط على أي وسام
-            </p>
+            <p className="text-sm text-fg/50">{t("creds.verify_note")}</p>
           </div>
         </Reveal>
       </div>
