@@ -2,6 +2,7 @@ import Navbar from "@/components/site/navbar";
 import Hero from "@/components/site/hero";
 import About from "@/components/site/about";
 import Products from "@/components/site/products";
+import VideoShowcase from "@/components/site/video-showcase";
 import ToolsMarquee from "@/components/site/tools-marquee";
 import Credentials from "@/components/site/credentials";
 import AcademicCredentials from "@/components/site/academic-credentials";
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <About />
         <Products />
+        <VideoShowcase />
         <ToolsMarquee />
         <Credentials />
         <AcademicCredentials />
