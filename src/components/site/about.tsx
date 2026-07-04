@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
+import TypedHeading from "./typed-heading";
 
 const expertise = [
   { ar: "أساسيات الأمن السيبراني ومبادئه", en: "Cyber Security Fundamentals & Principles", icon: ShieldCheck },
@@ -173,9 +174,12 @@ export default function About() {
             <p className="mono-tech text-xs text-neon-green/70 tracking-[0.3em] mb-3">
               {t("about.eyebrow")}
             </p>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-5">
-              {t("about.title")}
-            </h2>
+            <TypedHeading
+              text={t("about.title")}
+              as="h2"
+              className="text-3xl md:text-4xl font-black text-white mb-5"
+              prefix="> "
+            />
             <div className="w-20 h-1 bg-neon-green rounded-full mb-6 shadow-[0_0_10px_var(--neon-green)]" />
 
             <p className="text-fg/75 leading-relaxed mb-5">

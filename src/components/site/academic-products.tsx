@@ -13,6 +13,7 @@ import {
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
 import PayPalButton from "./paypal-button";
+import TypedHeading from "./typed-heading";
 
 type AcademicProduct = {
   icon: LucideIcon;
@@ -107,9 +108,12 @@ export default function AcademicProducts() {
           <p className="mono-tech text-xs text-neon-green/70 tracking-[0.3em] mb-3">
             {t("aproducts.eyebrow")}
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            {t("aproducts.title")}
-          </h2>
+          <TypedHeading
+            text={t("aproducts.title")}
+            as="h2"
+            className="text-3xl md:text-4xl font-black text-white mb-3"
+            prefix="> "
+          />
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
             {t("aproducts.subtitle")}
           </p>

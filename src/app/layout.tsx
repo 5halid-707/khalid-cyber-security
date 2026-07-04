@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import MatrixRain from "@/components/site/matrix-rain";
 import { I18nProvider } from "@/components/site/i18n";
+import AutoUpdater from "@/components/site/auto-updater";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -46,7 +47,10 @@ export default function RootLayout({
         className={`${cairo.variable} ${shareTechMono.variable} antialiased text-fg overflow-x-hidden`}
       >
         <MatrixRain />
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          {children}
+          <AutoUpdater />
+        </I18nProvider>
         <Toaster />
       </body>
     </html>

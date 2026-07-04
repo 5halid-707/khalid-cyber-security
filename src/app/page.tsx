@@ -10,6 +10,7 @@ import AcademicProducts from "@/components/site/academic-products";
 import Footer from "@/components/site/footer";
 import FloatingContact from "@/components/site/floating-contact";
 import Chatbot from "@/components/site/chatbot";
+import ScrollArrows from "@/components/site/scroll-arrows";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <Footer />
 
       {/* Floating widgets */}
+      <ScrollArrows />
       <FloatingContact />
       <Chatbot />
     </div>

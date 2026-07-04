@@ -455,3 +455,48 @@ Stage Summary:
 - لتفعيل PayPal فعلياً: استبدل البريد في paypal-button.tsx ببريد PayPal Business الحقيقي + اضبط PAYPAL_ENABLED = true.
 - قسم الفيديو التسويقي جاهز (placeholder أنيق) — الفيديو الـ AI قيد التوليد، ويمكن للمستخدم استبداله لاحقاً بفيديو حقيقي من أعماله.
 - الفيديو يغطي 6 مجالات: أمن الشبكات، المتاجر، المواقع، المونتاج، التسويق، الاختراق.
+
+---
+Task ID: 14
+Agent: main (Z.ai Code)
+Task: أسهم تمرير + أنميشن كتابة لكل العناوين + تحديث تلقائي + حماية الموقع + كشف أخطاء.
+
+Work Log:
+- أنشأت scroll-arrows.tsx: 
+  • سهم "SCROLL" للأسفل في الأسفل وسط الصفحة (يظهر فقط في أعلى الصفحة، مع حركة bounce).
+  • زر دائري أخضر للعودة للأعلى (يظهر بعد التمرير 400px، يختفي في القمة).
+- أنشأت typed-heading.tsx: أنميشن كتابة على طراز التيرمنال/الهاكر:
+  • يكتب النص حرفاً بحرف مع سرعة قابلة للتعديل.
+  • بادئة "> " قبل النص (شكل تيرمنال).
+  • مؤشر ▋ يومض أثناء الكتابة ويختفي عند الاكتمال.
+  • يبدأ تلقائياً عند دخول العنصر في الـ viewport (IntersectionObserver).
+  • يدعم h2/h3/h4/p/span.
+- طبّقت TypedHeading على عناوين 6 أقسام: About, Products, VideoShowcase, Credentials, AcademicCredentials, AcademicProducts — كلها ببادئة "> " ومؤشر نيون.
+- أنشأت auto-updater.tsx: آلية تحديث تلقائي للموقع:
+  • يفحص /api/version كل 5 دقائق.
+  • إذا تغير الإصدار → يعيد تحميل الصفحة تلقائياً (إن لم يكن المستخدم يكتب في حقل).
+  • إذا كان المستخدم يكتب → يعرض banner "تم تحديث الموقع، تحديث الآن/لاحقاً".
+  • يعمل بصمت بدون إزعاج المستخدم.
+- أنشأت /api/version: يعيد بصمة فريدة (pkgVersion-gitHash-srcMtime) مع no-store cache.
+- أنشأت src/middleware.ts — حماية شاملة للموقع بـ 8 headers أمنية:
+  • Content-Security-Policy (CSP) — منع XSS، تحديد مصادر السكربتات/الأنماط/الصور.
+  • X-Frame-Options: DENY — منع clickjacking.
+  • X-Content-Type-Options: nosniff — منع MIME sniffing.
+  • Referrer-Policy: strict-origin-when-cross-origin.
+  • Strict-Transport-Security (HSTS) — فرض HTTPS لـ 2 سنة.
+  • Permissions-Policy — تعطيل كاميرا/ميكروفون/موقع (payment=self لـ PayPal).
+  • Cross-Origin-Opener/Resource-Policy — عزل حديث.
+  • X-DNS-Prefetch-Control: on.
+- تحققت من security headers عبر curl -sI: كل 8 مفعّلة.
+- تحققت من /api/version: يعمل ويعيد JSON صحيح.
+- تحققت عبر Agent Browser: لا أخطاء console، لا page errors عند التمرير عبر كل الأقسام (home/about/products/video/tools/credentials/academic/academic-products/contact).
+- VLM أكّد: سهم SCROLL للأسفل ظاهر في الـ hero + زر أخضر للعودة للأعلى ظاهر بعد التمرير.
+- تحققت من DOM: عنوان About بـ class="typed-heading" + بادئة "> " + الأنميشن اكتمل.
+- ESLint نظيف.
+
+Stage Summary:
+- أسهم التمرير للأسفل والطلوع مفعّلة في كل الصفحة.
+- كل عناوين الأقسام الـ6 تستخدم أنميشن الكتابة الهاكر (> نص + مؤشر ▋ يومض).
+- الموقع يتحدث تلقائياً عند نشر نسخة جديدة (فحص كل 5 دقائق + reload ذكي).
+- الموقع محمي بـ 8 طبقات حماية (CSP/HSTS/X-Frame/nosniff/Permissions/Cross-Origin).
+- لا أخطاء console أو runtime في أي قسم.

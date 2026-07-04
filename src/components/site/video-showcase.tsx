@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { Play, Pause, Volume2, VolumeX, Maximize2, ShieldCheck, ShoppingBag, Globe, Film, Megaphone, Bug } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
+import TypedHeading from "./typed-heading";
 
 const SERVICES = [
   { icon: ShieldCheck, color: "var(--neon-green)", ar: "أمن الشبكات", en: "Network Security" },
@@ -53,9 +54,12 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
           <p className="mono-tech text-xs text-neon-pink/70 tracking-[0.3em] mb-3">
             {"// MARKETING SHOWCASE"}
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            {isAr ? "مقطع تسويقي لأعمالي" : "Marketing Showcase Video"}
-          </h2>
+          <TypedHeading
+            text={isAr ? "مقطع تسويقي لأعمالي" : "Marketing Showcase Video"}
+            as="h2"
+            className="text-3xl md:text-4xl font-black text-white mb-3"
+            prefix="> "
+          />
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
             {isAr
               ? "جولة سريعة على جميع خدماتي — من أمن الشبكات إلى تصميم المتاجر والمونتاج والتسويق"
