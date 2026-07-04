@@ -567,3 +567,43 @@ Stage Summary:
 - مطفأة افتراضياً (احترام لتفضيلات الزائر) + زر تشغيل واضح.
 - تحكم كامل: play/pause + mute/unmute + مستوى الصوت (0-60%).
 - الموسيقى: تقدم jazz/lounge chords + arpeggios + reverb + LFO filter movement.
+
+---
+Task ID: 17
+Agent: main (Z.ai Code)
+Task: تغيير الموسيقى لحماسية تسويقية + تشغيل تلقائي + أيقونة إيقاف واضحة.
+
+Work Log:
+- أعدت كتابة music-player.tsx بالكامل بموسيقى حماسية تسويقية:
+  • تقدم كوردات uplifting pop/EDM: Am → F → C → G (vi-IV-I-V).
+  • tempo أسرع 120 BPM (بدلاً من lounge البطيء).
+  • kick drum على كل beat (4-on-the-floor) للطاقة.
+  • hi-hats على off-beats (8th notes) للحركة.
+  • bass line ساخن (sawtooth + lowpass) على beats 1 و 3.
+  • synth chords بموجات sawtooth زاهية مع filter sweep.
+  • lead arpeggios بموجات triangle على beats 2,3,4.
+  • compressor للـ punch + delay للتأثير + lowpass للدفء.
+- أضفت autoplay تلقائي:
+  • يحاول التشغيل فوراً عند تحميل الصفحة.
+  • إذا منع المتصفح (سياسة autoplay) → ينتظر أول تفاعل حقيقي من المستخدم (click/keydown/touch/scroll) ثم يشغّل تلقائياً.
+- أضفت أيقونة إيقاف واضحة:
+  • زر دائري أحمر (X) بجانب زر التشغيل — يظهر دائماً عند التشغيل.
+  • ظل أحمر متوهج للوضوح.
+  • يوقف الموسيقى تماماً (fade out سريع 0.3s).
+- أضفت شارة "PROMO MUSIC / موسيقى تسويقية" متحركة:
+  • equalizer bars (4 أعمدة وردي) ترقص مع الموسيقى.
+  • pulse animation للفت الانتباه.
+- تحققت عبر Agent Browser:
+  • HTTP 200 ✓.
+  • بعد النقر على Play: أزرار Pause + Stop (أحمر) + Volume كلها تظهر ✓.
+  • autoplay ينتظر تفاعل حقيقي (سياسة المتصفح) ثم يشغّل ✓.
+  • لا أخطاء console ✓.
+- VLM أكّد: زر pause وردي + زر stop أحمر + زر volume كلها ظاهرة.
+- ESLint نظيف.
+
+Stage Summary:
+- الموسيقى الآن حماسية تسويقية (EDM/promo style) بدلاً من lounge الهادئة.
+- تشغيل تلقائي عند أول تفاعل من المستخدم (سياسة المتصفح تمنع autoplay صامت بدون تفاعل).
+- أيقونة إيقاف حمراء واضحة (X) بجانب زر التشغيل.
+- شارة "PROMO MUSIC" متحركة مع equalizer bars.
+- تحكم كامل: play/pause + stop + mute + مستوى الصوت.
