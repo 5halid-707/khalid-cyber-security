@@ -20,30 +20,51 @@ export default function About() {
           {/* Portrait */}
           <Reveal className="order-2 lg:order-1">
             <div className="relative mx-auto max-w-sm">
-              {/* Decorative frame */}
-              <div className="absolute -inset-3 bg-gradient-to-br from-neon-green/20 via-transparent to-neon-blue/20 rounded-2xl blur-xl" />
-              <div className="relative rounded-2xl overflow-hidden border-2 border-neon-green/40 shadow-[0_0_40px_rgba(0,255,204,0.15)]">
+              {/* Decorative neon glow frame */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-neon-green/25 via-neon-blue/15 to-neon-pink/20 rounded-3xl blur-2xl animate-glow-pulse" />
+              <div className="absolute -inset-2 bg-gradient-to-br from-neon-green/30 via-transparent to-neon-blue/30 rounded-2xl" />
+
+              {/* Photo container with cyber corners */}
+              <div className="relative rounded-2xl overflow-hidden border-2 border-neon-green/60 shadow-[0_0_50px_rgba(0,255,204,0.2)]">
                 <img
-                  src="/khalid-portrait.png"
+                  src="/khalid-portrait-opt.jpg"
                   alt="م. خالد الحربي - مهندس أمن سيبراني"
-                  className="w-full h-auto"
+                  className="w-full h-auto aspect-square object-cover"
+                />
+                {/* Subtle scan-line overlay for cyber aesthetic */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-20"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,255,204,0.08) 3px, transparent 4px)",
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-transparent to-transparent" />
+
                 {/* Name plate */}
-                <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-[#05080f] to-transparent">
-                  <p className="text-neon-green mono-tech text-sm">{"// ENGINEER"}</p>
+                <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-[#05080f] via-[#05080f]/80 to-transparent">
+                  <p className="text-neon-green mono-tech text-xs tracking-widest mb-1">
+                    {"// CYBER SECURITY ENGINEER"}
+                  </p>
                   <p className="text-white text-xl font-bold">
-                    خالد محمد الحربي
+                    م. خالد العضاض الحربي
                   </p>
-                  <p className="text-fg/60 text-sm">
-                    Cyber Security Specialist
-                  </p>
+                  <p className="text-fg/60 text-sm">Cyber Security Specialist</p>
                 </div>
+
+                {/* Cyber corner accents */}
+                <span className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-neon-green rounded-tr-md" />
+                <span className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-neon-green rounded-tl-md" />
               </div>
-              {/* Floating credential chip */}
-              <div className="absolute -top-4 -right-4 bg-surface border border-neon-green/50 rounded-lg px-3 py-2 shadow-lg">
+
+              {/* Floating credential chips */}
+              <div className="absolute -top-3 -right-3 bg-surface border border-neon-green/60 rounded-lg px-3 py-2 shadow-[0_0_15px_rgba(0,255,204,0.3)]">
                 <p className="text-[10px] text-fg/50">معتمد من</p>
                 <p className="text-xs font-bold text-neon-green">CPD UK</p>
+              </div>
+              <div className="absolute -bottom-3 -left-3 bg-surface border border-neon-blue/60 rounded-lg px-3 py-2 shadow-[0_0_15px_rgba(0,168,232,0.3)]">
+                <p className="text-[10px] text-fg/50">Coventry</p>
+                <p className="text-xs font-bold text-neon-blue">University</p>
               </div>
             </div>
           </Reveal>

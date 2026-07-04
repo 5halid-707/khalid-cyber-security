@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "#home", label: "الرئيسية" },
@@ -32,13 +32,24 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2 group">
-          <ShieldCheck
-            size={22}
-            className="text-neon-green group-hover:scale-110 transition-transform"
-          />
-          <span className="mono-tech text-lg md:text-xl text-glow-green">
-            K.Al-harbi
+        <a href="#home" className="flex items-center gap-2.5 group">
+          {/* Real avatar in navbar */}
+          <span className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-neon-green/60 group-hover:border-neon-green transition-colors">
+            <img
+              src="/khalid-avatar.jpg"
+              alt="م. خالد الحربي"
+              className="w-full h-full object-cover"
+            />
+            {/* Online indicator dot */}
+            <span className="absolute bottom-0 left-0 w-2.5 h-2.5 bg-neon-green rounded-full border-2 border-[#05080f] shadow-[0_0_6px_var(--neon-green)]" />
+          </span>
+          <span className="flex flex-col leading-tight">
+            <span className="mono-tech text-base md:text-lg text-glow-green">
+              K.Al-harbi
+            </span>
+            <span className="text-[9px] text-fg/50 hidden sm:block">
+              Cyber Security Eng.
+            </span>
           </span>
         </a>
 
