@@ -7,14 +7,14 @@ type Msg = { role: "bot" | "user"; text: string };
 
 const WELCOME: Msg = {
   role: "bot",
-  text: "مرحباً بك في وكالة النخبة التقنية! 🦅\nأنا المساعد الذكي. كيف يمكنني مساعدتك اليوم؟",
+  text: "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — مهندس الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
 };
 
 const QUICK = [
-  "ما هي خدماتكم؟",
-  "أسعار الأمن السيبراني",
-  "أريد تطبيق كاشير",
-  "تصميم إعلانات",
+  "ما هي خدماتك؟",
+  "أسعار اختبار الاختراق",
+  "ما هي مؤهلاتك؟",
+  "أريد حماية شبكتي",
 ];
 
 export default function Chatbot() {
@@ -81,7 +81,7 @@ export default function Chatbot() {
             </div>
             <div>
               <p className="text-neon-green font-bold text-sm">
-                مساعد النخبة الذكي
+                مساعد م. خالد الذكي
               </p>
               <p className="text-fg/50 text-[10px] flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-neon-green inline-block" />

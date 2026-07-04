@@ -1,8 +1,9 @@
 import Navbar from "@/components/site/navbar";
 import Hero from "@/components/site/hero";
-import Services from "@/components/site/services";
+import About from "@/components/site/about";
+import Products from "@/components/site/products";
 import ToolsMarquee from "@/components/site/tools-marquee";
-import Portfolio from "@/components/site/portfolio";
+import Credentials from "@/components/site/credentials";
 import Footer from "@/components/site/footer";
 import FloatingContact from "@/components/site/floating-contact";
 import Chatbot from "@/components/site/chatbot";
@@ -13,9 +14,10 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <Services />
+        <About />
+        <Products />
         <ToolsMarquee />
-        <Portfolio />
+        <Credentials />
       </main>
       <Footer />
 

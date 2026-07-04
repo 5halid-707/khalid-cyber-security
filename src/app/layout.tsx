@@ -18,18 +18,19 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elite Tech Agency | أمن، برمجة، وتسويق",
+  title: "م. خالد الحربي | مهندس أمن سيبراني معتمد",
   description:
-    "وكالة النخبة التقنية - خبراء في الأمن السيبراني، برمجة التطبيقات، والتسويق والتصميم. حلول متكاملة لأعمالك.",
+    "م. خالد محمد الحربي — مهندس أمن سيبراني معتمد CPD. خدمات اختبار اختراق، حماية الشبكات، تأمين المواقع، والاستجابة للحوادث الأمنية.",
   keywords: [
-    "Elite Tech",
-    "الأمن السيبراني",
-    "برمجة",
-    "تسويق",
-    "تطبيقات",
-    "وكالة تقنية",
+    "خالد الحربي",
+    "أمن سيبراني",
+    "Cyber Security",
+    "اختبار اختراق",
+    "CPD",
+    "حماية الشبكات",
+    "مهندس أمن",
   ],
-  authors: [{ name: "Elite Tech Agency" }],
+  authors: [{ name: "Eng. Khalid Al-harbi" }],
 };
 
 export default function RootLayout({

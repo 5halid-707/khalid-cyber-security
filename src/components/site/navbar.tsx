@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShieldCheck } from "lucide-react";
 
 const links = [
   { href: "#home", label: "الرئيسية" },
-  { href: "#services", label: "خدماتنا" },
-  { href: "#tools", label: "أدواتنا" },
-  { href: "#portfolio", label: "أعمالنا" },
+  { href: "#about", label: "نبذة عني" },
+  { href: "#products", label: "خدماتي" },
+  { href: "#credentials", label: "الشهادات" },
+  { href: "#contact", label: "تواصل" },
 ];
 
 export default function Navbar() {
@@ -30,8 +31,14 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
-        <a href="#home" className="mono-tech text-xl md:text-2xl text-glow-green">
-          &lt;EliteTech/&gt;
+        <a href="#home" className="flex items-center gap-2 group">
+          <ShieldCheck
+            size={22}
+            className="text-neon-green group-hover:scale-110 transition-transform"
+          />
+          <span className="mono-tech text-lg md:text-xl text-glow-green">
+            K.Al-harbi
+          </span>
         </a>
 
         {/* Desktop links */}
