@@ -121,10 +121,10 @@ export default function Hero() {
         {/* Quick stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10 mt-14">
           {[
+            { num: "35+", label: "اعتماد موثّق" },
+            { num: "9", label: "خدمات احترافية" },
+            { num: "3", label: "مسارات Coventry" },
             { num: "250+", label: "ساعة CPD" },
-            { num: "8", label: "أوسمة IBM" },
-            { num: "15", label: "دورة Coventry" },
-            { num: "6", label: "باقات خدمات" },
           ].map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-2xl md:text-4xl font-black text-neon-green mono-tech">
