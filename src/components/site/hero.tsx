@@ -123,7 +123,7 @@ export default function Hero() {
           {[
             { num: "250+", label: "ساعة CPD" },
             { num: "8", label: "أوسمة IBM" },
-            { num: "7", label: "دورات Cisco" },
+            { num: "15", label: "دورة Coventry" },
             { num: "6", label: "باقات خدمات" },
           ].map((s) => (
             <div key={s.label} className="text-center">

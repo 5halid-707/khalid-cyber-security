@@ -59,8 +59,8 @@ export default function About() {
             <div className="w-20 h-1 bg-neon-green rounded-full mb-6 shadow-[0_0_10px_var(--neon-green)]" />
 
             <p className="text-fg/75 leading-relaxed mb-5">
-              أنا المهندس خالد محمد الحربي، متخصص في الأمن السيبراني حاصل على
-              شهادة <span className="text-neon-green font-semibold">CPD</span>{" "}
+              أنا المهندس خالد محمد العضاض الحربي، متخصص في الأمن السيبراني حاصل
+              على شهادة <span className="text-neon-green font-semibold">CPD</span>{" "}
               المعتمدة من المملكة المتحدة بعد إتمام 250 ساعة تدريب متخصص. أمتلك
               شهادة{" "}
               <span className="text-neon-blue font-semibold">
@@ -70,14 +70,16 @@ export default function About() {
               <span className="text-neon-pink font-semibold">
                 Cisco Network Technician
               </span>{" "}
-              و7 دورات من Cisco Networking Academy.
+              و7 دورات من Cisco Networking Academy، و3 مسارات احترافية (15 دورة)
+              من <span className="text-neon-green font-semibold">Coventry University</span>{" "}
+              البريطانية عبر FutureLearn.
             </p>
             <p className="text-fg/75 leading-relaxed mb-7">
               أعمل على حماية الأنظمة والشبكات من التهديدات السيبرانية، وكشف
               الثغرات قبل استغلالها، وتأمين البيانات الحساسة وفق أحدث المعايير
-              العالمية. كل شهاداتي موثّقة على منصة Credly العالمية وقابلة للتحقق
-              إلكترونياً. هدفي تحويل خبرتي التقنية إلى حلول أمنية عملية تحمي
-              أعمالك.
+              العالمية. كل شهاداتي المهنية موثّقة على منصة Credly العالمية
+              وقابلة للتحقق إلكترونياً. هدفي تحويل خبرتي التقنية إلى حلول أمنية
+              عملية تحمي أعمالك.
             </p>
 
             {/* Expertise grid */}

@@ -8,6 +8,7 @@ const links = [
   { href: "#about", label: "نبذة عني" },
   { href: "#products", label: "خدماتي" },
   { href: "#credentials", label: "الشهادات" },
+  { href: "#academic", label: "التعليم" },
   { href: "#contact", label: "تواصل" },
 ];
 

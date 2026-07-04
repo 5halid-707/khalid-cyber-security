@@ -174,3 +174,38 @@ Stage Summary:
 - 16+ اعتماد موثّق بروابط تحقق حقيقية على Credly (8 روابط فعّالة).
 - المساعد الذكي مبرمج بالكامل بكل المؤهلات الحقيقية ويعرضها بفخر عند السؤال.
 - هذا يعزز المصداقية بشكل كبير ويحوّل الشهادات إلى أداة بيع فعلية.
+
+---
+Task ID: 6
+Agent: main (Z.ai Code)
+Task: إضافة التعليم الأكاديمي من Coventry University (FutureLearn) إلى الموقع بناءً على لصق المستخدم لمحتوى حسابه.
+
+Work Log:
+- حلّلت محتوى FutureLearn المُلصق: 3 مسارات احترافية (ExpertTracks) من Coventry University البريطانية:
+  1. Digital Security Training: Cyber Threats and Risk Management — 100% (5 دورات).
+  2. Information Security Design and Development — 99% (5 دورات، إحداها 96%).
+  3. Network Security and Defence — 100% (5 دورات).
+  المجموع: 15 دورة أكاديمية معتمدة.
+- لاحظت الاسم الكامل في الحساب: "Engineer/Khalid Mohammed Uodah Alharbi" — حدّثت الاسم في About و system prompt إلى "خالد محمد العضاض الحربي".
+- أنشأت مكوّن academic-credentials.tsx جديد:
+  • بانر Coventry University مع إحصائيات (3 مسارات، 15 دورة، ~150 ساعة).
+  • 3 بطاقات ExpertTrack كل بطاقة بحلقة تقدم SVG دائرية (100%/99%/100%) + قائمة دورات بعلامات صح ونسب.
+  • قسم "المهارات المكتسبة" بـ 9 وسوم (إدارة المخاطر، التشفير، SDLC، الدفاع السيبراني...).
+- أضفت AcademicCredentials إلى page.tsx بعد Credentials.
+- أضفت رابط "التعليم" إلى Navbar (#academic).
+- حدّثت إحصائيات Hero: أصبحت "15 دورة Coventry" بدلاً من "7 دورات Cisco".
+- حدّثت قسم About لذكر Coventry University + 3 مسارات + 15 دورة.
+- حدّثت system prompt في /api/chat:
+  • أضفت قسم "التعليم الأكاديمي المعتمد" بكل 3 مسارات و15 دورة بالأسماء الإنجليزية.
+  • ربطت الخبرات بالمسارات الأكاديمية (Cryptography من Coventry، Secure SDLC من Coventry...).
+  • حدّثت تعليمات الرد لتذكر Coventry عند السؤال عن المؤهلات.
+- تحققت عبر DOM: 3 مسارات + 15 دورة + 4 مهارات + Coventry موجودين.
+- VLM أكّد: بانر Coventry + 3 بطاقات بحلقات تقدم + قوائم دورات بعلامات صح.
+- تحققت من chatbot: سؤال "ما هو تعليمك الأكاديمي؟" → ردّ ذكر Coventry + FutureLearn + 3 مسارات + 15 دورة + CPD 250 ساعة + Credly.
+- ESLint نظيف.
+
+Stage Summary:
+- الموقع الآن يعرض التعليم الأكاديمي الكامل: Coventry University (3 ExpertTracks + 15 دورة) + CPD UK (250 ساعة) + IBM SkillsBuild (شهادة + 7 أوسمة) + Cisco (شهادة + 7 دورات).
+- إجمالي الاعتمادات المعروضة: 3 شهادات مهنية رئيسية + 7 أوسمة IBM + 7 دورات Cisco + 3 مسارات Coventry + 15 دورة Coventry = 35+ اعتماد.
+- المساعد الذكي مبرمج بكل المؤهلات الأكاديمية والمهنية ويربطها بالخدمات المعروضة.
+- الاسم الكامل الصحيح "خالد محمد العضاض الحربي" مُحدّث في كل الموقع.
