@@ -124,6 +124,17 @@ const opswatBadges: Badge[] = [
   },
 ];
 
+// Alison certificate (Cyber Security Essentials — 250 CPD hours)
+const alisonBadges: Badge[] = [
+  {
+    name: "Cyber Security Essentials Course",
+    nameAr: "دورة أساسيات الأمن السيبراني (250 ساعة)",
+    icon: ShieldCheck,
+    date: "Feb 01, 2026",
+    verify: "https://alison.com/courses/cyber-security-essentials",
+  },
+];
+
 // Cisco Networking Academy courses (completed, non-badge)
 const ciscoCourses = [
   "Network Defense",
@@ -376,6 +387,54 @@ export default function Credentials() {
                         {b.date}
                       </span>
                       <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 group-hover:text-neon-green transition-colors">
+                        <BadgeCheck size={11} />
+                        {t("creds.verify")}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* Alison certificate */}
+        <Reveal className="mb-6 mt-2">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={20} className="text-neon-blue" />
+            <h3 className="text-xl font-bold text-white">
+              {isAr ? "شهادة Alison" : "Alison Certification"}
+            </h3>
+            <span className="text-xs text-fg/50 mr-2">
+              {isAr ? "(أساسيات الأمن السيبراني — 250 ساعة)" : "(Cyber Security Essentials — 250 hours)"}
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 gap-4 mb-12">
+          {alisonBadges.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <Reveal key={b.name} delay={i * 60}>
+                <a
+                  href={b.verify}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 p-4 rounded-xl bg-[#0d1117] border border-edge hover:border-neon-blue/50 hover:bg-neon-blue/5 transition-all"
+                >
+                  <div className="w-11 h-11 shrink-0 flex items-center justify-center rounded-lg bg-neon-blue/10 border border-neon-blue/30 group-hover:scale-110 transition-transform">
+                    <Icon size={20} className="text-neon-blue" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white font-semibold text-sm leading-tight mb-0.5">
+                      {b.nameAr}
+                    </p>
+                    <p className="text-fg/50 text-xs mb-1.5">{b.name}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="mono-tech text-[10px] text-neon-blue/70">
+                        {b.date}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 group-hover:text-neon-blue transition-colors">
                         <BadgeCheck size={11} />
                         {t("creds.verify")}
                       </span>

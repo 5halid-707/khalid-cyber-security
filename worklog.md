@@ -772,3 +772,36 @@ Stage Summary:
   4. WhatsApp clone (تطبيق محادثات).
 - كل مشروع: صورة معاينة + LIVE badge + فئة ملوّنة + وصف + tech tags + زر يفتح الموقع الحقيقي.
 - بطاقة "المزيد قريباً" ما زالت موجودة لاستقبال أعمال إضافية.
+
+---
+Task ID: 23
+Agent: main (Z.ai Code)
+Task: إضافة شهادة Alison الناقصة لقسم الشهادات.
+
+Work Log:
+- فحصت ملفات CPD المرفوعة ووجدت أن Alison مذكورة بوضوح في سجل CPD الأول:
+  • "alison.com - Cisco.com - tryhackme.com" + "Cyber Security Essentials Course" + "250 ساعة" + "1st February 2026".
+- المشكلة: كنت عاملت Alison كـ"منصة تدريب" فقط (شارة في About + Tools Marquee)، ولم أنشئ بطاقة شهادة مستقلة لها في قسم الشهادات.
+- الحل:
+  • أنشأت alisonBadges array في credentials.tsx:
+    - name: "Cyber Security Essentials Course"
+    - nameAr: "دورة أساسيات الأمن السيبراني (250 ساعة)"
+    - date: "Feb 01, 2026"
+    - verify: https://alison.com/courses/cyber-security-essentials
+    - icon: ShieldCheck.
+  • أضفت قسم عرض Alison في JSX (بعد OPSWAT، قبل Cisco Academy):
+    - عنوان "شهادة Alison / Alison Certification" + "(أساسيات الأمن السيبراني — 250 ساعة)".
+    - بطاقة بألوان أزرق نيون (مثل IBM badges).
+    - رابط تحقق يفتح صفحة دورة Alison.
+  • حدّثت system prompt في /api/chat:
+    - أضفت Alison كبند رقم 4 في قائمة المؤهلات المهنية الموثّقة.
+    - حدّثت تعليمات الرد لتذكر "شهادة Alison (Cyber Security Essentials — 250 ساعة)".
+- تحققت عبر DOM: عنوان "شهادة Alison" موجود ✓ + "Cyber Security Essentials" موجود ✓ + "250 ساعة" موجود ✓.
+- تحققت من chatbot: سؤال "اذكر لي كل شهاداتك بما فيها Alison" → ردّ بـ "شهادة Alison: دورة 'أساسيات الأمن السيبراني' (Cyber Security Essentials) — مدة 250 ساعة تدريب" ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- أصلحت إغفال شهادة Alison — الآن لها بطاقة مستقلة في قسم الشهادات.
+- الترتيب الكامل للشهادات الآن: CPD UK → IBM (8 أوسمة) → Cisco (وسمان) → OPSWAT → Alison → Coventry (3 ExpertTracks) + Cisco Academy (6 دورات).
+- المساعد الذكي يذكر Alison بوضوح عند سؤال العميل عن المؤهلات.
+- ملاحظة: Alison لا تُصدر أوسمة Credly (لذلك رابط التحقق يشير لصفحة الدورة على Alison نفسها، وليس Credly).
