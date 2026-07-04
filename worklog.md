@@ -134,3 +134,43 @@ Stage Summary:
 - قسم الاعتمادات يبني الثقة بشهادة CPD المعتمدة دولياً + المنصات المعروفة.
 - المساعد الذكي مبرمج بمعرفة كاملة بخلفية خالد وأسعار خدماته.
 - كل العناصر (Hero/About/Products/Credentials/Footer/Navbar/Chatbot) موحدة بهوية خالد الشخصية.
+
+---
+Task ID: 5
+Agent: main (Z.ai Code)
+Task: تحليل الشهادة الثانية المرفوعة (شهادة مهندس امان الشبكات-التطوير المهني المستمر.pdf) وترقية الموقع ليعكس الاعتمادات الحقيقية الكاملة.
+
+Work Log:
+- استخرجت نص الشهادة الثانية (33 صفحة) عبر pdf.py extract.text.
+- اكتشفت أن المؤهلات الحقيقية أقوى بكثير مما عُرض في الموقع:
+  • شهادة CPD UK معتمدة (250 ساعة، 2026).
+  • شهادة IBM SkillsBuild Cybersecurity Certificate (Feb 11, 2026).
+  • 7 أوسمة IBM SkillsBuild على Credly: Cloud Security, Governance/Risk/Compliance, Incident Response & Forensics, Security Operations, System & Network Security, Vulnerability Management, IT Fundamentals.
+  • شهادة Cisco Network Technician Career Path (Aug 07, 2025) موقّعة من مدير Cisco Academy.
+  • 7 دورات Cisco Networking Academy: Ethical Hacker, Network Defense, Endpoint Security, Cyber Threat Management, Networking Basics, Networking Devices, Network Support & Security.
+  • البريد الرسمي: grouthhacker@gmail.com.
+  • كل الأوسمة لها روابط تحقق حقيقية على credly.com.
+- أعيد كتابة قسم Credentials بالكامل:
+  • 3 بطاقات علوية للشهادات الرئيسية (CPD/IBM/Cisco) بألوان نيون مميزة.
+  • شبكة 7 بطاقات لأوسمة IBM كل بطاقة رابط تحقق حقيقي على Credly + أيقونة + تاريخ.
+  • قسم 7 دورات Cisco في بطاقات منظمة.
+  • ملاحظة تحقق أسفل القسم.
+- حدّثت Hero: الإحصائيات أصبحت 4 (250+ ساعة CPD، 8 أوسمة IBM، 7 دورات Cisco، 6 باقات) بدلاً من 3.
+- حدّثت قسم About: ذكر IBM SkillsBuild + Cisco Network Technician + رابط Credly.
+- أعدت كتابة system prompt في /api/chat بالكامل:
+  • البريد الرسمي.
+  • 3 شهادات رئيسية موثّقة.
+  • 7 أوسمة IBM بأسماء وتواريخ.
+  • 7 دورات Cisco بالأسماء العربية.
+  • 9 خبرات أساسية مرتبطة بالأوسمة الفعلية.
+  • تعليمات لتأكيد قابلية التحقق على Credly.
+- تحققت عبر DOM: 8 روابط Credly + 7 أسماء أوسمة IBM + 7 دورات Cisco كلها موجودة في الصفحة.
+- تحققت من chatbot: سؤال "ما هي شهاداتك الموثقة؟" → ردّ ذكر CPD (250 ساعة) + IBM SkillsBuild + 7 أوسمة + Cisco Network Technician + 7 دورات + Credly.
+- VLM أكّد: hero (name + 4 stats)، about (portrait)، 6 product cards ($1500-$3500)، tech logos، credentials (IBM/Cisco/CPD)، footer.
+- ESLint نظيف.
+
+Stage Summary:
+- الموقع الآن يعكس القيمة الحقيقية لم. خالد بدلاً من عرض منقوص.
+- 16+ اعتماد موثّق بروابط تحقق حقيقية على Credly (8 روابط فعّالة).
+- المساعد الذكي مبرمج بالكامل بكل المؤهلات الحقيقية ويعرضها بفخر عند السؤال.
+- هذا يعزز المصداقية بشكل كبير ويحوّل الشهادات إلى أداة بيع فعلية.

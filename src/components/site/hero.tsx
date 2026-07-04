@@ -119,17 +119,20 @@ export default function Hero() {
         </div>
 
         {/* Quick stats */}
-        <div className="grid grid-cols-3 gap-6 md:gap-12 mt-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10 mt-14">
           {[
-            { num: "250+", label: "ساعة تدريب CPD" },
-            { num: "3", label: "منصات معتمدة" },
+            { num: "250+", label: "ساعة CPD" },
+            { num: "8", label: "أوسمة IBM" },
+            { num: "7", label: "دورات Cisco" },
             { num: "6", label: "باقات خدمات" },
           ].map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-2xl md:text-4xl font-black text-neon-green mono-tech">
                 {s.num}
               </div>
-              <div className="text-xs md:text-sm text-fg/50 mt-1">{s.label}</div>
+              <div className="text-[11px] md:text-sm text-fg/50 mt-1">
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
