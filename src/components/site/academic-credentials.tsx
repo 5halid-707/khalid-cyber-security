@@ -7,6 +7,7 @@ import {
   Lock,
   ScrollText,
   CheckCircle2,
+  Info,
 } from "lucide-react";
 import Reveal from "./reveal";
 
@@ -309,6 +310,31 @@ export default function AcademicCredentials() {
                   {skill}
                 </span>
               ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Honest clarification about ExpertTracks */}
+        <Reveal className="mt-6">
+          <div className="bg-neon-blue/5 rounded-xl p-5 border border-neon-blue/25">
+            <div className="flex items-start gap-3">
+              <Info
+                size={18}
+                className="text-neon-blue shrink-0 mt-0.5"
+              />
+              <div>
+                <p className="text-sm text-fg/80 leading-relaxed">
+                  <span className="text-neon-blue font-bold">
+                    توضيح شفاف:
+                  </span>{" "}
+                  مسارات <span className="text-white font-semibold">ExpertTrack</span>{" "}
+                  هي برامج تدريبية عالية المستوى تقدمها Coventry University عبر
+                  FutureLearn — تركز على المهارات العملية المتقدمة وتختلف عن
+                  الشهادات الجامعية التقليدية (البكالوريوس/الماجستير). هي تعكس
+                  التزامي بالتطوير المهني المستمر في الأمن السيبراني، لا لقباً
+                  أكاديمياً.
+                </p>
+              </div>
             </div>
           </div>
         </Reveal>

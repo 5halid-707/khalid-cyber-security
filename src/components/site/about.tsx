@@ -70,9 +70,11 @@ export default function About() {
               <span className="text-neon-pink font-semibold">
                 Cisco Network Technician
               </span>{" "}
-              و7 دورات من Cisco Networking Academy، و3 مسارات احترافية (15 دورة)
-              من <span className="text-neon-green font-semibold">Coventry University</span>{" "}
-              البريطانية عبر FutureLearn.
+              و7 دورات من Cisco Networking Academy، و3 مسارات تدريبية متقدمة
+              (ExpertTracks) من{" "}
+              <span className="text-neon-green font-semibold">Coventry University</span>{" "}
+              البريطانية عبر FutureLearn — وهي برامج مهنية عالية المستوى تعكس
+              التزامي بالتطوير المستمر.
             </p>
             <p className="text-fg/75 leading-relaxed mb-7">
               أعمل على حماية الأنظمة والشبكات من التهديدات السيبرانية، وكشف
