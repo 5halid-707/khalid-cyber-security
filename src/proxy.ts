@@ -1,7 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * Security middleware — adds protective HTTP headers to ALL responses.
+ * Security proxy — adds protective HTTP headers to ALL responses.
+ * (Replaces the deprecated middleware.ts convention in Next.js 16.)
  * Protects against: XSS, clickjacking, MIME sniffing, downgrade attacks,
  * referrer leaks, and enforces a strict Content Security Policy.
  */
@@ -33,7 +34,7 @@ const CSP_DIRECTIVES = [
   "upgrade-insecure-requests",
 ].join("; ");
 
-export function middleware(_req: NextRequest) {
+export function proxy(_req: NextRequest) {
   const res = NextResponse.next();
 
   // 1. Content Security Policy — prevents XSS, data injection
@@ -72,5 +73,7 @@ export function middleware(_req: NextRequest) {
 
 export const config = {
   // Apply to all routes except static assets (handled by Next.js automatically)
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|ico)$).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|ico)$).*)",
+  ],
 };

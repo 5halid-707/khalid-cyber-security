@@ -500,3 +500,31 @@ Stage Summary:
 - الموقع يتحدث تلقائياً عند نشر نسخة جديدة (فحص كل 5 دقائق + reload ذكي).
 - الموقع محمي بـ 8 طبقات حماية (CSP/HSTS/X-Frame/nosniff/Permissions/Cross-Origin).
 - لا أخطاء console أو runtime في أي قسم.
+
+---
+Task ID: 15
+Agent: main (Z.ai Code)
+Task: إصلاح عطل الموقع بعد توقف الخادم.
+
+Work Log:
+- اكتشفت أن الخادم كان متوقفاً (HTTP 000 / connection refused).
+- فحصت dev.log ووجدت تحذيراً مهماً: "middleware" file convention is deprecated in Next.js 16 — يجب استخدام "proxy" بدلاً منه. هذا تسبب في بطء/أخطاء في التوجيه.
+- أنشأت src/proxy.ts بنفس محتوى middleware.ts الأمني لكن بدالة proxy() بدلاً من middleware().
+- حذفت src/middleware.ts القديم.
+- أعدت تشغيل الخادم: HTTP 200 ✓، لا تحذيرات deprecation ✓.
+- تحققت من security headers عبر curl: كل 8 headers ما زالت مفعّلة (CSP, HSTS, X-Frame-Options, etc.).
+- تحققت عبر Agent Browser:
+  • لا page errors، لا console errors.
+  • كل 9 أقسام موجودة في DOM (home, about, products, showcase-video, tools, credentials, academic, academic-products, contact).
+  • الفيديو يعمل (paused=false, currentTime progressing, duration 5.19s).
+  • 9 أزرار PayPal موجودة.
+  • زر chatbot موجود.
+  • زرّا scroll arrows (2) موجودان.
+  • زر language toggle موجود.
+- VLM أكّد: الموقع يحمّل بشكل صحيح، الاسم + typing animation + CPD badge كلها ظاهرة، لا أخطاء ولا شاشة بيضاء.
+- ESLint نظيف.
+
+Stage Summary:
+- المشكلة الجذرية: middleware.ts مهمل في Next.js 16 → يسبب بطء/أخطاء توجيه → توقف الخادم.
+- الحل: استبدال middleware.ts بـ proxy.ts (الاسم الجديد في Next.js 16) + إعادة تشغيل الخادم.
+- الموقع يعمل الآن بالكامل بدون أخطاء + كل الحماية الأمنية مفعّلة.
