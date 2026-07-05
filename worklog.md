@@ -931,3 +931,44 @@ Stage Summary:
 - تحكم كامل: أسهم + play/pause + thumbnails + شريط تقدم + عداد.
 - pause on hover + خلفية ambient glow ديناميكية.
 - كل المشاريع الـ5 معروضة بتأثير بصري قوي يلفت الانتباه.
+
+---
+Task ID: 32
+Agent: main (Z.ai Code)
+Task: تحويل الأقسام أسفل أعمالي المنجزة لـ accordion تفاعلي بتصميم احترافي وكلمات تسويقية.
+
+Work Log:
+- أنشأت interactive-showcase.tsx: مكوّن accordion احترافي بـ 4 أقسام:
+  1. منصات الاعتماد والأدوات (أخضر نيون) — 🚀 marketing copy عن استخدام نفس أدوات كبرى الشركات.
+  2. الشهادات المهنية الموثّقة (أزرق نيون) — 🏆 marketing copy عن إثبات الخبرة بشهادات موثّقة.
+  3. التعليم الأكاديمي المعتمد (وردي نيون) — 🎓 marketing copy عن التعلم من جامعة بريطانية معتمدة.
+  4. الاستشارات الأكاديمية Premium (أخضر نيون) — 💎 marketing copy عن لماذا premium = عمق أكاديمي.
+- كل قسم:
+  • رقم تسلسلي (01, 02, 03, 04) في badge ملوّن.
+  • أيقونة + عنوان ملوّن + subtitle.
+  • chevron down يدور عند الفتح.
+  • marketing copy bar مع أيقونة Sparkles يظهر عند الفتح.
+  • محتوى يظهر/يختفي بانتقال سلس (maxHeight + opacity).
+  • حدود ملوّنة + gradient خلفية عند الفتح.
+  • ضغطة toggle (فتح/إغلاق) — قسم واحد مفتوح في كل مرة.
+- المحتوى داخل كل قسم:
+  1. Tools: شبكة 9 شعارات devicon + 6 شرائح منصات نصية ملوّنة.
+  2. Credentials: 3 بانرات علوية (CPD/IBM/Cisco) + 8 أوسمة IBM + 2 Cisco + 1 OPSWAT + 1 Alison + ملاحظة Credly.
+  3. Academic: بانر Coventry + 3 مسارات بـ progress + قوائم دورات بعلامات صح + توضيح شفاف.
+  4. Academic Products: 3 بطاقات premium بأسعار + PayPal buttons + tech tags.
+- استبدلت 4 أقسام منفصلة في page.tsx (ToolsMarquee, Credentials, AcademicCredentials, AcademicProducts) بـ InteractiveShowcase واحد.
+- تحققت عبر DOM: 4 أقسام موجودة + العناوين صحيحة ✓.
+- تحققت من التفاعل:
+  • الضغط على قسم 2 → يظهر IBM/Cisco/OPSWAT/Alison/CPD/Credly ✓.
+  • الضغط على قسم 3 → يظهر Coventry + 3 مسارات + توضيح شفاف ✓.
+  • قسم واحد مفتوح في كل مرة ✓.
+- VLM أكّد: accordion مرقّم + أول قسم مفتوح + marketing copy + عناوين ملوّنة ✓.
+- VLM أكّد قسم 3: Coventry banner + tracks + clarification ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- كل الأقسام أسفل "أعمالي المنجزة" أصبحت accordion تفاعلي احترافي.
+- كل قسم له عنوان تسويقي جذاب + marketing copy + محتوى شامل يظهر بالضغط.
+- تصميم متسق: أرقام ملوّنة + أيقونات + chevrons + حدود نيون + gradient خلفية.
+- استبدلت 4 مكوّنات منفصلة بواجهة موحدة أنظف وأكثر تفاعلية.
+- الكلمات التسويقية لكل قسم تبيع الخدمة قبل عرضها.

@@ -3,16 +3,13 @@ import Hero from "@/components/site/hero";
 import About from "@/components/site/about";
 import Products from "@/components/site/products";
 import VideoShowcase from "@/components/site/video-showcase";
-import ToolsMarquee from "@/components/site/tools-marquee";
-import Credentials from "@/components/site/credentials";
-import AcademicCredentials from "@/components/site/academic-credentials";
-import AcademicProducts from "@/components/site/academic-products";
+import PreviousWorks from "@/components/site/previous-works";
+import InteractiveShowcase from "@/components/site/interactive-showcase";
 import Footer from "@/components/site/footer";
 import FloatingContact from "@/components/site/floating-contact";
 import Chatbot from "@/components/site/chatbot";
 import ScrollArrows from "@/components/site/scroll-arrows";
 import MusicPlayer from "@/components/site/music-player";
-import PreviousWorks from "@/components/site/previous-works";
 
 export default function Home() {
   return (
@@ -24,10 +21,7 @@ export default function Home() {
         <Products />
         <VideoShowcase videoSrc="/marketing-video.mp4" />
         <PreviousWorks />
-        <ToolsMarquee />
-        <Credentials />
-        <AcademicCredentials />
-        <AcademicProducts />
+        <InteractiveShowcase />
       </main>
       <Footer />
 
