@@ -834,3 +834,33 @@ Stage Summary:
 - أصلحت اختفاء مشروع حراج — الآن موجود في معرض الأعمال كبطاقة خامسة.
 - المعرض الكامل: Netflix, Amazon, Instagram, WhatsApp, Haraj + placeholder "المزيد قريباً".
 - جميع البطاقات تعرض: صورة معاينة + شارة LIVE + فئة ملوّنة + وصف + tech tags + زر معاينة مباشرة.
+
+---
+Task ID: 29
+Agent: main (Z.ai Code)
+Task: إضافة 4 شهادات جامعية جديدة من محفظة FutureLearn المحدثة.
+
+Work Log:
+- قرأت محفظة FutureLearn المحدثة ووجدت 4 شهادات جديدة لم تُعرض:
+  • Practical Ethical Hacking & OT Cybersecurity — Taipei Medical University (17%).
+  • Cybersecurity for Citizens and Professionals — University of Padova (99%).
+  • Introduction to Cyber Security — The Open University (98%).
+  • AI Ethics, Inclusion & Society — University of Glasgow (انتهت الفترة).
+- أضفت additionalCourses array في academic-credentials.tsx بـ 4 بطاقات:
+  • كل بطاقة: ProgressRing + اسم الجامعة + عنوان عربي/إنجليزي + شارة حالة ملوّنة + أيقونة.
+  • شارة الحالة: أخضر (100%)، أزرق (قيد التقدم)، رمادي (انتهت).
+- أضفت قسم "دورات جامعات عالمية إضافية" في JSX بعد مسارات Coventry.
+- استوردت أيقونات جديدة: Brain, Globe2, Users من lucide-react.
+- حدّثت الـ banner: "Coventry University + 4 Universities" + إحصائيات (3 مسارات، 19 دورة، ~200 ساعة).
+- أضفت isAr للـ component (كان مفقوداً).
+- حدّثت system prompt في /api/chat:
+  • أضفت قسم "دورات جامعات عالمية إضافية (4 جامعات عبر FutureLearn)" بكل التفاصيل.
+- تحققت عبر DOM: كل الجامعات الأربع موجودة ✓ + القسم الجديد ظاهر ✓ + البانر يعرض 19 دورة ✓.
+- VLM أكّد: University of Padova, Taipei Medical University, University of Glasgow, The Open University كلها ظاهرة مع عناوين الدورات ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- قسم التعليم الأكاديمي الآن يعرض 5 جامعات عالمية (Coventry + Taipei + Padova + Open + Glasgow).
+- 3 مسارات ExpertTracks من Coventry (15 دورة) + 4 دورات إضافية من 4 جامعات = 19 دورة إجمالاً.
+- ~200 ساعة دراسة إجمالية.
+- المساعد الذكي يعرف كل الجامعات الجديدة ويزكرها عند السؤال.
