@@ -36,11 +36,12 @@ const VIDEO_CLIPS: VideoClip[] = [
     label: { ar: "تسويق إلكتروني", en: "Digital Marketing" },
     color: "#ff00cc",
   },
-  {
-    src: "/bg-design.mp4",
-    label: { ar: "تصميم ومونتاج ومودلز", en: "Design & Editing & 3D Models" },
-    color: "#00ffcc",
-  },
+  // Design video will be added when available
+  // {
+  //   src: "/bg-design.mp4",
+  //   label: { ar: "تصميم ومونتاج ومودلز", en: "Design & Editing & 3D Models" },
+  //   color: "#00ffcc",
+  // },
 ];
 
 const CYCLE_MS = 8000; // 8 seconds per clip
