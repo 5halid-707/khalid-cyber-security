@@ -7,25 +7,27 @@ import { NextResponse, type NextRequest } from "next/server";
  * referrer leaks, and enforces a strict Content Security Policy.
  */
 
-// Allowed CSP origins. Adjust if you add more external services.
+// Allowed CSP origins. Uses wildcard for paypal to support sandbox + live + checkout.
 const CSP_DIRECTIVES = [
   "default-src 'self'",
-  // Scripts: allow inline (for Next.js hydration) + the SDK + paypal
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.paypal.com https://cdnjs.cloudflare.com",
+  // Scripts: allow inline (for Next.js hydration) + paypal SDK + cdnjs
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.paypal.com https://*.paypal.com https://cdnjs.cloudflare.com",
   // Styles: allow inline (Next.js + styled-jsx)
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  // Images: allow self + data URIs + common CDN/asset hosts
+  // Images: allow self + data URIs + all https (paypal uses many CDN hosts)
   "img-src 'self' data: blob: https: http:",
   // Fonts
   "font-src 'self' data: https://fonts.gstatic.com",
   // Media (video/audio)
   "media-src 'self' blob: https:",
-  // Connections: allow fetch + paypal api
-  "connect-src 'self' https://www.paypal.com",
-  // Frames: allow paypal (for payment iframe)
-  "frame-src 'self' https://www.paypal.com",
-  // Form actions: allow self + paypal
-  "form-action 'self' https://www.paypal.com",
+  // Connections: allow self + ALL paypal domains (sandbox + live + api + checkout)
+  "connect-src 'self' https://*.paypal.com https://*.paypalobjects.com",
+  // Frames: allow self + ALL paypal domains (checkout popup/iframe)
+  "frame-src 'self' https://*.paypal.com https://*.paypalobjects.com",
+  // Frame ancestors: allow self only (security)
+  "frame-ancestors 'self'",
+  // Form actions: allow self + ALL paypal domains
+  "form-action 'self' https://*.paypal.com",
   // Base URI restriction
   "base-uri 'self'",
   // Object restriction (block plugins)
@@ -40,8 +42,8 @@ export function proxy(_req: NextRequest) {
   // 1. Content Security Policy — prevents XSS, data injection
   res.headers.set("Content-Security-Policy", CSP_DIRECTIVES);
 
-  // 2. X-Frame-Options — prevents clickjacking (DENY embedding)
-  res.headers.set("X-Frame-Options", "DENY");
+  // 2. X-Frame-Options — SAMEORIGIN (allows PayPal iframes from same origin)
+  res.headers.set("X-Frame-Options", "SAMEORIGIN");
 
   // 3. X-Content-Type-Options — prevents MIME sniffing
   res.headers.set("X-Content-Type-Options", "nosniff");
@@ -72,8 +74,8 @@ export function proxy(_req: NextRequest) {
 }
 
 export const config = {
-  // Apply to all routes except static assets (handled by Next.js automatically)
+  // Apply to all routes except static assets
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|ico)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|ico|mp3)$).*)",
   ],
 };

@@ -1,43 +1,86 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CreditCard, Loader2, Lock, Receipt } from "lucide-react";
 import { useI18n } from "./i18n";
 
 /**
- * PayPal "Buy Now" button with VAT support — FREE integration.
- * Uses PayPal's standard form POST to https://www.paypal.com/cgi-bin/webscr
- * No SDK, no API keys, no monthly fees. Only per-transaction fees (~2.9% + $0.30).
+ * PayPal checkout button — REAL integration using PayPal's official JS SDK.
+ * Stable version with retry logic + error recovery.
  *
- * === ACTIVATION STEPS ===
- * 1. Create a FREE PayPal Business account at https://paypal.com/business
- * 2. Verify your email and link your bank/card
- * 3. Enable international payments in account settings
- * 4. Replace PAYPAL_EMAIL below with your PayPal Business email
- * 5. Set PAYPAL_ENABLED to true
- * 6. Test with a real card — money arrives instantly to your PayPal balance
+ * === HOW IT WORKS ===
+ * 1. Loads PayPal config (Client ID + mode) from /api/paypal-config
+ * 2. Injects PayPal's official SDK script with the Client ID
+ * 3. Renders real PayPal buttons that open PayPal's checkout popup
+ * 4. Buyer pays with PayPal account or card → money goes to your PayPal
+ * 5. VAT 15% is automatically included in the total
  *
- * === VAT CONFIGURATION ===
- * VAT_RATE is configurable. For Saudi Arabia it's 15% (default).
- * Change VAT_RATE to any other percentage (e.g., 0.05 for 5%, 0.20 for 20%).
- * Set VAT_RATE to 0 to disable VAT.
+ * === STABILITY FEATURES ===
+ * - Retry SDK loading up to 3 times on failure
+ * - Re-render buttons if container is empty (visibility change)
+ * - Timeout fallback if SDK takes too long
+ * - Graceful error message instead of silent failure
  */
 
-// 🔧 Replace with your PayPal Business email to activate payments
-const PAYPAL_EMAIL = "grouthhacker@gmail.com";
-
-// Set to true once you've replaced the email with a real PayPal Business account
-const PAYPAL_ENABLED = PAYPAL_EMAIL !== "grouthhacker@gmail.com";
-
-// 🇸🇦 Saudi Arabia VAT rate (15%). Change as needed.
 const VAT_RATE = 0.15;
-
 const VAT_LABEL_AR = "ضريبة القيمة المضافة (15%)";
 const VAT_LABEL_EN = "VAT (15%)";
 
+let sdkLoadPromise: Promise<void> | null = null;
+let cachedConfig: {
+  clientId: string;
+  mode: string;
+  enabled: boolean;
+} | null = null;
+
+async function loadConfig() {
+  if (cachedConfig) return cachedConfig;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch("/api/paypal-config", { cache: "no-store" });
+      if (res.ok) {
+        cachedConfig = await res.json();
+        return cachedConfig;
+      }
+    } catch {
+      // retry
+    }
+    await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+  }
+  return { clientId: "", mode: "sandbox", enabled: false };
+}
+
+async function loadPayPalSDK(clientId: string): Promise<void> {
+  if (typeof window === "undefined") return;
+  if ((window as any).paypal) return;
+  if (sdkLoadPromise) return sdkLoadPromise;
+
+  sdkLoadPromise = new Promise<void>((resolve, reject) => {
+    // Timeout after 15s
+    const timeout = setTimeout(() => {
+      reject(new Error("PayPal SDK load timeout"));
+    }, 15000);
+
+    const script = document.createElement("script");
+    script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&intent=capture&disable-funding=credit`;
+    script.async = true;
+    script.onload = () => {
+      clearTimeout(timeout);
+      resolve();
+    };
+    script.onerror = () => {
+      clearTimeout(timeout);
+      sdkLoadPromise = null; // allow retry
+      reject(new Error("Failed to load PayPal SDK"));
+    };
+    document.head.appendChild(script);
+  });
+  return sdkLoadPromise;
+}
+
 type Props = {
   itemName: string;
-  amount: number; // base price in USD (before VAT)
+  amount: number;
   itemNameAr?: string;
   color?: string;
   compact?: boolean;
@@ -47,69 +90,206 @@ export default function PayPalButton({
   itemName,
   amount,
   itemNameAr,
-  color = "var(--neon-green)",
   compact = false,
 }: Props) {
   const { lang } = useI18n();
   const isAr = lang === "ar";
-  const [loading, setLoading] = useState(false);
   const [showInvoice, setShowInvoice] = useState(false);
+  const [status, setStatus] = useState<
+    "loading" | "ready" | "error" | "disabled"
+  >("loading");
+  const [config, setConfig] = useState<{
+    clientId: string;
+    mode: string;
+    enabled: boolean;
+  } | null>(null);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const renderKeyRef = useRef(0);
 
   const vatAmount = amount * VAT_RATE;
   const total = amount + vatAmount;
 
-  const handlePay = (e: React.FormEvent) => {
-    if (!PAYPAL_ENABLED) {
-      e.preventDefault();
-      alert(
-        isAr
-          ? "لتفعيل الدفع عبر PayPal:\n1. أنشئ حساب PayPal Business على paypal.com/business\n2. استبدل البريد في ملف paypal-button.tsx ببريد PayPal الحقيقي\n3. اضبط PAYPAL_ENABLED = true\n\nحالياً يمكنك التواصل عبر واتساب لإتمام الطلب."
-          : "To enable PayPal payments:\n1. Create a PayPal Business account at paypal.com/business\n2. Replace the email in paypal-button.tsx with your real PayPal email\n3. Set PAYPAL_ENABLED = true\n\nFor now, contact via WhatsApp to complete your order."
-      );
-      return;
-    }
-    setLoading(true);
-  };
+  // Load config + SDK on mount
+  useEffect(() => {
+    let mounted = true;
+    let retryCount = 0;
 
-  if (compact) {
+    const init = async () => {
+      const cfg = await loadConfig();
+      if (!mounted) return;
+      setConfig(cfg);
+
+      if (!cfg.enabled || !cfg.clientId) {
+        setStatus("disabled");
+        return;
+      }
+
+      // Try loading SDK with retries
+      while (retryCount < 3) {
+        try {
+          await loadPayPalSDK(cfg.clientId);
+          if (mounted) setStatus("ready");
+          return;
+        } catch (e) {
+          retryCount++;
+          if (retryCount >= 3) {
+            if (mounted) setStatus("error");
+            return;
+          }
+          await new Promise((r) => setTimeout(r, 1000 * retryCount));
+        }
+      }
+    };
+
+    init();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // Render PayPal buttons when ready
+  useEffect(() => {
+    if (status !== "ready" || !config?.enabled) return;
+    const paypal = (window as any).paypal;
+    if (!paypal || !buttonContainerRef.current) return;
+
+    // Clear previous buttons
+    buttonContainerRef.current.innerHTML = "";
+    renderKeyRef.current++;
+
+    try {
+      paypal
+        .Buttons({
+          style: {
+            layout: compact ? "rect" : "vertical",
+            color: "blue",
+            shape: "rect",
+            label: compact ? "pay" : "paypal",
+            height: compact ? 36 : 40,
+          },
+          createOrder: (_data: any, actions: any) => {
+            return actions.order.create({
+              intent: "CAPTURE",
+              purchase_units: [
+                {
+                  description: `${
+                    isAr && itemNameAr ? itemNameAr : itemName
+                  } (incl. VAT 15%)`,
+                  amount: {
+                    currency_code: "USD",
+                    value: total.toFixed(2),
+                    breakdown: {
+                      item_total: {
+                        currency_code: "USD",
+                        value: amount.toFixed(2),
+                      },
+                      tax_total: {
+                        currency_code: "USD",
+                        value: vatAmount.toFixed(2),
+                      },
+                    },
+                  },
+                },
+              ],
+            });
+          },
+          onApprove: async (_data: any, actions: any) => {
+            const details = await actions.order.capture();
+            alert(
+              isAr
+                ? `✅ تم الدفع بنجاح!\nرقم المعاملة: ${details.id}\nالمبلغ: $${total.toFixed(
+                    2
+                  )}\n\nشكراً لك! سأتواصل معك قريباً.`
+                : `✅ Payment successful!\nTransaction ID: ${details.id}\nAmount: $${total.toFixed(
+                    2
+                  )}\n\nThank you! I'll contact you soon.`
+            );
+          },
+          onError: (err: any) => {
+            console.error("PayPal checkout error:", err);
+            alert(
+              isAr
+                ? "❌ حدث خطأ في عملية الدفع. يرجى المحاولة مرة أخرى أو التواصل عبر واتساب."
+                : "❌ Payment error. Please try again or contact via WhatsApp."
+            );
+          },
+        })
+        .render(buttonContainerRef.current);
+    } catch (e) {
+      console.error("PayPal render error:", e);
+      setStatus("error");
+    }
+  }, [status, config, total, amount, vatAmount, itemName, itemNameAr, isAr, compact]);
+
+  // Re-render on visibility change (fixes tabs/background issues)
+  useEffect(() => {
+    const onVisible = () => {
+      if (status === "ready" && buttonContainerRef.current) {
+        const hasChildren = buttonContainerRef.current.children.length > 0;
+        if (!hasChildren) {
+          setStatus("loading");
+          setTimeout(() => setStatus("ready"), 100);
+        }
+      }
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, [status]);
+
+  // Loading state
+  if (status === "loading") {
     return (
-      <form
-        action="https://www.paypal.com/cgi-bin/webscr"
-        method="post"
-        target="_blank"
-        onSubmit={handlePay}
-        className="inline-block"
+      <button
+        type="button"
+        disabled
+        className={`flex items-center justify-center gap-2 w-full ${
+          compact ? "py-2 px-3" : "py-2.5"
+        } rounded-lg font-bold text-xs sm:text-sm bg-[#0070ba]/40 text-white/50 cursor-not-allowed`}
       >
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value={PAYPAL_EMAIL} />
-        <input
-          type="hidden"
-          name="item_name"
-          value={`${isAr && itemNameAr ? itemNameAr : itemName} (incl. VAT)`}
-        />
-        <input type="hidden" name="amount" value={total.toFixed(2)} />
-        <input type="hidden" name="tax_rate" value={VAT_RATE * 100} />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="hidden" name="no_shipping" value="2" />
-        <input
-          type="hidden"
-          name="return"
-          value={typeof window !== "undefined" ? window.location.origin : ""}
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg font-bold text-xs transition-all bg-[#0070ba] text-white hover:bg-[#005ea6] disabled:opacity-60"
-        >
-          {loading ? (
-            <Loader2 size={13} className="animate-spin" />
-          ) : (
-            <CreditCard size={13} />
-          )}
-          ${total.toFixed(2)}
-        </button>
-      </form>
+        <Loader2 size={13} className="animate-spin" />
+        {isAr ? "تحميل PayPal..." : "Loading PayPal..."}
+      </button>
     );
+  }
+
+  // Error state — show retry button
+  if (status === "error") {
+    return (
+      <button
+        type="button"
+        onClick={() => {
+          setStatus("loading");
+          sdkLoadPromise = null;
+          setTimeout(() => window.location.reload(), 500);
+        }}
+        className={`flex items-center justify-center gap-2 w-full ${
+          compact ? "py-2 px-3" : "py-2.5"
+        } rounded-lg font-bold text-xs sm:text-sm bg-red-600/80 text-white hover:bg-red-700 transition-all`}
+      >
+        {isAr ? "❌ خطأ PayPal — إعادة المحاولة" : "❌ PayPal error — Retry"}
+      </button>
+    );
+  }
+
+  // Disabled state (no config)
+  if (status === "disabled" || !config?.enabled) {
+    return (
+      <button
+        type="button"
+        disabled
+        className={`flex items-center justify-center gap-2 w-full ${
+          compact ? "py-2 px-3" : "py-2.5"
+        } rounded-lg font-bold text-xs sm:text-sm bg-[#0070ba]/30 text-white/40 cursor-not-allowed`}
+      >
+        <Lock size={13} />
+        {isAr ? "PayPal غير مفعّل" : "PayPal disabled"}
+      </button>
+    );
+  }
+
+  // Ready — show invoice toggle (non-compact only) + PayPal buttons
+  if (compact) {
+    return <div ref={buttonContainerRef} className="w-full" />;
   }
 
   return (
@@ -137,64 +317,35 @@ export default function PayPalButton({
           </div>
           <div className="flex justify-between text-fg/70">
             <span>{isAr ? VAT_LABEL_AR : VAT_LABEL_EN}</span>
-            <span className="mono-tech text-neon-blue">+${vatAmount.toFixed(2)}</span>
+            <span className="mono-tech text-neon-blue">
+              +${vatAmount.toFixed(2)}
+            </span>
           </div>
           <div className="flex justify-between pt-1 border-t border-edge text-white font-bold">
             <span>{isAr ? "الإجمالي" : "Total"}</span>
-            <span className="mono-tech text-neon-green">${total.toFixed(2)}</span>
+            <span className="mono-tech text-neon-green">
+              ${total.toFixed(2)}
+            </span>
           </div>
         </div>
       )}
 
-      <form
-        action="https://www.paypal.com/cgi-bin/webscr"
-        method="post"
-        target="_blank"
-        onSubmit={handlePay}
-        className="w-full"
-      >
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value={PAYPAL_EMAIL} />
-        <input
-          type="hidden"
-          name="item_name"
-          value={`${isAr && itemNameAr ? itemNameAr : itemName} (incl. VAT 15%)`}
-        />
-        <input type="hidden" name="amount" value={total.toFixed(2)} />
-        <input type="hidden" name="tax_rate" value={(VAT_RATE * 100).toFixed(2)} />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="hidden" name="no_shipping" value="2" />
-        <input
-          type="hidden"
-          name="return"
-          value={typeof window !== "undefined" ? window.location.origin : ""}
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg font-bold text-sm transition-all bg-[#0070ba] text-white hover:bg-[#005ea6] hover:shadow-[0_0_15px_rgba(0,112,186,0.5)] disabled:opacity-60"
-        >
-          {loading ? (
-            <Loader2 size={15} className="animate-spin" />
-          ) : (
-            <>
-              <CreditCard size={15} />
-              {isAr ? "ادفع عبر PayPal" : "Pay with PayPal"}
-              <span className="inline-flex items-center gap-0.5 text-[10px] opacity-80">
-                <Lock size={9} />
-                {isAr ? "آمن" : "Secure"}
-              </span>
-            </>
-          )}
-        </button>
-        {!PAYPAL_ENABLED && (
-          <p className="text-[9px] text-fg/30 text-center mt-1 leading-tight">
-            {isAr
-              ? "(سيُفعّل الدفع قريباً — تواصل عبر واتساب للطلب الآن)"
-              : "(Payment coming soon — WhatsApp to order now)"}
-          </p>
-        )}
-      </form>
+      {/* PayPal SDK buttons container */}
+      <div ref={buttonContainerRef} className="w-full" />
+
+      {/* Mode badge + security note */}
+      <div className="flex items-center justify-center gap-1.5 mt-1.5">
+        <Lock size={9} className="text-fg/40" />
+        <span className="text-[9px] text-fg/40">
+          {config.mode === "sandbox"
+            ? isAr
+              ? "وضع الاختبار (Sandbox)"
+              : "Sandbox mode"
+            : isAr
+              ? "مدفوعات حقيقية • آمن عبر PayPal"
+              : "Live payments • Secured by PayPal"}
+        </span>
+      </div>
     </div>
   );
 }
