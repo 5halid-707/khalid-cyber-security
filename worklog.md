@@ -864,3 +864,32 @@ Stage Summary:
 - 3 مسارات ExpertTracks من Coventry (15 دورة) + 4 دورات إضافية من 4 جامعات = 19 دورة إجمالاً.
 - ~200 ساعة دراسة إجمالية.
 - المساعد الذكي يعرف كل الجامعات الجديدة ويزكرها عند السؤال.
+
+---
+Task ID: 30
+Agent: main (Z.ai Code)
+Task: إزالة الدورات الوهمية (Taipei/Glasgow/Padova/Open) واستعادة العرض الصحيح لمسارات Coventry الثلاثة فقط.
+
+Work Log:
+- حللت محفظة FutureLearn المحدثة: فقط 3 مسارات Coventry (15 دورة) موجودة فعلياً — لا Taipei/Glasgow/Padova/Open University.
+- حذفت additionalCourses array بالكامل من academic-credentials.tsx (4 بطاقات وهمية).
+- حذفت قسم العرض "Additional Global University Courses" من JSX.
+- حذفت imports غير المستخدمة: Brain, Globe2, Users.
+- حدّثت الـ banner: "Coventry University" + إحصائيات صحيحة (3 مسارات، 15 دورة، ~150 ساعة).
+- حدّثت system prompt في /api/chat: حذفت قسم "دورات جامعات عالمية إضافية" بالكامل.
+- تحققت عبر DOM:
+  • Taipei: false ✓ (تمت الإزالة).
+  • Padova: false ✓.
+  • Open University: false ✓.
+  • Glasgow: false ✓.
+  • additionalSection: false ✓.
+  • Coventry: 6 إشارات ✓.
+  • 3 مسارات Coventry موجودة ✓.
+  • banner يعرض "15" دورة ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- أزلت كل الدورات الوهمية (Taipei/Glasgow/Padova/Open University) التي لم تكن في محفظة FutureLearn الفعلية.
+- الموقع الآن يعرض بدقة: 3 مسارات Coventry University (15 دورة، ~150 ساعة).
+- المساعد الذكي محدّث ليعكس الواقع الفعلي فقط.
+- المصداقية محفوظة — لا ادعاءات بجامعات لم تدرس فيها فعلياً.

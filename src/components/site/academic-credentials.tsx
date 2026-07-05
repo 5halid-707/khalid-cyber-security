@@ -10,9 +10,6 @@ import {
   ScrollText,
   CheckCircle2,
   Info,
-  Brain,
-  Globe2,
-  Users,
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
@@ -93,59 +90,6 @@ const tracks: Track[] = [
   },
 ];
 
-// Additional university courses (non-Coventry, from FutureLearn portfolio)
-const additionalCourses: {
-  icon: typeof Brain;
-  color: string;
-  university: string;
-  title: string;
-  titleAr: string;
-  progress: number;
-  status: string;
-  icon2: typeof Brain;
-}[] = [
-  {
-    icon: Brain,
-    color: "var(--neon-pink)",
-    university: "Taipei Medical University · FutureLearn",
-    title: "Practical Ethical Hacking and Operational Technology Cybersecurity",
-    titleAr: "الاختراق الأخلاقي العملي وأمن تقنيات التشغيل",
-    progress: 17,
-    status: "قيد التقدم",
-    icon2: Brain,
-  },
-  {
-    icon: Users,
-    color: "var(--neon-green)",
-    university: "University of Padova · FutureLearn",
-    title: "Cybersecurity for Citizens and Professionals",
-    titleAr: "الأمن السيبراني للمواطنين والمحترفين",
-    progress: 99,
-    status: "مكتمل 99%",
-    icon2: Users,
-  },
-  {
-    icon: Globe2,
-    color: "var(--neon-blue)",
-    university: "The Open University · FutureLearn",
-    title: "Introduction to Cyber Security",
-    titleAr: "مقدمة في الأمن السيبراني",
-    progress: 98,
-    status: "مكتمل 98%",
-    icon2: Globe2,
-  },
-  {
-    icon: Brain,
-    color: "var(--neon-pink)",
-    university: "University of Glasgow · FutureLearn",
-    title: "AI Ethics, Inclusion & Society",
-    titleAr: "أخلاقيات الذكاء الاصطناعي والإدماج والمجتمع",
-    progress: 0,
-    status: "انتهت الفترة",
-    icon2: Brain,
-  },
-];
-
 function ProgressRing({ value, color }: { value: number; color: string }) {
   const radius = 22;
   const circumference = 2 * Math.PI * radius;
@@ -215,11 +159,11 @@ export default function AcademicCredentials() {
               <GraduationCap size={28} className="text-neon-green" />
             </div>
             <div className="text-center sm:text-right flex-1">
-              <p className="text-white font-bold text-lg">Coventry University + 4 Universities</p>
+              <p className="text-white font-bold text-lg">Coventry University</p>
               <p className="text-fg/60 text-sm">
                 {isAr
-                  ? "5 جامعات عالمية • عبر منصة FutureLearn"
-                  : "5 global universities • via FutureLearn"}
+                  ? "جامعة بريطانية حكومية • عبر منصة FutureLearn"
+                  : "UK public university • via FutureLearn"}
               </p>
             </div>
             <div className="flex gap-3 text-center">
@@ -233,7 +177,7 @@ export default function AcademicCredentials() {
               </div>
               <div>
                 <div className="text-2xl font-black text-neon-blue mono-tech">
-                  19
+                  15
                 </div>
                 <div className="text-xs text-fg/50">
                   {isAr ? "دورة" : "Courses"}
@@ -241,7 +185,7 @@ export default function AcademicCredentials() {
               </div>
               <div>
                 <div className="text-2xl font-black text-neon-pink mono-tech">
-                  ~200h
+                  ~150h
                 </div>
                 <div className="text-xs text-fg/50">
                   {isAr ? "ساعة" : "Hours"}
@@ -347,61 +291,6 @@ export default function AcademicCredentials() {
                     ))}
                   </div>
                 </article>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        {/* Additional university courses */}
-        <Reveal className="mt-12 mb-6">
-          <div className="flex items-center gap-2">
-            <Globe2 size={20} className="text-neon-blue" />
-            <h3 className="text-xl font-bold text-white">
-              {isAr ? "دورات جامعات عالمية إضافية" : "Additional Global University Courses"}
-            </h3>
-            <span className="text-xs text-fg/50 mr-2">
-              {isAr ? "(4 جامعات عبر FutureLearn)" : "(4 universities via FutureLearn)"}
-            </span>
-          </div>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-          {additionalCourses.map((c, i) => {
-            const Icon = c.icon;
-            return (
-              <Reveal key={c.title} delay={i * 80}>
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-[#0d1117] border border-edge hover:border-neon-blue/40 transition-all">
-                  <ProgressRing value={c.progress} color={c.color} />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[10px] mono-tech text-fg/50 mb-1 truncate">
-                      {c.university}
-                    </p>
-                    <p className="text-white font-semibold text-sm leading-tight mb-1">
-                      {c.titleAr}
-                    </p>
-                    <p className="text-fg/50 text-xs mb-2">{c.title}</p>
-                    <span
-                      className={`inline-block text-[10px] px-2 py-0.5 rounded-full border mono-tech ${
-                        c.progress === 100
-                          ? "text-neon-green border-neon-green/40 bg-neon-green/10"
-                          : c.progress > 0
-                            ? "text-neon-blue border-neon-blue/40 bg-neon-blue/10"
-                            : "text-fg/40 border-edge bg-surface"
-                      }`}
-                    >
-                      {c.status}
-                    </span>
-                  </div>
-                  <div
-                    className="w-9 h-9 shrink-0 flex items-center justify-center rounded-lg border"
-                    style={{
-                      borderColor: `${c.color}50`,
-                      backgroundColor: `${c.color}10`,
-                    }}
-                  >
-                    <Icon size={16} style={{ color: c.color }} />
-                  </div>
-                </div>
               </Reveal>
             );
           })}
