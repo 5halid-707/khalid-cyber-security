@@ -25,6 +25,13 @@ const WORDS = {
   ],
 };
 
+const HERO_VIDEOS = [
+  { src: "/bg-hacking.mp4", label: { ar: "اختبار اختراق وحماية", en: "Penetration Testing" } },
+  { src: "/bg-ecommerce.mp4", label: { ar: "تصميم متاجر ومواقع", en: "E-Commerce & Web" } },
+  { src: "/bg-marketing.mp4", label: { ar: "تسويق إلكتروني", en: "Digital Marketing" } },
+];
+const VIDEO_CYCLE_MS = 7000;
+
 export default function Hero() {
   const { lang, t } = useI18n();
   const words = WORDS[lang];
@@ -32,16 +39,24 @@ export default function Hero() {
   const indexRef = useRef(0);
   const charRef = useRef(0);
   const deletingRef = useRef(false);
+  const [videoIndex, setVideoIndex] = useState(0);
 
   // Reset typing animation when language changes
   useEffect(() => {
     indexRef.current = 0;
     charRef.current = 0;
     deletingRef.current = false;
-    // Use a microtask to avoid synchronous setState in effect
     const id = setTimeout(() => setText(""), 0);
     return () => clearTimeout(id);
   }, [lang]);
+
+  // Cycle through hero background videos
+  useEffect(() => {
+    const id = setInterval(() => {
+      setVideoIndex((prev) => (prev + 1) % HERO_VIDEOS.length);
+    }, VIDEO_CYCLE_MS);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -81,27 +96,53 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 overflow-hidden"
     >
-      {/* Video background — cycles through service videos */}
+      {/* Video slider background — multiple videos cycling with crossfade */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.35) contrast(1.1)" }}
-        >
-          <source src="/bg-hacking.mp4" type="video/mp4" />
-        </video>
+        {HERO_VIDEOS.map((v, i) => (
+          <video
+            key={v.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ${
+              i === videoIndex ? "opacity-60" : "opacity-0"
+            }`}
+            style={{ filter: "brightness(0.55) contrast(1.05)" }}
+          >
+            <source src={v.src} type="video/mp4" />
+          </video>
+        ))}
         {/* Dark overlay for readability */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 50% 30%, rgba(0,168,232,0.12), transparent 60%), linear-gradient(rgba(5,8,15,0.65), rgba(5,8,15,0.80))",
+              "radial-gradient(circle at 50% 30%, rgba(0,168,232,0.10), transparent 60%), linear-gradient(rgba(5,8,15,0.50), rgba(5,8,15,0.70))",
           }}
         />
+        {/* Video indicator dots */}
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {HERO_VIDEOS.map((v, i) => (
+            <button
+              key={i}
+              onClick={() => setVideoIndex(i)}
+              aria-label={`Video ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === videoIndex
+                  ? "w-8 bg-neon-green shadow-[0_0_6px_var(--neon-green)]"
+                  : "w-2 bg-fg/30 hover:bg-fg/50"
+              }`}
+            />
+          ))}
+        </div>
+        {/* Current video label */}
+        <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10">
+          <span className="text-[10px] mono-tech text-neon-green/70 tracking-widest">
+            {HERO_VIDEOS[videoIndex].label[lang === "ar" ? "ar" : "en"]}
+          </span>
+        </div>
       </div>
 
       {/* Floating glow orbs */}
