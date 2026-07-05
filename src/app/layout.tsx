@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cairo, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import MatrixRain from "@/components/site/matrix-rain";
+import DynamicVideoBackground from "@/components/site/dynamic-video-bg";
 import { I18nProvider } from "@/components/site/i18n";
 import AutoUpdater from "@/components/site/auto-updater";
 
@@ -46,7 +46,7 @@ export default function RootLayout({
       <body
         className={`${cairo.variable} ${shareTechMono.variable} antialiased text-fg overflow-x-hidden`}
       >
-        <MatrixRain />
+        <DynamicVideoBackground />
         <I18nProvider>
           {children}
           <AutoUpdater />
