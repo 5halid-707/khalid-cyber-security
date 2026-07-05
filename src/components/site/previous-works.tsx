@@ -1,6 +1,20 @@
 "use client";
 
-import { ExternalLink, Github, Globe, Film, ShoppingBag, Camera, MessageCircle, Store, ArrowUpLeft } from "lucide-react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import {
+  ExternalLink,
+  Globe,
+  Film,
+  ShoppingBag,
+  Camera,
+  MessageCircle,
+  Store,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  ArrowUpLeft,
+} from "lucide-react";
 import Reveal from "./reveal";
 import TypedHeading from "./typed-heading";
 import { useI18n } from "./i18n";
@@ -90,14 +104,71 @@ const works: Work[] = [
   },
 ];
 
+const AUTOPLAY_MS = 6000; // 6 seconds per slide
+
 export default function PreviousWorks() {
   const { lang } = useI18n();
   const isAr = lang === "ar";
+  const [current, setCurrent] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [progress, setProgress] = useState(0); // 0-100 for autoplay progress bar
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const total = works.length;
+
+  const goTo = useCallback(
+    (idx: number) => {
+      setCurrent(((idx % total) + total) % total);
+      setProgress(0);
+    },
+    [total]
+  );
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+
+  // Autoplay
+  useEffect(() => {
+    if (!isPlaying) return;
+    timerRef.current = setInterval(() => {
+      setCurrent((p) => (p + 1) % total);
+      setProgress(0);
+    }, AUTOPLAY_MS);
+
+    // Progress bar animation
+    const tickMs = 50;
+    progressRef.current = setInterval(() => {
+      setProgress((p) => Math.min(100, p + (tickMs / AUTOPLAY_MS) * 100));
+    }, tickMs);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [isPlaying, total, current]);
+
+  // Pause on hover
+  const pauseAutoplay = () => setIsPlaying(false);
+  const resumeAutoplay = () => setIsPlaying(true);
+
+  const ArrowNext = isAr ? ChevronLeft : ChevronRight;
+  const ArrowPrev = isAr ? ChevronRight : ChevronLeft;
+  const activeWork = works[current];
+  const ActiveIcon = activeWork.icon;
 
   return (
-    <section id="previous-works" className="py-24 px-5 relative">
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="text-center mb-14">
+    <section id="previous-works" className="py-24 px-5 relative overflow-hidden">
+      {/* Background ambient glow that shifts with active slide */}
+      <div
+        className="absolute inset-0 pointer-events-none transition-all duration-1000"
+        style={{
+          background: `radial-gradient(circle at 50% 40%, ${activeWork.categoryColor}15, transparent 60%)`,
+        }}
+      />
+
+      <div className="relative mx-auto max-w-6xl">
+        <Reveal className="text-center mb-12">
           <p className="mono-tech text-xs text-neon-green/70 tracking-[0.3em] mb-3">
             {"// PORTFOLIO"}
           </p>
@@ -109,124 +180,243 @@ export default function PreviousWorks() {
           />
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
             {isAr
-              ? "مشاريع حقيقية صممتها ورفعتها على الإنترنت — متاحة للمعاينة المباشرة"
-              : "Real projects I designed and deployed live on the internet — available for live preview"}
+              ? "مشاريع حقيقية صممتها ورفعتها على الإنترنت — معاينة مباشرة لكل عمل"
+              : "Real projects I designed and deployed live on the internet — live preview for each"}
           </p>
           <div className="w-20 h-1 mx-auto bg-neon-green rounded-full shadow-[0_0_10px_var(--neon-green)]" />
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {works.map((w, i) => {
-            const Icon = w.icon;
-            return (
-              <Reveal key={w.title} delay={i * 120}>
-                <article className="shine-wrap group relative h-full bg-surface rounded-xl overflow-hidden border border-edge transition-all duration-500 hover:border-neon-green/50 hover:shadow-[0_10px_40px_-10px_rgba(0,255,204,0.2)] flex flex-col">
-                  {/* Preview image */}
-                  <div className="relative h-48 overflow-hidden bg-[#0d1117]">
+        {/* Main carousel */}
+        <div
+          className="relative rounded-2xl overflow-hidden border-2 border-edge shadow-[0_15px_50px_-10px_rgba(0,0,0,0.7)]"
+          onMouseEnter={pauseAutoplay}
+          onMouseLeave={resumeAutoplay}
+          dir="ltr"
+        >
+          {/* Slides container */}
+          <div className="relative h-[420px] sm:h-[460px] md:h-[500px]">
+            {works.map((w, i) => {
+              const Icon = w.icon;
+              const isActive = i === current;
+              return (
+                <div
+                  key={w.title}
+                  className={`absolute inset-0 transition-all duration-700 ${
+                    isActive
+                      ? "opacity-100 scale-100 z-10"
+                      : "opacity-0 scale-95 z-0 pointer-events-none"
+                  }`}
+                >
+                  {/* Background image with Ken Burns zoom */}
+                  <div className="absolute inset-0 overflow-hidden">
                     <img
                       src={w.preview}
                       alt={isAr ? w.titleAr : w.title}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" />
-                    {/* Category badge */}
-                    <div
-                      className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold backdrop-blur-sm border"
+                      className={`w-full h-full object-cover ${
+                        isActive ? "animate-ken-burns" : ""
+                      }`}
                       style={{
-                        color: w.categoryColor,
-                        borderColor: `${w.categoryColor}50`,
-                        backgroundColor: `${w.categoryColor}15`,
+                        filter: isActive
+                          ? "brightness(0.5) contrast(1.1)"
+                          : "brightness(0.3)",
                       }}
-                    >
-                      {isAr ? w.category.ar : w.category.en}
-                    </div>
-                    {/* Live badge */}
-                    <div className="absolute top-3 left-3 px-2 py-1 rounded-full bg-neon-green/20 border border-neon-green/50 backdrop-blur-sm flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-                      <span className="text-[9px] text-neon-green font-bold mono-tech">
-                        LIVE
-                      </span>
-                    </div>
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-[#05080f]/60 to-transparent" />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${w.categoryColor}20, transparent 50%)`,
+                      }}
+                    />
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div
-                        className="w-10 h-10 shrink-0 rounded-lg flex items-center justify-center border"
-                        style={{
-                          borderColor: `${w.categoryColor}50`,
-                          backgroundColor: `${w.categoryColor}15`,
-                        }}
-                      >
-                        <Icon size={18} style={{ color: w.categoryColor }} />
+                  {/* Content overlay */}
+                  <div className="relative h-full flex flex-col justify-end p-6 md:p-10">
+                    <div className="max-w-2xl">
+                      {/* Category + LIVE badge */}
+                      <div className="flex items-center gap-2 mb-3">
+                        <span
+                          className="px-2.5 py-1 rounded-full text-[11px] font-bold backdrop-blur-sm border"
+                          style={{
+                            color: w.categoryColor,
+                            borderColor: `${w.categoryColor}60`,
+                            backgroundColor: `${w.categoryColor}20`,
+                          }}
+                        >
+                          {isAr ? w.category.ar : w.category.en}
+                        </span>
+                        <span className="px-2 py-1 rounded-full bg-neon-green/20 border border-neon-green/50 backdrop-blur-sm flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
+                          <span className="text-[9px] text-neon-green font-bold mono-tech">
+                            LIVE
+                          </span>
+                        </span>
                       </div>
-                      <div className="flex-1 min-w-0">
+
+                      {/* Title with icon */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <div
+                          className="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center border backdrop-blur-sm"
+                          style={{
+                            borderColor: `${w.categoryColor}60`,
+                            backgroundColor: `${w.categoryColor}25`,
+                          }}
+                        >
+                          <Icon size={22} style={{ color: w.categoryColor }} />
+                        </div>
                         <h3
-                          className="text-base font-bold leading-tight flex items-center gap-1.5"
+                          className="text-xl md:text-3xl font-black leading-tight"
                           style={{ color: w.categoryColor }}
                         >
                           {isAr ? w.titleAr : w.title}
-                          <ArrowUpLeft
-                            size={14}
-                            className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          />
                         </h3>
                       </div>
+
+                      {/* Description */}
+                      <p className="text-fg/80 text-sm md:text-base leading-relaxed mb-4 line-clamp-2 md:line-clamp-3">
+                        {isAr ? w.description.ar : w.description.en}
+                      </p>
+
+                      {/* Tech tags */}
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {w.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="text-[10px] px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-sm border border-edge text-fg/70 font-mono"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* CTA */}
+                      <a
+                        href={w.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-bold text-sm bg-neon-green text-[#05080f] hover:shadow-[0_0_20px_rgba(0,255,204,0.5)] hover:scale-105 transition-all"
+                      >
+                        <Globe size={15} />
+                        {isAr ? "معاينة مباشرة" : "View Live Site"}
+                        <ExternalLink size={12} />
+                      </a>
                     </div>
-
-                    <p className="text-fg/70 text-sm leading-relaxed mb-4">
-                      {isAr ? w.description.ar : w.description.en}
-                    </p>
-
-                    {/* Tech tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {w.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="text-[10px] px-2 py-0.5 rounded-md bg-[#0d1117] border border-edge text-fg/60 font-mono"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <a
-                      href={w.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto flex items-center justify-center gap-2 w-full py-2.5 rounded-lg font-bold text-sm bg-neon-green text-[#05080f] hover:shadow-[0_0_15px_rgba(0,255,204,0.5)] transition-all"
-                    >
-                      <Globe size={15} />
-                      {isAr ? "معاينة الموقع مباشرة" : "View Live Site"}
-                      <ExternalLink size={13} />
-                    </a>
                   </div>
-                </article>
-              </Reveal>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Prev/Next arrows */}
+          <button
+            onClick={prev}
+            aria-label={isAr ? "السابق" : "Previous"}
+            className="absolute top-1/2 -translate-y-1/2 left-3 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-md border border-edge text-white flex items-center justify-center hover:bg-neon-green hover:text-[#05080f] hover:scale-110 transition-all"
+          >
+            <ArrowPrev size={20} />
+          </button>
+          <button
+            onClick={next}
+            aria-label={isAr ? "التالي" : "Next"}
+            className="absolute top-1/2 -translate-y-1/2 right-3 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-md border border-edge text-white flex items-center justify-center hover:bg-neon-green hover:text-[#05080f] hover:scale-110 transition-all"
+          >
+            <ArrowNext size={20} />
+          </button>
+
+          {/* Autoplay progress bar */}
+          <div className="absolute bottom-0 inset-x-0 h-1 bg-black/40 z-20">
+            <div
+              className="h-full transition-all duration-75"
+              style={{
+                width: `${progress}%`,
+                backgroundColor: activeWork.categoryColor,
+                boxShadow: `0 0 8px ${activeWork.categoryColor}`,
+              }}
+            />
+          </div>
+
+          {/* Play/Pause toggle */}
+          <button
+            onClick={() => setIsPlaying((p) => !p)}
+            aria-label={isPlaying ? "Pause" : "Play"}
+            className="absolute top-3 left-3 z-20 w-9 h-9 rounded-full bg-black/50 backdrop-blur-md border border-edge text-white flex items-center justify-center hover:bg-neon-green hover:text-[#05080f] transition-all"
+          >
+            {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+          </button>
+
+          {/* Slide counter */}
+          <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-edge">
+            <span className="text-xs text-white mono-tech font-bold">
+              {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+
+        {/* Dot navigation + thumbnails */}
+        <div className="flex items-center justify-center gap-3 mt-6">
+          {works.map((w, i) => {
+            const isActive = i === current;
+            return (
+              <button
+                key={w.title}
+                onClick={() => goTo(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`group relative transition-all ${
+                  isActive ? "w-16 h-12" : "w-12 h-9 opacity-50 hover:opacity-100"
+                }`}
+              >
+                <div
+                  className={`w-full h-full rounded-lg overflow-hidden border-2 transition-all ${
+                    isActive
+                      ? "border-neon-green shadow-[0_0_12px_rgba(0,255,204,0.4)]"
+                      : "border-edge group-hover:border-neon-green/50"
+                  }`}
+                >
+                  <img
+                    src={w.preview}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </button>
             );
           })}
+        </div>
 
-          {/* "More coming" placeholder card */}
-          <Reveal delay={200}>
-            <article className="h-full bg-surface/40 rounded-xl overflow-hidden border border-dashed border-edge flex flex-col items-center justify-center p-8 text-center min-h-[300px]">
-              <div className="w-14 h-14 rounded-full bg-neon-green/10 border border-neon-green/30 flex items-center justify-center mb-4">
-                <Github size={24} className="text-neon-green" />
-              </div>
-              <h3 className="text-white font-bold mb-2">
-                {isAr ? "المزيد من الأعمال قريباً" : "More Projects Coming Soon"}
-              </h3>
-              <p className="text-fg/50 text-sm max-w-xs">
-                {isAr
-                  ? "أرسل لي روابط أعمالك الأخرى وسأضيفها هنا مع معاينة مباشرة لكل واحد"
-                  : "Send me links to your other projects and I'll add them here with live preview for each"}
-              </p>
-            </article>
-          </Reveal>
+        {/* Track name display below dots */}
+        <div className="text-center mt-4">
+          <p className="text-sm text-fg/50">
+            <span className="mono-tech text-neon-green">#{current + 1}</span>{" "}
+            <span style={{ color: activeWork.categoryColor }}>
+              {isAr ? activeWork.titleAr : activeWork.title}
+            </span>
+            <ArrowUpLeft size={12} className="inline ml-1 opacity-50" />
+          </p>
         </div>
       </div>
+
+      <style>{`
+        @keyframes ken-burns {
+          0% { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.12) translate(-2%, -1%); }
+        }
+        .animate-ken-burns {
+          animation: ken-burns ${AUTOPLAY_MS}ms ease-out forwards;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </section>
   );
 }

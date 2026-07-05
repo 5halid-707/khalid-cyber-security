@@ -893,3 +893,41 @@ Stage Summary:
 - الموقع الآن يعرض بدقة: 3 مسارات Coventry University (15 دورة، ~150 ساعة).
 - المساعد الذكي محدّث ليعكس الواقع الفعلي فقط.
 - المصداقية محفوظة — لا ادعاءات بجامعات لم تدرس فيها فعلياً.
+
+---
+Task ID: 31
+Agent: main (Z.ai Code)
+Task: تحويل قسم أعمالي المنجزة لسلايدر متحرك تسويقي.
+
+Work Log:
+- أعدت كتابة previous-works.tsx بالكامل من شبكة ثابتة إلى سلايدر متحرك احترافي:
+  • Carousel مع 5 شرائح (Netflix, Amazon, Instagram, WhatsApp, Haraj).
+  • AUTOPLAY كل 6 ثوانٍ مع شريط تقدم ملوّن بنفس لون المشروع النشط.
+  • تأثير Ken Burns zoom على صورة الخلفية (scale 1 → 1.12 + translate).
+  • انتقالات سلسة (opacity + scale + 700ms duration).
+  • overlay متدرج + gradient ملوّن حسب فئة المشروع.
+- عناصر التحكم:
+  • أسهم prev/next على الجانبين (تتكيف مع RTL/LTR).
+  • زر play/pause أعلى يسار.
+  • عداد الشرائح (01/05) أعلى يمين.
+  • thumbnail navigation (5 صور مصغّرة) أسفل السلايدر.
+  • شريط تقدم autoplay أسفل السلايدر.
+  • اسم المشروع النشط مع رقمه أسفل الـ thumbnails.
+  • pause on hover (يتوقف التشغيل التلقائي عند الماوس).
+- كل شريحة تعرض: صورة خلفية + فئة ملوّنة + شارة LIVE + عنوان + أيقونة + وصف + tech tags + زر معاينة مباشرة.
+- خلفية ambient glow تتغير مع كل شريحة (radial gradient بلون المشروع النشط).
+- تحققت عبر Agent Browser:
+  • السلايدر يعرض شريحة مع صورة خلفية + أسهم + عداد + play/pause + thumbnails ✓.
+  • AUTOPLAY يعمل: انتقل من 02/05 إلى 03/05 بعد 6 ثوانٍ ✓.
+  • زر "التالي" ينتقل للأمام ✓.
+  • زر "السابق" ينتقل للخلف ✓.
+  • النقر على thumbnail ينتقل للشريحة المطلوبة ✓.
+- VLM أكّد: large slide + prev/next arrows + counter + play/pause + thumbnails ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- قسم أعمالي المنجزة أصبح سلايدر متحرك تسويقي احترافي.
+- AUTOPLAY كل 6 ثوانٍ مع Ken Burns zoom + انتقالات سلسة.
+- تحكم كامل: أسهم + play/pause + thumbnails + شريط تقدم + عداد.
+- pause on hover + خلفية ambient glow ديناميكية.
+- كل المشاريع الـ5 معروضة بتأثير بصري قوي يلفت الانتباه.
