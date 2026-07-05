@@ -81,14 +81,28 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 overflow-hidden"
     >
-      {/* Gradient overlay (semi-transparent so matrix rain shows through) */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 30%, rgba(0,168,232,0.15), transparent 60%), radial-gradient(circle at 80% 80%, rgba(255,0,204,0.10), transparent 55%), linear-gradient(rgba(5,8,15,0.55), rgba(5,8,15,0.75))",
-        }}
-      />
+      {/* Video background — cycles through service videos */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.35) contrast(1.1)" }}
+        >
+          <source src="/bg-hacking.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 30%, rgba(0,168,232,0.12), transparent 60%), linear-gradient(rgba(5,8,15,0.65), rgba(5,8,15,0.80))",
+          }}
+        />
+      </div>
 
       {/* Floating glow orbs */}
       <div className="absolute top-1/4 right-[15%] w-40 h-40 rounded-full bg-neon-green/10 blur-3xl animate-glow-pulse z-0" />
