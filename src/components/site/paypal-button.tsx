@@ -161,11 +161,11 @@ export default function PayPalButton({
       paypal
         .Buttons({
           style: {
-            layout: compact ? "rect" : "vertical",
+            layout: "vertical",
             color: "blue",
             shape: "rect",
-            label: compact ? "pay" : "paypal",
-            height: compact ? 36 : 40,
+            label: "paypal",
+            height: 40,
           },
           createOrder: (_data: any, actions: any) => {
             return actions.order.create({
