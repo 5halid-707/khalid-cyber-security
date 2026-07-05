@@ -154,6 +154,13 @@ export default function ContactSection() {
 
       if (!res.ok) throw new Error("Failed");
 
+      const data = await res.json();
+
+      // Auto-open WhatsApp with the formatted message
+      if (data.whatsappLink) {
+        window.open(data.whatsappLink, "_blank");
+      }
+
       setSubmitted(true);
     } catch {
       setError(
