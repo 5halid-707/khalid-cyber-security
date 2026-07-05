@@ -177,60 +177,92 @@ export default function About() {
             <TypedHeading
               text={t("about.title")}
               as="h2"
-              className="text-3xl md:text-4xl font-black text-white mb-5"
+              className="text-3xl md:text-4xl font-black text-white mb-5 animate-neon-flicker"
               prefix="> "
             />
             <div className="w-20 h-1 bg-neon-green rounded-full mb-6 shadow-[0_0_10px_var(--neon-green)]" />
 
-            <p className="text-fg/75 leading-relaxed mb-5">
+            <p className="text-fg/80 leading-relaxed mb-4 text-base">
               {isAr ? (
                 <>
-                  أنا المهندس خالد محمد عودة الحربي، متخصص في الأمن السيبراني حاصل
-                  على شهادة{" "}
-                  <span className="text-neon-green font-semibold">CPD</span>{" "}
-                  المعتمدة من المملكة المتحدة بعد إتمام 250 ساعة تدريب متخصص. أمتلك
-                  شهادة{" "}
-                  <span className="text-neon-blue font-semibold">
-                    IBM SkillsBuild Cybersecurity
+                  هل سألت نفسك يوماً:{" "}
+                  <span className="text-white font-semibold">
+                    "هل شبكتي آمنة حقاً؟"
                   </span>{" "}
-                  و7 أوسمة مهارية من IBM، إضافة إلى شهادة{" "}
-                  <span className="text-neon-pink font-semibold">
-                    Cisco Network Technician
-                  </span>{" "}
-                  و7 دورات من Cisco Networking Academy، و3 مسارات تدريبية متقدمة
-                  (ExpertTracks) من{" "}
+                  أنا الخبير خالد محمد عودة الحربي — وأنا هنا لأجيبك على هذا السؤال
+                  بثقة. لست مجرد شخص يقرأ عن الأمن السيبراني؛ أنا من قضى{" "}
+                  <span className="text-neon-green font-bold">+250 ساعة</span>{" "}
+                  يتعلّم من{" "}
                   <span className="text-neon-green font-semibold">
                     Coventry University
                   </span>{" "}
-                  البريطانية عبر FutureLearn.
+                  البريطانية، وحصل على{" "}
+                  <span className="text-neon-blue font-bold">12+ شهادة</span>{" "}
+                  موثّقة من{" "}
+                  <span className="text-neon-blue font-semibold">IBM</span> و{" "}
+                  <span className="text-neon-pink font-semibold">Cisco</span> و{" "}
+                  <span className="text-neon-green font-semibold">OPSWAT</span>{" "}
+                  — كلها قابلة للتحقق على Credly بضغطة زر.
                 </>
               ) : (
                 <>
-                  I am Eng. Khalid Mohammed Al-harbi, a cyber security specialist
-                  holding a <span className="text-neon-green font-semibold">CPD</span>{" "}
-                  certification from the United Kingdom after completing 250 hours of
-                  specialized training. I hold the{" "}
-                  <span className="text-neon-blue font-semibold">
-                    IBM SkillsBuild Cybersecurity
+                  Ever asked yourself:{" "}
+                  <span className="text-white font-semibold">
+                    "Is my network truly secure?"
                   </span>{" "}
-                  certificate with 7 IBM skill badges, as well as the{" "}
-                  <span className="text-neon-pink font-semibold">
-                    Cisco Network Technician
-                  </span>{" "}
-                  certification and 7 courses from Cisco Networking Academy, plus 3
-                  advanced ExpertTracks from{" "}
+                  I'm Khalid Mohammed Al-harbi — and I'm here to answer that with
+                  confidence. I'm not just someone who reads about cyber security;
+                  I've spent{" "}
+                  <span className="text-neon-green font-bold">250+ hours</span>{" "}
+                  learning from{" "}
                   <span className="text-neon-green font-semibold">
                     Coventry University
                   </span>{" "}
-                  (UK) via FutureLearn.
+                  (UK), earned{" "}
+                  <span className="text-neon-blue font-bold">12+ verified credentials</span>{" "}
+                  from{" "}
+                  <span className="text-neon-blue font-semibold">IBM</span>,{" "}
+                  <span className="text-neon-pink font-semibold">Cisco</span>, and{" "}
+                  <span className="text-neon-green font-semibold">OPSWAT</span> — all
+                  verifiable on Credly with one click.
                 </>
               )}
             </p>
-            <p className="text-fg/75 leading-relaxed mb-7">
+
+            <p className="text-fg/70 leading-relaxed mb-4">
               {isAr
-                ? "أعمل على حماية الأنظمة والشبكات من التهديدات السيبرانية، وكشف الثغرات قبل استغلالها، وتأمين البيانات الحساسة وفق أحدث المعايير العالمية. كل شهاداتي المهنية موثّقة على منصة Credly العالمية وقابلة للتحقق إلكترونياً."
-                : "I protect systems and networks from cyber threats, detect vulnerabilities before they are exploited, and secure sensitive data according to the latest global standards. All my professional certifications are verified on the Credly platform and electronically verifiable."}
+                ? "ماذا يعني ذلك لك؟ يعني أنك لا تتعامل مع شخص يدّعي الخبرة — بل مع خبير أثبتها بشهادات موثّقة دولارياً. كل ثغرة أكشفها، كل نظام أؤمّنه، وكل شبكة أحميها — مدعومة بعمق أكاديمي وممارسة عملية مختبرة."
+                : "What does that mean for you? It means you're not dealing with someone who claims expertise — you're dealing with a professional who proved it with internationally verified credentials. Every vulnerability I find, every system I secure, every network I protect — is backed by academic depth and tested practical experience."}
             </p>
+
+            {/* Trust indicators */}
+            <div className="grid grid-cols-3 gap-3 mb-7">
+              {[
+                { num: "12+", label: isAr ? "شهادة موثّقة" : "Verified Certs", color: "var(--neon-green)" },
+                { num: "5", label: isAr ? "مشاريع منجزة" : "Live Projects", color: "var(--neon-blue)" },
+                { num: "100%", label: isAr ? "شفافية كاملة" : "Full Transparency", color: "var(--neon-pink)" },
+              ].map((s, i) => (
+                <div
+                  key={i}
+                  className="text-center p-3 rounded-lg bg-surface/50 border border-edge hover:border-neon-green/30 transition-colors"
+                >
+                  <div className="text-2xl font-black mono-tech" style={{ color: s.color }}>
+                    {s.num}
+                  </div>
+                  <div className="text-[10px] text-fg/50 mt-0.5">{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA line */}
+            <div className="flex items-center gap-2 p-3 rounded-lg bg-neon-green/5 border border-neon-green/20 mb-7">
+              <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse shrink-0" />
+              <p className="text-sm text-fg/70">
+                {isAr
+                  ? "🏆 لا تدّعي — أثبت. كل شهادتي موثّقة على Credly. تحقق بنفسك قبل أن تتعاقد."
+                  : "🏆 I don't claim — I prove. Every credential is verified on Credly. Check for yourself before you contract."}
+              </p>
+            </div>
 
             {/* Expertise grid */}
             <h3 className="flex items-center gap-2 text-white font-bold mb-4">

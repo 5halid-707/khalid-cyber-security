@@ -25,8 +25,8 @@ const dict: Record<Lang, Record<string, string>> = {
   ar: {
     // Brand / tagline
     "brand.name": "K.Al-harbi",
-    "brand.role": "Cyber Security Eng.",
-    "brand.tagline": "مهندس أمن سيبراني معتمد",
+    "brand.role": "Cyber Security Expert",
+    "brand.tagline": "خبير أمن سيبراني معتمد",
 
     // Nav
     "nav.home": "الرئيسية",
@@ -39,7 +39,7 @@ const dict: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.cpd_badge": "معتمد CPD — المملكة المتحدة • 250 ساعة تدريب",
-    "hero.subtitle": "مهندس أمن سيبراني • خبير حماية البيانات والشبكات",
+    "hero.subtitle": "خبير أمن سيبراني • خبير حماية البيانات والشبكات",
     "hero.cta.services": "اكتشف خدماتي",
     "hero.cta.contact": "تواصل معي",
     "hero.scroll": "SCROLL",
@@ -50,8 +50,8 @@ const dict: Record<Lang, Record<string, string>> = {
 
     // About
     "about.eyebrow": "// ABOUT ME",
-    "about.title": "مهندس أمن سيبراني معتمد",
-    "about.nameplate.role": "// CYBER SECURITY ENGINEER",
+    "about.title": "خبير أمن سيبراني معتمد",
+    "about.nameplate.role": "// CYBER SECURITY EXPERT",
     "about.nameplate.name": "م. خالد عودة الحربي",
     "about.nameplate.rolefull": "Cyber Security Specialist",
     "about.chip.cpd_top": "معتمد من",
@@ -129,13 +129,13 @@ const dict: Record<Lang, Record<string, string>> = {
     "chatbot.online": "متصل الآن",
     "chatbot.placeholder": "اكتب استفسارك هنا...",
     "chatbot.welcome":
-      "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — مهندس الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
+      "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — خبير الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
   },
 
   en: {
     "brand.name": "K.Al-harbi",
-    "brand.role": "Cyber Security Eng.",
-    "brand.tagline": "Certified Cyber Security Engineer",
+    "brand.role": "Cyber Security Expert",
+    "brand.tagline": "Certified Cyber Security Expert",
 
     "nav.home": "Home",
     "nav.about": "About",
@@ -147,7 +147,7 @@ const dict: Record<Lang, Record<string, string>> = {
 
     "hero.cpd_badge": "CPD Certified — United Kingdom • 250 training hours",
     "hero.subtitle":
-      "Cyber Security Engineer • Data & Network Protection Specialist",
+      "Cyber Security Expert • Data & Network Protection Specialist",
     "hero.cta.services": "Explore Services",
     "hero.cta.contact": "Contact Me",
     "hero.scroll": "SCROLL",
@@ -157,9 +157,9 @@ const dict: Record<Lang, Record<string, string>> = {
     "hero.stats.tracks": "Coventry Tracks",
 
     "about.eyebrow": "// ABOUT ME",
-    "about.title": "Certified Cyber Security Engineer",
-    "about.nameplate.role": "// CYBER SECURITY ENGINEER",
-    "about.nameplate.name": "Eng. Khalid Al-harbi",
+    "about.title": "Certified Cyber Security Expert",
+    "about.nameplate.role": "// CYBER SECURITY EXPERT",
+    "about.nameplate.name": "Khalid Al-harbi",
     "about.nameplate.rolefull": "Cyber Security Specialist",
     "about.chip.cpd_top": "Certified by",
     "about.chip.cpd_val": "CPD UK",
@@ -223,13 +223,13 @@ const dict: Record<Lang, Record<string, string>> = {
     "footer.quick_links": "Quick Links",
     "footer.contact": "Contact",
     "footer.copyright":
-      "Eng. Khalid Al-harbi — Cyber Security Services. All rights reserved.",
+      "Khalid Al-harbi — Cyber Security Services. All rights reserved.",
 
-    "chatbot.title": "Eng. Khalid's AI Assistant",
+    "chatbot.title": "Khalid's AI Assistant",
     "chatbot.online": "Online now",
     "chatbot.placeholder": "Type your inquiry here...",
     "chatbot.welcome":
-      "Welcome! 👋 I'm Eng. Khalid Al-harbi's assistant — a certified Cyber Security Engineer.\nHow can I help you today? Ask me about services, pricing, or credentials.",
+      "Welcome! 👋 I'm Khalid Al-harbi's assistant — a certified Cyber Security Expert.\nHow can I help you today? Ask me about services, pricing, or credentials.",
   },
 };
 

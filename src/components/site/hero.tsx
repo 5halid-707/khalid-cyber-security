@@ -106,8 +106,8 @@ export default function Hero() {
 
         <p className="mono-tech text-sm md:text-base text-neon-green/80 mb-4 tracking-widest">
           {lang === "ar"
-            ? "// CYBER SECURITY ENGINEER"
-            : "// CYBER SECURITY ENGINEER"}
+            ? "// CYBER SECURITY EXPERT"
+            : "// CYBER SECURITY EXPERT"}
         </p>
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white text-glow-white mb-3 leading-tight">

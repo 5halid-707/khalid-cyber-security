@@ -972,3 +972,36 @@ Stage Summary:
 - تصميم متسق: أرقام ملوّنة + أيقونات + chevrons + حدود نيون + gradient خلفية.
 - استبدلت 4 مكوّنات منفصلة بواجهة موحدة أنظف وأكثر تفاعلية.
 - الكلمات التسويقية لكل قسم تبيع الخدمة قبل عرضها.
+
+---
+Task ID: 33
+Agent: main (Z.ai Code)
+Task: تغيير مهندس→خبير + إعادة كتابة About تسويقياً + إضافة أنميشن جديدة.
+
+Work Log:
+- استبدلت كل "مهندس" بـ "خبير" في 6 ملفات (i18n, about, hero, chatbot, footer, chat/route, layout).
+- استبدلت كل "Engineer" بـ "Expert" في i18n + hero (CYBER SECURITY EXPERT).
+- استبدلت "Eng. Khalid" بـ "Khalid" في chatbot welcome.
+- أعدت كتابة قسم About بالكامل بنص تسويقي مقنع:
+  • افتتاحية بسؤال يجذب الانتباه: "هل سألت نفسك يوماً: هل شبكتي آمنة حقاً؟"
+  • بناء مصداقية: "لست مجرد شخص يقرأ عن الأمن السيبراني؛ أنا من قضى +250 ساعة..."
+  • قيمة للعميل: "ماذا يعني ذلك لك؟ يعني أنك لا تتعامل مع شخص يدّعي الخبرة — بل مع خبير أثبتها"
+  • trust indicators: 3 إحصائيات (12+ شهادة، 5 مشاريع، 100% شفافية) في بطاقات ملوّنة.
+  • CTA line أخضر نيون: "🏆 لا تدّعي — أثبت. كل شهادتي موثّقة على Credly."
+- أضافت 6 keyframes + utility classes جديدة في globals.css:
+  • shimmer (تأثير لمعان على النصوص).
+  • slide-in-right / slide-in-left (انزلاق من الجوانب).
+  • scale-in (تكبير تدريجي).
+  • neon-flicker (وميض نيون خفيف على العناوين).
+  • border-glow (توهج حدود نابض).
+  • text-shimmer (نص متدرج لامع).
+- طبّقت animate-neon-flicker على عنوان About.
+- تحققت: VLM أكّد "خبير" (not مهندس) + marketing copy + trust indicators + Credly CTA ✓.
+- تحققت: hero يعرض "CYBER SECURITY EXPERT" ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- كل "مهندس/Engineer" استُبدلت بـ "خبير/Expert" في كامل الموقع.
+- قسم About أعيد كتابته بنص تسويقي مقنع: سؤال جذّاب + بناء مصداقية + قيمة للعميل + trust indicators + CTA.
+- 6 أنميشن جديدة مضافة (shimmer, slide-in, scale-in, neon-flicker, border-glow, text-shimmer).
+- الموقع الآن أكثر احترافية وتسويقية وإقناعاً.

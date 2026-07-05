@@ -7,7 +7,7 @@ import { useI18n } from "./i18n";
 type Msg = { role: "bot" | "user"; text: string };
 
 const WELCOME = {
-  ar: "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — مهندس الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
+  ar: "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — خبير الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
   en: "Welcome! 👋 I'm Eng. Khalid Al-harbi's assistant — a certified Cyber Security Engineer.\nHow can I help you today? Ask me about services, pricing, or credentials.",
 };
 

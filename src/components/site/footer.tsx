@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
             <p className="text-fg/60 text-sm leading-relaxed mb-3">
               {isAr
-                ? "م. خالد محمد عودة الحربي — مهندس أمن سيبراني معتمد CPD. أحمي أنظمتك وبياناتك من التهديدات السيبرانية باحترافية."
+                ? "م. خالد محمد عودة الحربي — خبير أمن سيبراني معتمد CPD. أحمي أنظمتك وبياناتك من التهديدات السيبرانية باحترافية."
                 : "Eng. Khalid Mohammed Al-harbi — CPD-certified Cyber Security Engineer. I protect your systems and data from cyber threats with professionalism."}
             </p>
             <p className="flex items-center gap-1.5 text-xs text-fg/40">
