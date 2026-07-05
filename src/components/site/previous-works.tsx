@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Github, Globe, Film, ShoppingBag, Camera, MessageCircle, ArrowUpLeft } from "lucide-react";
+import { ExternalLink, Github, Globe, Film, ShoppingBag, Camera, MessageCircle, Store, ArrowUpLeft } from "lucide-react";
 import Reveal from "./reveal";
 import TypedHeading from "./typed-heading";
 import { useI18n } from "./i18n";
@@ -73,6 +73,20 @@ const works: Work[] = [
     liveUrl: "https://bright-khalid-whats-app.netlify.app/",
     preview: "/work-whatsapp-preview.png",
     icon: MessageCircle,
+  },
+  {
+    title: "Haraj Clone — Saudi Marketplace",
+    titleAr: "حراج — سوق سعودي",
+    category: { ar: "متجر إلكتروني شامل", en: "Online Marketplace" },
+    categoryColor: "#f97316",
+    description: {
+      ar: "سوق إلكتروني شامل بأسلوب حراج السعودي — إعلانات مبوبة، أقسام (سيارات/عقارات/إلكترونيات)، نظام عضويات، رفع صور، بحث متقدم، محادثة بين البائع والمشتري. قابل للتطوير والتحديث الدوري.",
+      en: "Complete online marketplace in Saudi Haraj style — classified ads, categories (cars/real estate/electronics), memberships, image uploads, advanced search, buyer-seller chat. Maintainable and scalable.",
+    },
+    tech: ["React", "Next.js Ready", "Database", "Auth", "Image Upload", "Search", "Scalable"],
+    liveUrl: "https://haraj-clone.example.com",
+    preview: "/work-haraj-preview.png",
+    icon: Store,
   },
 ];
 

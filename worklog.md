@@ -805,3 +805,32 @@ Stage Summary:
 - الترتيب الكامل للشهادات الآن: CPD UK → IBM (8 أوسمة) → Cisco (وسمان) → OPSWAT → Alison → Coventry (3 ExpertTracks) + Cisco Academy (6 دورات).
 - المساعد الذكي يذكر Alison بوضوح عند سؤال العميل عن المؤهلات.
 - ملاحظة: Alison لا تُصدر أوسمة Credly (لذلك رابط التحقق يشير لصفحة الدورة على Alison نفسها، وليس Credly).
+
+---
+Task ID: 28
+Agent: main (Z.ai Code)
+Task: إصلاح اختفاء مشروع حراج من معرض الأعمال.
+
+Work Log:
+- اكتشفت أن مشروع حراج كان مفقوداً من previous-works.tsx (التغيير السابق فُقد — ربما بسبب إعادة تشغيل أو تراجع).
+- تأكدت من DOM: فقط 4 مشاريع + placeholder (بدون حراج).
+- تأكدت من الملف: grep "Haraj|حراج" أعطى 0 نتائج.
+- الصورة work-haraj-preview.png كانت أيضاً مفقودة → أعدت توليدها بالـ AI.
+- أضفت مشروع Haraj كلون خامس باستخدام MultiEdit:
+  • import Store icon.
+  • بطاقة Haraj بـ categoryColor #f97316 (برتقالي).
+  • وصف عربي/إنجليزي يذكر: إعلانات مبوبة، أقسام، عضويات، رفع صور، بحث، محادثة، قابل للتطوير.
+  • tech tags: React, Next.js Ready, Database, Auth, Image Upload, Search, Scalable.
+  • preview: /work-haraj-preview.png.
+- تحققت: grep "Haraj|حراج" = 4 إشارات ✓.
+- تحققت من DOM بعد reload:
+  • 6 بطاقات (5 مشاريع + placeholder) ✓.
+  • "حراج — سوق سعودي" موجود في القائمة ✓.
+  • harajPresent: true ✓.
+- VLM أكّد: بطاقة حراج ظاهرة بـ orange theme + صورة معاينة ✓.
+- ESLint نظيف.
+
+Stage Summary:
+- أصلحت اختفاء مشروع حراج — الآن موجود في معرض الأعمال كبطاقة خامسة.
+- المعرض الكامل: Netflix, Amazon, Instagram, WhatsApp, Haraj + placeholder "المزيد قريباً".
+- جميع البطاقات تعرض: صورة معاينة + شارة LIVE + فئة ملوّنة + وصف + tech tags + زر معاينة مباشرة.
