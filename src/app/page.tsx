@@ -5,6 +5,7 @@ import Products from "@/components/site/products";
 import VideoShowcase from "@/components/site/video-showcase";
 import PreviousWorks from "@/components/site/previous-works";
 import InteractiveShowcase from "@/components/site/interactive-showcase";
+import ContactSection from "@/components/site/contact-section";
 import Footer from "@/components/site/footer";
 import FloatingContact from "@/components/site/floating-contact";
 import Chatbot from "@/components/site/chatbot";
@@ -22,6 +23,7 @@ export default function Home() {
         <VideoShowcase videoSrc="/marketing-video.mp4" />
         <PreviousWorks />
         <InteractiveShowcase />
+        <ContactSection />
       </main>
       <Footer />
 
