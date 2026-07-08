@@ -4,7 +4,6 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import DynamicVideoBackground from "@/components/site/dynamic-video-bg";
 import { I18nProvider } from "@/components/site/i18n";
-import AutoUpdater from "@/components/site/auto-updater";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -49,7 +48,6 @@ export default function RootLayout({
         <DynamicVideoBackground />
         <I18nProvider>
           {children}
-          <AutoUpdater />
         </I18nProvider>
         <Toaster />
       </body>
