@@ -88,7 +88,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3">
       {/* Chat window */}
       <div
         className={`w-[min(92vw,360px)] h-[min(70vh,520px)] bg-surface border border-neon-green rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right ${

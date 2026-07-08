@@ -4,7 +4,6 @@ import About from "@/components/site/about";
 import Products from "@/components/site/products";
 import VideoShowcase from "@/components/site/video-showcase";
 import PreviousWorks from "@/components/site/previous-works";
-import InteractiveShowcase from "@/components/site/interactive-showcase";
 import ContactSection from "@/components/site/contact-section";
 import Footer from "@/components/site/footer";
 import FloatingContact from "@/components/site/floating-contact";
@@ -20,9 +19,8 @@ export default function Home() {
         <Hero />
         <About />
         <Products />
-        <VideoShowcase videoSrc="/marketing-video.mp4" />
+        <VideoShowcase videoSrc="/marketing-video-khalid.mp4" />
         <PreviousWorks />
-        <InteractiveShowcase />
         <ContactSection />
       </main>
       <Footer />
