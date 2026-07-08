@@ -9,6 +9,7 @@ import {
   Camera,
   MessageCircle,
   Store,
+  Car,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -101,6 +102,20 @@ const works: Work[] = [
     liveUrl: "https://haraj-v2.vercel.app/",
     preview: "/work-haraj-preview-v2.png",
     icon: Store,
+  },
+  {
+    title: "Uber — Smart Ride & Delivery Platform",
+    titleAr: "أوبر — منصة النقل والتوصيل الذكية",
+    category: { ar: "منصة نقل وتوصيل", en: "Ride & Delivery Platform" },
+    categoryColor: "#6366f1",
+    description: {
+      ar: "منصة نقل وتوصيل ذكية بأسلوب Uber — حجز رحلات فورية ومجدولة، تتبع السائق على الخريطة، نظام Uber One للاشتراكات، دعم عربي/إنجليزي، إحصائيات (+5M رحلة، +50K سائق، 4.9 تقييم)، تصميم dark mode متجاوب بالكامل.",
+      en: "Smart ride & delivery platform in Uber style — instant & scheduled rides, driver tracking on map, Uber One subscription, Arabic/English support, stats (+5M rides, +50K drivers, 4.9 rating), fully responsive dark mode.",
+    },
+    tech: ["Next.js", "React", "TypeScript", "Dark Mode", "Bilingual", "Map Tracking", "Booking System", "Scalable"],
+    liveUrl: "https://uber-new-omega.vercel.app/",
+    preview: "/work-uber-preview.png",
+    icon: Car,
   },
 ];
 
