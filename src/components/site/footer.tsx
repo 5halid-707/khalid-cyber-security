@@ -37,7 +37,7 @@ export default function Footer() {
               {t("footer.cta.whatsapp")}
             </a>
             <a
-              href="mailto:khalid@example.com"
+              href="mailto:grouthhacker@gmail.com"
               className="inline-flex items-center justify-center gap-2 border-2 border-neon-blue text-neon-blue font-bold px-7 py-3 rounded-md hover:bg-neon-blue/10 transition-all"
             >
               <Mail size={18} />
@@ -58,7 +58,7 @@ export default function Footer() {
             <p className="text-fg/60 text-sm leading-relaxed mb-3">
               {isAr
                 ? "م. خالد محمد عودة الحربي — خبير أمن سيبراني معتمد CPD. أحمي أنظمتك وبياناتك من التهديدات السيبرانية باحترافية."
-                : "Eng. Khalid Mohammed Al-harbi — CPD-certified Cyber Security Engineer. I protect your systems and data from cyber threats with professionalism."}
+                : "Khalid Mohammed Al-harbi — CPD-certified Cyber Security Expert. I protect your systems and data from cyber threats with professionalism."}
             </p>
             <p className="flex items-center gap-1.5 text-xs text-fg/40">
               <MapPin size={13} />
@@ -115,7 +115,7 @@ export default function Footer() {
                 <Github size={18} />
               </a>
               <a
-                href="mailto:khalid@example.com"
+                href="mailto:grouthhacker@gmail.com"
                 className="w-10 h-10 rounded-full border border-edge flex items-center justify-center text-fg/70 hover:text-neon-pink hover:border-neon-pink transition-all"
                 aria-label="Email"
               >
