@@ -28,27 +28,28 @@ type Report = {
 const reports: Report[] = [
   {
     title: {
-      ar: "تقرير اختبار اختراق Active Directory + pfSense",
-      en: "Active Directory Penetration Test + pfSense Report",
+      ar: "تقرير الحماية واختبار الاختراق وإغلاق الثغرات",
+      en: "Protection, Penetration Testing & Vulnerability Remediation Report",
     },
     desc: {
-      ar: "تقرير أمني شامل (48 خطوة) يوثّق إعداد pfSense Firewall + Windows Server 2025 + اختبار اختراق Active Directory كامل مع المعالجة وإعادة الاختبار.",
-      en: "Comprehensive security report (48 steps) documenting pfSense Firewall setup + Windows Server 2025 + full Active Directory penetration test with remediation and re-testing.",
+      ar: "تقرير أمني احترافي شامل (53 خطوة موثّقة) يحمي شبكاتك ومواقعك وتطبيقاتك الإلكترونية مع تحليل اختبارات اختراق لاكتشاف الثغرات وحماية قاعدة بياناتك. صُمم للمؤسسات الصغيرة والمتوسطة والكبيرة وللأفراد — يغطي إعداد pfSense Firewall + Windows Server 2025 + اختبار اختراق Active Directory كامل + إغلاق الثغرات + إعادة الاختبار.",
+      en: "Comprehensive professional security report (53 documented steps) protecting your networks, websites, and electronic applications with penetration test analysis to discover vulnerabilities and protect your database. Designed for small, medium, and large organizations plus individuals — covers pfSense Firewall setup + Windows Server 2025 + full Active Directory penetration test + vulnerability remediation + re-testing.",
     },
     file: "/reports/pfSense-AD-Penetration-Test-Report.docx",
     icon: ShieldCheck,
     color: "var(--neon-green)",
     stats: [
-      { label: { ar: "خطوة فحص", en: "Test Steps" }, value: "48" },
-      { label: { ar: "ثغرات مكتشفة", en: "Vulnerabilities" }, value: "5" },
-      { label: { ar: "نسبة المعالجة", en: "Remediation" }, value: "100%" },
+      { label: { ar: "خطوة موثّقة", en: "Documented Steps" }, value: "53" },
+      { label: { ar: "ثغرات مكتشفة ومغلقة", en: "Vulns Found & Fixed" }, value: "5" },
+      { label: { ar: "نسبة الإغلاق", en: "Remediation Rate" }, value: "100%" },
     ],
     highlights: [
-      { ar: "إعداد pfSense بـ ZFS + DHCP + قواعد جدار الحماية", en: "pfSense setup with ZFS + DHCP + firewall rules" },
-      { ar: "Active Directory: Domain Controller + OUs + GPO", en: "Active Directory: DC + OUs + GPO" },
-      { ar: "اختبار اختراق: Nmap + Impacket + Responder + BloodHound + Hashcat", en: "Pen test: Nmap + Impacket + Responder + BloodHound + Hashcat" },
-      { ar: "اكتشاف: SMB Null Session + LLMNR Poisoning + GPP Passwords", en: "Findings: SMB Null Session + LLMNR Poisoning + GPP Passwords" },
-      { ar: "المعالجة: GPO + Registry Hardening + Re-Testing", en: "Remediation: GPO + Registry Hardening + Re-Testing" },
+      { ar: "🛡️ حماية شبكاتك: إعداد pfSense Firewall (ZFS + WAN/LAN + DHCP + قواعد جدار الحماية + حظر Nmap)", en: "🛡️ Network Protection: pfSense Firewall setup (ZFS + WAN/LAN + DHCP + firewall rules + Nmap blocking)" },
+      { ar: "🔐 حماية مواقعك وتطبيقاتك: Windows Server 2025 + Active Directory (Domain Controller + OUs + GPO + 5 مستخدمين)", en: "🔐 Web & App Protection: Windows Server 2025 + Active Directory (DC + OUs + GPO + 5 users)" },
+      { ar: "🔍 تحليل اختبارات الاختراق لاكتشاف الثغرات: Nmap + Impacket + Responder + BloodHound + Hashcat + Wireshark", en: "🔍 Penetration Test Analysis: Nmap + Impacket + Responder + BloodHound + Hashcat + Wireshark" },
+      { ar: "🚨 اكتشاف الثغرات: SMB Null Session + LLMNR Poisoning + GPP Passwords + LDAP RootDSE + Credential Interception", en: "🚨 Vulnerability Discovery: SMB Null Session + LLMNR Poisoning + GPP Passwords + LDAP RootDSE + Credential Interception" },
+      { ar: "✅ إغلاق الثغرات: GPO + Registry Hardening + Re-Testing ناجح 100%", en: "✅ Vulnerability Remediation: GPO + Registry Hardening + successful Re-Testing 100%" },
+      { ar: "💾 حماية قاعدة بياناتك: منع اعتراض بيانات الاعتماد + حظر الوصول غير المصرّح", en: "💾 Database Protection: prevent credential interception + block unauthorized access" },
     ],
   },
 ];
@@ -177,7 +178,7 @@ export default function SecurityReports() {
                         }}
                       >
                         <Download size={18} />
-                        {isAr ? "تحميل التقرير (DOCX)" : "Download Report (DOCX)"}
+                        {isAr ? "تحميل التقرير الكامل (DOCX)" : "Download Full Report (DOCX)"}
                         <ExternalLink size={14} />
                       </a>
                     </div>
@@ -187,6 +188,86 @@ export default function SecurityReports() {
             );
           })}
         </div>
+
+        {/* Target Audience — لمن هذا التقرير */}
+        <Reveal className="mt-10">
+          <div className="p-6 rounded-2xl bg-surface/60 border border-edge">
+            <h3 className="text-center text-lg font-bold text-white mb-2">
+              {isAr ? "📊 لمن هذا التقرير؟" : "📊 Who Is This Report For?"}
+            </h3>
+            <p className="text-center text-sm text-fg/60 mb-6">
+              {isAr
+                ? "يغطي احتياجات جميع فئات العملاء — من الأفراد للمؤسسات الكبيرة"
+                : "Covers all client segments — from individuals to large enterprises"}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                {
+                  icon: "👤",
+                  titleAr: "الأفراد", titleEn: "Individuals",
+                  descAr: "حماية بياناتك الشخصية وأجهزتك المنزلية", descEn: "Protect personal data and home devices",
+                  color: "#00ffcc",
+                },
+                {
+                  icon: "🏢",
+                  titleAr: "المؤسسات الصغيرة", titleEn: "Small Businesses",
+                  descAr: "1-50 موظف — متاجر، شركات ناشئة، استشارات", descEn: "1-50 employees — shops, startups, consultancies",
+                  color: "#00a8e8",
+                },
+                {
+                  icon: "🏬",
+                  titleAr: "المؤسسات المتوسطة", titleEn: "Medium Organizations",
+                  descAr: "50-250 موظف — شركات، مدارس، عيادات", descEn: "50-250 employees — companies, schools, clinics",
+                  color: "#ff00cc",
+                },
+                {
+                  icon: "🏛️",
+                  titleAr: "المؤسسات الكبيرة", titleEn: "Large Enterprises",
+                  descAr: "250+ موظف — شركات حكومية، بنوك، مصانع", descEn: "250+ employees — gov, banks, manufacturing",
+                  color: "#00ffcc",
+                },
+              ].map((seg, i) => (
+                <div
+                  key={i}
+                  className="p-4 rounded-xl border bg-[#0d1117] text-center hover:scale-105 transition-transform"
+                  style={{ borderColor: `${seg.color}40` }}
+                >
+                  <div className="text-3xl mb-2">{seg.icon}</div>
+                  <h4 className="text-sm font-bold mb-1" style={{ color: seg.color }}>
+                    {isAr ? seg.titleAr : seg.titleEn}
+                  </h4>
+                  <p className="text-[11px] text-fg/55 leading-relaxed">
+                    {isAr ? seg.descAr : seg.descEn}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* What you get — ماذا تحصل عليه */}
+        <Reveal className="mt-6">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-neon-green/10 to-transparent border border-neon-green/30">
+            <h3 className="text-center text-lg font-bold text-neon-green mb-4">
+              {isAr ? "🎯 ماذا تحصل عليه مع هذا التقرير؟" : "🎯 What You Get With This Report?"}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { ar: "🛡️ حماية شبكاتك من الاختراق والهجمات السيبرانية", en: "🛡️ Network protection from breaches and cyber attacks" },
+                { ar: "🔐 تأمين مواقعك وتطبيقاتك الإلكترونية", en: "🔐 Secure your websites and electronic applications" },
+                { ar: "💾 حماية قاعدة بياناتك من السرقة والتسريب", en: "💾 Protect your database from theft and leakage" },
+                { ar: "🔍 تحليل اختبارات اختراق لاكتشاف الثغرات", en: "🔍 Penetration test analysis to discover vulnerabilities" },
+                { ar: "✅ إغلاق كل الثغرات المكتشفة + إعادة اختبار", en: "✅ Close all discovered vulnerabilities + re-testing" },
+                { ar: "📋 توثيق احترافي ثنائي اللغة (عربي/إنجليزي)", en: "📋 Professional bilingual documentation (AR/EN)" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-2 text-sm text-fg/80">
+                  <CheckCircle2 size={16} className="shrink-0 mt-0.5 text-neon-green" />
+                  <span>{isAr ? item.ar : item.en}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         {/* Verification note */}
         <Reveal className="mt-8">
