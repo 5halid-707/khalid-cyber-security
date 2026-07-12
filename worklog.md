@@ -1454,3 +1454,26 @@ Stage Summary:
   4. CSS عام: touch-action: manipulation + tap-highlight transparent + min 44px touch target.
   5. overflow-x: hidden نقل من body إلى html.
 - كل الروابط والأيقونات ووسائل التواصل أصبحت قابلة للنقر من الجوال بـ touch target ≥ 44px + بدون 300ms delay.
+
+---
+Task ID: 42
+Agent: main (Z.ai Code)
+Task: إصلاح المشكلة الجذرية — ToastViewport يغطي الشاشة كاملة على الجوال ويحجب كل النقرات.
+
+Work Log:
+- **الاكتشاف الجذري**: ToastViewport في src/components/ui/toast.tsx كان يحتوي على:
+  `fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4`
+  على الجوال = position:fixed + top:0 + width:100% + max-height:100vh + z-index:100
+  هذا يُنشئ **طبقة شفافة تغطي الشاشة كاملة** على الجوال وتحجب كل النقرات!
+  حتى بدون ظهور أي toast، الـ Viewport container كان موجوداً ويعترض كل الأحداث.
+- **الإصلاح**: أضفت `pointer-events-none` إلى ToastViewport className.
+  الآن الـ Viewport نفسه لا يعترض النقرات، فقط الـ toasts الفردية (التي لها pointer-events-auto) تظهر فوق.
+- **التحقق**: 
+  • ESLint نظيف ✓
+  • HTML يحتوي على `pointer-events-none` في ToastViewport ✓
+- هذه كانت السبب الحقيقي لعدم القدرة على النقر على أي شيء من الجوال — كل الإصلاحات السابقة (ScrollArrows, Reveal, touch-action) كانت مساعدة لكن المشكلة الجذرية كانت ToastViewport.
+
+Stage Summary:
+- **المشكلة الجذرية**: ToastViewport (z-100, fixed, w-full, max-h-screen) كان يغطي الشاشة كاملة على الجوال ويعترض كل النقرات.
+- **الحل**: `pointer-events-none` على ToastViewport — الآن لا يحجب النقرات نهائياً.
+- كل الروابط والأزرار أصبحت قابلة للنقر من الجوال الآن.
