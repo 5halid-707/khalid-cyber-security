@@ -2,6 +2,7 @@ import Navbar from "@/components/site/navbar";
 import Hero from "@/components/site/hero";
 import About from "@/components/site/about";
 import Products from "@/components/site/products";
+import Credentials from "@/components/site/credentials";
 import VideoShowcase from "@/components/site/video-showcase";
 import PreviousWorks from "@/components/site/previous-works";
 import InteractiveShowcase from "@/components/site/interactive-showcase";
@@ -20,7 +21,8 @@ export default function Home() {
         <Hero />
         <About />
         <Products />
-        <VideoShowcase videoSrc="/marketing-video-khalid.mp4" />
+        <Credentials />
+        <VideoShowcase videoSrc="/marketing-video.mp4" />
         <PreviousWorks />
         <InteractiveShowcase />
         <ContactSection />

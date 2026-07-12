@@ -271,11 +271,18 @@ export default function About() {
               </p>
             </div>
 
-            {/* Expertise grid */}
-            <h3 className="flex items-center gap-2 text-white font-bold mb-4">
-              <ShieldCheck size={18} className="text-neon-green" />
-              {t("about.exp_title")}
-            </h3>
+            {/* Expertise grid — خبراتي العملية */}
+            <div className="flex items-center gap-2 mb-1">
+              <ShieldCheck size={20} className="text-neon-green" />
+              <h3 className="text-lg font-bold text-white">
+                {isAr ? "خبراتي العملية" : "My Practical Expertise"}
+              </h3>
+            </div>
+            <p className="text-xs text-fg/50 mb-4">
+              {isAr
+                ? "8 مجالات أمن سيبراني أتقنها عملياً — من الاختراق الأخلاقي حتى الدفاع السيبراني"
+                : "8 cyber security domains I master practically — from ethical hacking to cyber defense"}
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-8">
               {expertise.map((e) => {
                 const Icon = e.icon;

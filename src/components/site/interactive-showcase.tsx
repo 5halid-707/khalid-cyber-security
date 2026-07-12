@@ -569,8 +569,8 @@ function AcademicProductsContent() {
 export default function InteractiveShowcase() {
   const { lang } = useI18n();
   const isAr = lang === "ar";
-  // All 4 sections open by default — user can collapse any individually
-  const [openSet, setOpenSet] = useState<Set<number>>(new Set([0, 1, 2, 3]));
+  // All 3 sections open by default — user can collapse any individually
+  const [openSet, setOpenSet] = useState<Set<number>>(new Set([0, 1, 2]));
 
   const toggle = (i: number) => {
     setOpenSet((prev) => {
@@ -592,17 +592,6 @@ export default function InteractiveShowcase() {
       marketingAr: "🚀 أستخدم نفس الأدوات التي تستخدمها أكبر شركات الأمن السيبراني في العالم — من Kali Linux لاختبار الاختراق إلى Cisco لإدارة الشبكات. كل مشروع أبنيه يستفيد من أفضل التقنيات المتاحة.",
       marketingEn: "🚀 I use the same tools used by the world's top cyber security firms — from Kali Linux for pentesting to Cisco for network management. Every project benefits from the best available technology.",
       content: <ToolsContent />,
-    },
-    {
-      icon: BadgeCheck,
-      color: "#00a8e8",
-      titleAr: "الشهادات المهنية الموثّقة",
-      titleEn: "Verified Professional Credentials",
-      subtitleAr: "12+ شهادة موثّقة على Credly — قابلة للتحقق إلكترونياً",
-      subtitleEn: "12+ verified credentials on Credly — electronically verifiable",
-      marketingAr: "🏆 لا أدّعي الخبرة — أثبتها بشهادات موثّقة من IBM و Cisco و OPSWAT و Alison و CPD UK. كل وسام له رابط تحقق مباشر على Credly يمكنك التحقق منه بنفسك قبل التعاقد.",
-      marketingEn: "🏆 I don't claim expertise — I prove it with verified credentials from IBM, Cisco, OPSWAT, Alison, and CPD UK. Every badge has a direct Credly verification link you can check yourself before contracting.",
-      content: <CredentialsContent />,
     },
     {
       icon: GraduationCap,

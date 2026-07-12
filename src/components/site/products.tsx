@@ -110,7 +110,7 @@ export default function Products() {
                         <span className="text-2xl font-black mono-tech" style={{ color: p.color }}>{p.price}</span>
                         <p className="text-[10px] text-fg/50 mt-0.5">{isAr ? p.period.ar : p.period.en}</p>
                       </div>
-                      <a href="#contact" className="flex items-center justify-center gap-1.5 w-full py-2 rounded-lg font-bold text-xs bg-neon-green text-[#05080f] hover:shadow-[0_0_12px_rgba(0,255,204,0.4)] transition-all mb-2">{t("products.cta")}<Arrow size={12} /></a>
+                      <a href="#contact-form" className="flex items-center justify-center gap-1.5 w-full py-2 rounded-lg font-bold text-xs bg-neon-green text-[#05080f] hover:shadow-[0_0_12px_rgba(0,255,204,0.4)] transition-all mb-2">{t("products.cta")}<Arrow size={12} /></a>
                       <div style={{ position: "relative", zIndex: 200, isolation: "isolate" }}>
                         <PayPalButton itemName={p.name.en} itemNameAr={p.name.ar} amount={parseFloat(p.price.replace(/[^0-9.]/g, ""))} compact />
                       </div>

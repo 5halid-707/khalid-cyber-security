@@ -1175,3 +1175,43 @@ Stage Summary:
   4. الاستشارات الأكاديمية Premium (3 بطاقات بأسعار + PayPal)
 - الـ accordion أصبح multi-open (عدة أقسام مفتوحة معاً) بدلاً من single-open.
 - المستخدم يمكنه طيّ أي قسم لا يحتاجه لتنظيف العرض.
+
+---
+Task ID: 36
+Agent: main (Z.ai Code)
+Task: تقييم شامل + إصلاح الأقسام المحذوفة/المخفية + ضمان التوافق مع جميع الأجهزة.
+
+Work Log:
+- **التقييم الشامل** عبر git history فكّ اللغز:
+  • قسم "شهاداتي وتدريبي" (Credentials) لم يُحذف — credentials.tsx (486 سطر) كان موجوداً لكن غير مستورد في page.tsx بعد إدخال InteractiveShowcase.
+  • "خبراتي العملية" لم تُحذف — كانت موجودة كـ "المجالات التي أتقنها" لكن المحتوى التسويقي الطويل كان يدفعها للأسفل.
+  • "المقطع التسويقي" لم يُحذف — video-showcase.tsx كان كاملاً، لكن page.tsx يمرر مساراً خاطئاً `/marketing-video-khalid.mp4` بينما الملف الحقيقي اسمه `/marketing-video.mp4` → 404.
+- **الإصلاح 1 — استعادة قسم Credentials**: أضفت `<Credentials />` كقسم مستقل في page.tsx بعد Products وقبل VideoShowcase (الترتيب الأصلي).
+- **الإصلاح 2 — مسار الفيديو**: غيّرت `/marketing-video-khalid.mp4` → `/marketing-video.mp4` (الملف موجود، HTTP 200).
+- **الإصلاح 3 — إبراز "خبراتي العملية"**: غيّرت العنوان من "المجالات التي أتقنها" إلى "خبراتي العملية" + أضفت وصفاً تسويقياً: "8 مجالات أمن سيبراني أتقنها عملياً — من الاختراق الأخلاقي حتى الدفاع السيبراني".
+- **الإصلاح 4 — إزالة التكرار**: حذفت قسم الشهادات المكرر من InteractiveShowcase (كان مكرراً مع قسم Credentials المستقل) — أصبح 3 أقسام بدلاً من 4.
+- **الإصلاح 5 — روابط التنقل**: أصلحت روابط navbar المكسورة:
+  • `#academic-products` → `#showcase` (القسم صحيح)
+  • `#contact` → `#contact-form` (القسم صحيح)
+  • أضفت `#credentials` للقائمة
+- **الإصلاح 6 — زر CTA في Products**: `href="#contact"` → `href="#contact-form"`.
+- **فحص التوافق مع الأجهزة**:
+  • viewport meta موجود وصحيح (width=device-width, initial-scale=1, maximum-scale=5).
+  • navbar فيه hamburger menu للموبايل (lg:hidden).
+  • Products slider يستخدم `--card-w: min(85vw, 340px)` — متجاوب.
+  • كل الـ grids تستخدم grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 — متجاوبة.
+  • floating widgets (floating-contact bottom-6, music-player bottom-24, chatbot bottom-6 right-6) — لا تداخل.
+  • z-index مرتب: PayPal (200) > floating widgets (998) > navbar (1000) — chatbot (100) لا يحجب PayPal.
+- **التحقق**: 
+  • كل section IDs موجودة (home, about, products, credentials, showcase-video, previous-works, showcase, contact-form) ✓
+  • الفيديو يُحمّل (HTTP 200) ✓
+  • "خبراتي العملية" + "Cybersecurity Fundamentals" + Coventry University كلها في HTML ✓
+  • ESLint نظيف ✓
+
+Stage Summary:
+- **قسم "شهاداتي وتدريبي"** استُعاد كقسم مستقل مرئي (Credentials) — فيه CPD/IBM/Cisco banners + 8 IBM badges + 2 Cisco badges + OPSWAT + Alison + 6 Cisco courses (كلها روابط تحقق على Credly).
+- **"خبراتي العملية"** أصبحت عنواناً واضحاً في About مع وصف تسويقي + 8 مجالات خبرة.
+- **المقطع التسويقي** يعمل الآن (مسار الفيديو صحيح، HTTP 200) — يعرض الفيديو الحقيقي بدلاً من placeholder.
+- **InteractiveShowcase** أصبح 3 أقسام (أدوات/تعليم أكاديمي/استشارات premium) بدون تكرار الشهادات.
+- **روابط التنقل** كلها تعمل (navbar + CTA buttons).
+- **التوافق مع الأجهزة**: viewport meta + hamburger menu + grids متجاوبة + floating widgets بدون تداخل + z-index مرتب.
