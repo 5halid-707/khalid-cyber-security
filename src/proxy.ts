@@ -20,8 +20,8 @@ const CSP_DIRECTIVES = [
   "font-src 'self' data: https://fonts.gstatic.com",
   // Media (video/audio)
   "media-src 'self' blob: https:",
-  // Connections: allow self + ALL paypal domains (sandbox + live + api + checkout)
-  "connect-src 'self' https://*.paypal.com https://*.paypalobjects.com",
+  // Connections: allow self + ALL paypal domains (sandbox + live + api + checkout) + z.ai API (chatbot)
+  "connect-src 'self' https://*.paypal.com https://*.paypalobjects.com https://*.z.ai https://internal-api.z.ai",
   // Frames: allow self + ALL paypal domains (checkout popup/iframe)
   "frame-src 'self' https://*.paypal.com https://*.paypalobjects.com",
   // Frame ancestors: allow self only (security)
