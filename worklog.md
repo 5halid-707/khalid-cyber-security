@@ -1753,3 +1753,83 @@ Stage Summary:
 - تنبيه "هذا الموقع للعرض فقط — تصميم خالد الحربي" مضاف في الفوتر للشفافية.
 - مباشر على https://shein-store-teal.vercel.app — جاهز للبورتفوليو.
 
+
+---
+Task ID: 48-shein-exact
+Agent: main (Z.ai Code)
+Task: إعادة بناء متجر shein-store ليطابق موقع SHEIN العربي الحقيقي (ar.shein.com) بشكل دقيق — إضافة كل الفئات والأقسام المفقودة، 40+ منتج بأسلوب بطاقات Shein الصحيح، فوتر بالكامل، ونشر على Vercel.
+
+Work Log:
+- استعدت المشروع من GitHub (sandbox wipe): git clone https://github.com/5halid-707/shein-store.git (commit سابق 268e712 من Task 46). المسار /home/z/shein-store.
+- حدّثت `src/types/index.ts`:
+  • أزلت CategoryName union، أصبح `slug: string` و `category: string` لدعم عدد غير محدود من الفئات.
+  • أضفت flags جديدة على Product: `isBigDeal?`, `isBrand?`, `isTrending?`, `trendingTag?` لدعم أقسام عروض كبرى والترندات والعلامات التجارية.
+- أنشأت `src/data/categories.ts` (NEW):
+  • 25 فئة كاملة مطابقة لـ ar.shein.com: نساء، مجوهرات واكسسوارات، ملابس النوم وملابس داخلية، مقاسات كبيرة، المنزل والمعيشة، ملابس علوية، أطفال، الجمال والصحة، أحذية، رجال، الرضع والأمومة، فساتين، حقائب وأمتعة، ملابس سفلية، الرياضة والأنشطة الخارجية، الهواتف الخلوية والاكسسوارات، الألعاب، السيارات، اللوازم المكتبية والمدرسية، مستلزمات الحيوانات الأليفة، أدوات وتحسين المنزل، منسوجات منزلية، إلكترونيات، التخصيص، أجهزة المنزل.
+  • كل فئة لها: slug + Arabic name + English name + emoji icon + subcategories (3-6 لكل فئة).
+  • QUICK_CATEGORIES (12 اختصار للشبكة الرئيسية) + TRENDING_CATEGORIES (8) + getCategoryBySlug helper.
+- أعيد كتابة `src/data/products.ts`:
+  • 56 منتج (تجاوز متطلب 40+) موزعة: نساء (10)، رجال (7)، أطفال (5)، تجميل (6)، مجوهرات (6)، المنزل (4)، منسوجات (1)، إلكترونيات (6)، ألعاب/Brands (4)، رياضة (3)، حقائب (4).
+  • منتجات العلامات التجارية (isBrand): Apple iPhone/iPad/MacBook/Watch، Sony earbuds/PS5/PS5 controller، Canon camera، JBL speaker.
+  • منتجات isBigDeal (عروض كبرى) 9 منتجات، isTrending (أهم الترندات) 8 منتجات بـ trendingTag مثل #طقم_مجوهرات_ذهبي.
+  • أضفت helper functions جديدة: getBigDeals, getBrandProducts, getTrendingProducts.
+  • re-export CATEGORIES, QUICK_CATEGORIES, TRENDING_CATEGORIES من categories.ts للحفاظ على الـ imports الحالية.
+- حدّثت `src/components/site-header.tsx`:
+  • Search placeholder: "فستان" (مطابق لـ Shein الحقيقي) في desktop + mobile.
+  • Category dropdown على hover (desktop): كل فئة تظهر subcategories في dropdown panel أسفلها مع رابط "كل {اسم الفئة}".
+  • Mobile drawer: 25 فئة كاملة، كل فئة بـ Arabic name + English subtitle + emoji.
+  • احتفظت بـ wishlist/cart counters + account icon + SHEIN logo.
+- أنشأت `src/components/sections/` (NEW directory):
+  • `big-deals.tsx` — قسم عروض كبرى: header بـ bg-red + شارة "%" في دائرة حمراء + grid 6 منتجات.
+  • `flash-sale.tsx` — قسم تخفيضات سريعة: header بـ Flame icon + FlashSaleTimer countdown + grid 8 منتجات.
+  • `top-trends.tsx` — قسم أهم الترندات: 8 trending hashtags clickable + 6 منتجات بـ trendingTag أسفل كل بطاقة.
+  • `brand-zone.tsx` — قسم منطقة العلامة التجارية: header أسود مع Award icon ذهبي + chips للـ brands (Apple/Sony/Canon/JBL) + grid 8 منتجات.
+- أعيد كتابة `src/app/page.tsx` بالترتيب الصحيح مطابق لـ Shein:
+  1. HeroCarousel (موجود)
+  2. Quick categories grid (12 فئة)
+  3. Trust strip (شحن/إرجاع/دفع/دعم)
+  4. عروض كبرى (BigDeals component)
+  5. تخفيضات سريعة (FlashSale component) مع countdown
+  6. أهم الترندات (TopTrends component) مع hashtags
+  7. منطقة العلامة التجارية (BrandZone component)
+  8. Mid promo banner (نساء/رجال)
+  9. وصل حديثاً (New Arrivals)
+  10. الأكثر مبيعاً (Best Sellers)
+  11. الفئات الرائجة (Trending categories grid)
+  12. موصى به لك (Recommended)
+  13. Newsletter signup
+- حدّثت `src/components/product-card.tsx` لأسلوب Shein الدقيق:
+  • شارة الخصم: حمراء bg-shein-red في top-LEFT "-XX%".
+  • أضفت سطر "خصم X%" أحمر أسفل الصورة فوق العنوان (مطابق لـ Shein).
+  • عنوان رمادي صغير line-clamp-2.
+  • سعر أحمر bold + سعر قديم strikethrough.
+  • نقاط الألوان (3-5).
+  • heart wishlist top-right.
+  • زر "أضف للسلة" hover desktop / دائم mobile.
+  • brand badge top-right للمنتجات المُعلَّمة (يظهر اسم الـ brand بدل "جديد").
+- حدّثت `src/components/site-footer.tsx`:
+  • أضفت Tabby و Tamara لطرق الدفع (مع مدى/VISA/Mastercard/Apple Pay/STC Pay/كاش).
+  • أضفت App Store + Google Play download buttons.
+  • أضفت عمودين للفئات (10 + 10 من الـ 25) في footer grid.
+  • احتفظت بـ SHEIN logo أبيض + خالد contact (khalid-alharbi@zohomail.sa / WhatsApp +966 57 501 5019).
+  • احتفظت بـ disclaimer "⚠️ هذا الموقع للعرض فقط — تصميم خالد الحربي".
+  • احتفظت بـ trust bar + social media icons + copyright "تصميم خالد الحربي 🇸🇦".
+- أصلحت `src/components/category-client.tsx`: أزلت import غير مستخدم `CategoryName` بعد تغيير types.
+- البناء: `bun run build` نجح في 8.2s compile + 5.7s TypeScript + 2.8s static generation.
+  • 90 static pages generated (1 home + 26 category pages incl. all + 56 product detail pages + 6 fixed pages).
+  • 0 TypeScript errors, 0 lint errors.
+- Git commit + push: SHA fe6a8393010ebe87439efb515ee5bc984307c1fa → origin/main.
+- Vercel deploy triggered: POST /v13/deployments مع gitSource {org:5halid-707, repo:shein-store, ref:main, sha:fe6a839...}.
+  • Deployment ID: dpl_BVfQX3TTrPz5mcZmhi6oFoqVd5Wp
+  • Project ID: prj_c4yczZKGdRuzBqOVNAaUnczsff65
+  • Status: READY بعد ~37 ثانية.
+  • Aliases: shein-store-teal.vercel.app, shein-store-5halid-707s-projects.vercel.app, shein-store-git-main-5halid-707s-projects.vercel.app.
+- Verification على https://shein-store-teal.vercel.app/ (HTTP 200, 490KB HTML):
+  ✓ SHEIN logo   ✓ عروض كبرى   ✓ تخفيضات سريعة   ✓ أهم الترندات   ✓ منطقة العلامة التجارية
+  ✓ خصم X% text   ✓ فستان placeholder   ✓ Khalid contact   ✓ Disclaimer   ✓ Tabby + Tamara
+  ✓ كل الفئات (نساء/رجال/أطفال/تجميل/إلكترونيات)
+
+Summary:
+- متجر shein-store أصبح نسخة مطابقة لـ ar.shein.com بصرياً وبنيوياً: 25 فئة كاملة، 56 منتج، 4 أقسام جديدة (Big Deals, Flash Sale, Top Trends, Brand Zone)، بطاقات منتجات بأسلوب Shein الدقيق (خصم X% + heart + add-to-cart hover)، فوتر كامل بـ 8 طرق دفع وأزرار تحميل التطبيق.
+- مباشر على https://shein-store-teal.vercel.app — جاهز للبورتفوليو.
+- معلومات خالد الحربي محفوظة بالكامل: khalid-alharbi@zohomail.sa / WhatsApp +966 57 501 5019 / disclaimer "هذا الموقع للعرض فقط".
