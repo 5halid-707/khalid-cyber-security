@@ -33,9 +33,13 @@ export default function Reveal({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -60px 0px" }}
+      // Low amount threshold so it reveals quickly on mobile (avoids staying
+      // opacity:0 / pointer-events:none if the element barely enters viewport)
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px -40px 0px" }}
       custom={delay}
       transition={{ delay }}
+      // Ensure the element is always interactive even during animation
+      style={{ pointerEvents: "auto" }}
     >
       {children}
     </MotionTag>

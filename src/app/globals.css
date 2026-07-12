@@ -4,6 +4,46 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
+   MOBILE TOUCH OPTIMIZATION
+   Ensures all interactive elements are tappable on mobile,
+   removes 300ms tap delay, and prevents click-blocking.
+   ============================================================ */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+  overflow-x: hidden;
+}
+
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Ensure all links & buttons have proper touch targets */
+a, button, [role="button"], input[type="button"], input[type="submit"] {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+}
+
+/* Minimum touch target for small icon buttons (44px Apple standard) */
+@media (max-width: 640px) {
+  button:not([class*="h-9"]):not([class*="h-8"]):not([class*="h-7"]):not([class*="h-6"]),
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent text selection on rapid taps */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ============================================================
    THEME TOKENS (non-inline → emits CSS vars + generates utilities)
    Direct hex values guarantee bg-neon-green, text-neon-green,
    bg-surface, border-edge, etc. all work with opacity modifiers.

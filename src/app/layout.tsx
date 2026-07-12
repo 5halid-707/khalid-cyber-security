@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="dark" suppressHydrationWarning>
       <body
-        className={`${cairo.variable} ${shareTechMono.variable} antialiased text-fg overflow-x-hidden`}
+        className={`${cairo.variable} ${shareTechMono.variable} antialiased text-fg`}
       >
         <DynamicVideoBackground />
         <I18nProvider>

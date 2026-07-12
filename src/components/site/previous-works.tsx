@@ -142,7 +142,7 @@ export default function PreviousWorks() {
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
 
-  // Autoplay
+  // Autoplay — only re-runs when isPlaying or total changes (NOT on every slide change)
   useEffect(() => {
     if (!isPlaying) return;
     timerRef.current = setInterval(() => {
@@ -160,9 +160,9 @@ export default function PreviousWorks() {
       if (timerRef.current) clearInterval(timerRef.current);
       if (progressRef.current) clearInterval(progressRef.current);
     };
-  }, [isPlaying, total, current]);
+  }, [isPlaying, total]);
 
-  // Pause on hover
+  // Pause on hover/touch
   const pauseAutoplay = () => setIsPlaying(false);
   const resumeAutoplay = () => setIsPlaying(true);
 
