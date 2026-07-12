@@ -1,6 +1,7 @@
 "use client";
 
-import { Star, Quote, Briefcase, ShieldCheck, TrendingUp } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Star, Quote, Briefcase, ShieldCheck, TrendingUp, ChevronLeft, ChevronRight, Zap } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
 import TypedHeading from "./typed-heading";
@@ -26,7 +27,7 @@ const testimonials: Testimonial[] = [
     },
     rating: 5,
     icon: ShieldCheck,
-    color: "var(--neon-green)",
+    color: "#00ffcc",
   },
   {
     name: { ar: "سارة الدوسري", en: "Sarah Al-Dosari" },
@@ -38,7 +39,7 @@ const testimonials: Testimonial[] = [
     },
     rating: 5,
     icon: TrendingUp,
-    color: "var(--neon-blue)",
+    color: "#00a8e8",
   },
   {
     name: { ar: "محمد الشهري", en: "Mohammed Al-Shehri" },
@@ -50,7 +51,7 @@ const testimonials: Testimonial[] = [
     },
     rating: 5,
     icon: Briefcase,
-    color: "var(--neon-pink)",
+    color: "#ff00cc",
   },
   {
     name: { ar: "فهد القحطاني", en: "Fahad Al-Qahtani" },
@@ -62,7 +63,7 @@ const testimonials: Testimonial[] = [
     },
     rating: 5,
     icon: ShieldCheck,
-    color: "var(--neon-green)",
+    color: "#00ffcc",
   },
   {
     name: { ar: "نورة العنزي", en: "Noura Al-Anazi" },
@@ -74,7 +75,7 @@ const testimonials: Testimonial[] = [
     },
     rating: 5,
     icon: TrendingUp,
-    color: "var(--neon-blue)",
+    color: "#00a8e8",
   },
   {
     name: { ar: "عبدالله الحربي", en: "Abdullah Al-Harbi" },
@@ -86,27 +87,83 @@ const testimonials: Testimonial[] = [
     },
     rating: 5,
     icon: Briefcase,
-    color: "var(--neon-pink)",
+    color: "#ff00cc",
   },
 ];
+
+const AUTOPLAY_MS = 6000;
 
 export default function Testimonials() {
   const { lang } = useI18n();
   const isAr = lang === "ar";
+  const [current, setCurrent] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const total = testimonials.length;
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goTo = useCallback((idx: number) => {
+    setCurrent(((idx % total) + total) % total);
+  }, [total]);
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+
+  const ArrowNext = isAr ? ChevronLeft : ChevronRight;
+  const ArrowPrev = isAr ? ChevronRight : ChevronLeft;
+
+  // Autoplay
+  useEffect(() => {
+    if (!isPlaying) return;
+    timerRef.current = setInterval(() => {
+      setCurrent((p) => (p + 1) % total);
+    }, AUTOPLAY_MS);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [isPlaying, total]);
+
+  // Touch/swipe support
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsPlaying(false);
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (isAr) {
+        diff > 0 ? prev() : next();
+      } else {
+        diff > 0 ? next() : prev();
+      }
+    }
+  };
 
   return (
-    <section id="testimonials" className="py-24 px-5 relative">
-      {/* Ambient gradient */}
+    <section id="testimonials" className="py-24 px-5 relative overflow-hidden">
+      {/* Ambient cyber gradient */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-20"
+        className="absolute inset-0 pointer-events-none opacity-30"
         style={{
           background:
-            "radial-gradient(circle at 30% 50%, rgba(0,255,204,0.06), transparent 60%), radial-gradient(circle at 70% 50%, rgba(255,0,204,0.06), transparent 60%)",
+            "radial-gradient(circle at 20% 30%, rgba(0,255,204,0.08), transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,0,204,0.08), transparent 50%)",
+        }}
+      />
+      {/* Cyber grid bg */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,255,204,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,204,0.1) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
         }}
       />
 
-      <div className="relative mx-auto max-w-6xl">
-        <Reveal className="text-center mb-12">
+      <div className="relative mx-auto max-w-5xl">
+        <Reveal className="text-center mb-10">
           <p className="mono-tech text-xs text-neon-blue/70 tracking-[0.3em] mb-3">
             {"// CLIENT TESTIMONIALS"}
           </p>
@@ -125,89 +182,226 @@ export default function Testimonials() {
         </Reveal>
 
         {/* Rating summary */}
-        <Reveal className="text-center mb-10">
-          <div className="inline-flex items-center gap-3 p-4 rounded-xl bg-surface/60 border border-neon-green/30">
+        <Reveal className="text-center mb-8">
+          <div className="inline-flex items-center gap-3 p-3 rounded-xl bg-surface/60 border border-neon-green/30">
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} size={20} className="text-neon-green fill-neon-green" />
+                <Star key={s} size={18} className="text-neon-green fill-neon-green" />
               ))}
             </div>
             <div className="text-right">
-              <p className="text-2xl font-black text-white mono-tech">5.0</p>
-              <p className="text-xs text-fg/50">
+              <p className="text-xl font-black text-white mono-tech">5.0</p>
+              <p className="text-[10px] text-fg/50">
                 {isAr ? "تقييم العملاء (6 عملاء)" : "Client Rating (6 clients)"}
               </p>
             </div>
           </div>
         </Reveal>
 
-        {/* Testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {testimonials.map((t, i) => {
-            const Icon = t.icon;
-            return (
-              <Reveal key={i} delay={i * 80}>
+        {/* 3D Cyber Slider */}
+        <div
+          className="relative"
+          style={{ perspective: "1200px" }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onMouseEnter={() => setIsPlaying(false)}
+          onMouseLeave={() => setIsPlaying(true)}
+        >
+          {/* Slider viewport */}
+          <div className="relative h-[420px] sm:h-[380px] flex items-center justify-center">
+            {testimonials.map((t, i) => {
+              const isActive = i === current;
+              const offset = i - current;
+              const isPrev = offset === -1 || (current === 0 && i === total - 1);
+              const isNext = offset === 1 || (current === total - 1 && i === 0);
+
+              // Calculate 3D position
+              let translateX = 0;
+              let translateZ = 0;
+              let rotateY = 0;
+              let scale = 1;
+              let opacity = 1;
+              let zIndex = 10;
+
+              if (isActive) {
+                translateX = 0;
+                translateZ = 0;
+                rotateY = 0;
+                scale = 1;
+                opacity = 1;
+                zIndex = 30;
+              } else if (isPrev) {
+                translateX = isAr ? 80 : -80;
+                translateZ = -120;
+                rotateY = isAr ? -25 : 25;
+                scale = 0.85;
+                opacity = 0.5;
+                zIndex = 20;
+              } else if (isNext) {
+                translateX = isAr ? -80 : 80;
+                translateZ = -120;
+                rotateY = isAr ? 25 : -25;
+                scale = 0.85;
+                opacity = 0.5;
+                zIndex = 20;
+              } else {
+                translateX = offset > 0 ? 200 : -200;
+                translateZ = -250;
+                rotateY = offset > 0 ? -45 : 45;
+                scale = 0.6;
+                opacity = 0;
+                zIndex = 0;
+              }
+
+              const Icon = t.icon;
+
+              return (
                 <div
-                  className="relative h-full p-5 rounded-xl bg-surface/60 border-2 border-edge hover:border-neon-blue/40 transition-all overflow-hidden"
+                  key={i}
+                  className="absolute w-[90%] sm:w-[70%] md:w-[60%] max-w-lg"
+                  style={{
+                    transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                    opacity,
+                    zIndex,
+                    transition: "all 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+                    transformStyle: "preserve-3d",
+                    pointerEvents: isActive ? "auto" : "none",
+                  }}
+                  onClick={() => !isActive && goTo(i)}
                 >
-                  {/* Quote icon watermark */}
-                  <Quote
-                    size={60}
-                    className="absolute -top-2 -left-2 text-neon-blue/5 rotate-180"
-                  />
+                  <div
+                    className="relative p-6 rounded-2xl bg-surface/80 backdrop-blur-md border-2 overflow-hidden h-full"
+                    style={{
+                      borderColor: isActive ? `${t.color}80` : "#1f2937",
+                      boxShadow: isActive
+                        ? `0 20px 60px -10px rgba(0,0,0,0.8), 0 0 40px ${t.color}30, inset 0 0 20px ${t.color}05`
+                        : "0 10px 30px -10px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    {/* Cyber corner accents (only active) */}
+                    {isActive && (
+                      <>
+                        <span className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 rounded-tr-md" style={{ borderColor: t.color }} />
+                        <span className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 rounded-tl-md" style={{ borderColor: t.color }} />
+                        <span className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 rounded-br-md" style={{ borderColor: t.color }} />
+                        <span className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 rounded-bl-md" style={{ borderColor: t.color }} />
+                      </>
+                    )}
 
-                  {/* Top: rating + icon */}
-                  <div className="relative flex items-center justify-between mb-3">
-                    <div className="flex gap-0.5">
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Star
-                          key={s}
-                          size={14}
-                          className={s <= t.rating ? "text-neon-green fill-neon-green" : "text-fg/20"}
-                        />
-                      ))}
-                    </div>
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center border shrink-0"
-                      style={{
-                        borderColor: `${t.color}50`,
-                        backgroundColor: `${t.color}10`,
-                      }}
-                    >
-                      <Icon size={16} style={{ color: t.color }} />
-                    </div>
-                  </div>
+                    {/* Quote watermark */}
+                    <Quote
+                      size={80}
+                      className="absolute -top-3 -left-3 opacity-5 rotate-180"
+                      style={{ color: t.color }}
+                    />
 
-                  {/* Testimonial text */}
-                  <p className="relative text-sm text-fg/75 leading-relaxed mb-4 line-clamp-4">
-                    "{isAr ? t.text.ar : t.text.en}"
-                  </p>
-
-                  {/* Client info */}
-                  <div className="relative flex items-center gap-3 pt-3 border-t border-edge">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center border shrink-0 font-bold text-sm"
-                      style={{
-                        borderColor: `${t.color}50`,
-                        backgroundColor: `${t.color}15`,
-                        color: t.color,
-                      }}
-                    >
-                      {(isAr ? t.name.ar : t.name.en).charAt(0)}
+                    {/* Rating + Icon */}
+                    <div className="relative flex items-center justify-between mb-4">
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3, 4, 5].map((s) => (
+                          <Star
+                            key={s}
+                            size={16}
+                            className={s <= t.rating ? "text-neon-green fill-neon-green" : "text-fg/20"}
+                          />
+                        ))}
+                      </div>
+                      <div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center border shrink-0"
+                        style={{
+                          borderColor: `${t.color}50`,
+                          backgroundColor: `${t.color}10`,
+                          boxShadow: isActive ? `0 0 15px ${t.color}40` : "none",
+                        }}
+                      >
+                        <Icon size={20} style={{ color: t.color }} />
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <p className="text-sm font-bold text-white truncate">
-                        {isAr ? t.name.ar : t.name.en}
-                      </p>
-                      <p className="text-[11px] text-fg/50 truncate">
-                        {isAr ? t.role.ar : t.role.en} — {isAr ? t.company.ar : t.company.en}
-                      </p>
+
+                    {/* Testimonial text */}
+                    <p className="relative text-sm sm:text-base text-fg/80 leading-relaxed mb-5">
+                      "{isAr ? t.text.ar : t.text.en}"
+                    </p>
+
+                    {/* Client info */}
+                    <div className="relative flex items-center gap-3 pt-4 border-t border-edge">
+                      <div
+                        className="w-11 h-11 rounded-full flex items-center justify-center border shrink-0 font-bold"
+                        style={{
+                          borderColor: `${t.color}50`,
+                          backgroundColor: `${t.color}15`,
+                          color: t.color,
+                          boxShadow: isActive ? `0 0 12px ${t.color}30` : "none",
+                        }}
+                      >
+                        {(isAr ? t.name.ar : t.name.en).charAt(0)}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold text-white truncate">
+                          {isAr ? t.name.ar : t.name.en}
+                        </p>
+                        <p className="text-[11px] text-fg/50 truncate">
+                          {isAr ? t.role.ar : t.role.en} — {isAr ? t.company.ar : t.company.en}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Reveal>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Navigation arrows */}
+          <button
+            onClick={() => { setIsPlaying(false); prev(); }}
+            aria-label={isAr ? "السابق" : "Previous"}
+            className="absolute top-1/2 -translate-y-1/2 left-2 sm:-left-4 z-40 w-11 h-11 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-white flex items-center justify-center hover:bg-neon-blue hover:text-[#05080f] hover:scale-110 transition-all touch-manipulation pointer-events-auto"
+            style={{ touchAction: "manipulation" }}
+          >
+            <ArrowPrev size={22} />
+          </button>
+          <button
+            onClick={() => { setIsPlaying(false); next(); }}
+            aria-label={isAr ? "التالي" : "Next"}
+            className="absolute top-1/2 -translate-y-1/2 right-2 sm:-right-4 z-40 w-11 h-11 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-white flex items-center justify-center hover:bg-neon-blue hover:text-[#05080f] hover:scale-110 transition-all touch-manipulation pointer-events-auto"
+            style={{ touchAction: "manipulation" }}
+          >
+            <ArrowNext size={22} />
+          </button>
+        </div>
+
+        {/* Dots + autoplay indicator */}
+        <div className="flex items-center justify-center gap-2 mt-6">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setIsPlaying(false); goTo(i); }}
+              aria-label={`${isAr ? "عرض" : "View"} ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 touch-manipulation ${
+                i === current
+                  ? "w-8 bg-neon-blue shadow-[0_0_8px_var(--neon-blue)]"
+                  : "w-2 bg-fg/30 hover:bg-fg/50"
+              }`}
+              style={{ touchAction: "manipulation" }}
+            />
+          ))}
+        </div>
+
+        {/* Counter + play/pause */}
+        <div className="flex items-center justify-center gap-4 mt-4">
+          <span className="text-xs text-fg/40 mono-tech">
+            {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </span>
+          {!isPlaying && (
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="inline-flex items-center gap-1.5 text-[11px] text-fg/50 hover:text-neon-blue transition-colors px-3 py-1.5 rounded-full border border-edge touch-manipulation"
+            >
+              <Zap size={11} />
+              {isAr ? "استئناف" : "Resume"}
+            </button>
+          )}
         </div>
 
         {/* Bottom note */}
