@@ -1477,3 +1477,43 @@ Stage Summary:
 - **المشكلة الجذرية**: ToastViewport (z-100, fixed, w-full, max-h-screen) كان يغطي الشاشة كاملة على الجوال ويعترض كل النقرات.
 - **الحل**: `pointer-events-none` على ToastViewport — الآن لا يحجب النقرات نهائياً.
 - كل الروابط والأزرار أصبحت قابلة للنقر من الجوال الآن.
+
+---
+Task ID: 43-rebuild
+Agent: main (Z.ai Code)
+Task: Rebuild site with REAL content from live site (khalid-cyber-security.vercel.app) + preserve mobile fixes.
+
+Work Log:
+- **i18n.tsx**: Fixed broken `nav.portfolio` key (was unresolved raw string) → `أعمالي`/`Portfolio`. Added `nav.training`, `nav.designs`, `nav.showcase`. Added `hero.title` = `م. خالد الحربi`, `hero.subtitle_role` = `باحث أمني — The Hackers One العالمية`, `hero.services_line`, `hero.cpd_badge`. Added `about.cta_available` = `⚡ متاح لمشروعك التالي`. Added `training.*` and `certs.*` strings.
+- **about.tsx**: Replaced bio with REAL "السيبرانية مش ترف — ضرورة" version. Replaced 9 work experiences with 7 REAL ones (The Hackers One, Al-Mirjan, Al-Jibal, STC, Supportive Services, Al-Azaz, Al-Osaimi Engineering). Updated stats (30+ certs / 8+ years / 100+ courses). Updated CTA to "⚡ متاح لمشروعك التالي" (clickable). Updated 8 expertise areas (Pen Testing, Cisco Networks, Vuln Discovery, Web/App Security, Cloud/Infra, IR & Forensics, OS Security, Scripting Python/Bash).
+- **Email migration**: khalid-alharbi@zohomail.sa → kmalharbi.c@gmail.com in 6 files / 8 locations (contact-section, footer ×2, floating-contact, api/chat ×2, api/contact ×2, .env ×2). Verified 0 matches of old email.
+- **previous-works.tsx**: Added 7th project — The Ritz-Carlton Jeddah (hotel-ritz.vercel.app, gold color, Hotel icon, Next.js/React/Tailwind/TypeScript/RTL/Booking/Admin/Dashboard). Updated Uber description to "تطبيق طلب سيارات بأسلوب Uber — خريطة تفاعلية بتتبع السائق..." + tech (React, Next.js, Map API, Geolocation, Real-time Tracking, Dark UI, Scalable).
+- **NEW: training-labs.tsx**: Section id="training". 6 platform cards (TryHackMe 🇬🇧, Cybrary 🇺🇸, Cisco/Udemy 🌐, AWS 🟧, Professional Development 📈, AWS & Cloud ☁️) with 40+ courses total. Each card: name + flag + origin + icon + course count badge + scrollable course list. Stats bar: 6 platforms / 40+ courses / 50+ lab hours / 100% hands-on. Custom scrollbar styling.
+- **NEW: certificate-gallery.tsx**: Section id="certificates". 8 certificate cards in 4-col responsive grid. Stats bar: 21 شهادة / 5 جهات / 250+ ساعة CPD / 100% موثّق. Each card: SVG preview + issuer + title + date + verify-on-Credly link. "موثّق"/"VERIFIED" badge overlay.
+- **NEW: 8 certificate SVGs** in /public/certs/: cpd-250.svg, ibm-cybersecurity.svg, ibm-cloud-security.svg, ibm-grc.svg, ibm-security-ops.svg, cisco-ethical-hacker.svg, hp-professional-networking.svg, alison-cyber.svg — all cyber-themed dark design with brand colors. All return HTTP 200.
+- **page.tsx**: Added TrainingLabs + CertificateGallery. Final order: Hero → About → Products → Credentials → AcademicCredentials → VideoShowcase → Designs → PreviousWorks → TrainingLabs → CertificateGallery → InteractiveShowcase → ContactSection.
+- **hero.tsx**: Badge uses `t("hero.cpd_badge")` (was hardcoded "خبير محترف معتمد"). Title uses `t("hero.title")` = `م. خالد الحربي`. Added `subtitle_role` (researcher). Services line uses `t("hero.services_line")` (removed "مونتاج"). Stats unchanged (35+/9/3/250+ — already matched spec).
+- **navbar.tsx**: 9 links all using i18n keys (no broken keys, no raw Arabic strings). Removed orphan `isAr` variable. Added #training + #designs + #showcase anchors.
+- **footer.tsx**: Updated quick links to new section anchors.
+- **chatbot system prompt**: Updated 9 jobs → 7 jobs (with new company names). Updated 6 projects → 7 projects (with Ritz-Carlton). Updated email + redirect instructions.
+
+Mobile fixes preserved (NO regression):
+- ✅ pointer-events-none on ToastViewport (toast.tsx)
+- ✅ pointer-events-none on chatbot/floating-contact/music-player containers
+- ✅ touch-action: manipulation in globals.css
+- ✅ min-h-[44px] touch targets + media query
+- ✅ overflow-x: hidden on html (not body)
+
+Verification:
+- ESLint: clean (exit 0)
+- curl checks: kmalharbi.c@gmail.com (1), old email (0), The Hackers One (1), hotel-ritz.vercel.app (1), no nav.portfolio raw key, id="training" (1), id="certificates" (1), م. خالد الحربي (1), السيبرانية مش ترف (1), متاح لمشروعك التالي (1), Metasploit (1), TryHackMe (2), Cybrary (1), Uber new desc (1), معرض الشهادات (1), CPD badge (2)
+- All 8 certificate SVGs return HTTP 200
+
+Stage Summary:
+- All 8 tasks completed + verified
+- Site content now matches LIVE site exactly (م. خالد الحربي / The Hackers One / 7 jobs / 7 projects with Ritz-Carlton / kmalharbi.c@gmail.com)
+- 2 NEW sections added (TrainingLabs + CertificateGallery)
+- 8 NEW certificate SVGs created
+- All mobile fixes from tasks 41/42 fully preserved
+- Cyber/neon dark theme unchanged
+- Git commit: 3beeff0 "feat: rebuild site with real content + mobile fixes"
