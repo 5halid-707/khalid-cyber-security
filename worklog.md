@@ -1663,3 +1663,93 @@ Stage Summary:
 - المشروع مستقل تماماً عن /home/z/my-project ولا يؤثر عليه.
 - الرابط جاهز للإضافة في قسم Previous Works للموقع الرئيسي.
 
+
+---
+Task ID: 46-shein-clone
+Agent: main (Z.ai Code)
+Task: تحديث متجر shein-store ليكون نسخة مطابقة بصرياً لموقع SHEIN (ar.shein.com) لأغراض العرض في البورتفوليو.
+
+Work Log:
+- المشروع في /home/z/shein-store كان محذوفاً (sandbox wipe)، فاستعدته عبر git clone من GitHub repo 5halid-707/shein-store (commit 4429857 من Task 45). مشروع Vercel prj_c4yczZKGdRuzBqOVNAaUnczsff65 لا يزال READY من النشر السابق.
+- أنشأت شعار SHEIN كـ SVG:
+  • /public/shein-logo.svg — أسود، 280×80، حروف مرسومة كـ paths (S-H-E-I-N) بأسلوب bold condensed يشبه شعار Shein الحقيقي.
+  • /public/shein-logo-white.svg — نفس المسارات بلون أبيض للخلفيات الداكنة (الفوتر).
+- حدّثت src/app/globals.css بلوحة ألوان Shein الدقيقة:
+  • أسود #000000، وردي #ee296d، أحمر الخصومات #fa3a30، خلفية #f6f6f6، نص #222222، ثانوي #767676، حدود #e5e5e5.
+  • أضفت tokens جديدة: --color-shein-bg، --color-shein-red، --color-shein-red-dark.
+  • أضفت keyframe `marquee-rtl` للشريط الإعلاني المتحرك RTL.
+- أعدت كتابة src/data/products.ts بالكامل:
+  • عرّفت PHOTOS map بـ 35+ معرف صورة Unsplash حقيقية لكل فئة (فساتين/بلوزات/بناطيل/تنانير/معاطف نسائية، كعب عالي/حقائب، قمصان/polo/جينز/تيشيرت/جاكيت/أحذية رجالية، أطفال، تجميل، إكسسوارات، منزل).
+  • كل منتج من الـ 28 منتج له صورة Unsplash حقيقية من فئته + معرض 5 صور من نفس الفئة.
+  • نمط URL: https://images.unsplash.com/photo-{ID}?w=600&h=750&fit=crop&q=80&auto=format
+  • غيّرت brand من "KMH Fashion" إلى "SHEIN".
+  • عالجت TypeScript error "image specified more than once" بوضع image/images بعد spread.
+- حدّثت src/components/site-header.tsx:
+  • استبدلت badge "K" + نص "KMH Fashion" بـ <Image src="/shein-logo.svg">.
+  • شريط البحث بحدود وردية (border-2 border-shein-pink) مطابق لأسلوب Shein مع زر "بحث" وردي.
+  • Mobile drawer يستخدم شعار SHEIN أيضاً.
+  • قائمة الفئات محفوظة: نسائي / رجالي / أطفال / تجميل / المنزل / إكسسوارات + كل المنتجات.
+- حدّثت src/components/site-footer.tsx:
+  • شعار SHEIN الأبيض أعلى العمود الرئيسي.
+  • شريط الثقة محدّث: "إرجاع مجاني خلال 35 يوم" (كان 14) لمطابقة سياسة Shein.
+  • معلومات التواصل محفوظة: khalid-alharbi@zohomail.sa / WhatsApp +966 57 501 5019 / السعودية.
+  • أضفت صف تنبيه: "⚠️ هذا الموقع للعرض فقط — تصميم وتطوير خالد الحربي. ليس متجراً حقيقياً ولا يقبل الطلبات الفعلية."
+  • Copyright: "© SHEIN — تصميم خالد الحربي 🇸🇦".
+- حدّثت src/components/announcement-bar.tsx:
+  • استبدلت نمط الرسائل المتناوبة بـ scrolling marquee (animate-marquee-rtl) — مطابق لـ Shein.
+  • 6 رسائل مكررة لـ seamless loop: شحن مجاني / إرجاع 35 يوم / دفع آمن / تخفيضات 70% / كود SHEIN15 / أحدث الموضة.
+  • خلفية سوداء، أيقونات وردية + فواصل •.
+- حدّثت src/components/hero-carousel.tsx:
+  • استبدلت 4 صور picsum بـ Unsplash fashion photos حقيقية:
+    - Banner 1 (sale): woman outfit (photo-1483985988355) + تدرج وردي.
+    - Banner 2 (سهرة): woman dress (photo-1490481651871) + تدرج داكن.
+    - Banner 3 (رجالي): man portrait (photo-1490578474895) + تدرج داكن.
+    - Banner 4 (جمال): beauty products (photo-1596462502278) + تدرج ذهبي.
+  • crop 1200×600 لنسبة hero.
+- حدّثت src/components/product-card.tsx بأسلوب Shein الدقيق:
+  • شارة الخصم: حمراء bg-shein-red في top-LEFT (كانت وردية يمين).
+  • شارة "جديد": سوداء صغيرة top-right تحت القلب.
+  • قلب المفضلة: top-right، أصغر (h-7 w-7).
+  • العنوان: رمادي صغير text-xs (كان أسود text-sm).
+  • السعر: أحمر text-shein-red bold (كان وردي).
+  • صف التقييم: نجمة + rating + count.
+  • صف الألوان: حتى 5 نقاط + "+N".
+  • زر "أضف للسلة": شريط وردي أسفل الصورة، مخفي desktop (translate-y-full) ويظهر عند hover، ظاهر دائماً mobile.
+  • أزلت overlay "quick view".
+- حدّثت src/app/page.tsx: استبدلت 2 صور picsum (promo-women / promo-men) بـ Unsplash fashion photos.
+- حدّثت باقي الصفحات (إعادة تسمية KMH → SHEIN):
+  • layout.tsx: metadata title/description/keywords → SHEIN، viewport themeColor → #000000.
+  • account/page.tsx: "ضيف KMH" → "ضيف SHEIN"، "متجر KMH Fashion" → "متجر SHEIN".
+  • order-confirmation/page.tsx: "متجر KMH Fashion" → "متجر SHEIN"، sessionStorage key kmh-last-order → shein-last-order.
+  • checkout/page.tsx: بادئة order ID KMH → SHN، sessionStorage key محدّث.
+  • cart/page.tsx: كود الخصم KMH15 → SHEIN15، placeholder محدّث.
+  • README.md: أُعيدت كتابته بوصف Shein clone + تنبيه.
+- حدّثت next.config.ts: أضفت images.unsplash.com و plus.unsplash.com إلى remotePatterns (أبقيت picsum.photos كـ fallback无害).
+- Build محلياً: bun install (365 package) + bun run build → ✓ 42 صفحة static في 6.1s، TypeScript pass، بدون أخطاء.
+- Commit + push إلى GitHub:
+  • SHA: 268e71247dd1d7a62ce506652068a049bde441dc
+  • Pushed: 4429857..268e712 main -> main
+- نشر Vercel:
+  • Triggered POST /v13/deployments مع gitSource {org:5halid-707, repo:shein-store, ref:main}.
+  • Deployment ID: dpl_2buRLvuRRiMveTBZKgW3RLMW4Z9C
+  • State: READY (~25s بعد التشغيل).
+  • Production URL: https://shein-store-teal.vercel.app (نفس الرابط محفوظ).
+- تحققت من الإنتاج:
+  • GET / → HTTP 200، 369KB HTML.
+  • يحتوي "SHEIN" × 42 مرة، 0 مرجع "KMH Fashion".
+  • معلومات خالد محفوظة: khalid-alharbi@zohomail.sa × 2، 966575015019 × 1.
+  • تنبيه العرض موجود: "للعرض فقط" × 1.
+  • محتوى عربي Shein-style: تخفيضات / وصل حديثاً / عروض اليوم / الأكثر مبيعاً / شحن مجاني.
+  • /shein-logo.svg → HTTP 200 ✓
+  • /shein-logo-white.svg → HTTP 200 ✓
+  • صورة Unsplash مباشرة → HTTP 200 (71KB) ✓
+  • Next.js image optimizer /_next/image?...unsplash... → HTTP 200 ✓
+  • 33+ معرف صورة Unsplash مختلف في homepage HTML (بدون أي picsum.photos).
+
+Stage Summary:
+- متجر shein-store أصبح نسخة شبه مطابقة بصرياً لـ SHEIN Arabic: نفس الشعار، نفس لوحة الألوان أسود/وردي/أحمر، نفس شريط الإعلانات المتحرك، نفس RTL header بشعار+بحث+أيقونات، نفس قائمة الفئات، نفس hero carousel بصور أزياء حقيقية، نفس flash sale بعدّاد، نفس بطاقات المنتجات بشارات خصم حمراء + نقاط ألوان + زر أضف للسلة عند hover، نفس الفوتر بـ trust badges + تواصل + طرق دفع.
+- كل الـ 28 منتج تستخدم صور Unsplash fashion حقيقية بدلاً من picsum placeholders.
+- معلومات خالد الحربي محفوظة في الفوتر + صفحة الحساب + تأكيد الطلب: khalid-alharbi@zohomail.sa / WhatsApp +966 57 501 5019.
+- تنبيه "هذا الموقع للعرض فقط — تصميم خالد الحربي" مضاف في الفوتر للشفافية.
+- مباشر على https://shein-store-teal.vercel.app — جاهز للبورتفوليو.
+
