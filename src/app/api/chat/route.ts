@@ -212,12 +212,14 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ reply, sessionId });
   } catch (err) {
-    console.error("[/api/chat] error:", err);
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.error("[/api/chat] error:", errMsg);
     return NextResponse.json(
       {
         error: "حدث خطأ غير متوقع أثناء معالجة الرسالة.",
         reply:
           "عذراً، واجهت مشكلة تقنية مؤقتة. 🛠️ يرجى المحاولة مرة أخرى بعد لحظات.",
+        debug: errMsg,
       },
       { status: 500 }
     );
