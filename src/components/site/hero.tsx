@@ -151,11 +151,11 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center max-w-4xl">
-        {/* Professional certified badge */}
+        {/* Professional certified badge — CPD UK */}
         <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full border border-neon-green/50 bg-neon-green/10 backdrop-blur-sm shadow-[0_0_15px_rgba(0,255,204,0.2)]">
           <BadgeCheck size={18} className="text-neon-green" />
           <span className="text-sm md:text-base text-neon-green font-bold">
-            {lang === "ar" ? "خبير محترف معتمد" : "Certified Professional Expert"}
+            {t("hero.cpd_badge")}
           </span>
         </div>
 
@@ -166,18 +166,20 @@ export default function Hero() {
         </p>
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white text-glow-white mb-3 leading-tight">
-          {lang === "ar" ? "خالد الحربي" : "Khalid Al-harbi"}
+          {t("hero.title")}
         </h1>
 
         <p className="text-lg md:text-2xl text-fg/70 font-medium mb-2">
+          {t("hero.subtitle_role")}
+        </p>
+
+        <p className="text-base md:text-lg text-fg/60 font-medium mb-3">
           {t("hero.subtitle")}
         </p>
 
         {/* Services line */}
         <p className="text-base md:text-lg text-neon-blue/80 font-medium mb-8">
-          {lang === "ar"
-            ? "أمن سيبراني • تصميم مواقع ومتاجر • تسويق إلكتروني • مونتاج • اختبار اختراق"
-            : "Cyber Security • Web & Store Design • Digital Marketing • Video Editing • Penetration Testing"}
+          {t("hero.services_line")}
         </p>
 
         <div className="h-12 md:h-14 mb-10 flex justify-center">

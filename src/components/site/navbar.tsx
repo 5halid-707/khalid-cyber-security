@@ -6,8 +6,7 @@ import { useI18n } from "./i18n";
 import LanguageToggle from "./language-toggle";
 
 export default function Navbar() {
-  const { t, lang } = useI18n();
-  const isAr = lang === "ar";
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -15,10 +14,11 @@ export default function Navbar() {
     { href: "#home", label: t("nav.home") },
     { href: "#about", label: t("nav.about") },
     { href: "#products", label: t("nav.products") },
+    { href: "#previous-works", label: t("nav.portfolio") },
+    { href: "#designs", label: t("nav.designs") },
+    { href: "#showcase", label: t("nav.showcase") },
+    { href: "#training", label: t("nav.training") },
     { href: "#credentials", label: t("nav.credentials") },
-    { href: "#designs", label: isAr ? "التصاميم" : "Designs" },
-    { href: "#previous-works", label: isAr ? "أعمالي" : "Portfolio" },
-    { href: "#showcase", label: t("nav.academic") },
     { href: "#contact-form", label: t("nav.contact") },
   ];
 

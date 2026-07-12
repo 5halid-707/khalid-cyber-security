@@ -10,6 +10,7 @@ import {
   MessageCircle,
   Store,
   Car,
+  Hotel,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -108,13 +109,27 @@ const works: Work[] = [
     category: { ar: "منصة نقل وتوصيل", en: "Ride & Delivery Platform" },
     categoryColor: "#6366f1",
     description: {
-      ar: "منصة نقل وتوصيل ذكية بأسلوب Uber — حجز رحلات فورية ومجدولة، تتبع السائق على الخريطة، نظام Uber One للاشتراكات، دعم عربي/إنجليزي، إحصائيات (+5M رحلة، +50K سائق، 4.9 تقييم)، تصميم dark mode متجاوب بالكامل.",
-      en: "Smart ride & delivery platform in Uber style — instant & scheduled rides, driver tracking on map, Uber One subscription, Arabic/English support, stats (+5M rides, +50K drivers, 4.9 rating), fully responsive dark mode.",
+      ar: "تطبيق طلب سيارات بأسلوب Uber — خريطة تفاعلية بتتبع السائق، حجز رحلة، اختيار نوع السيارة، حساب الأجرة، تقييم السائق، واجهة دركن احترافية.",
+      en: "Ride-hailing app in Uber style — interactive map with driver tracking, ride booking, car type selection, fare calculation, driver rating, professional dark UI.",
     },
-    tech: ["Next.js", "React", "TypeScript", "Dark Mode", "Bilingual", "Map Tracking", "Booking System", "Scalable"],
+    tech: ["React", "Next.js", "Map API", "Geolocation", "Real-time Tracking", "Dark UI", "Scalable"],
     liveUrl: "https://uber-new-omega.vercel.app/",
     preview: "/work-uber-preview.png",
     icon: Car,
+  },
+  {
+    title: "The Ritz-Carlton Jeddah — Luxury Hotel",
+    titleAr: "ذا ريتز كارلتون جدة — فندق فاخر",
+    category: { ar: "موقع فندق فاخر + Dashboard", en: "Luxury Hotel Website + Dashboard" },
+    categoryColor: "#c9a227",
+    description: {
+      ar: "موقع فندق Ritz-Carlton Jeddah الفاخر — تصميم راقٍ بأسلوب عالمي، نظام حجز كامل، لوحة تحكم admin، إدارة الغرف والحجوزات، واجهة RTL عربية، مبني بـ Next.js و React و Tailwind و TypeScript.",
+      en: "The Ritz-Carlton Jeddah luxury hotel website — premium world-class design, complete booking system, admin dashboard, room & booking management, RTL Arabic UI, built with Next.js, React, Tailwind, and TypeScript.",
+    },
+    tech: ["Next.js", "React", "TypeScript", "Tailwind", "RTL", "Booking System", "Admin Panel", "Dashboard"],
+    liveUrl: "https://hotel-ritz.vercel.app/",
+    preview: "/work-uber-preview.png",
+    icon: Hotel,
   },
 ];
 

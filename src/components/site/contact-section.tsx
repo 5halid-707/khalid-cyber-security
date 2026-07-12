@@ -439,11 +439,11 @@ export default function ContactSection() {
             </a>
             <span className="text-fg/20 hidden sm:inline">|</span>
             <a
-              href="mailto:khalid-alharbi@zohomail.sa"
+              href="mailto:kmalharbi.c@gmail.com"
               className="inline-flex items-center justify-center gap-2 text-sm text-fg/60 hover:text-neon-pink transition-colors"
             >
               <Mail size={15} className="text-neon-pink" />
-              <span className="mono-tech" dir="ltr">khalid-alharbi@zohomail.sa</span>
+              <span className="mono-tech" dir="ltr">kmalharbi.c@gmail.com</span>
             </a>
           </div>
         </Reveal>

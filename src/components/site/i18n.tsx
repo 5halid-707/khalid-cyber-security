@@ -32,14 +32,21 @@ const dict: Record<Lang, Record<string, string>> = {
     "nav.home": "الرئيسية",
     "nav.about": "نبذة عني",
     "nav.products": "خدماتي",
-    "nav.academic": "استشارات أكاديمية",
+    "nav.portfolio": "أعمالي",
+    "nav.designs": "تصاميمي",
+    "nav.showcase": "استكشف خدماتي",
+    "nav.training": "تدريبي",
     "nav.credentials": "الشهادات",
+    "nav.academic": "استشارات أكاديمية",
     "nav.education": "التعليم",
     "nav.contact": "تواصل",
 
     // Hero
     "hero.cpd_badge": "معتمد CPD — المملكة المتحدة • 250 ساعة تدريب",
     "hero.subtitle": "خبير أمن سيبراني • خبير حماية البيانات والشبكات",
+    "hero.services_line": "اختبار اختراق وحماية • تصميم متاجر ومواقع • تسويق إلكتروني",
+    "hero.title": "م. خالد الحربي",
+    "hero.subtitle_role": "باحث أمني — The Hackers One العالمية",
     "hero.cta.services": "اكتشف خدماتي",
     "hero.cta.contact": "تواصل معي",
     "hero.scroll": "SCROLL",
@@ -52,7 +59,7 @@ const dict: Record<Lang, Record<string, string>> = {
     "about.eyebrow": "// ABOUT ME",
     "about.title": "خبير أمن سيبراني معتمد",
     "about.nameplate.role": "// CYBER SECURITY EXPERT",
-    "about.nameplate.name": "خالد عودة الحربي",
+    "about.nameplate.name": "م. خالد محمد الحربي",
     "about.nameplate.rolefull": "Cyber Security Specialist",
     "about.chip.cpd_top": "معتمد من",
     "about.chip.cpd_val": "CPD UK",
@@ -60,6 +67,7 @@ const dict: Record<Lang, Record<string, string>> = {
     "about.chip.coventry_val": "University",
     "about.exp_title": "المجالات التي أتقنها",
     "about.platforms_title": "منصات الاعتماد والشركاء",
+    "about.cta_available": "⚡ متاح لمشروعك التالي — تواصل معي واحصل على تقييم أمني مجاني",
 
     // Products
     "products.eyebrow": "// PROFESSIONAL SERVICES",
@@ -110,6 +118,21 @@ const dict: Record<Lang, Record<string, string>> = {
     "creds.verify_note":
       "جميع الأوسمة موثّقة على منصة Credly العالمية ويمكن التحقق منها إلكترونياً بالضغط على أي وسام",
 
+    // Training & Labs
+    "training.eyebrow": "// HANDS-ON TRAINING & LABS",
+    "training.title": "تدريبات ومختبرات عملية",
+    "training.subtitle":
+      "أكثر من 50 دورة وتدريب عملي في منصات عالمية — TryHackMe، Cybrary، Cisco، AWS، HP، وغيرها",
+
+    // Certificate Gallery
+    "certs.eyebrow": "// CERTIFICATE GALLERY",
+    "certs.title": "معرض الشهادات",
+    "certs.subtitle":
+      "جميع شهاداتي واعتماداتي المعتمدة من مؤسسات عالمية — IBM، Cisco، HP، CPD UK — قابلة للتحقق إلكترونياً",
+    "certs.verify": "تحقق",
+    "certs.issuer": "جهة الإصدار",
+    "certs.date": "التاريخ",
+
     // Tools
     "tools.eyebrow": "// ECOSYSTEM & CREDENTIAL PLATFORMS",
 
@@ -140,14 +163,22 @@ const dict: Record<Lang, Record<string, string>> = {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.products": "Services",
-    "nav.academic": "Academic Consulting",
+    "nav.portfolio": "Portfolio",
+    "nav.designs": "Designs",
+    "nav.showcase": "Showcase",
+    "nav.training": "Training",
     "nav.credentials": "Credentials",
+    "nav.academic": "Academic Consulting",
     "nav.education": "Education",
     "nav.contact": "Contact",
 
     "hero.cpd_badge": "CPD Certified — United Kingdom • 250 training hours",
     "hero.subtitle":
       "Cyber Security Expert • Data & Network Protection Specialist",
+    "hero.services_line":
+      "Penetration Testing & Security • E-Commerce & Web Design • Digital Marketing",
+    "hero.title": "Eng. Khalid Al-harbi",
+    "hero.subtitle_role": "Security Researcher — The Hackers One Global",
     "hero.cta.services": "Explore Services",
     "hero.cta.contact": "Contact Me",
     "hero.scroll": "SCROLL",
@@ -159,7 +190,7 @@ const dict: Record<Lang, Record<string, string>> = {
     "about.eyebrow": "// ABOUT ME",
     "about.title": "Certified Cyber Security Expert",
     "about.nameplate.role": "// CYBER SECURITY EXPERT",
-    "about.nameplate.name": "Khalid Al-harbi",
+    "about.nameplate.name": "Eng. Khalid Mohammed Al-harbi",
     "about.nameplate.rolefull": "Cyber Security Specialist",
     "about.chip.cpd_top": "Certified by",
     "about.chip.cpd_val": "CPD UK",
@@ -167,6 +198,8 @@ const dict: Record<Lang, Record<string, string>> = {
     "about.chip.coventry_val": "University",
     "about.exp_title": "Areas of Expertise",
     "about.platforms_title": "Certification Platforms & Partners",
+    "about.cta_available":
+      "⚡ Available for your next project — contact me for a free security assessment",
 
     "products.eyebrow": "// PROFESSIONAL SERVICES",
     "products.title": "My Skills Transformed into Professional Products",
@@ -212,6 +245,19 @@ const dict: Record<Lang, Record<string, string>> = {
     "creds.verify": "Verify",
     "creds.verify_note":
       "All badges are verified on the global Credly platform — click any badge to verify electronically",
+
+    "training.eyebrow": "// HANDS-ON TRAINING & LABS",
+    "training.title": "Hands-on Training & Labs",
+    "training.subtitle":
+      "More than 50 courses and practical labs on global platforms — TryHackMe, Cybrary, Cisco, AWS, HP, and more",
+
+    "certs.eyebrow": "// CERTIFICATE GALLERY",
+    "certs.title": "Certificate Gallery",
+    "certs.subtitle":
+      "All my certifications from global institutions — IBM, Cisco, HP, CPD UK — verifiable electronically",
+    "certs.verify": "Verify",
+    "certs.issuer": "Issuer",
+    "certs.date": "Date",
 
     "tools.eyebrow": "// ECOSYSTEM & CREDENTIAL PLATFORMS",
 

@@ -7,6 +7,8 @@ import AcademicCredentials from "@/components/site/academic-credentials";
 import VideoShowcase from "@/components/site/video-showcase";
 import Designs from "@/components/site/designs";
 import PreviousWorks from "@/components/site/previous-works";
+import TrainingLabs from "@/components/site/training-labs";
+import CertificateGallery from "@/components/site/certificate-gallery";
 import InteractiveShowcase from "@/components/site/interactive-showcase";
 import ContactSection from "@/components/site/contact-section";
 import Footer from "@/components/site/footer";
@@ -28,6 +30,8 @@ export default function Home() {
         <VideoShowcase videoSrc="/marketing-video.mp4" />
         <Designs />
         <PreviousWorks />
+        <TrainingLabs />
+        <CertificateGallery />
         <InteractiveShowcase />
         <ContactSection />
       </main>

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  CheckCircle2,
   ShieldCheck,
   Bug,
   Network,
@@ -17,140 +16,116 @@ import {
   Building2,
   Calendar,
   FlaskConical,
-  ClipboardCheck,
   FolderKanban,
   Hotel,
   ShoppingCart,
   Settings,
   Calculator,
-  Gem,
+  Terminal,
+  Zap,
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
 import TypedHeading from "./typed-heading";
 
-// Professional work experience — خبراتي المهنية في الشركات
+// Professional work experience — خبراتي المهنية في الشركات (7 jobs from live site)
 const workExperience = [
   {
     role: { ar: "باحث أمني", en: "Security Researcher" },
-    company: { ar: "ذا هكر ون", en: "TheHackerOne" },
+    company: { ar: "The Hackers One — العالمية", en: "The Hackers One — Global" },
     period: { ar: "حالياً", en: "Current" },
     current: true,
-    url: "https://thehackerone.com",
     desc: {
-      ar: "أعمل حالياً كباحث أمني في شركة ذي هكر ون العالمية — أبحث عن الثغرات، أحلل التهديدات، وأساهم في تطوير حلول أمنية متقدمة لحماية المنظومات.",
-      en: "Currently working as a Security Researcher at TheHackerOne — researching vulnerabilities, analyzing threats, and contributing to advanced security solutions.",
+      ar: "أبحاث أمنية، كشف ثغرات، وتحليل أنظمة لحماية البنية التحتية الرقمية.",
+      en: "Security research, vulnerability discovery, and system analysis to protect digital infrastructure.",
     },
     icon: Search,
     color: "var(--neon-green)",
   },
   {
-    role: { ar: "مدير مختبر جيوتقنية", en: "Geotechnical Lab Manager" },
-    company: { ar: "شركة الدكتور عايد عيد العصيمي", en: "Dr. Aied Eid Al-Osaimi Co." },
-    period: { ar: "سابقاً", en: "Previous" },
-    current: false,
-    desc: {
-      ar: "أدرت المختبر الجيوتقني وأشرفت على الفحوصات والتجارب التقنية — ضمان دقة النتائج ومراقبة جودة العمل المخبري وفق المعايير المعتمدة.",
-      en: "Managed the geotechnical lab and supervised technical tests and experiments — ensuring result accuracy and monitoring lab work quality per approved standards.",
-    },
-    icon: FlaskConical,
-    color: "var(--neon-blue)",
-  },
-  {
-    role: { ar: "فني مختبر", en: "Lab Technician" },
-    company: { ar: "شركة أر آر سي", en: "RRC Company" },
-    period: { ar: "سابقاً", en: "Previous" },
-    current: false,
-    desc: {
-      ar: "عملت كفني مختبر — أجريت الفحوصات والتجارب المخبرية، جهّزت العينات، ووثّقت النتائج التقنية بدقة عالية.",
-      en: "Worked as a lab technician — conducted lab tests and experiments, prepared samples, and documented technical results with high accuracy.",
-    },
-    icon: ClipboardCheck,
-    color: "var(--neon-pink)",
-  },
-  {
-    role: { ar: "مشرف مشاريع", en: "Projects Supervisor" },
+    role: { ar: "مشرف مشاريع تصميم وبرمجة", en: "Design & Programming Projects Supervisor" },
     company: { ar: "شركة المرجان", en: "Al-Mirjan Company" },
     period: { ar: "سابقاً", en: "Previous" },
     current: false,
     desc: {
-      ar: "أشرفت على تنفيذ المشاريع وضمان إنجازها وفق الجدول الزمني والمواصفات — تنسيق الفرق ومراقبة جودة التنفيذ.",
-      en: "Supervised project execution ensuring on-time delivery per specs — coordinating teams and monitoring execution quality.",
+      ar: "تصميم منتجع سيشيلز وفندق بلو كورال — إدارة فريق تقني وتطوير حلول رقمية للضيافة.",
+      en: "Designed Seychelles Resort and Blue Coral Hotel — managed a technical team and developed digital solutions for hospitality.",
     },
     icon: FolderKanban,
-    color: "var(--neon-green)",
-  },
-  {
-    role: { ar: "مشرف منتجع + مصمم مواقع ومتاجر", en: "Resort Supervisor & Web/Store Designer" },
-    company: { ar: "منتجع سيشيلز + فندق بلو كورال", en: "Seychelles Resort + Blue Coral Hotel" },
-    period: { ar: "سابقاً", en: "Previous" },
-    current: false,
-    desc: {
-      ar: "أشرفت على إدارة منتجع سيشيلز، ومصمم مواقع ومتاجر إلكترونية لفندق بلو كورال ومنتجع سيشيلز — جمعت بين الإدارة والتصميم التقني.",
-      en: "Supervised Seychelles Resort operations and designed websites & e-commerce stores for Blue Coral Hotel and Seychelles Resort — blending management with technical design.",
-    },
-    icon: Hotel,
     color: "var(--neon-blue)",
   },
   {
-    role: { ar: "مصمم ومبرمج وحامي متجر سوبر ماركت الجبال", en: "Designer, Developer & Security Specialist" },
-    company: { ar: "شركة الجبال الاقتصادية المحدودة", en: "Al-Jibal Economic Co. Ltd." },
+    role: { ar: "مصمم ومبرمج وحماية مواقع", en: "Web Designer, Developer & Security Specialist" },
+    company: { ar: "شركة الجبال الإقتصادية", en: "Al-Jibal Economic Co." },
     period: { ar: "سابقاً", en: "Previous" },
     current: false,
     desc: {
-      ar: "صمّمت وبرمجت وحميت متجر سوبر ماركت الجبال الإلكتروني — من التصميم والتطوير حتى تأمين الموقع وحماية بيانات العملاء.",
-      en: "Designed, developed, and secured Al-Jibal Supermarket e-commerce store — from design and development to site security and customer data protection.",
+      ar: "تصميم وبرمجة وحماية متجر سوبرماركت إلكتروني ومنصة رقمية متكاملة.",
+      en: "Designed, developed, and secured an online supermarket store and a complete digital platform.",
     },
     icon: ShoppingCart,
     color: "var(--neon-pink)",
   },
   {
-    role: { ar: "مدير إداري", en: "Administrative Manager" },
-    company: { ar: "الخدمات المساندة المحدودة للدعم اللوجستي (كامباوند سعودي أوجيه)", en: "Supportive Services Co. (Saudi Oger Compound)" },
+    role: { ar: "مدير حسابات شركات", en: "Corporate Accounts Manager" },
+    company: { ar: "STC", en: "STC (Saudi Telecom Company)" },
     period: { ar: "سابقاً", en: "Previous" },
     current: false,
     desc: {
-      ar: "أدرت العمليات الإدارية في موقع كامباوند شركة سعودي أوجيه — الإشراف على الفرق اللوجستية وضمان سير العمليات بكفاءة.",
-      en: "Managed administrative operations at Saudi Oger Compound site — supervising logistics teams and ensuring efficient operations.",
+      ar: "إدارة حسابات الشركات والمؤسسات — متابعة الباقات والتحديثات عبر Salesforce.",
+      en: "Managed corporate and enterprise accounts — tracking packages and updates via Salesforce.",
     },
-    icon: Settings,
+    icon: Calculator,
     color: "var(--neon-green)",
   },
   {
-    role: { ar: "مدير حسابات", en: "Accounts Manager" },
-    company: { ar: "شركة STC", en: "STC (Saudi Telecom Company)" },
+    role: { ar: "مساعد مدير موقع", en: "Site Manager Assistant" },
+    company: { ar: "شركة الخدمات المساندة المحدودة", en: "Supportive Services Co. Ltd." },
     period: { ar: "سابقاً", en: "Previous" },
     current: false,
     desc: {
-      ar: "أدرت الحسابات المالية في شركة الاتصالات السعودية STC — متابعة الفواتير والمصروفات والتقارير المالية بدقة.",
-      en: "Managed financial accounts at STC — tracking invoices, expenses, and financial reports with accuracy.",
+      ar: "إدارة كامباوند سكني — خطط تشغيلية وأمنية، صيانة، عقود، علاقات عملاء.",
+      en: "Managed a residential compound — operational and security plans, maintenance, contracts, customer relations.",
     },
-    icon: Calculator,
+    icon: Settings,
     color: "var(--neon-blue)",
   },
   {
-    role: { ar: "مشرف معرض", en: "Exhibition Supervisor" },
-    company: { ar: "تيفاني العالمية للمجوهرات", en: "Tiffany & Co. International Jewelry" },
+    role: { ar: "فني مختبر هندسي", en: "Engineering Lab Technician" },
+    company: { ar: "شركة العزاز المحدودة", en: "Al-Azaz Co. Ltd." },
     period: { ar: "سابقاً", en: "Previous" },
     current: false,
     desc: {
-      ar: "أشرفت على معرض تيفاني العالمية للمجوهرات — إدارة العرض وتنسيق القطع وتقديم تجربة عملاء راقية.",
-      en: "Supervised Tiffany International Jewelry exhibition — managing displays, coordinating pieces, and delivering premium customer experience.",
+      ar: "فحص التربة والخرسانة، استخراج النتائج المخبرية، وإعداد تقارير الجودة للمشاريع الهندسية.",
+      en: "Soil and concrete testing, lab result extraction, and quality reports for engineering projects.",
     },
-    icon: Gem,
+    icon: FlaskConical,
     color: "var(--neon-pink)",
+  },
+  {
+    role: { ar: "مدير مختبر هندسي", en: "Engineering Lab Manager" },
+    company: { ar: "شركة العصيمي الهندسية", en: "Al-Osaimi Engineering Co." },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "إدارة مختبر مواد البناء — إشراف على فرق الجيوتقنية والخرسانة والأسفلت وضمان الجودة.",
+      en: "Managed a construction materials lab — supervised geotechnical, concrete, and asphalt teams and ensured quality.",
+    },
+    icon: Briefcase,
+    color: "var(--neon-green)",
   },
 ];
 
+// 8 expertise areas from live site
 const expertise = [
-  { ar: "أساسيات الأمن السيبراني ومبادئه", en: "Cyber Security Fundamentals & Principles", icon: ShieldCheck },
-  { ar: "كشف الثغرات واختبار الاختراق", en: "Vulnerability Assessment & Penetration Testing", icon: Bug },
-  { ar: "حماية الشبكات والأجهزة", en: "Network & Endpoint Protection", icon: Network },
-  { ar: "تأمين المواقع والتطبيقات", en: "Web & Application Security", icon: Globe },
-  { ar: "أمن السحابة (Cloud Security)", en: "Cloud Security", icon: Server },
-  { ar: "التشفير والشهادات الرقمية", en: "Cryptography & Digital Certificates", icon: Lock },
+  { ar: "اختبار الاختراق (Penetration Testing)", en: "Penetration Testing", icon: Bug },
+  { ar: "هندسة الشبكات الآمنة (Cisco)", en: "Secure Network Engineering (Cisco)", icon: Network },
+  { ar: "كشف الثغرات وإدارتها", en: "Vulnerability Discovery & Management", icon: Eye },
+  { ar: "أمن التطبيقات والمواقع", en: "Web & Application Security", icon: Globe },
+  { ar: "أمن السحابة والبنية التحتية", en: "Cloud & Infrastructure Security", icon: Server },
   { ar: "الاستجابة للحوادث والتحقيق الجنائي", en: "Incident Response & Digital Forensics", icon: Eye },
-  { ar: "تصميم وتطوير الأنظمة الآمنة", en: "Secure System Design & Development", icon: Code2 },
+  { ar: "أمن الأنظمة التشغيلية (Linux/Windows)", en: "Operating Systems Security (Linux/Windows)", icon: ShieldCheck },
+  { ar: "Scripting & Automation (Python/Bash)", en: "Scripting & Automation (Python/Bash)", icon: Code2 },
 ];
 
 // Real partner / platform logos with brand info
@@ -314,65 +289,55 @@ export default function About() {
             />
             <div className="w-20 h-1 bg-neon-green rounded-full mb-6 shadow-[0_0_10px_var(--neon-green)]" />
 
+            {/* REAL bio — "السيبرانية مش ترف" version */}
             <p className="text-fg/80 leading-relaxed mb-4 text-base">
               {isAr ? (
                 <>
-                  هل سألت نفسك يوماً:{" "}
-                  <span className="text-white font-semibold">
-                    "هل شبكتي آمنة حقاً؟"
-                  </span>{" "}
-                  أنا الخبير خالد محمد عودة الحربي — وأنا هنا لأجيبك على هذا السؤال
-                  بثقة. لست مجرد شخص يقرأ عن الأمن السيبراني؛ أنا من قضى{" "}
-                  <span className="text-neon-green font-bold">+250 ساعة</span>{" "}
-                  يتعلّم من{" "}
-                  <span className="text-neon-green font-semibold">
-                    Coventry University
-                  </span>{" "}
-                  البريطانية، وحصل على{" "}
-                  <span className="text-neon-blue font-bold">12+ شهادة</span>{" "}
-                  موثّقة من{" "}
-                  <span className="text-neon-blue font-semibold">IBM</span> و{" "}
-                  <span className="text-neon-pink font-semibold">Cisco</span> و{" "}
-                  <span className="text-neon-green font-semibold">OPSWAT</span>{" "}
-                  — كلها قابلة للتحقق على Credly بضغطة زر.
+                  أنا <span className="text-white font-semibold">م. خالد محمد الحربي</span> — خبير أمن سيبراني من المملكة العربية السعودية.{" "}
+                  <span className="text-neon-green font-bold">السيبرانية مش ترف — ضرورة.</span>{" "}
+                  وأنا هنا أساعدك تؤمن أعمالك قبل ما المخترقين يسبقونك. بشهادة خبرة ممتدة من كشف الثغرات إلى تحصين الشبكات و الاستجابة للحوادث الأمنية — كل مشروع أتسلمّه يكون بأيدي أمينة ومنهجية احترافية.{" "}
+                  <span className="text-neon-pink font-semibold">لا أقدم وعود كاذبة — أقدم نتائج مثبتة.</span>
                 </>
               ) : (
                 <>
-                  Ever asked yourself:{" "}
-                  <span className="text-white font-semibold">
-                    "Is my network truly secure?"
-                  </span>{" "}
-                  I'm Khalid Mohammed Al-harbi — and I'm here to answer that with
-                  confidence. I'm not just someone who reads about cyber security;
-                  I've spent{" "}
-                  <span className="text-neon-green font-bold">250+ hours</span>{" "}
-                  learning from{" "}
-                  <span className="text-neon-green font-semibold">
-                    Coventry University
-                  </span>{" "}
-                  (UK), earned{" "}
-                  <span className="text-neon-blue font-bold">12+ verified credentials</span>{" "}
-                  from{" "}
-                  <span className="text-neon-blue font-semibold">IBM</span>,{" "}
-                  <span className="text-neon-pink font-semibold">Cisco</span>, and{" "}
-                  <span className="text-neon-green font-semibold">OPSWAT</span> — all
-                  verifiable on Credly with one click.
+                  I'm <span className="text-white font-semibold">Eng. Khalid Mohammed Al-harbi</span> — a Cyber Security Expert from Saudi Arabia.{" "}
+                  <span className="text-neon-green font-bold">Cybersecurity is not a luxury — it's a necessity.</span>{" "}
+                  I'm here to help you secure your business before attackers get ahead. With extensive experience from vulnerability discovery to network hardening and incident response — every project I take is in safe hands with a professional methodology.{" "}
+                  <span className="text-neon-pink font-semibold">No false promises — just proven results.</span>
                 </>
               )}
             </p>
 
             <p className="text-fg/70 leading-relaxed mb-4">
-              {isAr
-                ? "ماذا يعني ذلك لك؟ يعني أنك لا تتعامل مع شخص يدّعي الخبرة — بل مع خبير أثبتها بشهادات موثّقة دولارياً. كل ثغرة أكشفها، كل نظام أؤمّنه، وكل شبكة أحميها — مدعومة بعمق أكاديمي وممارسة عملية مختبرة."
-                : "What does that mean for you? It means you're not dealing with someone who claims expertise — you're dealing with a professional who proved it with internationally verified credentials. Every vulnerability I find, every system I secure, every network I protect — is backed by academic depth and tested practical experience."}
+              {isAr ? (
+                <>
+                  ليست عندي شهادات تجميلية — كل اعتمادي موثّق على{" "}
+                  <span className="text-neon-green font-semibold">Credly</span> و{" "}
+                  <span className="text-neon-blue font-semibold">CPD UK</span> ويمكن التحقق منه بضغطة زر. أستخدم{" "}
+                  <span className="text-neon-green font-semibold">Kali Linux</span> و{" "}
+                  <span className="text-neon-green font-semibold">Metasploit</span> و{" "}
+                  <span className="text-neon-green font-semibold">Nmap</span> وأدوات احترافية حقيقية، لا أدوات هواة. هدفي بسيط:{" "}
+                  <span className="text-white font-bold">أجعل شبكتك آمنة بأعلى معايير البنوك.</span>
+                </>
+              ) : (
+                <>
+                  I don't have cosmetic certificates — all my credentials are verified on{" "}
+                  <span className="text-neon-green font-semibold">Credly</span> and{" "}
+                  <span className="text-neon-blue font-semibold">CPD UK</span> and verifiable with one click. I use{" "}
+                  <span className="text-neon-green font-semibold">Kali Linux</span>,{" "}
+                  <span className="text-neon-green font-semibold">Metasploit</span>, and{" "}
+                  <span className="text-neon-green font-semibold">Nmap</span> — real professional tools, not hobbyist ones. My goal is simple:{" "}
+                  <span className="text-white font-bold">make your network as secure as banking standards.</span>
+                </>
+              )}
             </p>
 
-            {/* Trust indicators */}
+            {/* Trust indicators — REAL stats */}
             <div className="grid grid-cols-3 gap-3 mb-7">
               {[
-                { num: "12+", label: isAr ? "شهادة موثّقة" : "Verified Certs", color: "var(--neon-green)" },
-                { num: "5", label: isAr ? "مشاريع منجزة" : "Live Projects", color: "var(--neon-blue)" },
-                { num: "100%", label: isAr ? "شفافية كاملة" : "Full Transparency", color: "var(--neon-pink)" },
+                { num: "30+", label: isAr ? "شهادة ودورة" : "Certs & Courses", color: "var(--neon-green)" },
+                { num: "8+", label: isAr ? "سنوات خبرة" : "Years Experience", color: "var(--neon-blue)" },
+                { num: "100+", label: isAr ? "دورة تدريبية" : "Training Courses", color: "var(--neon-pink)" },
               ].map((s, i) => (
                 <div
                   key={i}
@@ -386,15 +351,16 @@ export default function About() {
               ))}
             </div>
 
-            {/* CTA line */}
-            <div className="flex items-center gap-2 p-3 rounded-lg bg-neon-green/5 border border-neon-green/20 mb-7">
-              <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse shrink-0" />
-              <p className="text-sm text-fg/70">
-                {isAr
-                  ? "🏆 لا تدّعي — أثبت. كل شهادتي موثّقة على Credly. تحقق بنفسك قبل أن تتعاقد."
-                  : "🏆 I don't claim — I prove. Every credential is verified on Credly. Check for yourself before you contract."}
+            {/* CTA line — "⚡ متاح لمشروعك التالي" */}
+            <a
+              href="#contact-form"
+              className="flex items-center gap-2 p-3 rounded-lg bg-neon-green/5 border border-neon-green/20 mb-7 hover:bg-neon-green/10 transition-colors group"
+            >
+              <Zap size={18} className="text-neon-green shrink-0 group-hover:scale-110 transition-transform" />
+              <p className="text-sm text-fg/80 group-hover:text-white transition-colors">
+                {t("about.cta_available")}
               </p>
-            </div>
+            </a>
 
             {/* Professional Work Experience — خبراتي المهنية */}
             <div className="flex items-center gap-2 mb-1">
@@ -408,8 +374,8 @@ export default function About() {
             </div>
             <p className="text-xs text-fg/50 mb-4">
               {isAr
-                ? "مسيرة مهنية متنوعة عبر شركات رائدة — من الإدارة والمختبرات إلى الأمن السيبراني والبحث العلمي"
-                : "A diverse career across leading companies — from management and labs to cyber security and research"}
+                ? "مسيرة مهنية متنوعة عبر شركات رائدة — من الأمن السيبراني والبحث إلى الإدارة والمختبرات الهندسية"
+                : "A diverse career across leading companies — from cyber security and research to management and engineering labs"}
             </p>
             <div className="space-y-2.5 mb-8 max-h-[640px] overflow-y-auto pr-1 custom-scroll">
               {workExperience.map((job, i) => {
@@ -457,23 +423,10 @@ export default function About() {
                             {isAr ? job.role.ar : job.role.en}
                           </h4>
                         </div>
-                        {job.url ? (
-                          <a
-                            href={job.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs font-bold text-white hover:text-neon-green transition-colors mb-1"
-                          >
-                            <Building2 size={11} className="shrink-0" />
-                            <span className="truncate">{isAr ? job.company.ar : job.company.en}</span>
-                            <ExternalLink size={9} className="shrink-0 opacity-50" />
-                          </a>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 text-xs font-bold text-white mb-1">
-                            <Building2 size={11} className="shrink-0" />
-                            <span className="truncate">{isAr ? job.company.ar : job.company.en}</span>
-                          </span>
-                        )}
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-white mb-1">
+                          <Building2 size={11} className="shrink-0" />
+                          <span className="truncate">{isAr ? job.company.ar : job.company.en}</span>
+                        </span>
                         <p className="text-[11px] sm:text-xs text-fg/55 leading-relaxed mb-1.5 line-clamp-2">
                           {isAr ? job.desc.ar : job.desc.en}
                         </p>
@@ -500,7 +453,7 @@ export default function About() {
               }
             `}</style>
 
-            {/* Expertise grid — خبراتي العملية */}
+            {/* Expertise grid — 8 areas from live site */}
             <div className="flex items-center gap-2 mb-1">
               <ShieldCheck size={20} className="text-neon-green" />
               <h3 className="text-lg font-bold text-white">
@@ -509,8 +462,8 @@ export default function About() {
             </div>
             <p className="text-xs text-fg/50 mb-4">
               {isAr
-                ? "8 مجالات أمن سيبراني أتقنها عملياً — من الاختراق الأخلاقي حتى الدفاع السيبراني"
-                : "8 cyber security domains I master practically — from ethical hacking to cyber defense"}
+                ? "8 مجالات أمن سيبراني أتقنها عملياً — من اختبار الاختراق حتى أمن السحابة والأتمتة"
+                : "8 cyber security domains I master practically — from penetration testing to cloud security and automation"}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-8">
               {expertise.map((e) => {

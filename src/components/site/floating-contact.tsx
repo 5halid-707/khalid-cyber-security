@@ -26,7 +26,7 @@ export default function FloatingContact() {
       label: "GitHub",
     },
     {
-      href: "mailto:khalid-alharbi@zohomail.sa?subject=استفسار%20عن%20خدمات%20الأمن%20السيبراني",
+      href: "mailto:kmalharbi.c@gmail.com?subject=استفسار%20عن%20خدمات%20الأمن%20السيبراني",
       icon: Mail,
       color: "#ff00cc",
       label: "Email",
