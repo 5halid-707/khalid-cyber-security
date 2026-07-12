@@ -7,7 +7,7 @@ export const runtime = "nodejs";
  * Contact form endpoint.
  * Receives: { name, email, phone, service, details }
  * Sends:
- *   1. Email notification to grouthhacker@gmail.com (via Gmail SMTP)
+ *   1. Email notification to khalid-alharbi@zohomail.sa (via Gmail SMTP)
  *   2. Returns WhatsApp link for auto-open
  *
  * === SETUP ===
@@ -18,8 +18,8 @@ export const runtime = "nodejs";
  */
 
 const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER || "966575015019";
-const OWNER_EMAIL = process.env.EMAIL_TO || "grouthhacker@gmail.com";
-const FROM_EMAIL = process.env.EMAIL_FROM || "grouthhacker@gmail.com";
+const OWNER_EMAIL = process.env.EMAIL_TO || "khalid-alharbi@zohomail.sa";
+const FROM_EMAIL = process.env.EMAIL_FROM || "khalid-alharbi@zohomail.sa";
 const EMAIL_PASS = process.env.EMAIL_PASS || "";
 
 export async function POST(req: Request) {

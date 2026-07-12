@@ -1304,3 +1304,48 @@ Stage Summary:
   • STC (مدير حسابات)
   • تيفاني العالمية (مشرف معرض مجوهرات)
 - العرض متوافق مع الجوال + شريط تمرير مخصص + أرقام تسلسلية ملوّنة.
+
+---
+Task ID: 39
+Agent: main (Z.ai Code)
+Task: تحديث رابط نتفليكس + إصلاح thumbnails الجوال + تغيير الإيميل + تطوير برومبت البوت.
+
+Work Log:
+- **تحديث رابط نتفليكس**: غيّرت `https://bright-5halid-nettflix.netlify.app/` → `https://kmhflix.netlify.app/` في previous-works.tsx. الرابط القديم محذوف تماماً (0 matches في HTML).
+- **إصلاح thumbnails على الجوال** (مشكلة: Uber فقط كان يعمل):
+  • السبب: `pauseOnHover` لا يعمل على touch devices، فالـ autoplay كان يستمر ويُبدّل الشرائح أثناء محاولة النقر.
+  • الحل: أضفت `onTouchStart` على container + كل thumbnail لإيقاف الـ autoplay فور اللمس.
+  • `onClick` بـ `e.preventDefault(); e.stopPropagation(); setIsPlaying(false); goTo(i)`.
+  • أضفت `touch-manipulation` class + `WebkitTapHighlightColor: transparent` لتحسين الاستجابة.
+  • `pointer-events-none` على الصورة + الحاوية الداخلية لمنع تداخل الأحداث.
+  • `draggable={false}` على الصورة.
+  • تكبير touch target: `w-14 h-10` → `w-16 h-12` للـ inactive.
+  • أضفت badge رقم (01-06) على كل thumbnail للوضوح.
+  • أضفت زر "استئناف العرض التلقائي" يظهر عند الإيقاف.
+  • `group-active:border-neon-green` لتغذية بصرية عند الضغط.
+- **تغيير الإيميل** من `grouthhacker@gmail.com` → `khalid-alharbi@zohomail.sa` في 6 ملفات:
+  • footer.tsx (2 مواقع)
+  • contact-section.tsx (2 مواقع)
+  • floating-contact.tsx
+  • api/chat/route.ts
+  • api/contact/route.ts (OWNER_EMAIL + FROM_EMAIL)
+  • .env (EMAIL_FROM)
+- **تطوير برومبت البوت الذكي** بالكامل ليشمل كل معلومات الموقع:
+  • معلومات الاتصال الكاملة (الاسم + الإيميل الجديد + واتساب + الموقع).
+  • الخبرات المهنية الـ9 كاملة (ذا هكر ون + 8 شركات سابقة).
+  • التعليم الأكاديمي (Coventry 3 مسارات + 15 دورة).
+  • المؤهلات الـ5 + 8 أوسمة IBM + 2 Cisco + OPSWAT + Alison + 6 دورات Cisco Academy.
+  • 11 خبرة أساسية في الأمن السيبراني.
+  • 10 باقات (7 أساسية + 3 premium) مع الأسعار.
+  • قسم التصاميم (6 خدمات: شعارات/هوية/إعلانات/3D/UI-UX/سوشيال).
+  • الأعمال المنجزة (6 مشاريع مع روابطها: KMHflix/Amazon/Instagram/WhatsApp/Haraj/Uber).
+  • المنصات والأدوات (9 أدوات + 6 منصات اعتماد).
+  • تعليمات رد محدّثة: توجيه للواتساب + الإيميل الجديد + ردود حسب نوع السؤال.
+- **اختبار البوت**: أرسلت "ما هي خبراتك المهنية؟" → ردّ بكل الخبرات الـ9 (ذا هكر ون + مدير مختبر + فني مختبر + مشرف مشاريع + تصميم مواقع + لوجستية + حسابات) ✓
+- ESLint نظيف.
+
+Stage Summary:
+- رابط نتفليكس محدّث إلى `kmhflix.netlify.app` (الرابط القديم محذوف تماماً).
+- thumbnails على الجوال تعمل كلها الآن (6/6) — إيقاف autoplay عند اللمس + touch target أكبر + أرقام واضحة.
+- الإيميل تغيّر في كل الموقع إلى `khalid-alharbi@zohomail.sa` (6 ملفات).
+- البوت الذكي الآن ملقّن بكل معلومات الموقع: 9 خبرات مهنية + 10 باقات + 6 تصاميم + 6 مشاريع + كل الشهادات + معلومات الاتصال.

@@ -42,7 +42,7 @@ const works: Work[] = [
       en: "Movies & series streaming platform with authentic Netflix design — login system, movie pages, trailer playback, interactive notifications. Built with React + full authentication.",
     },
     tech: ["React", "JavaScript", "CSS3", "Toastify", "Authentication"],
-    liveUrl: "https://bright-5halid-nettflix.netlify.app/",
+    liveUrl: "https://kmhflix.netlify.app/",
     preview: "/work-netflix-preview.png",
     icon: Film,
   },
@@ -368,35 +368,72 @@ export default function PreviousWorks() {
         </div>
 
         {/* Dot navigation + thumbnails */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6 flex-wrap px-2">
+        <div
+          className="flex items-center justify-center gap-2 sm:gap-3 mt-6 flex-wrap px-2"
+          onTouchStart={() => setIsPlaying(false)}
+        >
           {works.map((w, i) => {
             const isActive = i === current;
             return (
               <button
                 key={w.title}
-                onClick={() => goTo(i)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIsPlaying(false);
+                  goTo(i);
+                }}
+                onTouchStart={(e) => {
+                  e.stopPropagation();
+                  setIsPlaying(false);
+                }}
                 aria-label={`${isAr ? "عرض مشروع" : "View project"} ${i + 1}: ${isAr ? w.titleAr : w.title}`}
-                className={`group relative transition-all shrink-0 ${
-                  isActive ? "w-20 h-14 sm:w-24 sm:h-16" : "w-14 h-10 sm:w-16 sm:h-12 opacity-60 hover:opacity-100"
+                className={`group relative transition-all shrink-0 touch-manipulation ${
+                  isActive
+                    ? "w-20 h-14 sm:w-24 sm:h-16"
+                    : "w-16 h-12 sm:w-16 sm:h-12 opacity-70 hover:opacity-100"
                 }`}
+                style={{ WebkitTapHighlightColor: "transparent" }}
               >
                 <div
-                  className={`w-full h-full rounded-lg overflow-hidden border-2 transition-all ${
+                  className={`w-full h-full rounded-lg overflow-hidden border-2 transition-all pointer-events-none ${
                     isActive
                       ? "border-neon-green shadow-[0_0_12px_rgba(0,255,204,0.4)]"
-                      : "border-edge group-hover:border-neon-green/50"
+                      : "border-edge group-hover:border-neon-green/50 group-active:border-neon-green"
                   }`}
                 >
                   <img
                     src={w.preview}
                     alt={isAr ? w.titleAr : w.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover pointer-events-none"
+                    draggable={false}
                   />
                 </div>
+                {/* Number badge for mobile clarity */}
+                <span
+                  className={`absolute top-0.5 right-0.5 text-[8px] mono-tech font-bold px-1 rounded ${
+                    isActive ? "bg-neon-green text-[#05080f]" : "bg-black/60 text-white/80"
+                  } pointer-events-none`}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </button>
             );
           })}
         </div>
+
+        {/* Resume autoplay button (mobile-friendly) */}
+        {!isPlaying && (
+          <div className="text-center mt-3">
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="inline-flex items-center gap-1.5 text-[11px] text-fg/50 hover:text-neon-green transition-colors px-3 py-1.5 rounded-full border border-edge"
+            >
+              <Play size={11} />
+              {isAr ? "استئناف العرض التلقائي" : "Resume autoplay"}
+            </button>
+          </div>
+        )}
 
         {/* Track name display below dots — clickable to open project */}
         <div className="text-center mt-4">
