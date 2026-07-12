@@ -1,0 +1,51 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="shield2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00a8e8"/>
+      <stop offset="100%" stop-color="#0066ff"/>
+    </linearGradient>
+    <radialGradient id="hexInner" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00a8e8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00a8e8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg2)"/>
+  <rect width="400" height="300" fill="url(#grid2)"/>
+  <!-- ambient -->
+  <circle cx="200" cy="150" r="110" fill="#00a8e8" opacity="0.05" filter="url(#glow2)"/>
+  <!-- outer dashed ring -->
+  <circle cx="200" cy="150" r="105" fill="none" stroke="#1a2433" stroke-width="1" stroke-dasharray="2 4"/>
+  <!-- outer hexagon -->
+  <polygon points="200,55 282,102 282,198 200,245 118,198 118,102" fill="none" stroke="#1a3a55" stroke-width="1.5"/>
+  <!-- inner hex glow -->
+  <polygon points="200,70 269,110 269,190 200,230 131,190 131,110" fill="url(#hexInner)"/>
+  <!-- shield shape inside -->
+  <g filter="url(#glow2)">
+    <path d="M 200 95 L 245 115 L 245 165 Q 245 200 200 215 Q 155 200 155 165 L 155 115 Z" fill="none" stroke="url(#shield2)" stroke-width="3" stroke-linejoin="round"/>
+    <!-- inner K mark -->
+    <path d="M 188 130 L 188 180 M 188 155 L 215 130 M 188 155 L 215 180" stroke="url(#shield2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- circuit nodes -->
+  <g fill="#00a8e8" filter="url(#glow2)">
+    <circle cx="200" cy="55" r="3"/>
+    <circle cx="282" cy="102" r="3"/>
+    <circle cx="282" cy="198" r="3"/>
+    <circle cx="200" cy="245" r="3"/>
+    <circle cx="118" cy="198" r="3"/>
+    <circle cx="118" cy="102" r="3"/>
+  </g>
+  <!-- text -->
+  <line x1="120" y1="262" x2="280" y2="262" stroke="#1a2433" stroke-width="1"/>
+  <text x="200" y="280" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="11" fill="#4a6577" letter-spacing="4">GEOMETRIC · SYMBOL</text>
+</svg>

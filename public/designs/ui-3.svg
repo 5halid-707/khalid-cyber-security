@@ -1,0 +1,240 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="app15" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d1420"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="neon15" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <linearGradient id="pink15" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#cc00ff"/>
+    </linearGradient>
+    <linearGradient id="chart15" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00ffcc" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow15" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid15" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg15)"/>
+  <rect width="400" height="300" fill="url(#grid15)"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">ADMIN DASHBOARD · ANALYTICS · DARK THEME</text>
+
+  <!-- Dashboard frame -->
+  <g transform="translate(15,35)">
+    <!-- shadow -->
+    <rect x="2" y="4" width="370" height="230" rx="8" fill="#000" opacity="0.5"/>
+    <!-- body -->
+    <rect width="370" height="230" rx="8" fill="url(#app15)" stroke="#1a2433" stroke-width="1.5"/>
+
+    <!-- SIDEBAR -->
+    <g>
+      <rect width="60" height="230" rx="8" fill="#0a1018"/>
+      <rect x="52" y="0" width="8" height="230" fill="#0a1018"/>
+      <!-- logo -->
+      <g transform="translate(15,15)" filter="url(#glow15)">
+        <path d="M 0 0 L 0 16 M 0 8 L 14 0 M 0 8 L 14 16" stroke="url(#neon15)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+      <text x="30" y="42" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="6" font-weight="900" fill="url(#neon15)">KMH</text>
+      <line x1="10" y1="50" x2="50" y2="50" stroke="#1a2433"/>
+      <!-- nav items -->
+      <g transform="translate(0,60)">
+        <!-- active item -->
+        <rect x="6" y="0" width="48" height="14" rx="3" fill="#00ffcc" opacity="0.12"/>
+        <rect x="6" y="0" width="2" height="14" fill="#00ffcc" filter="url(#glow15)"/>
+        <g transform="translate(20,4)" stroke="#00ffcc" stroke-width="1" fill="none">
+          <rect width="10" height="8" rx="1"/>
+          <line x1="3" y1="3" x2="7" y2="3"/>
+          <line x1="3" y1="5" x2="7" y2="5"/>
+        </g>
+        <!-- items -->
+        <g transform="translate(0,20)" stroke="#5a6a7a" stroke-width="1" fill="none">
+          <rect x="20" y="4" width="10" height="8" rx="1"/>
+          <line x1="20" y1="14" x2="30" y2="14"/>
+        </g>
+        <g transform="translate(0,40)" stroke="#5a6a7a" stroke-width="1" fill="none">
+          <circle cx="25" cy="8" r="4"/>
+          <line x1="25" y1="8" x2="25" y2="4"/>
+        </g>
+        <g transform="translate(0,60)" stroke="#5a6a7a" stroke-width="1" fill="none">
+          <polygon points="25,4 30,9 25,14 20,9"/>
+        </g>
+        <g transform="translate(0,80)" stroke="#5a6a7a" stroke-width="1" fill="none">
+          <circle cx="22" cy="6" r="2"/>
+          <path d="M 18 14 Q 22 10 26 14"/>
+          <circle cx="28" cy="10" r="1.5"/>
+        </g>
+      </g>
+      <!-- user at bottom -->
+      <g transform="translate(15,200)">
+        <circle cx="15" cy="8" r="7" fill="#0a1018" stroke="#1a3a55"/>
+        <circle cx="15" cy="6" r="2.5" fill="#00ffcc" opacity="0.6"/>
+        <path d="M 10 14 Q 15 10 20 14" fill="#00ffcc" opacity="0.4"/>
+      </g>
+    </g>
+
+    <!-- MAIN content -->
+    <g transform="translate(60,0)">
+      <!-- top bar -->
+      <rect x="0" y="0" width="310" height="22" fill="#0a1018"/>
+      <text x="12" y="14" font-family="'Arial Black', sans-serif" font-size="8" font-weight="900" fill="#e6f0ff">Analytics Overview</text>
+      <text x="12" y="20" font-family="monospace" font-size="5" fill="#5a6a7a">Last 30 days</text>
+      <!-- search -->
+      <rect x="170" y="6" width="90" height="10" rx="5" fill="#05080f" stroke="#1a2433"/>
+      <text x="175" y="13" font-family="monospace" font-size="5" fill="#3a4a5a">Search...</text>
+      <!-- icons -->
+      <circle cx="270" cy="11" r="4" fill="none" stroke="#5a6a7a" stroke-width="0.8"/>
+      <circle cx="285" cy="9" r="0.8" fill="#ff00cc"/>
+      <circle cx="289" cy="11" r="0.8" fill="#ff00cc"/>
+      <circle cx="295" cy="11" r="4" fill="none" stroke="#5a6a7a" stroke-width="0.8"/>
+      <line x1="295" y1="8" x2="295" y2="10" stroke="#5a6a7a" stroke-width="0.6"/>
+
+      <!-- KPI Cards row -->
+      <g transform="translate(10,30)">
+        <!-- card 1 -->
+        <g>
+          <rect width="90" height="40" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+          <text x="6" y="12" font-family="monospace" font-size="5" fill="#7a8a99">REVENUE</text>
+          <text x="6" y="26" font-family="'Arial Black', sans-serif" font-size="11" font-weight="900" fill="#00ffcc" filter="url(#glow15)">SAR 84.2K</text>
+          <text x="6" y="34" font-family="monospace" font-size="4" fill="#00ffcc">▲ 12.4%</text>
+          <!-- sparkline -->
+          <polyline points="60,30 65,26 70,28 75,20 80,22 85,14" fill="none" stroke="#00ffcc" stroke-width="0.8" filter="url(#glow15)"/>
+        </g>
+        <!-- card 2 -->
+        <g transform="translate(100,0)">
+          <rect width="90" height="40" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+          <text x="6" y="12" font-family="monospace" font-size="5" fill="#7a8a99">USERS</text>
+          <text x="6" y="26" font-family="'Arial Black', sans-serif" font-size="11" font-weight="900" fill="#00a8e8" filter="url(#glow15)">12,480</text>
+          <text x="6" y="34" font-family="monospace" font-size="4" fill="#00a8e8">▲ 8.1%</text>
+          <polyline points="60,28 65,30 70,22 75,24 80,18 85,20" fill="none" stroke="#00a8e8" stroke-width="0.8" filter="url(#glow15)"/>
+        </g>
+        <!-- card 3 -->
+        <g transform="translate(200,0)">
+          <rect width="90" height="40" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+          <text x="6" y="12" font-family="monospace" font-size="5" fill="#7a8a99">CONVERSION</text>
+          <text x="6" y="26" font-family="'Arial Black', sans-serif" font-size="11" font-weight="900" fill="#ff00cc" filter="url(#glow15)">3.84%</text>
+          <text x="6" y="34" font-family="monospace" font-size="4" fill="#ff00cc">▲ 0.4%</text>
+          <polyline points="60,26 65,28 70,20 75,22 80,16 85,12" fill="none" stroke="#ff00cc" stroke-width="0.8" filter="url(#glow15)"/>
+        </g>
+      </g>
+
+      <!-- Chart panel -->
+      <g transform="translate(10,76)">
+        <rect width="195" height="84" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+        <text x="6" y="12" font-family="'Arial Black', sans-serif" font-size="7" font-weight="900" fill="#e6f0ff">Traffic Analytics</text>
+        <text x="6" y="20" font-family="monospace" font-size="4" fill="#5a6a7a">Visitors over time</text>
+        <!-- legend -->
+        <circle cx="135" cy="10" r="2" fill="#00ffcc"/>
+        <text x="140" y="13" font-family="monospace" font-size="4" fill="#7a8a99">Visits</text>
+        <circle cx="160" cy="10" r="2" fill="#00a8e8"/>
+        <text x="165" y="13" font-family="monospace" font-size="4" fill="#7a8a99">Conv.</text>
+
+        <!-- grid lines -->
+        <g stroke="#1a2433" stroke-width="0.4">
+          <line x1="6" y1="30" x2="189" y2="30"/>
+          <line x1="6" y1="45" x2="189" y2="45"/>
+          <line x1="6" y1="60" x2="189" y2="60"/>
+          <line x1="6" y1="75" x2="189" y2="75"/>
+        </g>
+        <!-- area chart -->
+        <path d="M 6 65 L 25 55 L 44 60 L 63 40 L 82 45 L 101 30 L 120 35 L 139 25 L 158 28 L 177 20 L 189 22 L 189 75 L 6 75 Z" fill="url(#chart15)"/>
+        <path d="M 6 65 L 25 55 L 44 60 L 63 40 L 82 45 L 101 30 L 120 35 L 139 25 L 158 28 L 177 20 L 189 22" fill="none" stroke="#00ffcc" stroke-width="1.2" filter="url(#glow15)"/>
+        <!-- second line -->
+        <path d="M 6 70 L 25 68 L 44 64 L 63 60 L 82 58 L 101 50 L 120 52 L 139 48 L 158 42 L 177 40 L 189 38" fill="none" stroke="#00a8e8" stroke-width="1" opacity="0.8"/>
+        <!-- x-axis labels -->
+        <g font-family="monospace" font-size="3.5" fill="#3a4a5a">
+          <text x="6" y="82">Jan</text>
+          <text x="44" y="82">Mar</text>
+          <text x="82" y="82">May</text>
+          <text x="120" y="82">Jul</text>
+          <text x="158" y="82">Sep</text>
+          <text x="183" y="82">Dec</text>
+        </g>
+      </g>
+
+      <!-- Side panel -->
+      <g transform="translate(212,76)">
+        <rect width="86" height="84" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+        <text x="6" y="12" font-family="'Arial Black', sans-serif" font-size="7" font-weight="900" fill="#e6f0ff">Top Sources</text>
+
+        <!-- bar chart -->
+        <g transform="translate(6,20)">
+          <text x="0" y="6" font-family="monospace" font-size="4" fill="#7a8a99">Direct</text>
+          <rect x="30" y="2" width="46" height="4" rx="1" fill="#00ffcc" filter="url(#glow15)"/>
+          <text x="76" y="6" text-anchor="end" font-family="monospace" font-size="4" fill="#00ffcc">42%</text>
+        </g>
+        <g transform="translate(6,32)">
+          <text x="0" y="6" font-family="monospace" font-size="4" fill="#7a8a99">Search</text>
+          <rect x="30" y="2" width="34" height="4" rx="1" fill="#00a8e8" filter="url(#glow15)"/>
+          <text x="76" y="6" text-anchor="end" font-family="monospace" font-size="4" fill="#00a8e8">31%</text>
+        </g>
+        <g transform="translate(6,44)">
+          <text x="0" y="6" font-family="monospace" font-size="4" fill="#7a8a99">Social</text>
+          <rect x="30" y="2" width="22" height="4" rx="1" fill="#ff00cc" filter="url(#glow15)"/>
+          <text x="76" y="6" text-anchor="end" font-family="monospace" font-size="4" fill="#ff00cc">18%</text>
+        </g>
+        <g transform="translate(6,56)">
+          <text x="0" y="6" font-family="monospace" font-size="4" fill="#7a8a99">Other</text>
+          <rect x="30" y="2" width="8" height="4" rx="1" fill="#7a8a99"/>
+          <text x="76" y="6" text-anchor="end" font-family="monospace" font-size="4" fill="#7a8a99">9%</text>
+        </g>
+        <!-- donut chart -->
+        <g transform="translate(60,72)">
+          <circle r="8" fill="none" stroke="#1a2433" stroke-width="3"/>
+          <circle r="8" fill="none" stroke="#00ffcc" stroke-width="3" stroke-dasharray="20 50" filter="url(#glow15)" transform="rotate(-90)"/>
+        </g>
+      </g>
+
+      <!-- Bottom table -->
+      <g transform="translate(10,166)">
+        <rect width="290" height="54" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+        <text x="6" y="10" font-family="'Arial Black', sans-serif" font-size="6" font-weight="900" fill="#e6f0ff">Recent Activity</text>
+        <text x="284" y="10" text-anchor="end" font-family="monospace" font-size="4" fill="#5a6a7a">VIEW ALL</text>
+        <!-- header row -->
+        <rect x="6" y="14" width="278" height="6" fill="#05080f"/>
+        <text x="10" y="19" font-family="monospace" font-size="4" fill="#5a6a7a">USER</text>
+        <text x="100" y="19" font-family="monospace" font-size="4" fill="#5a6a7a">ACTION</text>
+        <text x="200" y="19" font-family="monospace" font-size="4" fill="#5a6a7a">STATUS</text>
+        <text x="260" y="19" font-family="monospace" font-size="4" fill="#5a6a7a">TIME</text>
+        <!-- rows -->
+        <g font-family="monospace" font-size="4" fill="#9aaabd">
+          <text x="10" y="28">● khalid_h</text>
+          <text x="100" y="28">New project created</text>
+          <rect x="200" y="24" width="22" height="6" rx="2" fill="#00ffcc" opacity="0.2"/>
+          <text x="211" y="28" text-anchor="middle" fill="#00ffcc">DONE</text>
+          <text x="260" y="28">2m</text>
+        </g>
+        <g font-family="monospace" font-size="4" fill="#9aaabd">
+          <text x="10" y="36">● designer_a</text>
+          <text x="100" y="36">Logo uploaded</text>
+          <rect x="200" y="32" width="22" height="6" rx="2" fill="#00a8e8" opacity="0.2"/>
+          <text x="211" y="36" text-anchor="middle" fill="#00a8e8">REVIEW</text>
+          <text x="260" y="36">8m</text>
+        </g>
+        <g font-family="monospace" font-size="4" fill="#9aaabd">
+          <text x="10" y="44">● client_42</text>
+          <text x="100" y="44">Payment received</text>
+          <rect x="200" y="40" width="22" height="6" rx="2" fill="#ff00cc" opacity="0.2"/>
+          <text x="211" y="44" text-anchor="middle" fill="#ff00cc">PAID</text>
+          <text x="260" y="44">15m</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <text x="200" y="290" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">ADMIN PANEL · CHARTS · SIDEBAR NAV</text>
+</svg>

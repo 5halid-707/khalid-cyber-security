@@ -1,0 +1,161 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg14" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="browser14" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d1420"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="neon14" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <linearGradient id="pink14" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#cc00ff"/>
+    </linearGradient>
+    <linearGradient id="hero14" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1018"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <radialGradient id="heroGlow14" cx="30%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#00ffcc" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow14" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid14" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg14)"/>
+  <rect width="400" height="300" fill="url(#grid14)"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">WEBSITE LANDING PAGE UI · HERO + CARDS</text>
+
+  <!-- Browser window -->
+  <g transform="translate(25,40)">
+    <!-- shadow -->
+    <rect x="2" y="4" width="350" height="220" rx="8" fill="#000" opacity="0.5"/>
+    <!-- browser body -->
+    <rect width="350" height="220" rx="8" fill="url(#browser14)" stroke="#1a2433" stroke-width="1.5"/>
+    <!-- top bar -->
+    <rect width="350" height="18" rx="8" fill="#0a1018"/>
+    <rect y="10" width="350" height="8" fill="#0a1018"/>
+    <circle cx="10" cy="9" r="3" fill="#ff0066" opacity="0.7"/>
+    <circle cx="20" cy="9" r="3" fill="#ffcc00" opacity="0.7"/>
+    <circle cx="30" cy="9" r="3" fill="#00ff66" opacity="0.7"/>
+    <!-- url bar -->
+    <rect x="60" y="4" width="220" height="10" rx="5" fill="#05080f" stroke="#1a2433"/>
+    <circle cx="68" cy="9" r="2" fill="none" stroke="#00ffcc" stroke-width="0.6"/>
+    <text x="74" y="12" font-family="monospace" font-size="6" fill="#5a6a7a">https://kmh.studio</text>
+    <text x="335" y="12" text-anchor="end" font-family="monospace" font-size="6" fill="#5a6a7a">⟳</text>
+
+    <!-- Navbar -->
+    <g transform="translate(0,22)">
+      <rect width="350" height="20" fill="#0a1018"/>
+      <!-- logo -->
+      <g transform="translate(12,4)" filter="url(#glow14)">
+        <path d="M 0 1 L 0 11 M 0 6 L 8 1 M 0 6 L 8 11" stroke="url(#neon14)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <text x="26" y="14" font-family="'Arial Black', sans-serif" font-size="8" font-weight="900" fill="#e6f0ff" letter-spacing="1">KMH.</text>
+      <!-- nav items -->
+      <g font-family="monospace" font-size="6" fill="#7a8a99">
+        <text x="200" y="14">Home</text>
+        <text x="225" y="14">Services</text>
+        <text x="262" y="14">Portfolio</text>
+        <text x="298" y="14">About</text>
+      </g>
+      <rect x="320" y="6" width="22" height="9" rx="4" fill="url(#neon14)" filter="url(#glow14)"/>
+      <text x="331" y="13" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="5" font-weight="900" fill="#05080f">CONTACT</text>
+    </g>
+
+    <!-- HERO section -->
+    <g transform="translate(0,42)">
+      <rect width="350" height="100" fill="url(#hero14)"/>
+      <rect width="350" height="100" fill="url(#heroGlow14)"/>
+      <!-- left text -->
+      <text x="20" y="22" font-family="'Share Tech Mono', monospace" font-size="6" fill="#00ffcc" letter-spacing="2">// CYBER × DESIGN</text>
+      <text x="20" y="42" font-family="'Arial Black', sans-serif" font-size="18" font-weight="900" fill="#e6f0ff" letter-spacing="1">CREATIVE BY</text>
+      <text x="20" y="58" font-family="'Arial Black', sans-serif" font-size="18" font-weight="900" fill="url(#neon14)" filter="url(#glow14)" letter-spacing="1">DESIGN.</text>
+      <text x="20" y="72" font-family="monospace" font-size="6" fill="#7a8a99">Cybersecurity meets premium visual identity.</text>
+      <!-- CTA buttons -->
+      <rect x="20" y="80" width="60" height="14" rx="3" fill="url(#neon14)" filter="url(#glow14)"/>
+      <text x="50" y="89" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="6" font-weight="900" fill="#05080f">GET STARTED</text>
+      <rect x="85" y="80" width="50" height="14" rx="3" fill="none" stroke="#1a3a55"/>
+      <text x="110" y="89" text-anchor="middle" font-family="monospace" font-size="5" fill="#9aaabd">LEARN MORE</text>
+
+      <!-- right: abstract hero visual -->
+      <g transform="translate(260,50)">
+        <circle r="40" fill="none" stroke="#1a3a55" stroke-width="0.8" stroke-dasharray="2 3"/>
+        <circle r="28" fill="none" stroke="url(#neon14)" stroke-width="0.8" opacity="0.7"/>
+        <circle r="16" fill="none" stroke="url(#pink14)" stroke-width="0.8" opacity="0.7"/>
+        <polygon points="0,-10 9,5 -9,5" fill="url(#neon14)" filter="url(#glow14)"/>
+        <!-- floating dots -->
+        <circle cx="-35" cy="-15" r="2" fill="#00ffcc" filter="url(#glow14)"/>
+        <circle cx="35" cy="20" r="2" fill="#ff00cc" filter="url(#glow14)"/>
+        <circle cx="20" cy="-30" r="1.5" fill="#00a8e8" filter="url(#glow14)"/>
+      </g>
+      <!-- stat row -->
+      <g transform="translate(20,108)">
+        <text x="0" y="6" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#00ffcc">150+</text>
+        <text x="0" y="12" font-family="monospace" font-size="4" fill="#5a6a7a">PROJECTS</text>
+        <text x="55" y="6" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#00a8e8">98%</text>
+        <text x="55" y="12" font-family="monospace" font-size="4" fill="#5a6a7a">SATISFACTION</text>
+        <text x="115" y="6" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#ff00cc">8+</text>
+        <text x="115" y="12" font-family="monospace" font-size="4" fill="#5a6a7a">YEARS</text>
+      </g>
+    </g>
+
+    <!-- Cards section -->
+    <g transform="translate(0,150)">
+      <rect width="350" height="62" fill="#05080f"/>
+      <text x="20" y="10" font-family="'Share Tech Mono', monospace" font-size="6" fill="#335566" letter-spacing="2">// SERVICES</text>
+      <!-- card 1 -->
+      <g transform="translate(15,16)">
+        <rect width="100" height="42" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+        <rect x="0" y="0" width="100" height="2" rx="1" fill="#00ffcc" filter="url(#glow14)"/>
+        <g transform="translate(8,8)" filter="url(#glow14)">
+          <rect width="8" height="8" rx="2" fill="none" stroke="#00ffcc" stroke-width="1"/>
+          <path d="M 4 2 L 4 6 M 2 4 L 6 4" stroke="#00ffcc" stroke-width="0.8"/>
+        </g>
+        <text x="22" y="14" font-family="'Arial Black', sans-serif" font-size="6" font-weight="900" fill="#e6f0ff">SECURITY</text>
+        <rect x="8" y="22" width="60" height="2" fill="#335566"/>
+        <rect x="8" y="26" width="50" height="2" fill="#335566"/>
+        <rect x="8" y="34" width="20" height="5" rx="1" fill="#00ffcc" opacity="0.2"/>
+      </g>
+      <!-- card 2 -->
+      <g transform="translate(125,16)">
+        <rect width="100" height="42" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+        <rect x="0" y="0" width="100" height="2" rx="1" fill="#00a8e8" filter="url(#glow14)"/>
+        <g transform="translate(8,8)" filter="url(#glow14)">
+          <circle cx="4" cy="4" r="3.5" fill="none" stroke="#00a8e8" stroke-width="1"/>
+          <circle cx="4" cy="4" r="1.5" fill="#00a8e8"/>
+        </g>
+        <text x="22" y="14" font-family="'Arial Black', sans-serif" font-size="6" font-weight="900" fill="#e6f0ff">DESIGN</text>
+        <rect x="8" y="22" width="60" height="2" fill="#335566"/>
+        <rect x="8" y="26" width="50" height="2" fill="#335566"/>
+        <rect x="8" y="34" width="20" height="5" rx="1" fill="#00a8e8" opacity="0.2"/>
+      </g>
+      <!-- card 3 -->
+      <g transform="translate(235,16)">
+        <rect width="100" height="42" rx="4" fill="#0a1018" stroke="#1a3a55"/>
+        <rect x="0" y="0" width="100" height="2" rx="1" fill="#ff00cc" filter="url(#glow14)"/>
+        <g transform="translate(8,8)" filter="url(#glow14)">
+          <polygon points="4,0 8,4 4,8 0,4" fill="none" stroke="#ff00cc" stroke-width="1"/>
+        </g>
+        <text x="22" y="14" font-family="'Arial Black', sans-serif" font-size="6" font-weight="900" fill="#e6f0ff">BRANDING</text>
+        <rect x="8" y="22" width="60" height="2" fill="#335566"/>
+        <rect x="8" y="26" width="50" height="2" fill="#335566"/>
+        <rect x="8" y="34" width="20" height="5" rx="1" fill="#ff00cc" opacity="0.2"/>
+      </g>
+    </g>
+  </g>
+
+  <text x="200" y="290" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">LANDING PAGE · RESPONSIVE · DARK UI</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="pink3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="50%" stop-color="#cc00ff"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg3)"/>
+  <rect width="400" height="300" fill="url(#grid3)"/>
+  <!-- ambient -->
+  <ellipse cx="200" cy="155" rx="130" ry="55" fill="#ff00cc" opacity="0.06" filter="url(#glow3)"/>
+  <!-- frame -->
+  <g stroke="#1a2433" stroke-width="1" fill="none">
+    <path d="M 20 20 L 20 40 M 20 20 L 40 20"/>
+    <path d="M 380 20 L 380 40 M 380 20 L 360 20"/>
+    <path d="M 20 280 L 20 260 M 20 280 L 40 280"/>
+    <path d="M 380 280 L 380 260 M 380 280 L 360 280"/>
+  </g>
+  <!-- Wordmark KMH -->
+  <g filter="url(#glow3)">
+    <text x="200" y="180" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="92" font-weight="900" fill="url(#pink3)" letter-spacing="6">KMH</text>
+  </g>
+  <!-- underline accent -->
+  <g filter="url(#glow3)">
+    <rect x="130" y="200" width="140" height="3" fill="url(#pink3)" rx="1"/>
+  </g>
+  <!-- accent squares -->
+  <g fill="#ff00cc" filter="url(#glow3)">
+    <rect x="118" y="201" width="6" height="6"/>
+    <rect x="276" y="201" width="6" height="6"/>
+  </g>
+  <!-- subtitle -->
+  <text x="200" y="232" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="10" fill="#7a4a6a" letter-spacing="8">STUDIO · WORDMARK</text>
+  <!-- top label -->
+  <text x="200" y="80" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="10" fill="#335566" letter-spacing="6">— TYPOGRAPHY —</text>
+</svg>

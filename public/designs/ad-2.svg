@@ -1,0 +1,101 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="post8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1420"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="neon8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="50%" stop-color="#cc00ff"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <linearGradient id="cta8" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow8" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid8" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg8)"/>
+  <rect width="400" height="300" fill="url(#grid8)"/>
+
+  <!-- top label -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">SPONSORED · INSTAGRAM POST</text>
+
+  <!-- phone-ish frame for IG post (square 240x240) -->
+  <g transform="translate(80,40)">
+    <rect width="240" height="240" rx="10" fill="url(#post8)" stroke="#1a2433" stroke-width="1.5"/>
+    <!-- neon frame glow -->
+    <rect x="3" y="3" width="234" height="234" rx="8" fill="none" stroke="url(#neon8)" stroke-width="1" opacity="0.6" filter="url(#glow8)"/>
+    <!-- inner corners -->
+    <g stroke="url(#neon8)" stroke-width="2" fill="none" filter="url(#glow8)">
+      <path d="M 10 22 L 10 10 L 22 10"/>
+      <path d="M 230 22 L 230 10 L 218 10"/>
+      <path d="M 10 218 L 10 230 L 22 230"/>
+      <path d="M 230 218 L 230 230 L 218 230"/>
+    </g>
+
+    <!-- IG top bar -->
+    <g transform="translate(12,18)">
+      <circle cx="10" cy="10" r="9" fill="none" stroke="url(#neon8)" stroke-width="1.2"/>
+      <circle cx="10" cy="10" r="4" fill="#ff00cc" opacity="0.7"/>
+      <rect x="26" y="6" width="60" height="3" fill="#4a6577"/>
+      <rect x="26" y="12" width="40" height="2" fill="#2a3543"/>
+      <circle cx="218" cy="10" r="2" fill="#00ffcc"/>
+      <circle cx="212" cy="10" r="2" fill="#00ffcc"/>
+      <circle cx="206" cy="10" r="2" fill="#00ffcc"/>
+    </g>
+
+    <!-- center content -->
+    <g transform="translate(120,115)" text-anchor="middle">
+      <!-- abstract neon shape -->
+      <g filter="url(#glow8)" transform="translate(0,-20)">
+        <circle r="28" fill="none" stroke="#ff00cc" stroke-width="1.5" opacity="0.6"/>
+        <circle r="18" fill="none" stroke="#00a8e8" stroke-width="1.5" opacity="0.8"/>
+        <polygon points="0,-10 9,5 -9,5" fill="url(#neon8)"/>
+      </g>
+      <text y="20" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="url(#neon8)" filter="url(#glow8)">NEW</text>
+      <text y="42" font-family="'Arial Black', sans-serif" font-size="14" font-weight="900" fill="#e6f0ff" letter-spacing="3">COLLECTION</text>
+      <text y="58" font-family="'Share Tech Mono', monospace" font-size="8" fill="#5a6a7a" letter-spacing="2">— AUTUMN / 2025 —</text>
+    </g>
+
+    <!-- CTA button -->
+    <g transform="translate(60,195)">
+      <rect width="120" height="30" rx="15" fill="url(#cta8)" filter="url(#glow8)"/>
+      <text x="60" y="20" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="12" font-weight="900" fill="#05080f" letter-spacing="2">SHOP NOW →</text>
+    </g>
+
+    <!-- IG bottom bar -->
+    <g transform="translate(12,222)">
+      <rect x="0" y="0" width="14" height="14" rx="3" fill="none" stroke="#4a6577" stroke-width="1.2"/>
+      <rect x="22" y="0" width="14" height="14" rx="3" fill="none" stroke="#4a6577" stroke-width="1.2"/>
+      <rect x="44" y="0" width="14" height="14" rx="3" fill="none" stroke="#4a6577" stroke-width="1.2"/>
+      <rect x="200" y="0" width="14" height="14" rx="3" fill="none" stroke="#4a6577" stroke-width="1.2"/>
+      <text x="110" y="12" text-anchor="middle" font-family="monospace" font-size="7" fill="#5a6a7a">1,247 likes</text>
+    </g>
+  </g>
+
+  <!-- side annotations -->
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="2">
+    <text x="20" y="100">1080 ×</text>
+    <text x="20" y="112">1080 PX</text>
+    <text x="20" y="124">SQUARE</text>
+    <line x1="20" y1="135" x2="60" y2="135" stroke="#1a3a55"/>
+    <text x="20" y="150">SPONSORED</text>
+    <text x="330" y="100" text-anchor="end">REACH:</text>
+    <text x="330" y="112" text-anchor="end" fill="#00ffcc">42.7K</text>
+    <text x="330" y="124" text-anchor="end">CTR:</text>
+    <text x="330" y="136" text-anchor="end" fill="#ff00cc">3.8%</text>
+  </g>
+
+  <text x="200" y="296" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">SOCIAL AD · NEON FRAME · SHOP NOW CTA</text>
+</svg>

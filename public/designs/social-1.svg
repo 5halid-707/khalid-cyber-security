@@ -1,0 +1,119 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="post16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1420"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="neon16" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <linearGradient id="pink16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#cc00ff"/>
+    </linearGradient>
+    <linearGradient id="offer16" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow16" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid16" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg16)"/>
+  <rect width="400" height="300" fill="url(#grid16)"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">INSTAGRAM POST · OFFER TEMPLATE · 1080×1080</text>
+
+  <!-- Side annotations -->
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="20" y="60">DIM</text>
+    <text x="20" y="72">1080²</text>
+    <text x="20" y="84">SQUARE</text>
+    <line x1="20" y1="92" x2="60" y2="92" stroke="#1a3a55"/>
+    <text x="20" y="108">PLATFORM</text>
+    <text x="20" y="120" fill="#ff00cc">INSTAGRAM</text>
+    <text x="380" y="60" text-anchor="end">REACH</text>
+    <text x="380" y="72" text-anchor="end" fill="#00ffcc">128.4K</text>
+    <line x1="340" y1="80" x2="380" y2="80" stroke="#1a3a55"/>
+    <text x="380" y="96" text-anchor="end">ENGAGE</text>
+    <text x="380" y="108" text-anchor="end" fill="#00a8e8">8.2%</text>
+  </g>
+
+  <!-- IG post container -->
+  <g transform="translate(80,40)">
+    <rect width="240" height="240" rx="10" fill="url(#post16)" stroke="#1a2433" stroke-width="1.5"/>
+    <!-- frame glow -->
+    <rect x="3" y="3" width="234" height="234" rx="8" fill="none" stroke="url(#neon16)" stroke-width="0.6" opacity="0.4" filter="url(#glow16)"/>
+
+    <!-- geometric background shapes -->
+    <g opacity="0.5">
+      <!-- diagonal lines -->
+      <line x1="0" y1="240" x2="120" y2="0" stroke="#1a3a55" stroke-width="0.5"/>
+      <line x1="60" y1="240" x2="180" y2="0" stroke="#1a3a55" stroke-width="0.5"/>
+      <line x1="120" y1="240" x2="240" y2="0" stroke="#1a3a55" stroke-width="0.5"/>
+      <!-- circles -->
+      <circle cx="200" cy="50" r="30" fill="none" stroke="url(#pink16)" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="200" cy="50" r="18" fill="none" stroke="url(#neon16)" stroke-width="0.6" opacity="0.5"/>
+      <circle cx="40" cy="200" r="22" fill="none" stroke="url(#neon16)" stroke-width="0.6" opacity="0.5"/>
+    </g>
+
+    <!-- top tag -->
+    <g transform="translate(20,20)">
+      <rect width="60" height="14" rx="7" fill="url(#neon16)" filter="url(#glow16)"/>
+      <text x="30" y="10" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="7" font-weight="900" fill="#05080f" letter-spacing="1">★ EXCLUSIVE</text>
+    </g>
+
+    <!-- Brand logo top right -->
+    <g transform="translate(210,20)" filter="url(#glow16)">
+      <path d="M 0 0 L 0 16 M 0 8 L 14 0 M 0 8 L 14 16" stroke="url(#neon16)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- big OFFER text -->
+    <g transform="translate(120,110)" text-anchor="middle">
+      <text font-family="'Share Tech Mono', monospace" font-size="9" fill="#5a6a7a" y="-30" letter-spacing="3">— LIMITED TIME —</text>
+      <g filter="url(#glow16)">
+        <text font-family="'Arial Black', sans-serif" font-size="48" font-weight="900" fill="url(#offer16)" y="10" letter-spacing="2">OFFER</text>
+      </g>
+      <text font-family="'Arial Black', sans-serif" font-size="40" font-weight="900" fill="#ffffff" y="55" letter-spacing="3">50% OFF</text>
+      <text font-family="'Share Tech Mono', monospace" font-size="8" fill="#9aaabd" y="74" letter-spacing="2">ON ALL DESIGN SERVICES</text>
+    </g>
+
+    <!-- decorative geometric shapes (corners) -->
+    <g filter="url(#glow16)">
+      <polygon points="20,90 35,90 27.5,77" fill="none" stroke="#ff00cc" stroke-width="1.2"/>
+      <polygon points="220,90 220,105 233,97.5" fill="none" stroke="#00ffcc" stroke-width="1.2"/>
+      <rect x="20" y="195" width="12" height="12" fill="none" stroke="#00a8e8" stroke-width="1.2" transform="rotate(45 26 201)"/>
+      <circle cx="215" cy="200" r="6" fill="none" stroke="#ff00cc" stroke-width="1.2"/>
+      <circle cx="215" cy="200" r="2" fill="#ff00cc"/>
+    </g>
+
+    <!-- CTA -->
+    <g transform="translate(60,210)">
+      <rect width="120" height="22" rx="11" fill="url(#pink16)" filter="url(#glow16)"/>
+      <text x="60" y="15" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#ffffff" letter-spacing="2">CLAIM NOW →</text>
+    </g>
+
+    <!-- bottom URL -->
+    <text x="120" y="245" text-anchor="middle" font-family="monospace" font-size="6" fill="#4a6577" letter-spacing="2">www.kmh.studio · @kmh.studio</text>
+
+    <!-- corner cuts -->
+    <g stroke="url(#neon16)" stroke-width="1.5" fill="none" filter="url(#glow16)">
+      <path d="M 10 22 L 10 10 L 22 10"/>
+      <path d="M 230 22 L 230 10 L 218 10"/>
+      <path d="M 10 218 L 10 230 L 22 230"/>
+      <path d="M 230 218 L 230 230 L 218 230"/>
+    </g>
+  </g>
+
+  <text x="200" y="294" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">SOCIAL · IG POST · GEOMETRIC · OFFER</text>
+</svg>

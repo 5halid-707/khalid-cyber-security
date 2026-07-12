@@ -1,0 +1,140 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <radialGradient id="spot10" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#00ffcc" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="abaya10" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2433"/>
+      <stop offset="50%" stop-color="#0a1018"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="abayaFold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a1018"/>
+      <stop offset="50%" stop-color="#1a2433"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="pedestal10" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a1018"/>
+      <stop offset="50%" stop-color="#1a2433"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="gold10" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#ff8c00"/>
+    </linearGradient>
+    <filter id="glow10" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid10" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg10)"/>
+  <rect width="400" height="300" fill="url(#grid10)"/>
+  <!-- spotlight -->
+  <rect width="400" height="300" fill="url(#spot10)"/>
+  <!-- spotlight beam -->
+  <polygon points="170,0 230,0 280,150 120,150" fill="#00ffcc" opacity="0.04"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">3D MODEL · ABAYA · FASHION PRODUCT</text>
+
+  <!-- floor reflection -->
+  <ellipse cx="200" cy="245" rx="100" ry="10" fill="#000" opacity="0.6"/>
+
+  <!-- Pedestal -->
+  <g>
+    <!-- top ellipse -->
+    <ellipse cx="200" cy="210" rx="80" ry="14" fill="url(#pedestal10)" stroke="#1a3a55" stroke-width="1"/>
+    <!-- pedestal body -->
+    <path d="M 120 210 L 130 240 L 270 240 L 280 210 Z" fill="url(#abayaFold)" stroke="#1a2433"/>
+    <!-- pedestal side highlights -->
+    <line x1="200" y1="217" x2="200" y2="240" stroke="#1a3a55" stroke-width="0.5" opacity="0.5"/>
+    <!-- pedestal top neon ring -->
+    <ellipse cx="200" cy="210" rx="80" ry="14" fill="none" stroke="#00ffcc" stroke-width="1" opacity="0.4" filter="url(#glow10)"/>
+    <!-- pedestal top inner -->
+    <ellipse cx="200" cy="210" rx="72" ry="12" fill="#05080f"/>
+    <ellipse cx="200" cy="210" rx="72" ry="12" fill="none" stroke="#1a2433" stroke-width="0.5"/>
+  </g>
+
+  <!-- ABAYA - stylized flowing dress -->
+  <g filter="url(#glow10)" opacity="0.95">
+    <!-- main body shape -->
+    <path d="M 175 100 
+             Q 170 110 168 130
+             Q 162 160 158 195
+             Q 156 205 165 210
+             L 235 210
+             Q 244 205 242 195
+             Q 238 160 232 130
+             Q 230 110 225 100
+             Z" 
+          fill="url(#abaya10)" stroke="#1a3a55" stroke-width="0.8"/>
+    <!-- abaya inner folds -->
+    <path d="M 188 130 Q 186 165 184 200" stroke="#05080f" stroke-width="1.2" fill="none"/>
+    <path d="M 200 130 Q 200 165 200 200" stroke="#05080f" stroke-width="1" fill="none"/>
+    <path d="M 212 130 Q 214 165 216 200" stroke="#05080f" stroke-width="1.2" fill="none"/>
+    <!-- shoulder highlight -->
+    <path d="M 178 102 Q 200 98 222 102" stroke="#00ffcc" stroke-width="1.2" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- abaya top part (yoke) -->
+  <g>
+    <path d="M 175 100 Q 200 92 225 100 L 222 105 Q 200 98 178 105 Z" fill="#0a1018" stroke="#1a3a55"/>
+    <!-- collar/neckline -->
+    <path d="M 192 95 Q 200 102 208 95" fill="none" stroke="#1a3a55" stroke-width="1"/>
+  </g>
+
+  <!-- Gold belt accent -->
+  <g filter="url(#glow10)">
+    <rect x="170" y="125" width="60" height="4" fill="url(#gold10)" rx="1"/>
+    <rect x="170" y="125" width="60" height="1.5" fill="#fff5d0" opacity="0.7"/>
+    <!-- belt buckle -->
+    <rect x="195" y="122" width="10" height="10" rx="2" fill="url(#gold10)" stroke="#ff8c00"/>
+    <circle cx="200" cy="127" r="2" fill="#fff5d0"/>
+  </g>
+
+  <!-- Hanging sleeves -->
+  <g filter="url(#glow10)" opacity="0.9">
+    <!-- left sleeve -->
+    <path d="M 175 105 Q 155 130 150 175 Q 148 195 158 200 Q 162 195 165 180 Q 170 150 178 115 Z" fill="url(#abayaFold)" stroke="#1a3a55" stroke-width="0.6"/>
+    <!-- right sleeve -->
+    <path d="M 225 105 Q 245 130 250 175 Q 252 195 242 200 Q 238 195 235 180 Q 230 150 222 115 Z" fill="url(#abayaFold)" stroke="#1a3a55" stroke-width="0.6"/>
+  </g>
+
+  <!-- Sparkles -->
+  <g filter="url(#glow10)">
+    <g fill="#00ffcc">
+      <path d="M 140 90 L 142 95 L 147 97 L 142 99 L 140 104 L 138 99 L 133 97 L 138 95 Z" opacity="0.8"/>
+      <path d="M 260 130 L 261 133 L 264 134 L 261 135 L 260 138 L 259 135 L 256 134 L 259 133 Z" opacity="0.6"/>
+      <circle cx="120" cy="160" r="1" opacity="0.7"/>
+      <circle cx="285" cy="170" r="1.5" opacity="0.7"/>
+      <circle cx="155" cy="180" r="0.8" opacity="0.6"/>
+    </g>
+    <g fill="#ffd700">
+      <path d="M 285 90 L 286 93 L 289 94 L 286 95 L 285 98 L 284 95 L 281 94 L 284 93 Z" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- HUD elements -->
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="20" y="50">POLY: 24,580</text>
+    <text x="20" y="62">TEX: 4K · PBR</text>
+    <text x="20" y="74">RENDER: 4096spp</text>
+    <line x1="20" y1="82" x2="80" y2="82" stroke="#1a3a55"/>
+  </g>
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="380" y="50" text-anchor="end">V-Ray 5 · STUDIO</text>
+    <text x="380" y="62" text-anchor="end">RIYADH COLLECTION</text>
+    <line x1="320" y1="68" x2="380" y2="68" stroke="#1a3a55"/>
+    <text x="380" y="80" text-anchor="end" fill="#00ffcc">PASS · FINAL</text>
+  </g>
+
+  <text x="200" y="290" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">3D PRODUCT RENDER · STUDIO LIGHTING</text>
+</svg>

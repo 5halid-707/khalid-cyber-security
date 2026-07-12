@@ -1,0 +1,99 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="banner9" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a1018"/>
+      <stop offset="50%" stop-color="#0d1420"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="neon9" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <linearGradient id="pink9" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#cc00ff"/>
+    </linearGradient>
+    <filter id="glow9" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid9" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg9)"/>
+  <rect width="400" height="300" fill="url(#grid9)"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">WEB BANNER · 728 × 90 LEADERBOARD</text>
+
+  <!-- ad container (representing 728x90 banner — scaled) -->
+  <g transform="translate(20,80)">
+    <rect width="360" height="100" rx="6" fill="url(#banner9)" stroke="#1a2433" stroke-width="1"/>
+    <!-- top + bottom neon hairlines -->
+    <rect x="6" y="2" width="348" height="1" fill="url(#neon9)" filter="url(#glow9)"/>
+    <rect x="6" y="97" width="348" height="1" fill="url(#neon9)" filter="url(#glow9)"/>
+
+    <!-- "ad" marker -->
+    <rect x="6" y="6" width="14" height="9" rx="2" fill="none" stroke="#335566"/>
+    <text x="13" y="13" text-anchor="middle" font-family="monospace" font-size="6" fill="#5a6a7a">Ad</text>
+
+    <!-- left: brand logo -->
+    <g transform="translate(30,30)" filter="url(#glow9)">
+      <path d="M 0 0 L 0 40 M 0 20 L 26 0 M 0 20 L 26 40" stroke="url(#neon9)" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </g>
+    <text x="68" y="48" font-family="'Arial Black', sans-serif" font-size="14" font-weight="900" fill="url(#neon9)" letter-spacing="2">KMH.</text>
+    <text x="68" y="62" font-family="monospace" font-size="7" fill="#4a6577" letter-spacing="1">CYBER SUITE</text>
+
+    <!-- center promo -->
+    <g transform="translate(155,30)">
+      <text x="0" y="14" font-family="'Share Tech Mono', monospace" font-size="8" fill="#00ffcc" letter-spacing="2">★ LIMITED TIME</text>
+      <text x="0" y="36" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="1">GET 70% OFF</text>
+      <text x="0" y="52" font-family="'Share Tech Mono', monospace" font-size="8" fill="#9aaabd" letter-spacing="1">Premium cybersecurity &amp; design tools</text>
+    </g>
+
+    <!-- right: CTA button -->
+    <g transform="translate(280,28)" filter="url(#glow9)">
+      <rect width="68" height="44" rx="22" fill="url(#pink9)"/>
+      <text x="34" y="22" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="11" font-weight="900" fill="#ffffff">CLAIM</text>
+      <text x="34" y="34" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#ffffff">NOW →</text>
+    </g>
+    <!-- arrow pulse -->
+    <circle cx="358" cy="50" r="2" fill="#00ffcc" filter="url(#glow9)"/>
+  </g>
+
+  <!-- bottom metrics dashboard preview -->
+  <g transform="translate(20,200)">
+    <rect width="360" height="70" rx="6" fill="#0a1018" stroke="#1a2433"/>
+    <text x="14" y="18" font-family="'Share Tech Mono', monospace" font-size="8" fill="#4a6577" letter-spacing="2">CAMPAIGN METRICS · LIVE</text>
+
+    <!-- metric 1 -->
+    <g transform="translate(14,30)">
+      <text x="0" y="0" font-family="monospace" font-size="7" fill="#5a6a7a">IMPRESSIONS</text>
+      <text x="0" y="14" font-family="'Arial Black', sans-serif" font-size="14" font-weight="900" fill="#00ffcc">1.2M</text>
+    </g>
+    <line x1="110" y1="28" x2="110" y2="56" stroke="#1a2433"/>
+    <!-- metric 2 -->
+    <g transform="translate(125,30)">
+      <text x="0" y="0" font-family="monospace" font-size="7" fill="#5a6a7a">CLICKS</text>
+      <text x="0" y="14" font-family="'Arial Black', sans-serif" font-size="14" font-weight="900" fill="#00a8e8">48.2K</text>
+    </g>
+    <line x1="220" y1="28" x2="220" y2="56" stroke="#1a2433"/>
+    <!-- metric 3 -->
+    <g transform="translate(235,30)">
+      <text x="0" y="0" font-family="monospace" font-size="7" fill="#5a6a7a">CTR</text>
+      <text x="0" y="14" font-family="'Arial Black', sans-serif" font-size="14" font-weight="900" fill="#ff00cc">4.02%</text>
+    </g>
+    <!-- mini chart -->
+    <g transform="translate(300,32)">
+      <polyline points="0,18 8,14 16,16 24,8 32,10 40,4 48,6" fill="none" stroke="#00ffcc" stroke-width="1.5" filter="url(#glow9)"/>
+      <polyline points="0,18 8,14 16,16 24,8 32,10 40,4 48,6 48,22 0,22" fill="#00ffcc" opacity="0.15"/>
+    </g>
+  </g>
+
+  <text x="200" y="290" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">PROMOTIONAL · LEADERBOARD · CAMPAIGN</text>
+</svg>

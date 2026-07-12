@@ -1,0 +1,143 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <radialGradient id="spot11" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ff00cc" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ff00cc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff5d0"/>
+      <stop offset="30%" stop-color="#ffd700"/>
+      <stop offset="60%" stop-color="#ffaa00"/>
+      <stop offset="100%" stop-color="#8b5a00"/>
+    </linearGradient>
+    <linearGradient id="goldTop11" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff5d0"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#cc8800"/>
+    </linearGradient>
+    <linearGradient id="goldSide11" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5a00"/>
+      <stop offset="40%" stop-color="#ffd700"/>
+      <stop offset="60%" stop-color="#fff5d0"/>
+      <stop offset="100%" stop-color="#8b5a00"/>
+    </linearGradient>
+    <linearGradient id="diamond11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow11" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowStrong11" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid11" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg11)"/>
+  <rect width="400" height="300" fill="url(#grid11)"/>
+  <rect width="400" height="300" fill="url(#spot11)"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">3D MODEL · GOLD RING · JEWELRY RENDER</text>
+
+  <!-- Spotlight beams -->
+  <polygon points="170,0 230,0 250,180 150,180" fill="#ffd700" opacity="0.04"/>
+  <polygon points="190,0 210,0 220,180 180,180" fill="#fff5d0" opacity="0.05"/>
+
+  <!-- Pedestal -->
+  <ellipse cx="200" cy="240" rx="90" ry="10" fill="#000" opacity="0.6"/>
+  <ellipse cx="200" cy="230" rx="75" ry="12" fill="#1a2433" stroke="#2a3543"/>
+  <ellipse cx="200" cy="230" rx="75" ry="12" fill="none" stroke="#ffd700" stroke-width="0.5" opacity="0.4"/>
+  <ellipse cx="200" cy="228" rx="65" ry="10" fill="#05080f"/>
+  <ellipse cx="200" cy="228" rx="65" ry="10" fill="none" stroke="#1a2433"/>
+
+  <!-- Reflection of ring on pedestal -->
+  <g opacity="0.25" transform="translate(0, 470) scale(1, -1)">
+    <ellipse cx="200" cy="170" rx="80" ry="38" fill="none" stroke="#ffd700" stroke-width="14"/>
+  </g>
+
+  <!-- The ring -->
+  <g filter="url(#glow11)">
+    <!-- Ring band (torus side view) -->
+    <ellipse cx="200" cy="170" rx="80" ry="38" fill="none" stroke="url(#goldSide11)" stroke-width="18"/>
+    <!-- Inner ring shadow -->
+    <ellipse cx="200" cy="170" rx="80" ry="38" fill="none" stroke="#8b5a00" stroke-width="2" opacity="0.6"/>
+    <!-- Top highlight on ring -->
+    <path d="M 130 165 Q 200 130 270 165" stroke="#fff5d0" stroke-width="2.5" fill="none" opacity="0.8" stroke-linecap="round"/>
+    <!-- Bottom shadow on ring -->
+    <path d="M 140 180 Q 200 210 260 180" stroke="#5a3a00" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+    <!-- Ring edge highlights -->
+    <ellipse cx="200" cy="170" rx="89" ry="46" fill="none" stroke="#fff5d0" stroke-width="1" opacity="0.4"/>
+    <ellipse cx="200" cy="170" rx="71" ry="29" fill="none" stroke="#fff5d0" stroke-width="0.8" opacity="0.3"/>
+  </g>
+
+  <!-- Diamond setting (prongs) -->
+  <g filter="url(#glow11)">
+    <path d="M 188 138 L 184 148 L 192 145 Z" fill="url(#goldTop11)"/>
+    <path d="M 212 138 L 216 148 L 208 145 Z" fill="url(#goldTop11)"/>
+    <path d="M 195 134 L 200 142 L 205 134 Z" fill="url(#goldTop11)"/>
+  </g>
+
+  <!-- Diamond (princess cut) -->
+  <g filter="url(#glowStrong11)">
+    <!-- outer -->
+    <polygon points="200,100 218,118 200,140 182,118" fill="url(#diamond11)" stroke="#ffffff" stroke-width="0.8"/>
+    <!-- facets -->
+    <line x1="200" y1="100" x2="200" y2="140" stroke="#ffffff" stroke-width="0.5" opacity="0.7"/>
+    <line x1="182" y1="118" x2="218" y2="118" stroke="#ffffff" stroke-width="0.5" opacity="0.7"/>
+    <line x1="200" y1="100" x2="182" y2="118" stroke="#00ffcc" stroke-width="0.3" opacity="0.8"/>
+    <line x1="200" y1="100" x2="218" y2="118" stroke="#00ffcc" stroke-width="0.3" opacity="0.8"/>
+    <line x1="200" y1="140" x2="182" y2="118" stroke="#00a8e8" stroke-width="0.3" opacity="0.8"/>
+    <line x1="200" y1="140" x2="218" y2="118" stroke="#00a8e8" stroke-width="0.3" opacity="0.8"/>
+    <!-- table top -->
+    <polygon points="200,108 210,118 200,128 190,118" fill="#ffffff" opacity="0.7"/>
+    <!-- top sparkle -->
+    <circle cx="195" cy="113" r="2" fill="#ffffff" opacity="0.9"/>
+  </g>
+
+  <!-- Sparkles around -->
+  <g filter="url(#glow11)">
+    <g fill="#ffffff">
+      <path d="M 110 110 L 113 117 L 120 120 L 113 123 L 110 130 L 107 123 L 100 120 L 107 117 Z" opacity="0.9"/>
+      <path d="M 290 130 L 292 134 L 296 136 L 292 138 L 290 142 L 288 138 L 284 136 L 288 134 Z" opacity="0.8"/>
+      <path d="M 130 200 L 131 203 L 134 204 L 131 205 L 130 208 L 129 205 L 126 204 L 129 203 Z" opacity="0.7"/>
+      <path d="M 280 200 L 281 203 L 284 204 L 281 205 L 280 208 L 279 205 L 276 204 L 279 203 Z" opacity="0.7"/>
+    </g>
+    <g fill="#ffd700">
+      <path d="M 320 80 L 321 83 L 324 84 L 321 85 L 320 88 L 319 85 L 316 84 L 319 83 Z"/>
+      <path d="M 80 80 L 81 83 L 84 84 L 81 85 L 80 88 L 79 85 L 76 84 L 79 83 Z"/>
+    </g>
+    <!-- Twinkle crosses -->
+    <g stroke="#ffffff" stroke-width="0.6" opacity="0.9">
+      <line x1="100" y1="150" x2="108" y2="150"/>
+      <line x1="104" y1="146" x2="104" y2="154"/>
+      <line x1="295" y1="170" x2="303" y2="170"/>
+      <line x1="299" y1="166" x2="299" y2="174"/>
+    </g>
+  </g>
+
+  <!-- HUD elements -->
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="20" y="50">AU 999 · 24K</text>
+    <text x="20" y="62">WEIGHT: 7.2g</text>
+    <text x="20" y="74">STONE: 0.85ct VVS</text>
+    <line x1="20" y1="82" x2="80" y2="82" stroke="#ffd700" opacity="0.4"/>
+  </g>
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="380" y="50" text-anchor="end">Octane · 8192spp</text>
+    <text x="380" y="62" text-anchor="end">CAUSTICS · ON</text>
+    <line x1="320" y1="68" x2="380" y2="68" stroke="#ffd700" opacity="0.4"/>
+    <text x="380" y="80" text-anchor="end" fill="#ffd700">RENDER · FINAL</text>
+  </g>
+
+  <text x="200" y="290" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">FINE JEWELRY · STUDIO REFLECTIONS</text>
+</svg>

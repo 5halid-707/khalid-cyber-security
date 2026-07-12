@@ -1517,3 +1517,62 @@ Stage Summary:
 - All mobile fixes from tasks 41/42 fully preserved
 - Cyber/neon dark theme unchanged
 - Git commit: 3beeff0 "feat: rebuild site with real content + mobile fixes"
+
+---
+Task ID: 44-designs
+Agent: general-purpose sub-agent
+Task: Create 18 professional cyber-neon SVG design portfolio images for the Designs section.
+
+Work Log:
+- Read existing /src/components/site/designs.tsx to understand the 6 design service categories (Logos, Visual Identity, Ad Design, 3D Models, UI/UX, Social Media).
+- Created directory /public/designs/.
+- Created 18 unique SVG files (400x300 viewBox, dark #05080f background, neon accents #00ffcc / #00a8e8 / #ff00cc) — each with <defs> gradients, glow filters (feGaussianBlur+feMerge), grid patterns, frame corners, HUD/annotation text, and stylized subject matter:
+
+Logo Designs (3):
+1. logo-1.svg — "K" monogram with neon-green→blue gradient + hexagon ring, glow filter, monospace subtitle.
+2. logo-2.svg — Geometric shield/hexagon symbol with neon-blue, circuit nodes, inner "K" mark.
+3. logo-3.svg — "KMH" wordmark with neon-pink→purple→blue gradient + underline accents.
+
+Visual Identity (3):
+4. identity-1.svg — Brand guidelines mockup: logo placement on dark/light, 6-swatch color palette, typography hierarchy with 8pt scale bars.
+5. identity-2.svg — Business card front (logo + contact) and back (neon top strip + abstract rings + tagline), rotated for depth.
+6. identity-3.svg — Letterhead (paper mockup with text lines + accent bar) + envelope (with stamp, barcode, address lines) on dark backdrop.
+
+Ad Designs (3):
+7. ad-1.svg — Amazon-style product banner with "SALE 50%" hex badge, headphones product silhouette, star rating, price strikethrough, pink "ADD TO CART" CTA.
+8. ad-2.svg — Instagram sponsored post in phone frame, neon-frame glow, "NEW COLLECTION" headline, "SHOP NOW →" pill CTA, side metrics annotations.
+9. ad-3.svg — 728×90 leaderboard banner with KMH logo, "GET 70% OFF" headline, pink CTA button + live campaign metrics dashboard below (impressions/clicks/CTR + mini sparkline).
+
+3D Models (3):
+10. 3d-1.svg — Stylized 3D abaya on pedestal with gold belt buckle, hanging sleeves, spotlight beam, sparkles, PBR render HUD.
+11. 3d-2.svg — 3D gold ring (torus) with princess-cut diamond, gold facets, prongs, reflections, sparkles, "AU 999" specs HUD.
+12. 3d-3.svg — 3D designer handbag with leather flap, gold KMH plate, lock clasp, arch handles, metal feet, studio-light sparkles.
+
+UI/UX Designs (3):
+13. ui-1.svg — Mobile app UI in phone frame: balance card, 4 quick-action buttons, transaction list, bottom nav, dark theme + neon accents.
+14. ui-2.svg — Website landing page in browser window: navbar, hero with CTA + abstract visual, stats row, 3 service cards (Security/Design/Branding).
+15. ui-3.svg — Admin dashboard: sidebar nav (active item highlighted), 3 KPI cards with sparklines, area+line chart, top-sources bar chart, donut, recent activity table.
+
+Social Media (3):
+16. social-1.svg — Instagram post (1080²) with "OFFER 50% OFF" headline, geometric corner shapes, neon frame, "CLAIM NOW →" CTA, brand URL.
+17. social-2.svg — IG/FB story (1080×1920) in vertical phone frame: profile bar, "SUMMER COLLECTION", product placeholder, glowing swipe-up arrow + "SHOP NOW" pill.
+18. social-3.svg — YouTube thumbnail (16:9): "LIVE NOW" tag, "CYBER DESIGN MASTERCLASS" bold typography, central play button, host bar (Khalid Al-Harbi), duration badge, metrics row.
+
+Technical:
+- All SVGs use viewBox="0 0 400 300", xmlns set, <defs> for gradients + filters + patterns.
+- Consistent visual language: dark grid background, frame corner ticks, monospace HUD annotations, glow filters on neon elements.
+- Fixed XML entity bug in ad-3.svg (escaped `&` → `&amp;` in "cybersecurity & design tools").
+- Validated ALL 18 SVGs as well-formed XML via Python xml.etree.ElementTree.parse — 18/18 VALID.
+
+Files Created (18):
+/home/z/my-project/public/designs/logo-1.svg, logo-2.svg, logo-3.svg
+/home/z/my-project/public/designs/identity-1.svg, identity-2.svg, identity-3.svg
+/home/z/my-project/public/designs/ad-1.svg, ad-2.svg, ad-3.svg
+/home/z/my-project/public/designs/3d-1.svg, 3d-2.svg, 3d-3.svg
+/home/z/my-project/public/designs/ui-1.svg, ui-2.svg, ui-3.svg
+/home/z/my-project/public/designs/social-1.svg, social-2.svg, social-3.svg
+
+Next Actions (optional, for main agent):
+- The designs.tsx component currently uses a grid of service categories with no images. To wire these SVGs in, add an `image` field to each designService entry pointing to `/designs/{filename}.svg` and render an <img> (or Next.js <Image>) at top of each card.
+- Alternatively, build a separate "Design Portfolio Gallery" section that renders all 18 SVGs in a filterable grid by category (Logos/Identity/Ads/3D/UI/Social).
+- All SVGs are static and will be served from /public at /designs/*.svg.

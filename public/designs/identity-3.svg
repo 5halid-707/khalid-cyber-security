@@ -1,0 +1,115 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="paper6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f7fa"/>
+      <stop offset="100%" stop-color="#dde3ea"/>
+    </linearGradient>
+    <linearGradient id="env6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e6ecf2"/>
+      <stop offset="100%" stop-color="#c5cdd6"/>
+    </linearGradient>
+    <linearGradient id="acc6" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow6" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid6" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg6)"/>
+  <rect width="400" height="300" fill="url(#grid6)"/>
+  <!-- ambient -->
+  <ellipse cx="200" cy="170" rx="180" ry="80" fill="#00ffcc" opacity="0.04" filter="url(#glow6)"/>
+
+  <!-- header -->
+  <text x="200" y="28" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="10" fill="#4a6577" letter-spacing="3">BRAND STATIONERY · LETTERHEAD + ENVELOPE</text>
+
+  <!-- LETTERHEAD (back) -->
+  <g transform="translate(40,55) rotate(-3)">
+    <rect width="160" height="200" rx="2" fill="url(#paper6)" stroke="#1a2433"/>
+    <!-- top accent bar -->
+    <rect x="0" y="0" width="160" height="6" fill="url(#acc6)"/>
+    <rect x="0" y="6" width="160" height="2" fill="#00a8e8" opacity="0.5"/>
+    <!-- header logo -->
+    <g transform="translate(15,20)">
+      <path d="M 0 0 L 0 22 M 0 11 L 16 0 M 0 11 L 16 22" stroke="#00a8e8" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    </g>
+    <text x="38" y="35" font-family="'Arial Black', sans-serif" font-size="11" font-weight="900" fill="#0a1018" letter-spacing="2">KMH</text>
+    <text x="38" y="44" font-family="monospace" font-size="5" fill="#5a6a7a" letter-spacing="1">STUDIO</text>
+    <!-- text body lines -->
+    <g fill="#9aaabd">
+      <rect x="15" y="60" width="100" height="2"/>
+      <rect x="15" y="67" width="120" height="2"/>
+      <rect x="15" y="74" width="110" height="2"/>
+      <rect x="15" y="85" width="80" height="2"/>
+      <rect x="15" y="92" width="125" height="2"/>
+      <rect x="15" y="99" width="115" height="2"/>
+      <rect x="15" y="106" width="120" height="2"/>
+      <rect x="15" y="117" width="90" height="2"/>
+      <rect x="15" y="124" width="125" height="2"/>
+      <rect x="15" y="131" width="100" height="2"/>
+      <rect x="15" y="138" width="120" height="2"/>
+    </g>
+    <!-- footer -->
+    <line x1="15" y1="175" x2="145" y2="175" stroke="#1a2433" stroke-width="0.5"/>
+    <text x="15" y="185" font-family="monospace" font-size="4.5" fill="#5a6a7a">WWW.KMH.STUDIO</text>
+    <text x="15" y="192" font-family="monospace" font-size="4.5" fill="#5a6a7a">+966 5X XXX XXXX</text>
+    <text x="145" y="185" text-anchor="end" font-family="monospace" font-size="4.5" fill="#5a6a7a">RIYADH · KSA</text>
+    <text x="145" y="192" text-anchor="end" font-family="monospace" font-size="4.5" fill="#5a6a7a">hello@kmh.studio</text>
+  </g>
+
+  <!-- ENVELOPE (front) -->
+  <g transform="translate(225,140) rotate(8)">
+    <rect width="150" height="100" rx="2" fill="url(#env6)" stroke="#1a2433"/>
+    <!-- flap line -->
+    <path d="M 0 0 L 75 45 L 150 0" fill="none" stroke="#1a2433" stroke-width="0.8" opacity="0.5"/>
+    <!-- accent stripe -->
+    <rect x="0" y="0" width="150" height="4" fill="url(#acc6)"/>
+    <!-- logo -->
+    <g transform="translate(15,20)">
+      <path d="M 0 0 L 0 18 M 0 9 L 14 0 M 0 9 L 14 18" stroke="#00a8e8" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    <text x="32" y="28" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#0a1018" letter-spacing="1.5">KMH</text>
+    <text x="32" y="36" font-family="monospace" font-size="4" fill="#5a6a7a" letter-spacing="1">STUDIO</text>
+    <!-- stamp area -->
+    <rect x="115" y="15" width="25" height="30" fill="none" stroke="#5a6a7a" stroke-width="0.6" stroke-dasharray="2 2"/>
+    <circle cx="127.5" cy="30" r="6" fill="none" stroke="#ff00cc" stroke-width="0.8"/>
+    <text x="127.5" y="32" text-anchor="middle" font-family="monospace" font-size="4" fill="#ff00cc">KSA</text>
+    <!-- address lines -->
+    <g fill="#9aaabd">
+      <rect x="15" y="65" width="70" height="2"/>
+      <rect x="15" y="72" width="80" height="2"/>
+      <rect x="15" y="79" width="60" height="2"/>
+    </g>
+    <!-- barcode -->
+    <g fill="#0a1018">
+      <rect x="100" y="65" width="1" height="20"/>
+      <rect x="103" y="65" width="2" height="20"/>
+      <rect x="107" y="65" width="1" height="20"/>
+      <rect x="110" y="65" width="3" height="20"/>
+      <rect x="115" y="65" width="1" height="20"/>
+      <rect x="118" y="65" width="2" height="20"/>
+      <rect x="122" y="65" width="1" height="20"/>
+      <rect x="125" y="65" width="2" height="20"/>
+      <rect x="129" y="65" width="1" height="20"/>
+      <rect x="132" y="65" width="3" height="20"/>
+      <rect x="137" y="65" width="1" height="20"/>
+      <rect x="140" y="65" width="2" height="20"/>
+    </g>
+  </g>
+
+  <!-- shadow -->
+  <ellipse cx="120" cy="260" rx="80" ry="4" fill="#000" opacity="0.4"/>
+  <ellipse cx="300" cy="245" rx="80" ry="4" fill="#000" opacity="0.4"/>
+
+  <!-- footer -->
+  <text x="200" y="288" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">COHESIVE IDENTITY · PRINT COLLATERAL</text>
+</svg>

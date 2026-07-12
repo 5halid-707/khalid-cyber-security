@@ -1,0 +1,89 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="cardFront5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1018"/>
+      <stop offset="100%" stop-color="#121a26"/>
+    </linearGradient>
+    <linearGradient id="cardBack5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121a26"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="accent5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <linearGradient id="pink5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow5" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid5" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg5)"/>
+  <rect width="400" height="300" fill="url(#grid5)"/>
+  <!-- ambient -->
+  <ellipse cx="200" cy="160" rx="180" ry="80" fill="#00a8e8" opacity="0.05" filter="url(#glow5)"/>
+
+  <!-- header -->
+  <text x="200" y="28" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="10" fill="#4a6577" letter-spacing="3">BUSINESS CARD · FRONT / BACK</text>
+
+  <!-- FRONT CARD -->
+  <g transform="translate(35,55) rotate(-6)">
+    <rect width="170" height="100" rx="6" fill="url(#cardFront5)" stroke="#1a2433" stroke-width="1.5"/>
+    <!-- corner accent -->
+    <path d="M 0 6 Q 0 0 6 0 L 30 0 L 30 4 L 4 4 L 4 30 L 0 30 Z" fill="url(#accent5)" opacity="0.8"/>
+    <path d="M 170 94 Q 170 100 164 100 L 140 100 L 140 96 L 166 96 L 166 70 L 170 70 Z" fill="url(#accent5)" opacity="0.8"/>
+    <!-- logo K -->
+    <g transform="translate(20,30)" filter="url(#glow5)">
+      <path d="M 0 0 L 0 30 M 0 15 L 20 0 M 0 15 L 20 30" stroke="url(#accent5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <text x="48" y="42" font-family="'Arial Black', sans-serif" font-size="14" font-weight="900" fill="#e6f0ff" letter-spacing="2">KMH</text>
+    <text x="48" y="55" font-family="'Share Tech Mono', monospace" font-size="6" fill="#4a6577" letter-spacing="2">DESIGN STUDIO</text>
+    <!-- divider -->
+    <line x1="20" y1="65" x2="150" y2="65" stroke="#1a2433"/>
+    <!-- text lines -->
+    <text x="20" y="78" font-family="sans-serif" font-size="6.5" fill="#9aaabd">KHALID AL-HARBI</text>
+    <text x="20" y="87" font-family="monospace" font-size="5.5" fill="#5a6a7a">CREATIVE DIRECTOR</text>
+    <text x="20" y="95" font-family="monospace" font-size="5.5" fill="#5a6a7a">+966 5X XXX XXXX</text>
+    <text x="20" y="102" font-family="monospace" font-size="5.5" fill="#5a6a7a">hello@kmh.studio</text>
+  </g>
+
+  <!-- BACK CARD -->
+  <g transform="translate(195,75) rotate(4)">
+    <rect width="170" height="100" rx="6" fill="url(#cardBack5)" stroke="#1a2433" stroke-width="1.5"/>
+    <!-- top neon strip -->
+    <rect x="0" y="0" width="170" height="12" rx="6" fill="url(#pink5)" filter="url(#glow5)"/>
+    <rect x="0" y="6" width="170" height="6" fill="url(#pink5)"/>
+    <!-- abstract pattern -->
+    <g opacity="0.5">
+      <circle cx="140" cy="60" r="35" fill="none" stroke="#ff00cc" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="140" cy="60" r="25" fill="none" stroke="#00a8e8" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="140" cy="60" r="15" fill="none" stroke="#00ffcc" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="140" cy="60" r="5" fill="#ff00cc" opacity="0.7"/>
+    </g>
+    <!-- tagline -->
+    <text x="15" y="40" font-family="'Arial Black', sans-serif" font-size="10" font-weight="900" fill="url(#accent5)" letter-spacing="1">CREATIVE BY</text>
+    <text x="15" y="55" font-family="'Arial Black', sans-serif" font-size="10" font-weight="900" fill="url(#pink5)" letter-spacing="1">DESIGN.</text>
+    <text x="15" y="75" font-family="'Share Tech Mono', monospace" font-size="6" fill="#5a6a7a" letter-spacing="2">WWW.KMH.STUDIO</text>
+    <line x1="15" y1="82" x2="100" y2="82" stroke="url(#accent5)" stroke-width="1"/>
+    <text x="15" y="92" font-family="monospace" font-size="5" fill="#3a4a5a">CYBERSECURITY · DESIGN · IDENTITY</text>
+  </g>
+
+  <!-- shadow under cards -->
+  <ellipse cx="120" cy="170" rx="70" ry="5" fill="#000" opacity="0.5"/>
+  <ellipse cx="280" cy="190" rx="70" ry="5" fill="#000" opacity="0.5"/>
+
+  <!-- footer label -->
+  <text x="200" y="270" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="8" fill="#4a6577" letter-spacing="3">85 × 55 MM · MATTE BLACK · NEON FOIL</text>
+  <line x1="120" y1="282" x2="280" y2="282" stroke="#1a2433"/>
+  <text x="200" y="294" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">CORPORATE IDENTITY · STATIONERY</text>
+</svg>

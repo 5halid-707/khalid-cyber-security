@@ -1,0 +1,157 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <radialGradient id="spot12" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#00a8e8" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#00a8e8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leather12" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2433"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="leatherSide12" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="50%" stop-color="#1a2433"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </linearGradient>
+    <linearGradient id="leatherFront12" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#243348"/>
+      <stop offset="100%" stop-color="#0d1420"/>
+    </linearGradient>
+    <linearGradient id="metal12" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5a00"/>
+      <stop offset="50%" stop-color="#fff5d0"/>
+      <stop offset="100%" stop-color="#8b5a00"/>
+    </linearGradient>
+    <linearGradient id="handle12" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#243348"/>
+      <stop offset="50%" stop-color="#1a2433"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <filter id="glow12" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid12" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg12)"/>
+  <rect width="400" height="300" fill="url(#grid12)"/>
+  <rect width="400" height="300" fill="url(#spot12)"/>
+
+  <!-- header -->
+  <text x="200" y="22" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6577" letter-spacing="3">3D MODEL · DESIGNER HANDBAG · STUDIO LIGHT</text>
+
+  <!-- Light beam -->
+  <polygon points="160,0 240,0 270,200 130,200" fill="#00a8e8" opacity="0.04"/>
+
+  <!-- Floor shadow -->
+  <ellipse cx="200" cy="245" rx="105" ry="10" fill="#000" opacity="0.6"/>
+
+  <!-- Pedestal -->
+  <ellipse cx="200" cy="230" rx="95" ry="12" fill="#1a2433" stroke="#2a3543"/>
+  <ellipse cx="200" cy="230" rx="95" ry="12" fill="none" stroke="#00a8e8" stroke-width="0.5" opacity="0.4"/>
+  <ellipse cx="200" cy="228" rx="85" ry="10" fill="#05080f"/>
+
+  <!-- Reflection on floor (mirrored) -->
+  <g opacity="0.18" transform="translate(0, 460) scale(1, -1)">
+    <path d="M 140 130 L 140 215 Q 140 220 145 220 L 255 220 Q 260 220 260 215 L 260 130 Z" fill="#1a2433"/>
+  </g>
+
+  <!-- The bag -->
+  <g filter="url(#glow12)">
+    <!-- bag body main -->
+    <path d="M 140 130 
+             L 140 215 
+             Q 140 222 148 222 
+             L 252 222 
+             Q 260 222 260 215 
+             L 260 130 
+             Q 260 122 252 122
+             L 148 122
+             Q 140 122 140 130 Z" 
+          fill="url(#leatherFront12)" stroke="#1a3a55" stroke-width="1"/>
+    <!-- bag depth side (3D effect) -->
+    <path d="M 260 130 L 270 138 L 270 218 Q 270 224 262 224 L 252 222" fill="url(#leatherSide12)" stroke="#1a3a55" stroke-width="0.6"/>
+    <path d="M 260 215 Q 260 222 252 222 L 252 222" fill="#05080f"/>
+
+    <!-- top edge highlight -->
+    <path d="M 148 124 Q 200 119 252 124" stroke="#00a8e8" stroke-width="1" fill="none" opacity="0.5"/>
+    <!-- top opening -->
+    <path d="M 148 122 Q 200 130 252 122 L 252 128 Q 200 134 148 128 Z" fill="#05080f" stroke="#1a3a55"/>
+
+    <!-- front flap -->
+    <path d="M 150 130 
+             Q 200 126 250 130
+             L 250 175
+             Q 200 180 150 175 Z" 
+          fill="url(#leather12)" stroke="#1a3a55" stroke-width="0.8"/>
+    <!-- flap stitch line -->
+    <path d="M 155 135 Q 200 132 245 135" stroke="#2a3543" stroke-width="0.4" fill="none" stroke-dasharray="2 2"/>
+    <path d="M 155 170 Q 200 175 245 170" stroke="#2a3543" stroke-width="0.4" fill="none" stroke-dasharray="2 2"/>
+
+    <!-- Front brand plate -->
+    <rect x="180" y="150" width="40" height="14" rx="2" fill="url(#metal12)" stroke="#8b5a00"/>
+    <text x="200" y="161" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#5a3a00" letter-spacing="2">KMH</text>
+
+    <!-- Front lock/clasp -->
+    <rect x="194" y="170" width="12" height="8" rx="1" fill="url(#metal12)" stroke="#8b5a00"/>
+    <circle cx="200" cy="174" r="1.5" fill="#5a3a00"/>
+
+    <!-- Handles (arches) -->
+    <g>
+      <!-- left handle -->
+      <path d="M 165 122 Q 165 80 195 80 Q 200 80 200 86" stroke="url(#handle12)" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M 168 122 Q 168 84 195 84 Q 197 84 197 87" stroke="#0a1018" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- right handle -->
+      <path d="M 235 122 Q 235 80 205 80 Q 200 80 200 86" stroke="url(#handle12)" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M 232 122 Q 232 84 205 84 Q 203 84 203 87" stroke="#0a1018" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- handle highlights -->
+      <path d="M 165 100 Q 165 85 195 85" stroke="#00a8e8" stroke-width="0.5" fill="none" opacity="0.5"/>
+      <path d="M 235 100 Q 235 85 205 85" stroke="#00a8e8" stroke-width="0.5" fill="none" opacity="0.5"/>
+      <!-- handle attachments -->
+      <circle cx="165" cy="122" r="3" fill="url(#metal12)" stroke="#8b5a00"/>
+      <circle cx="235" cy="122" r="3" fill="url(#metal12)" stroke="#8b5a00"/>
+    </g>
+
+    <!-- Bottom feet -->
+    <ellipse cx="160" cy="222" rx="3" ry="2" fill="url(#metal12)"/>
+    <ellipse cx="240" cy="222" rx="3" ry="2" fill="url(#metal12)"/>
+
+    <!-- Side panel detail -->
+    <line x1="265" y1="145" x2="265" y2="210" stroke="#1a3a55" stroke-width="0.4" opacity="0.5"/>
+  </g>
+
+  <!-- Studio light sparkles -->
+  <g filter="url(#glow12)">
+    <g fill="#00a8e8">
+      <path d="M 120 80 L 122 85 L 127 87 L 122 89 L 120 94 L 118 89 L 113 87 L 118 85 Z" opacity="0.8"/>
+      <path d="M 290 100 L 291 103 L 294 104 L 291 105 L 290 108 L 289 105 L 286 104 L 289 103 Z" opacity="0.7"/>
+      <circle cx="100" cy="170" r="1" opacity="0.6"/>
+      <circle cx="310" cy="180" r="1.2" opacity="0.7"/>
+    </g>
+    <g fill="#fff5d0">
+      <path d="M 280 70 L 281 73 L 284 74 L 281 75 L 280 78 L 279 75 L 276 74 L 279 73 Z" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- HUD elements -->
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="20" y="50">MATERIAL: Nappa</text>
+    <text x="20" y="62">DIM: 28 × 22 × 12 cm</text>
+    <text x="20" y="74">HW: Gold-plated</text>
+    <line x1="20" y1="82" x2="80" y2="82" stroke="#00a8e8" opacity="0.4"/>
+  </g>
+  <g font-family="'Share Tech Mono', monospace" font-size="7" fill="#335566" letter-spacing="1">
+    <text x="380" y="50" text-anchor="end">KeyShot · 6144spp</text>
+    <text x="380" y="62" text-anchor="end">HDR · STUDIO 3-POINT</text>
+    <line x1="320" y1="68" x2="380" y2="68" stroke="#00a8e8" opacity="0.4"/>
+    <text x="380" y="80" text-anchor="end" fill="#00a8e8">PASS · FINAL</text>
+  </g>
+
+  <text x="200" y="290" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#2a3543" letter-spacing="3">3D PRODUCT · STUDIO LIGHTING · LUXURY</text>
+</svg>

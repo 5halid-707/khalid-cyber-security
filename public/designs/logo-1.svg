@@ -1,0 +1,52 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="kGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+    <filter id="glow1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f1a26" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg1)"/>
+  <rect width="400" height="300" fill="url(#grid1)"/>
+  <!-- ambient glows -->
+  <circle cx="200" cy="150" r="100" fill="#00ffcc" opacity="0.06" filter="url(#softGlow)"/>
+  <!-- frame corners -->
+  <g stroke="#1a2433" stroke-width="1" fill="none">
+    <path d="M 20 20 L 20 40 M 20 20 L 40 20"/>
+    <path d="M 380 20 L 380 40 M 380 20 L 360 20"/>
+    <path d="M 20 280 L 20 260 M 20 280 L 40 280"/>
+    <path d="M 380 280 L 380 260 M 380 280 L 360 280"/>
+  </g>
+  <!-- background hex ring -->
+  <g opacity="0.15" stroke="#00ffcc" fill="none" stroke-width="1">
+    <polygon points="200,60 270,100 270,180 200,220 130,180 130,100"/>
+  </g>
+  <!-- K monogram -->
+  <g filter="url(#glow1)">
+    <!-- K vertical stem -->
+    <rect x="160" y="90" width="14" height="130" rx="3" fill="url(#kGrad)"/>
+    <!-- K upper diagonal -->
+    <polygon points="174,155 230,90 248,90 192,155" fill="url(#kGrad)"/>
+    <!-- K lower diagonal -->
+    <polygon points="174,155 230,220 248,220 192,155" fill="url(#kGrad)"/>
+  </g>
+  <!-- accent dot -->
+  <circle cx="252" cy="80" r="4" fill="#00ffcc" filter="url(#glow1)"/>
+  <!-- subtitle line -->
+  <line x1="120" y1="245" x2="280" y2="245" stroke="#1a2433" stroke-width="1"/>
+  <text x="200" y="262" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="11" fill="#4a6577" letter-spacing="4">MONOGRAM · LOGO</text>
+</svg>
