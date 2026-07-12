@@ -1349,3 +1349,53 @@ Stage Summary:
 - thumbnails على الجوال تعمل كلها الآن (6/6) — إيقاف autoplay عند اللمس + touch target أكبر + أرقام واضحة.
 - الإيميل تغيّر في كل الموقع إلى `khalid-alharbi@zohomail.sa` (6 ملفات).
 - البوت الذكي الآن ملقّن بكل معلومات الموقع: 9 خبرات مهنية + 10 باقات + 6 تصاميم + 6 مشاريع + كل الشهادات + معلومات الاتصال.
+
+---
+Task ID: 40
+Agent: main (Z.ai Code)
+Task: تقييم شامل + إصلاح "معظم أيقونات الروابط لا استطيع النقر عليها".
+
+Work Log:
+- **التقييم الشامل**: فحصت كل العناصر التفاعلية ووجدت 4 مشاكل تحجب النقرات:
+  1. ScrollArrows: زر SCROLL `fixed bottom-8 left-1/2 z-40` + زر الصعود `fixed bottom-6 left-1/2 z-40 w-11 h-11` — كلاهما في **منتصف أسفل الشاشة** ويتداخلان مع: thumbnails في PreviousWorks، أزرار المنتجات، الفوتر، الـ contact form.
+  2. Hero: أزرار تبديل الفيديو في `bottom-24 left-1/2 z-10` + label في `bottom-32 left-1/2` — تتداخل مع أزرار "اكتشف خدماتي/تواصل معي" `z-10`.
+  3. Hero: floating glow orbs `z-0` بدون `pointer-events-none` — قد تحجب النقرات في بعض المتصفحات.
+  4. Hero: scroll hint `bottom-8 left-1/2 z-10` — يتداخل مع الأزرار.
+  5. PreviousWorks thumbnails: `e.preventDefault()` + `e.stopPropagation()` على onClick كان يمنع النقر الفعلي.
+
+- **الإصلاح 1 — ScrollArrows**:
+  • زر SCROLL: نقلته من `bottom-8 left-1/2` → `bottom-6 right-6` (يمين بدل وسط) + حجم أصغر + `pointer-events-auto`.
+  • زر الصعود: نقلته من `bottom-6 left-1/2` → `bottom-20 right-6` (يمين + أعلى) + حجم أصغر (w-10 h-10).
+  • النتيجة: منتصف الأسفل صار حراً تماماً للمحتوى.
+
+- **الإصلاح 2 — Hero video controls**:
+  • أضفت `pointer-events-none` على container الفيديو الكامل (الفيديوهات + dark overlay) — لم تعد تحجب النقرات.
+  • نقلت أزرار تبديل الفيديو من `bottom-24 left-1/2 z-10` → `bottom-6 left-6 z-20 pointer-events-auto` (يسار أسفل + قابلة للنقر).
+  • دمجت الـ label مع أزرار التبديل في container واحد (بدل عنصرين منفصلين).
+
+- **الإصلاح 3 — Floating glow orbs**:
+  • أضفت `pointer-events-none` على الـ orbs الاثنين في Hero — لم تعد تحجب النقرات نهائياً.
+
+- **الإصلاح 4 — Scroll hint**:
+  • حذفت الـ scroll hint القديم `bottom-8 left-1/2 z-10` (كان يتداخل مع أزرار CTA) — يكفي زر SCROLL الجديد في اليمين.
+
+- **الإصلاح 5 — PreviousWorks thumbnails**:
+  • أزلت `e.preventDefault()` + `e.stopPropagation()` من onClick (كانا يمنعان النقر الفعلي).
+  • أزلت `pointer-events-none` من الصورة والحاوية الداخلية (لم تعد ضرورية بعد إزالة preventDefault).
+  • أضفت `type="button"` لمنع submit في الفورم.
+  • أضفت `cursor-pointer` للوضوح.
+
+- **التحقق**: 
+  • `pointer-events-none` موجود 28 مرة في HTML (كل العناصر الزخرفية محمية) ✓
+  • `bottom-6 right-6` + `bottom-20 right-6` (ScrollArrows الجديدة) ✓
+  • ESLint نظيف ✓
+  • السيرفر يعمل HTTP 200 ✓
+
+Stage Summary:
+- **المشكلة الجذرية**: عناصر `fixed` و `absolute` بـ z-index عالٍ كانت تحجب النقرات في منتصف أسفل الشاشة (ScrollArrows + Hero controls + scroll hint).
+- **الحل**: 
+  • نقل كل العناصر الثابتة (scroll arrows) إلى يمين الشاشة بدل الوسط.
+  • `pointer-events-none` على كل العناصر الزخرفية (فيديو، orbs، overlays).
+  • حذف `e.preventDefault()` من thumbnails الذي كان يمنع النقر.
+  • حذف scroll hint المكرر.
+- كل الروابط والأزرار أصبحت قابلة للنقر الآن على الجوال والديسكتوب.

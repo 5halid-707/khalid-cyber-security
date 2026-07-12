@@ -377,18 +377,13 @@ export default function PreviousWorks() {
             return (
               <button
                 key={w.title}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
+                type="button"
+                onClick={() => {
                   setIsPlaying(false);
                   goTo(i);
                 }}
-                onTouchStart={(e) => {
-                  e.stopPropagation();
-                  setIsPlaying(false);
-                }}
                 aria-label={`${isAr ? "عرض مشروع" : "View project"} ${i + 1}: ${isAr ? w.titleAr : w.title}`}
-                className={`group relative transition-all shrink-0 touch-manipulation ${
+                className={`group relative transition-all shrink-0 touch-manipulation cursor-pointer ${
                   isActive
                     ? "w-20 h-14 sm:w-24 sm:h-16"
                     : "w-16 h-12 sm:w-16 sm:h-12 opacity-70 hover:opacity-100"
@@ -396,7 +391,7 @@ export default function PreviousWorks() {
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
                 <div
-                  className={`w-full h-full rounded-lg overflow-hidden border-2 transition-all pointer-events-none ${
+                  className={`w-full h-full rounded-lg overflow-hidden border-2 transition-all ${
                     isActive
                       ? "border-neon-green shadow-[0_0_12px_rgba(0,255,204,0.4)]"
                       : "border-edge group-hover:border-neon-green/50 group-active:border-neon-green"
@@ -405,7 +400,7 @@ export default function PreviousWorks() {
                   <img
                     src={w.preview}
                     alt={isAr ? w.titleAr : w.title}
-                    className="w-full h-full object-cover pointer-events-none"
+                    className="w-full h-full object-cover"
                     draggable={false}
                   />
                 </div>
@@ -413,7 +408,7 @@ export default function PreviousWorks() {
                 <span
                   className={`absolute top-0.5 right-0.5 text-[8px] mono-tech font-bold px-1 rounded ${
                     isActive ? "bg-neon-green text-[#05080f]" : "bg-black/60 text-white/80"
-                  } pointer-events-none`}
+                  }`}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>

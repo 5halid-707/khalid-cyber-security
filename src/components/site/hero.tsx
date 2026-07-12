@@ -97,7 +97,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 overflow-hidden"
     >
       {/* Video slider background — multiple videos cycling with crossfade */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {HERO_VIDEOS.map((v, i) => (
           <video
             key={v.src}
@@ -122,8 +122,14 @@ export default function Hero() {
               "radial-gradient(circle at 50% 30%, rgba(0,168,232,0.10), transparent 60%), linear-gradient(rgba(5,8,15,0.50), rgba(5,8,15,0.70))",
           }}
         />
-        {/* Video indicator dots */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      </div>
+
+      {/* Video indicator dots — bottom-left, pointer-events-auto to be clickable */}
+      <div className="absolute bottom-6 left-6 z-20 flex flex-col gap-1.5 pointer-events-auto">
+        <span className="text-[10px] mono-tech text-neon-green/70 tracking-widest mb-0.5">
+          {HERO_VIDEOS[videoIndex].label[lang === "ar" ? "ar" : "en"]}
+        </span>
+        <div className="flex gap-1.5">
           {HERO_VIDEOS.map((v, i) => (
             <button
               key={i}
@@ -131,23 +137,17 @@ export default function Hero() {
               aria-label={`Video ${i + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === videoIndex
-                  ? "w-8 bg-neon-green shadow-[0_0_6px_var(--neon-green)]"
+                  ? "w-6 bg-neon-green shadow-[0_0_6px_var(--neon-green)]"
                   : "w-2 bg-fg/30 hover:bg-fg/50"
               }`}
             />
           ))}
         </div>
-        {/* Current video label */}
-        <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10">
-          <span className="text-[10px] mono-tech text-neon-green/70 tracking-widest">
-            {HERO_VIDEOS[videoIndex].label[lang === "ar" ? "ar" : "en"]}
-          </span>
-        </div>
       </div>
 
-      {/* Floating glow orbs */}
-      <div className="absolute top-1/4 right-[15%] w-40 h-40 rounded-full bg-neon-green/10 blur-3xl animate-glow-pulse z-0" />
-      <div className="absolute bottom-1/4 left-[15%] w-52 h-52 rounded-full bg-neon-blue/10 blur-3xl animate-glow-pulse z-0" />
+      {/* Floating glow orbs — pointer-events-none so they never block clicks */}
+      <div className="absolute top-1/4 right-[15%] w-40 h-40 rounded-full bg-neon-green/10 blur-3xl animate-glow-pulse z-0 pointer-events-none" />
+      <div className="absolute bottom-1/4 left-[15%] w-52 h-52 rounded-full bg-neon-blue/10 blur-3xl animate-glow-pulse z-0 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center max-w-4xl">
@@ -226,12 +226,6 @@ export default function Hero() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-fg/40">
-        <span className="text-xs mono-tech">{t("hero.scroll")}</span>
-        <div className="w-px h-10 bg-gradient-to-b from-neon-green to-transparent" />
       </div>
     </section>
   );
