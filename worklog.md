@@ -1048,3 +1048,49 @@ Stage Summary:
 - رقم واتساب الوهمي في footer أُصلح وأصبح 966575015019.
 - رسالة واتساب في floating-contact أُصلحت.
 - الموقع جاهز للرفع النهائي على GitHub.
+
+---
+Task ID: 34-verify
+Agent: sub-agent (general-purpose verifier)
+Task: تحقق بصري وبرمجي من إصلاحات Task 34 على موقع خالد الحربي (http://localhost:3000).
+
+Work Log:
+- قرأت worklog.md وفهمت نطاق Task 34 (روابط منصات About، إزالة "م."، alt=Expert، رقم واتساب).
+- تأكدت أن dev server يعمل (HTTP 200 على http://localhost:3000).
+- استخدمت curl لجلب HTML المُعروض (236KB) ونفّذت جميع فحوصات (a-e) عبر grep:
+  • (a) روابط المنصات الـ6 كـ href في <a> tags: coventry.ac.uk, skillsbuild.org, netacad.com, cpduk.co.uk, futurelearn.com, credly.com ✓
+  • (b) 0 مرجع لـ "م. خالد" في HTML ✓
+  • (c) alt text = "Khalid Al-harbi - Cyber Security Expert" (مرتان)، ولا يوجد "Engineer" في أي alt ✓
+  • (d) "خالد الحربي" موجود في الـ hero ✓
+  • (e) wa.me/966575015019 موجود 4 مرات، ولا يوجد placeholder 9665XXXXXXX ✓
+- استخدمت Playwright (Python venv) لالتقاط screenshot كامل الصفحة (1440×7793، 1.8MB) + screenshots لكل قسم (home/about/products/showcase-video/previous-works/showcase/contact-form/footer).
+- Playwright قيّم DOM مباشرة:
+  • section IDs: home, about, products, showcase-video, previous-works, showcase, contact-form ✓ (7 أقسام)
+  • about <a> tags count = 6 بالضبط ✓
+  • Hero h1 text = "خالد الحربي" ✓
+  • Footer box: top=786 (في نهاية docHeight=7793) → الفوتر مثبت في الأسفل ✓
+- استخدمت z-ai CLI (vision / glm-4.6v) لتحليل screenshots لـ 6 أقسام:
+  • Hero: يعرض بدون شاشة بيضاء، العنوان "خالد الحربي" بدون "م." ✓
+  • About (full element): كل المنصات الـ6 الـ6 مرئية كـ clickable cards ✓ (Coventry, IBM, Cisco, CPD UK, FutureLearn, Credly)
+  • Products: "مشاريعي المميزة" — يعرض سليم بدون مشاكل ✓
+  • Previous-works: "أعمالي السابقة" — يعرض سليم ✓
+  • Contact: "تواصل معي الآن" + form — يعرض سليم ✓
+  • Footer: مثبت في الأسفل، copyright + brand + روابط تواصل ✓
+- تحقق من footer.tsx (source code): روابط واتساب 966575015019 موجودة في مكانين (CTA button + socials) برمز MessageCircle ✓
+- فحص طلبات الشبكة: لم أجد regressions من Task 34، لكن لاحظت أخطاء موارد موجودة سابقاً (ليست من صلاحيات هذا الـ task):
+  • 404 على /marketing-video-khalid.mp4 (ملف فيديو مفقود من public/)
+  • ERR_ABORTED على /bg-hacking.mp4 و /bg-marketing.mp4 (خلفيات فيديو)
+  • ERR_BLOCKED_BY_ORB على 3 أيقونات devicon من jsdelivr (cisco, kali, ibm)
+  • خطأ console واحد فقط، لا pageerror ولا console.error متعلق بكود الموقع.
+
+Stage Summary:
+- كل الفحوصات الخمسة (a-e) PASSED:
+  (a) ✓ كل المنصات الـ6 روابط حقيقية قابلة للنقر في About
+  (b) ✓ لا يوجد "م. خالد" في أي مكان بالصفحة
+  (c) ✓ alt = "Cyber Security Expert" (لا "Engineer")
+  (d) ✓ Hero = "خالد الحربي"
+  (e) ✓ رقم واتساب = 966575015019 (4 مواقع)، placeholder أُزيل
+- VLM يؤكد: لا شاشة بيضاء، لا أخطاء، التخطيط سليم في كل الأقسام (hero/about/products/portfolio/contact/footer).
+- الفوتر مثبت في الأسفل (top=786، docHeight=7793).
+- ملاحظات (ليست regressions من Task 34): ملفات فيديو مفقودة (marketing-video-khalid.mp4, bg-hacking.mp4, bg-marketing.mp4) وأيقونات devicon محجوبة بـ ORB — يُستحسن إصلاحها في task منفصل.
+- لم تُجرَ أي تعديلات على الكود (تحقق فقط).
