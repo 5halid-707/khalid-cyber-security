@@ -1,0 +1,189 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="waBgDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#075e54"/>
+      <stop offset="100%" stop-color="#054c44"/>
+    </linearGradient>
+    <linearGradient id="waBgLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e5ddd5"/>
+      <stop offset="100%" stop-color="#dcd3c9"/>
+    </linearGradient>
+    <linearGradient id="waGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#25d366"/>
+      <stop offset="100%" stop-color="#128c4d"/>
+    </linearGradient>
+    <linearGradient id="waTeal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#075e54"/>
+      <stop offset="100%" stop-color="#054c44"/>
+    </linearGradient>
+    <linearGradient id="waBubbleOut" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dcf8c6"/>
+      <stop offset="100%" stop-color="#c5f0a0"/>
+    </linearGradient>
+    <linearGradient id="waBubbleIn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0f0f0"/>
+    </linearGradient>
+    <pattern id="waPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#e5ddd5"/>
+      <circle cx="20" cy="20" r="1.5" fill="#dcd3c9" opacity="0.5"/>
+    </pattern>
+    <filter id="waShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="waGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background gradient -->
+  <rect width="1200" height="675" fill="url(#waBgDark)"/>
+
+  <!-- Phone outline mockup -->
+  <g filter="url(#waShadow)">
+    <rect x="350" y="50" width="500" height="575" rx="40" fill="#1c1c1c"/>
+    <rect x="360" y="60" width="480" height="555" rx="32" fill="#ffffff"/>
+    <!-- Phone notch -->
+    <rect x="540" y="55" width="120" height="22" rx="11" fill="#1c1c1c"/>
+    <!-- Status bar -->
+    <rect x="360" y="82" width="480" height="40" rx="0" fill="url(#waTeal)"/>
+    <text x="380" y="108" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="bold">9:41</text>
+    <text x="820" y="108" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="end">📶 🔋 100%</text>
+  </g>
+
+  <!-- WhatsApp Chat Header -->
+  <rect x="360" y="122" width="480" height="80" fill="url(#waTeal)"/>
+  <!-- Back arrow -->
+  <text x="375" y="170" font-family="Arial, sans-serif" font-size="24" fill="#ffffff">‹</text>
+  <!-- Avatar -->
+  <circle cx="410" cy="162" r="26" fill="url(#waGreen)"/>
+  <text x="410" y="170" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">S</text>
+  <!-- Contact info -->
+  <text x="448" y="155" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Sara Ahmed</text>
+  <text x="448" y="178" font-family="Arial, sans-serif" font-size="12" fill="#c8e6d4">online</text>
+  <!-- Header icons -->
+  <g transform="translate(720, 145)">
+    <path d="M 0 5 L 15 5 M 0 12 L 15 12 M 0 19 L 10 19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+  <text x="770" y="170" font-family="Arial, sans-serif" font-size="22" fill="#ffffff">⋮</text>
+
+  <!-- Chat background pattern -->
+  <rect x="360" y="202" width="480" height="370" fill="url(#waBgLight)"/>
+  <rect x="360" y="202" width="480" height="370" fill="url(#waPattern)" opacity="0.6"/>
+
+  <!-- Date pill -->
+  <g transform="translate(540, 220)">
+    <rect width="120" height="26" rx="13" fill="#e1f2fa"/>
+    <text x="60" y="18" font-family="Arial, sans-serif" font-size="11" fill="#54656f" text-anchor="middle">Today</text>
+  </g>
+
+  <!-- Chat Bubbles -->
+  <g filter="url(#waShadow)">
+    <!-- Incoming bubble 1 -->
+    <g transform="translate(385, 270)">
+      <path d="M 0 0 L 230 0 L 240 20 L 230 60 Q 230 65 225 65 L 8 65 Q 0 65 0 57 Z" fill="url(#waBubbleIn)"/>
+      <text x="14" y="25" font-family="Arial, sans-serif" font-size="14" fill="#111b21">Hey! How's the new project?</text>
+      <text x="220" y="55" font-family="Arial, sans-serif" font-size="10" fill="#667781" text-anchor="end">9:41 AM</text>
+    </g>
+
+    <!-- Outgoing bubble 1 -->
+    <g transform="translate(580, 350)">
+      <path d="M 20 0 L 240 0 L 248 12 L 240 65 Q 240 70 233 70 L 8 70 Q 0 70 0 62 L 0 12 Z" fill="url(#waBubbleOut)"/>
+      <text x="14" y="25" font-family="Arial, sans-serif" font-size="14" fill="#111b21">Going great! Almost done 🚀</text>
+      <text x="220" y="55" font-family="Arial, sans-serif" font-size="10" fill="#667781" text-anchor="end">9:42 ✓✓</text>
+    </g>
+
+    <!-- Incoming bubble 2 -->
+    <g transform="translate(385, 440)">
+      <path d="M 0 0 L 200 0 L 210 20 L 200 55 Q 200 60 195 60 L 8 60 Q 0 60 0 52 Z" fill="url(#waBubbleIn)"/>
+      <text x="14" y="25" font-family="Arial, sans-serif" font-size="14" fill="#111b21">Can't wait to see it! 😍</text>
+      <text x="190" y="50" font-family="Arial, sans-serif" font-size="10" fill="#667781" text-anchor="end">9:43 AM</text>
+    </g>
+
+    <!-- Outgoing bubble 2 (typing indicator) -->
+    <g transform="translate(580, 515)">
+      <path d="M 20 0 L 200 0 L 208 12 L 200 50 Q 200 55 193 55 L 8 55 Q 0 55 0 47 L 0 12 Z" fill="url(#waBubbleOut)"/>
+      <circle cx="35" cy="27" r="5" fill="#667781">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="55" cy="27" r="5" fill="#667781">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="75" cy="27" r="5" fill="#667781">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+      </circle>
+      <text x="180" y="48" font-family="Arial, sans-serif" font-size="10" fill="#667781" text-anchor="end">9:43 ✓✓</text>
+    </g>
+  </g>
+
+  <!-- Input bar -->
+  <rect x="360" y="572" width="480" height="48" fill="#f0f0f0"/>
+  <g transform="translate(380, 580)">
+    <rect x="0" y="0" width="370" height="32" rx="16" fill="#ffffff"/>
+    <text x="20" y="22" font-family="Arial, sans-serif" font-size="14" fill="#8696a0">Type a message</text>
+    <!-- Emoji icon -->
+    <circle cx="350" cy="16" r="10" fill="none" stroke="#8696a0" stroke-width="1.5"/>
+    <circle cx="346" cy="14" r="1.2" fill="#8696a0"/>
+    <circle cx="354" cy="14" r="1.2" fill="#8696a0"/>
+    <path d="M 345 19 Q 350 22 355 19" stroke="#8696a0" stroke-width="1.5" fill="none"/>
+  </g>
+  <!-- Attach icon -->
+  <g transform="translate(760, 580)" stroke="#8696a0" stroke-width="2" fill="none">
+    <path d="M 14 4 L 14 22 M 14 4 L 4 14 L 14 24" transform="rotate(-45 14 14)"/>
+  </g>
+  <!-- Send button (mic) -->
+  <circle cx="800" cy="596" r="18" fill="url(#waGreen)"/>
+  <g transform="translate(790, 586)" fill="#ffffff">
+    <rect x="6" y="2" width="8" height="14" rx="4"/>
+    <path d="M 3 12 Q 3 18 10 18 Q 17 18 17 12" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <line x1="10" y1="18" x2="10" y2="22" stroke="#ffffff" stroke-width="2"/>
+  </g>
+
+  <!-- Left side branding -->
+  <g transform="translate(60, 200)">
+    <!-- Big WhatsApp logo -->
+    <g filter="url(#waGlow)">
+      <circle cx="100" cy="100" r="80" fill="url(#waGreen)"/>
+      <!-- Phone icon -->
+      <path d="M 100 50 C 75 50 55 70 55 95 C 55 115 65 130 75 140 L 70 160 L 90 152 C 100 156 112 156 122 152 L 142 160 L 137 140 C 147 130 145 115 145 95 C 145 70 125 50 100 50 Z" fill="#ffffff" opacity="0.95"/>
+      <path d="M 80 90 Q 100 110 120 90" stroke="#25d366" stroke-width="3" fill="none"/>
+    </g>
+    <text x="100" y="220" font-family="Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#ffffff" text-anchor="middle">WhatsApp</text>
+    <text x="100" y="260" font-family="Arial, sans-serif" font-size="16" fill="#c8e6d4" text-anchor="middle" opacity="0.9">Simple. Reliable. Private.</text>
+    <text x="100" y="290" font-family="Arial, sans-serif" font-size="13" fill="#c8e6d4" text-anchor="middle" opacity="0.7">Messaging Clone</text>
+  </g>
+
+  <!-- Right side features -->
+  <g transform="translate(900, 200)" fill="#ffffff" font-family="Arial, sans-serif">
+    <g filter="url(#waShadow)">
+      <rect x="0" y="0" width="240" height="100" rx="12" fill="#ffffff" opacity="0.1"/>
+    </g>
+    <text x="20" y="35" font-size="20" font-weight="bold">💬</text>
+    <text x="60" y="32" font-size="16" font-weight="bold">Real-time Chat</text>
+    <text x="60" y="52" font-size="12" opacity="0.8">WebSocket powered</text>
+    <text x="60" y="70" font-size="12" opacity="0.8">Instant delivery</text>
+
+    <g filter="url(#waShadow)" transform="translate(0, 120)">
+      <rect x="0" y="0" width="240" height="100" rx="12" fill="#ffffff" opacity="0.1"/>
+    </g>
+    <text x="20" y="155" font-size="20" font-weight="bold">📞</text>
+    <text x="60" y="152" font-size="16" font-weight="bold">Voice &amp; Video</text>
+    <text x="60" y="172" font-size="12" opacity="0.8">HD calling</text>
+    <text x="60" y="190" font-size="12" opacity="0.8">Group calls</text>
+
+    <g filter="url(#waShadow)" transform="translate(0, 240)">
+      <rect x="0" y="0" width="240" height="100" rx="12" fill="#ffffff" opacity="0.1"/>
+    </g>
+    <text x="20" y="275" font-size="20" font-weight="bold">🔒</text>
+    <text x="60" y="272" font-size="16" font-weight="bold">End-to-End</text>
+    <text x="60" y="292" font-size="12" opacity="0.8">Encrypted messages</text>
+    <text x="60" y="310" font-size="12" opacity="0.8">Privacy first</text>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="600" y="660" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" opacity="0.7" text-anchor="middle">WhatsApp Clone • Built with React, Socket.io &amp; Node.js</text>
+</svg>

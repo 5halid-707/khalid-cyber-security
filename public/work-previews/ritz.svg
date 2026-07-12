@@ -1,0 +1,241 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1410"/>
+      <stop offset="100%" stop-color="#0d0a07"/>
+    </linearGradient>
+    <linearGradient id="rcGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f4d680"/>
+      <stop offset="40%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#8b6f1f"/>
+    </linearGradient>
+    <linearGradient id="rcGoldBright" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde8a8"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#a07e1d"/>
+    </linearGradient>
+    <linearGradient id="rcCream" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f5dc"/>
+      <stop offset="100%" stop-color="#e8e4cf"/>
+    </linearGradient>
+    <linearGradient id="rcSkyline" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2018" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1a1410" stop-opacity="1"/>
+    </linearGradient>
+    <radialGradient id="rcGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c9a227" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c9a227" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="rcShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="6" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="rcGoldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="rcTextGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#rcBg)"/>
+
+  <!-- Subtle radial glow -->
+  <ellipse cx="600" cy="340" rx="600" ry="280" fill="url(#rcGlow)"/>
+
+  <!-- Decorative gold border frame -->
+  <rect x="30" y="30" width="1140" height="615" fill="none" stroke="url(#rcGold)" stroke-width="2" opacity="0.6"/>
+  <rect x="40" y="40" width="1120" height="595" fill="none" stroke="url(#rcGold)" stroke-width="1" opacity="0.4"/>
+
+  <!-- Corner ornaments -->
+  <g fill="url(#rcGold)" opacity="0.8">
+    <!-- Top-left corner -->
+    <path d="M 40 70 Q 60 40 90 40 L 100 40 L 100 50 L 90 50 Q 65 50 50 65 L 50 70 Z"/>
+    <circle cx="100" cy="50" r="3"/>
+    <!-- Top-right corner -->
+    <path d="M 1160 70 Q 1140 40 1110 40 L 1100 40 L 1100 50 L 1110 50 Q 1135 50 1150 65 L 1150 70 Z"/>
+    <circle cx="1100" cy="50" r="3"/>
+    <!-- Bottom-left corner -->
+    <path d="M 40 605 Q 60 635 90 635 L 100 635 L 100 625 L 90 625 Q 65 625 50 610 L 50 605 Z"/>
+    <circle cx="100" cy="625" r="3"/>
+    <!-- Bottom-right corner -->
+    <path d="M 1160 605 Q 1140 635 1110 635 L 1100 635 L 1100 625 L 1110 625 Q 1135 625 1150 610 L 1150 605 Z"/>
+    <circle cx="1100" cy="625" r="3"/>
+  </g>
+
+  <!-- Top decorative line -->
+  <line x1="500" y1="80" x2="700" y2="80" stroke="url(#rcGold)" stroke-width="1.5"/>
+  <circle cx="600" cy="80" r="4" fill="url(#rcGold)"/>
+
+  <!-- Crown logo (elegant) -->
+  <g transform="translate(600, 130)" filter="url(#rcGoldGlow)">
+    <!-- Crown body -->
+    <path d="M -60 30 L -50 -20 L -25 5 L 0 -30 L 25 5 L 50 -20 L 60 30 Z" fill="url(#rcGoldBright)" stroke="#8b6f1f" stroke-width="1"/>
+    <!-- Crown base -->
+    <rect x="-65" y="30" width="130" height="12" fill="url(#rcGold)" stroke="#8b6f1f" stroke-width="0.5"/>
+    <rect x="-65" y="42" width="130" height="6" fill="#a07e1d"/>
+    <!-- Crown jewels -->
+    <circle cx="-50" cy="-20" r="5" fill="#fde8a8"/>
+    <circle cx="0" cy="-30" r="6" fill="#fde8a8"/>
+    <circle cx="50" cy="-20" r="5" fill="#fde8a8"/>
+    <!-- Center jewel -->
+    <circle cx="0" cy="36" r="4" fill="#fde8a8"/>
+    <circle cx="0" cy="36" r="2" fill="#fff" opacity="0.6"/>
+  </g>
+
+  <!-- "THE RITZ-CARLTON" text -->
+  <text x="600" y="220" font-family="'Playfair Display', 'Times New Roman', Georgia, serif" font-size="52" font-weight="bold" fill="url(#rcGoldBright)" text-anchor="middle" letter-spacing="6" filter="url(#rcTextGlow)">THE RITZ-CARLTON</text>
+
+  <!-- Subtitle -->
+  <line x1="350" y1="245" x2="500" y2="245" stroke="url(#rcGold)" stroke-width="1" opacity="0.7"/>
+  <line x1="700" y1="245" x2="850" y2="245" stroke="url(#rcGold)" stroke-width="1" opacity="0.7"/>
+  <text x="600" y="252" font-family="'Playfair Display', Georgia, serif" font-size="18" fill="url(#rcGold)" text-anchor="middle" letter-spacing="10" font-style="italic">JEDDAH</text>
+
+  <!-- Hotel silhouette -->
+  <g filter="url(#rcShadow)">
+    <!-- Main hotel building -->
+    <g transform="translate(180, 340)">
+      <!-- Ground -->
+      <rect x="-40" y="220" width="1080" height="10" fill="url(#rcGold)" opacity="0.3"/>
+      
+      <!-- Left wing -->
+      <rect x="0" y="60" width="120" height="160" fill="#3a2e1f" stroke="url(#rcGold)" stroke-width="1"/>
+      <!-- Windows left wing -->
+      <g fill="url(#rcGold)" opacity="0.7">
+        <rect x="15" y="80" width="14" height="18"/>
+        <rect x="40" y="80" width="14" height="18"/>
+        <rect x="65" y="80" width="14" height="18"/>
+        <rect x="90" y="80" width="14" height="18"/>
+        <rect x="15" y="110" width="14" height="18"/>
+        <rect x="40" y="110" width="14" height="18"/>
+        <rect x="65" y="110" width="14" height="18"/>
+        <rect x="90" y="110" width="14" height="18"/>
+        <rect x="15" y="140" width="14" height="18"/>
+        <rect x="40" y="140" width="14" height="18"/>
+        <rect x="65" y="140" width="14" height="18"/>
+        <rect x="90" y="140" width="14" height="18"/>
+        <rect x="15" y="170" width="14" height="18"/>
+        <rect x="40" y="170" width="14" height="18"/>
+        <rect x="65" y="170" width="14" height="18"/>
+        <rect x="90" y="170" width="14" height="18"/>
+      </g>
+
+      <!-- Central tower (main) -->
+      <rect x="140" y="0" width="180" height="220" fill="#4a3826" stroke="url(#rcGold)" stroke-width="1.5"/>
+      <!-- Tower top / dome -->
+      <path d="M 140 0 L 180 -25 L 280 -25 L 320 0 Z" fill="#5a4632" stroke="url(#rcGold)" stroke-width="1"/>
+      <!-- Spire -->
+      <line x1="230" y1="-25" x2="230" y2="-55" stroke="url(#rcGoldBright)" stroke-width="2"/>
+      <circle cx="230" cy="-58" r="3" fill="url(#rcGoldBright)"/>
+      <!-- Tower windows -->
+      <g fill="url(#rcGoldBright)" opacity="0.85">
+        <rect x="160" y="20" width="20" height="20"/>
+        <rect x="195" y="20" width="20" height="20"/>
+        <rect x="245" y="20" width="20" height="20"/>
+        <rect x="280" y="20" width="20" height="20"/>
+        <rect x="160" y="55" width="20" height="20"/>
+        <rect x="195" y="55" width="20" height="20"/>
+        <rect x="245" y="55" width="20" height="20"/>
+        <rect x="280" y="55" width="20" height="20"/>
+        <rect x="160" y="90" width="20" height="20"/>
+        <rect x="195" y="90" width="20" height="20"/>
+        <rect x="245" y="90" width="20" height="20"/>
+        <rect x="280" y="90" width="20" height="20"/>
+        <rect x="160" y="125" width="20" height="20"/>
+        <rect x="195" y="125" width="20" height="20"/>
+        <rect x="245" y="125" width="20" height="20"/>
+        <rect x="280" y="125" width="20" height="20"/>
+        <rect x="160" y="160" width="20" height="20"/>
+        <rect x="195" y="160" width="20" height="20"/>
+        <rect x="245" y="160" width="20" height="20"/>
+        <rect x="280" y="160" width="20" height="20"/>
+      </g>
+      <!-- Grand entrance -->
+      <rect x="200" y="180" width="60" height="40" fill="#1a1410" stroke="url(#rcGold)" stroke-width="1.5"/>
+      <path d="M 200 180 Q 230 165 260 180" stroke="url(#rcGold)" stroke-width="1.5" fill="none"/>
+      <!-- Flag pole -->
+      <line x1="230" y1="-58" x2="230" y2="-78" stroke="url(#rcGold)" stroke-width="1"/>
+      <path d="M 230 -78 L 245 -75 L 245 -70 L 230 -68 Z" fill="url(#rcGoldBright)"/>
+
+      <!-- Right wing -->
+      <rect x="340" y="60" width="120" height="160" fill="#3a2e1f" stroke="url(#rcGold)" stroke-width="1"/>
+      <g fill="url(#rcGold)" opacity="0.7">
+        <rect x="355" y="80" width="14" height="18"/>
+        <rect x="380" y="80" width="14" height="18"/>
+        <rect x="405" y="80" width="14" height="18"/>
+        <rect x="430" y="80" width="14" height="18"/>
+        <rect x="355" y="110" width="14" height="18"/>
+        <rect x="380" y="110" width="14" height="18"/>
+        <rect x="405" y="110" width="14" height="18"/>
+        <rect x="430" y="110" width="14" height="18"/>
+        <rect x="355" y="140" width="14" height="18"/>
+        <rect x="380" y="140" width="14" height="18"/>
+        <rect x="405" y="140" width="14" height="18"/>
+        <rect x="430" y="140" width="14" height="18"/>
+        <rect x="355" y="170" width="14" height="18"/>
+        <rect x="380" y="170" width="14" height="18"/>
+        <rect x="405" y="170" width="14" height="18"/>
+        <rect x="430" y="170" width="14" height="18"/>
+      </g>
+
+      <!-- Far right tower (modern Jeddah skyline accent) -->
+      <rect x="490" y="80" width="40" height="140" fill="#2a2018" stroke="url(#rcGold)" stroke-width="0.5" opacity="0.85"/>
+      <g fill="url(#rcGold)" opacity="0.5">
+        <rect x="500" y="95" width="8" height="10"/>
+        <rect x="513" y="95" width="8" height="10"/>
+        <rect x="500" y="115" width="8" height="10"/>
+        <rect x="513" y="115" width="8" height="10"/>
+        <rect x="500" y="135" width="8" height="10"/>
+        <rect x="513" y="135" width="8" height="10"/>
+        <rect x="500" y="155" width="8" height="10"/>
+        <rect x="513" y="155" width="8" height="10"/>
+        <rect x="500" y="175" width="8" height="10"/>
+        <rect x="513" y="175" width="8" height="10"/>
+        <rect x="500" y="195" width="8" height="10"/>
+        <rect x="513" y="195" width="8" height="10"/>
+      </g>
+      <!-- Jeddah Tower-like tall spire -->
+      <path d="M 560 220 L 580 50 L 600 220 Z" fill="#2a2018" stroke="url(#rcGold)" stroke-width="0.5"/>
+      <g fill="url(#rcGoldBright)" opacity="0.4">
+        <circle cx="585" cy="100" r="1.5"/>
+        <circle cx="580" cy="130" r="1.5"/>
+        <circle cx="590" cy="160" r="1.5"/>
+        <circle cx="583" cy="190" r="1.5"/>
+      </g>
+
+      <!-- Palm trees -->
+      <g transform="translate(70, 200)" fill="#1a1410">
+        <rect x="-2" y="0" width="4" height="40" fill="#3a2e1f"/>
+        <ellipse cx="0" cy="-5" rx="20" ry="6" fill="#2a3a1a"/>
+        <ellipse cx="-12" cy="0" rx="15" ry="5" fill="#2a3a1a" transform="rotate(-30 -12 0)"/>
+        <ellipse cx="12" cy="0" rx="15" ry="5" fill="#2a3a1a" transform="rotate(30 12 0)"/>
+      </g>
+      <g transform="translate(450, 200)" fill="#1a1410">
+        <rect x="-2" y="0" width="4" height="40" fill="#3a2e1f"/>
+        <ellipse cx="0" cy="-5" rx="18" ry="6" fill="#2a3a1a"/>
+        <ellipse cx="-12" cy="0" rx="14" ry="5" fill="#2a3a1a" transform="rotate(-30 -12 0)"/>
+        <ellipse cx="12" cy="0" rx="14" ry="5" fill="#2a3a1a" transform="rotate(30 12 0)"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Decorative tagline -->
+  <text x="600" y="610" font-family="'Playfair Display', Georgia, serif" font-size="22" font-style="italic" fill="url(#rcGold)" text-anchor="middle" letter-spacing="3">Where Luxury Meets the Red Sea</text>
+
+  <!-- Decorative flourish -->
+  <g transform="translate(600, 630)" fill="url(#rcGold)" opacity="0.9">
+    <path d="M -100 0 Q -50 -3 0 0 Q 50 3 100 0" stroke="url(#rcGold)" stroke-width="1" fill="none"/>
+    <circle cx="0" cy="0" r="2"/>
+    <circle cx="-30" cy="0" r="1.5"/>
+    <circle cx="30" cy="0" r="1.5"/>
+  </g>
+
+  <!-- Bottom corner monogram -->
+  <text x="80" y="620" font-family="'Playfair Display', Georgia, serif" font-size="14" fill="url(#rcGold)" letter-spacing="3" opacity="0.7">EST. 1923</text>
+  <text x="1120" y="620" font-family="'Playfair Display', Georgia, serif" font-size="14" fill="url(#rcGold)" letter-spacing="3" opacity="0.7" text-anchor="end">JEDDAH • KSA</text>
+</svg>

@@ -1,0 +1,316 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="snBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8f8f8"/>
+    </linearGradient>
+    <linearGradient id="snPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ee296d"/>
+      <stop offset="100%" stop-color="#d61f5c"/>
+    </linearGradient>
+    <linearGradient id="snPinkSoft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd6e3"/>
+      <stop offset="100%" stop-color="#ffb3cf"/>
+    </linearGradient>
+    <linearGradient id="snBlack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="snProduct1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff0f5"/>
+      <stop offset="100%" stop-color="#ffe0ec"/>
+    </linearGradient>
+    <linearGradient id="snProduct2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f5f5"/>
+      <stop offset="100%" stop-color="#e8e8e8"/>
+    </linearGradient>
+    <linearGradient id="snProduct3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e8"/>
+      <stop offset="100%" stop-color="#ffefb8"/>
+    </linearGradient>
+    <linearGradient id="snProduct4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8f4ff"/>
+      <stop offset="100%" stop-color="#cce4ff"/>
+    </linearGradient>
+    <linearGradient id="snProduct5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0e8ff"/>
+      <stop offset="100%" stop-color="#d8c4ff"/>
+    </linearGradient>
+    <filter id="snShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="snPinkGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#snBg)"/>
+
+  <!-- Top header (SHEIN black) -->
+  <rect x="0" y="0" width="1200" height="75" fill="#ffffff"/>
+  <line x1="0" y1="75" width="1200" height="1" stroke="#eeeeee" stroke-width="1"/>
+
+  <!-- SHEIN bold black logo -->
+  <text x="40" y="55" font-family="Arial Black, Arial, sans-serif" font-size="40" font-weight="900" fill="url(#snBlack)" letter-spacing="0">SHEIN</text>
+
+  <!-- Pink accent dot -->
+  <circle cx="195" cy="48" r="6" fill="url(#snPink)"/>
+
+  <!-- Search bar -->
+  <g transform="translate(290, 22)" filter="url(#snShadow)">
+    <rect width="650" height="40" rx="20" fill="#f5f5f5"/>
+    <rect width="650" height="40" rx="20" fill="none" stroke="#ee296d" stroke-width="1.5"/>
+    <circle cx="22" cy="20" r="9" fill="none" stroke="#888" stroke-width="2"/>
+    <line x1="29" y1="27" x2="36" y2="34" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="50" y="26" font-family="Arial, sans-serif" font-size="14" fill="#999999">dresses, tops, shoes...</text>
+    <!-- Pink camera icon -->
+    <g transform="translate(610, 8)">
+      <rect x="0" y="0" width="24" height="20" rx="3" fill="url(#snPink)"/>
+      <rect x="6" y="-4" width="12" height="6" rx="1" fill="url(#snPink)"/>
+      <circle cx="12" cy="10" r="5" fill="#ffffff"/>
+      <circle cx="12" cy="10" r="3" fill="url(#snPink)"/>
+    </g>
+  </g>
+
+  <!-- Top right icons -->
+  <!-- Shopping bag -->
+  <g transform="translate(1000, 22)" filter="url(#snShadow)">
+    <path d="M 5 12 L 5 35 L 30 35 L 30 12 Z" fill="none" stroke="url(#snBlack)" stroke-width="2.5"/>
+    <path d="M 10 12 L 10 8 Q 10 0 17.5 0 Q 25 0 25 8 L 25 12" fill="none" stroke="url(#snBlack)" stroke-width="2.5"/>
+    <!-- Pink badge -->
+    <circle cx="32" cy="8" r="9" fill="url(#snPink)"/>
+    <text x="32" y="12" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  </g>
+  <!-- User/wishlist -->
+  <g transform="translate(1070, 22)">
+    <path d="M 10 22 C 10 22 0 15 0 9 C 0 5 4 3 7 6 L 10 9 L 13 6 C 16 3 20 5 20 9 C 20 15 10 22 10 22 Z" fill="url(#snPink)"/>
+  </g>
+  <g transform="translate(1130, 18)">
+    <circle cx="18" cy="18" r="18" fill="#f5f5f5"/>
+    <circle cx="18" cy="14" r="6" fill="none" stroke="#000" stroke-width="2"/>
+    <path d="M 6 32 Q 6 22 18 22 Q 30 22 30 32" fill="none" stroke="#000" stroke-width="2"/>
+  </g>
+
+  <!-- Pink promo banner -->
+  <g filter="url(#snShadow)">
+    <rect x="0" y="75" width="1200" height="55" fill="url(#snPink)"/>
+    <text x="40" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">⚡ FLASH SALE • UP TO 80% OFF</text>
+    <text x="600" y="110" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">⏰ Ends in 02:14:33</text>
+    <text x="1160" y="110" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="end">SHOP NOW →</text>
+  </g>
+
+  <!-- Category pills -->
+  <g font-family="Arial, sans-serif" font-size="14" transform="translate(40, 155)">
+    <rect x="0" y="0" width="100" height="36" rx="18" fill="url(#snBlack)"/>
+    <text x="50" y="23" text-anchor="middle" fill="#ffffff" font-weight="bold">👗 Dresses</text>
+
+    <rect x="115" y="0" width="80" height="36" rx="18" fill="#f5f5f5"/>
+    <text x="155" y="23" text-anchor="middle" fill="#333" font-weight="500">👕 Tops</text>
+
+    <rect x="210" y="0" width="90" height="36" rx="18" fill="#f5f5f5"/>
+    <text x="255" y="23" text-anchor="middle" fill="#333" font-weight="500">👔 Shirts</text>
+
+    <rect x="315" y="0" width="80" height="36" rx="18" fill="#f5f5f5"/>
+    <text x="355" y="23" text-anchor="middle" fill="#333" font-weight="500">👟 Shoes</text>
+
+    <rect x="410" y="0" width="90" height="36" rx="18" fill="#f5f5f5"/>
+    <text x="455" y="23" text-anchor="middle" fill="#333" font-weight="500">👜 Bags</text>
+
+    <rect x="515" y="0" width="90" height="36" rx="18" fill="#f5f5f5"/>
+    <text x="560" y="23" text-anchor="middle" fill="#333" font-weight="500">💍 Accs</text>
+  </g>
+
+  <!-- Section title -->
+  <text x="40" y="230" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#000000">🔥 Trending Now</text>
+  <text x="180" y="230" font-family="Arial, sans-serif" font-size="13" fill="#999">See all →</text>
+
+  <!-- Product grid 5 cards -->
+  <g filter="url(#snShadow)">
+    <!-- Product 1: Dress -->
+    <g transform="translate(40, 250)">
+      <rect width="200" height="320" rx="8" fill="#ffffff" stroke="#eeeeee" stroke-width="1"/>
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="url(#snProduct1)"/>
+      <!-- Dress silhouette -->
+      <g transform="translate(70, 40)">
+        <!-- Straps -->
+        <line x1="15" y1="0" x2="20" y2="20" stroke="#000" stroke-width="3"/>
+        <line x1="45" y1="0" x2="40" y2="20" stroke="#000" stroke-width="3"/>
+        <!-- Dress body -->
+        <path d="M 10 20 L 50 20 L 55 50 L 60 130 L 0 130 L 5 50 Z" fill="url(#snPink)"/>
+        <!-- Highlight -->
+        <path d="M 20 25 L 40 25 L 42 50 L 18 50 Z" fill="#ffffff" opacity="0.2"/>
+        <!-- Neckline -->
+        <path d="M 18 20 Q 30 28 42 20" stroke="#d61f5c" stroke-width="1" fill="none"/>
+      </g>
+      <!-- Discount badge -->
+      <g transform="translate(10, 10)">
+        <rect width="55" height="20" rx="3" fill="url(#snPink)"/>
+        <text x="27" y="14" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">-65%</text>
+      </g>
+      <!-- Heart -->
+      <g transform="translate(170, 12)">
+        <circle cx="10" cy="10" r="10" fill="#ffffff"/>
+        <path d="M 10 16 C 10 16 4 11 4 7 C 4 5 6 4 8 5.5 L 10 7.5 L 12 5.5 C 14 4 16 5 16 7 C 16 11 10 16 10 16 Z" fill="#ee296d"/>
+      </g>
+      <text x="12" y="225" font-family="Arial, sans-serif" font-size="11" fill="#999">SHEIN</text>
+      <text x="12" y="245" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#000">Floral Summer Dress</text>
+      <text x="12" y="270" font-family="Arial, sans-serif" font-size="11" fill="#999">★★★★★ <tspan fill="#ee296d">(2.4k)</tspan></text>
+      <text x="12" y="298" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#000">$8.99</text>
+      <text x="65" y="298" font-family="Arial, sans-serif" font-size="12" fill="#999" text-decoration="line-through">$25.99</text>
+      <text x="12" y="315" font-family="Arial, sans-serif" font-size="10" fill="#ee296d" font-weight="bold">⚡ Limited time</text>
+    </g>
+
+    <!-- Product 2: Shirt -->
+    <g transform="translate(255, 250)">
+      <rect width="200" height="320" rx="8" fill="#ffffff" stroke="#eeeeee" stroke-width="1"/>
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="url(#snProduct2)"/>
+      <!-- Shirt silhouette -->
+      <g transform="translate(70, 35)">
+        <!-- Shirt body with collar -->
+        <path d="M 20 0 L 0 15 L 10 30 L 15 25 L 15 130 L 45 130 L 45 25 L 50 30 L 60 15 L 40 0 L 35 5 L 30 12 L 25 5 Z" fill="#000"/>
+        <!-- Buttons -->
+        <circle cx="30" cy="35" r="2" fill="#fff"/>
+        <circle cx="30" cy="55" r="2" fill="#fff"/>
+        <circle cx="30" cy="75" r="2" fill="#fff"/>
+        <circle cx="30" cy="95" r="2" fill="#fff"/>
+        <!-- Collar highlight -->
+        <path d="M 25 5 L 30 12 L 35 5" stroke="#fff" stroke-width="1" fill="none" opacity="0.3"/>
+      </g>
+      <g transform="translate(10, 10)">
+        <rect width="55" height="20" rx="3" fill="url(#snPink)"/>
+        <text x="27" y="14" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">-40%</text>
+      </g>
+      <g transform="translate(170, 12)">
+        <circle cx="10" cy="10" r="10" fill="#ffffff"/>
+        <path d="M 10 16 C 10 16 4 11 4 7 C 4 5 6 4 8 5.5 L 10 7.5 L 12 5.5 C 14 4 16 5 16 7 C 16 11 10 16 10 16 Z" fill="none" stroke="#999" stroke-width="1.5"/>
+      </g>
+      <text x="12" y="225" font-family="Arial, sans-serif" font-size="11" fill="#999">SHEIN</text>
+      <text x="12" y="245" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#000">Casual Button Shirt</text>
+      <text x="12" y="270" font-family="Arial, sans-serif" font-size="11" fill="#999">★★★★☆ <tspan fill="#ee296d">(892)</tspan></text>
+      <text x="12" y="298" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#000">$12.49</text>
+      <text x="75" y="298" font-family="Arial, sans-serif" font-size="12" fill="#999" text-decoration="line-through">$20.99</text>
+      <text x="12" y="315" font-family="Arial, sans-serif" font-size="10" fill="#ee296d" font-weight="bold">⚡ Almost sold out</text>
+    </g>
+
+    <!-- Product 3: Shoes -->
+    <g transform="translate(470, 250)">
+      <rect width="200" height="320" rx="8" fill="#ffffff" stroke="#eeeeee" stroke-width="1"/>
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="url(#snProduct3)"/>
+      <!-- Shoes silhouette -->
+      <g transform="translate(55, 80)">
+        <!-- High heel shoe -->
+        <path d="M 0 40 Q 10 25 30 25 L 70 25 Q 85 25 88 35 L 90 50 L 0 50 Z" fill="url(#snPink)"/>
+        <!-- Heel -->
+        <path d="M 82 50 L 88 50 L 85 80 L 80 80 Z" fill="url(#snPink)"/>
+        <!-- Sole -->
+        <rect x="0" y="48" width="90" height="4" fill="#000"/>
+        <!-- Highlight -->
+        <path d="M 15 32 Q 25 30 35 32" stroke="#fff" stroke-width="2" fill="none" opacity="0.4"/>
+      </g>
+      <g transform="translate(10, 10)">
+        <rect width="55" height="20" rx="3" fill="url(#snPink)"/>
+        <text x="27" y="14" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">-55%</text>
+      </g>
+      <g transform="translate(170, 12)">
+        <circle cx="10" cy="10" r="10" fill="#ffffff"/>
+        <path d="M 10 16 C 10 16 4 11 4 7 C 4 5 6 4 8 5.5 L 10 7.5 L 12 5.5 C 14 4 16 5 16 7 C 16 11 10 16 10 16 Z" fill="#ee296d"/>
+      </g>
+      <text x="12" y="225" font-family="Arial, sans-serif" font-size="11" fill="#999">SHEIN</text>
+      <text x="12" y="245" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#000">Pink Heel Pumps</text>
+      <text x="12" y="270" font-family="Arial, sans-serif" font-size="11" fill="#999">★★★★★ <tspan fill="#ee296d">(1.8k)</tspan></text>
+      <text x="12" y="298" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#000">$18.99</text>
+      <text x="75" y="298" font-family="Arial, sans-serif" font-size="12" fill="#999" text-decoration="line-through">$42.00</text>
+      <text x="12" y="315" font-family="Arial, sans-serif" font-size="10" fill="#ee296d" font-weight="bold">⚡ Best seller</text>
+    </g>
+
+    <!-- Product 4: Bag -->
+    <g transform="translate(685, 250)">
+      <rect width="200" height="320" rx="8" fill="#ffffff" stroke="#eeeeee" stroke-width="1"/>
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="url(#snProduct4)"/>
+      <!-- Bag silhouette -->
+      <g transform="translate(65, 45)">
+        <!-- Handle -->
+        <path d="M 15 25 Q 15 0 35 0 Q 55 0 55 25" stroke="#000" stroke-width="5" fill="none"/>
+        <!-- Bag body -->
+        <rect x="0" y="20" width="70" height="100" rx="6" fill="url(#snPink)"/>
+        <!-- Front pocket -->
+        <rect x="10" y="60" width="50" height="40" rx="4" fill="url(#snPinkSoft)"/>
+        <!-- Strap detail -->
+        <rect x="0" y="20" width="70" height="6" fill="#d61f5c"/>
+        <!-- Buckle -->
+        <rect x="30" y="55" width="10" height="8" fill="#000"/>
+      </g>
+      <g transform="translate(10, 10)">
+        <rect width="55" height="20" rx="3" fill="url(#snPink)"/>
+        <text x="27" y="14" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">-30%</text>
+      </g>
+      <g transform="translate(170, 12)">
+        <circle cx="10" cy="10" r="10" fill="#ffffff"/>
+        <path d="M 10 16 C 10 16 4 11 4 7 C 4 5 6 4 8 5.5 L 10 7.5 L 12 5.5 C 14 4 16 5 16 7 C 16 11 10 16 10 16 Z" fill="none" stroke="#999" stroke-width="1.5"/>
+      </g>
+      <text x="12" y="225" font-family="Arial, sans-serif" font-size="11" fill="#999">SHEIN</text>
+      <text x="12" y="245" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#000">Tote Handbag Pink</text>
+      <text x="12" y="270" font-family="Arial, sans-serif" font-size="11" fill="#999">★★★★☆ <tspan fill="#ee296d">(643)</tspan></text>
+      <text x="12" y="298" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#000">$15.99</text>
+      <text x="70" y="298" font-family="Arial, sans-serif" font-size="12" fill="#999" text-decoration="line-through">$22.99</text>
+      <text x="12" y="315" font-family="Arial, sans-serif" font-size="10" fill="#ee296d" font-weight="bold">⚡ New arrival</text>
+    </g>
+
+    <!-- Product 5: Skirt -->
+    <g transform="translate(900, 250)">
+      <rect width="200" height="320" rx="8" fill="#ffffff" stroke="#eeeeee" stroke-width="1"/>
+      <rect x="0" y="0" width="200" height="200" rx="8" fill="url(#snProduct5)"/>
+      <!-- Skirt silhouette -->
+      <g transform="translate(70, 40)">
+        <!-- Waistband -->
+        <rect x="10" y="0" width="40" height="10" fill="#000"/>
+        <!-- Skirt body -->
+        <path d="M 10 10 L 50 10 L 65 120 L -5 120 Z" fill="#000"/>
+        <!-- Pleats -->
+        <line x1="20" y1="15" x2="15" y2="115" stroke="#333" stroke-width="1"/>
+        <line x1="30" y1="15" x2="30" y2="115" stroke="#333" stroke-width="1"/>
+        <line x1="40" y1="15" x2="45" y2="115" stroke="#333" stroke-width="1"/>
+        <!-- Pink accent stripe -->
+        <rect x="-5" y="115" width="70" height="5" fill="url(#snPink)"/>
+      </g>
+      <g transform="translate(10, 10)">
+        <rect width="55" height="20" rx="3" fill="url(#snPink)"/>
+        <text x="27" y="14" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">-50%</text>
+      </g>
+      <g transform="translate(170, 12)">
+        <circle cx="10" cy="10" r="10" fill="#ffffff"/>
+        <path d="M 10 16 C 10 16 4 11 4 7 C 4 5 6 4 8 5.5 L 10 7.5 L 12 5.5 C 14 4 16 5 16 7 C 16 11 10 16 10 16 Z" fill="#ee296d"/>
+      </g>
+      <text x="12" y="225" font-family="Arial, sans-serif" font-size="11" fill="#999">SHEIN</text>
+      <text x="12" y="245" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#000">Pleated Mini Skirt</text>
+      <text x="12" y="270" font-family="Arial, sans-serif" font-size="11" fill="#999">★★★★★ <tspan fill="#ee296d">(3.1k)</tspan></text>
+      <text x="12" y="298" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#000">$9.99</text>
+      <text x="65" y="298" font-family="Arial, sans-serif" font-size="12" fill="#999" text-decoration="line-through">$19.99</text>
+      <text x="12" y="315" font-family="Arial, sans-serif" font-size="10" fill="#ee296d" font-weight="bold">⚡ Hot deal</text>
+    </g>
+  </g>
+
+  <!-- Bottom banner with shopping bag CTA -->
+  <g filter="url(#snShadow)">
+    <rect x="40" y="595" width="1120" height="60" rx="8" fill="url(#snBlack)"/>
+    <!-- Shopping bag icon -->
+    <g transform="translate(70, 612)">
+      <path d="M 5 12 L 5 35 L 30 35 L 30 12 Z" fill="none" stroke="url(#snPink)" stroke-width="2.5"/>
+      <path d="M 10 12 L 10 8 Q 10 0 17.5 0 Q 25 0 25 8 L 25 12" fill="none" stroke="url(#snPink)" stroke-width="2.5"/>
+      <text x="17.5" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="url(#snPink)" text-anchor="middle">2</text>
+    </g>
+    <text x="120" y="630" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Free Shipping on Orders $49+  •  Free Returns Within 35 Days</text>
+    <g transform="translate(980, 610)">
+      <rect width="150" height="32" rx="16" fill="url(#snPink)" filter="url(#snPinkGlow)"/>
+      <text x="75" y="21" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Shop Now →</text>
+    </g>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="600" y="668" font-family="Arial, sans-serif" font-size="11" fill="#999" text-anchor="middle">© SHEIN Clone Project • Built with React, Next.js &amp; Stripe</text>
+</svg>
