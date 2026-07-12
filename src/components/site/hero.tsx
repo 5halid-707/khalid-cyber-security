@@ -190,19 +190,19 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md sm:max-w-none">
           <a
             href="#products"
-            className="inline-flex items-center justify-center gap-2 bg-neon-green text-[#05080f] font-bold px-8 py-3 rounded-md shadow-[0_0_15px_rgba(0,255,204,0.4)] hover:shadow-[0_0_25px_rgba(0,255,204,0.7)] hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center gap-2 bg-neon-green text-[#05080f] font-bold px-8 py-4 rounded-md shadow-[0_0_15px_rgba(0,255,204,0.4)] hover:shadow-[0_0_25px_rgba(0,255,204,0.7)] hover:-translate-y-0.5 transition-all min-h-[52px] text-base"
           >
-            <ShieldCheck size={18} />
+            <ShieldCheck size={20} />
             {t("hero.cta.services")}
           </a>
           <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 border-2 border-neon-blue text-neon-blue font-bold px-8 py-3 rounded-md hover:bg-neon-blue/10 transition-all"
+            href="#contact-form"
+            className="inline-flex items-center justify-center gap-2 border-2 border-neon-blue text-neon-blue font-bold px-8 py-4 rounded-md hover:bg-neon-blue/10 transition-all min-h-[52px] text-base"
           >
-            <MessagesSquare size={18} />
+            <MessagesSquare size={20} />
             {t("hero.cta.contact")}
             <Arrow size={16} />
           </a>

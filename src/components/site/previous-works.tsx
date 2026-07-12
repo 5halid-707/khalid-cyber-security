@@ -14,7 +14,6 @@ import {
   ChevronRight,
   Play,
   Pause,
-  ArrowUpLeft,
 } from "lucide-react";
 import Reveal from "./reveal";
 import TypedHeading from "./typed-heading";
@@ -369,16 +368,16 @@ export default function PreviousWorks() {
         </div>
 
         {/* Dot navigation + thumbnails */}
-        <div className="flex items-center justify-center gap-3 mt-6">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6 flex-wrap px-2">
           {works.map((w, i) => {
             const isActive = i === current;
             return (
               <button
                 key={w.title}
                 onClick={() => goTo(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`group relative transition-all ${
-                  isActive ? "w-16 h-12" : "w-12 h-9 opacity-50 hover:opacity-100"
+                aria-label={`${isAr ? "عرض مشروع" : "View project"} ${i + 1}: ${isAr ? w.titleAr : w.title}`}
+                className={`group relative transition-all shrink-0 ${
+                  isActive ? "w-20 h-14 sm:w-24 sm:h-16" : "w-14 h-10 sm:w-16 sm:h-12 opacity-60 hover:opacity-100"
                 }`}
               >
                 <div
@@ -390,7 +389,7 @@ export default function PreviousWorks() {
                 >
                   <img
                     src={w.preview}
-                    alt=""
+                    alt={isAr ? w.titleAr : w.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -399,15 +398,20 @@ export default function PreviousWorks() {
           })}
         </div>
 
-        {/* Track name display below dots */}
+        {/* Track name display below dots — clickable to open project */}
         <div className="text-center mt-4">
-          <p className="text-sm text-fg/50">
-            <span className="mono-tech text-neon-green">#{current + 1}</span>{" "}
-            <span style={{ color: activeWork.categoryColor }}>
+          <a
+            href={activeWork.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-fg/50 hover:text-neon-green transition-colors group"
+          >
+            <span className="mono-tech text-neon-green">#{current + 1}</span>
+            <span style={{ color: activeWork.categoryColor }} className="font-bold">
               {isAr ? activeWork.titleAr : activeWork.title}
             </span>
-            <ArrowUpLeft size={12} className="inline ml-1 opacity-50" />
-          </p>
+            <ExternalLink size={12} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+          </a>
         </div>
       </div>
 

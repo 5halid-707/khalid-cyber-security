@@ -3,7 +3,9 @@ import Hero from "@/components/site/hero";
 import About from "@/components/site/about";
 import Products from "@/components/site/products";
 import Credentials from "@/components/site/credentials";
+import AcademicCredentials from "@/components/site/academic-credentials";
 import VideoShowcase from "@/components/site/video-showcase";
+import Designs from "@/components/site/designs";
 import PreviousWorks from "@/components/site/previous-works";
 import InteractiveShowcase from "@/components/site/interactive-showcase";
 import ContactSection from "@/components/site/contact-section";
@@ -22,7 +24,9 @@ export default function Home() {
         <About />
         <Products />
         <Credentials />
+        <AcademicCredentials />
         <VideoShowcase videoSrc="/marketing-video.mp4" />
+        <Designs />
         <PreviousWorks />
         <InteractiveShowcase />
         <ContactSection />

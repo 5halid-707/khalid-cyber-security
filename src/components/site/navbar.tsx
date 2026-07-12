@@ -16,6 +16,7 @@ export default function Navbar() {
     { href: "#about", label: t("nav.about") },
     { href: "#products", label: t("nav.products") },
     { href: "#credentials", label: t("nav.credentials") },
+    { href: "#designs", label: isAr ? "التصاميم" : "Designs" },
     { href: "#previous-works", label: isAr ? "أعمالي" : "Portfolio" },
     { href: "#showcase", label: t("nav.academic") },
     { href: "#contact-form", label: t("nav.contact") },

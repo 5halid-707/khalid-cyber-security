@@ -12,10 +12,45 @@ import {
   Eye,
   ScrollText,
   ExternalLink,
+  Briefcase,
+  Search,
+  Building2,
+  Calendar,
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
 import TypedHeading from "./typed-heading";
+
+// Professional work experience — خبراتي المهنية في الشركات
+const workExperience = [
+  {
+    role: { ar: "باحث أمني", en: "Security Researcher" },
+    company: { ar: "ذا هكر ون", en: "TheHackerOne" },
+    companyEn: "TheHackerOne",
+    period: { ar: "حالياً", en: "Current" },
+    current: true,
+    url: "https://thehackerone.com",
+    desc: {
+      ar: "أعمل حالياً كباحث أمني في شركة ذي هكر ون العالمية — أبحث عن الثغرات، أحلل التهديدات، وأساهم في تطوير حلول أمنية متقدمة لحماية المنظومات.",
+      en: "Currently working as a Security Researcher at TheHackerOne — researching vulnerabilities, analyzing threats, and contributing to advanced security solutions.",
+    },
+    icon: Search,
+    color: "var(--neon-green)",
+  },
+  {
+    role: { ar: "خبير أمن سيبراني", en: "Cyber Security Expert" },
+    company: { ar: "مشاريع حررة", en: "Freelance Projects" },
+    companyEn: "Freelance",
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "عملت مع عدة شركات ومؤسسات كمستشار أمني حر — نفّذت اختبارات اختراق، أمنت شبكات، وحميت بيانات حساسة لعملاء في قطاعات متنوعة.",
+      en: "Worked with multiple companies as a freelance security consultant — performed penetration tests, secured networks, and protected sensitive data across various sectors.",
+    },
+    icon: Briefcase,
+    color: "var(--neon-blue)",
+  },
+];
 
 const expertise = [
   { ar: "أساسيات الأمن السيبراني ومبادئه", en: "Cyber Security Fundamentals & Principles", icon: ShieldCheck },
@@ -269,6 +304,84 @@ export default function About() {
                   ? "🏆 لا تدّعي — أثبت. كل شهادتي موثّقة على Credly. تحقق بنفسك قبل أن تتعاقد."
                   : "🏆 I don't claim — I prove. Every credential is verified on Credly. Check for yourself before you contract."}
               </p>
+            </div>
+
+            {/* Professional Work Experience — خبراتي المهنية */}
+            <div className="flex items-center gap-2 mb-1">
+              <Briefcase size={20} className="text-neon-blue" />
+              <h3 className="text-lg font-bold text-white">
+                {isAr ? "خبراتي المهنية" : "Professional Experience"}
+              </h3>
+            </div>
+            <p className="text-xs text-fg/50 mb-4">
+              {isAr
+                ? "مسيرتي المهنية في الأمن السيبراني — من العمل الحر حتى باحث أمني في شركة عالمية"
+                : "My career in cyber security — from freelance work to security researcher at a global firm"}
+            </p>
+            <div className="space-y-3 mb-8">
+              {workExperience.map((job, i) => {
+                const Icon = job.icon;
+                return (
+                  <div
+                    key={i}
+                    className="relative p-4 rounded-xl bg-surface/60 border transition-all hover:bg-surface/80"
+                    style={{ borderColor: job.current ? `${job.color}60` : "#1f2937" }}
+                  >
+                    {job.current && (
+                      <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-green/15 border border-neon-green/40">
+                        <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
+                        <span className="text-[9px] text-neon-green font-bold mono-tech">
+                          {isAr ? "حالياً" : "NOW"}
+                        </span>
+                      </span>
+                    )}
+                    <div className="flex items-start gap-3">
+                      <span
+                        className="w-11 h-11 shrink-0 rounded-lg flex items-center justify-center border"
+                        style={{
+                          borderColor: `${job.color}50`,
+                          backgroundColor: `${job.color}10`,
+                          boxShadow: job.current ? `0 0 12px ${job.color}30` : "none",
+                        }}
+                      >
+                        <Icon size={20} style={{ color: job.color }} />
+                      </span>
+                      <div className="flex-1 min-w-0 pr-12">
+                        <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                          <h4 className="text-sm font-bold" style={{ color: job.color }}>
+                            {isAr ? job.role.ar : job.role.en}
+                          </h4>
+                          <span className="text-fg/30">•</span>
+                          {job.url ? (
+                            <a
+                              href={job.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-sm font-bold text-white hover:text-neon-green transition-colors"
+                            >
+                              <Building2 size={12} />
+                              {isAr ? job.company.ar : job.company.en}
+                              <ExternalLink size={10} className="opacity-50" />
+                            </a>
+                          ) : (
+                            <span className="text-sm font-bold text-white inline-flex items-center gap-1">
+                              <Building2 size={12} />
+                              {isAr ? job.company.ar : job.company.en}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-fg/60 leading-relaxed mb-2">
+                          {isAr ? job.desc.ar : job.desc.en}
+                        </p>
+                        <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 mono-tech">
+                          <Calendar size={10} />
+                          {isAr ? job.period.ar : job.period.en}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Expertise grid — خبراتي العملية */}
