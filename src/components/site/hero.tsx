@@ -96,8 +96,10 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 overflow-hidden"
     >
-      {/* Video slider background — multiple videos cycling with crossfade */}
+      {/* Video slider background — optimized: lazy load + metadata preload */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Static gradient background as fallback while videos load */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#05080f] via-[#0d1117] to-[#05080f]" />
         {HERO_VIDEOS.map((v, i) => (
           <video
             key={v.src}
@@ -105,7 +107,8 @@ export default function Hero() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster={v.poster || "/hero-khalid.png"}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ${
               i === videoIndex ? "opacity-60" : "opacity-0"
             }`}

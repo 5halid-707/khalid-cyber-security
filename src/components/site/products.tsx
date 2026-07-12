@@ -82,7 +82,7 @@ export default function Products() {
             {products.map((p) => {
               const Icon = p.icon;
               return (
-                <div key={p.name.en} className="shrink-0" style={{ width: "var(--card-w)" }}>
+                <div key={p.name.en} className="shrink-0" style={{ width: "var(--card-w)" }} dir="rtl">
                   <article className={`group relative h-full bg-surface rounded-xl overflow-hidden border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_50px_-10px_rgba(0,0,0,0.6)] flex flex-col ${p.popular ? "border-neon-green/60 shadow-[0_0_20px_rgba(0,255,204,0.12)]" : "border-edge hover:border-neon-green/40"}`} style={{ minHeight: "460px" }}>
                     {p.popular && <div className="bg-neon-green text-[#05080f] text-center text-[10px] font-bold py-1">{t("products.popular")} ⚡</div>}
                     <div className="p-5 pb-3" style={{ background: `linear-gradient(135deg, ${p.color}10, transparent)` }}>

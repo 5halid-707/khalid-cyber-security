@@ -15,6 +15,7 @@ import {
   Search,
   Building2,
   Calendar,
+  Download,
   FlaskConical,
   FolderKanban,
   Hotel,
@@ -351,16 +352,26 @@ export default function About() {
               ))}
             </div>
 
-            {/* CTA line — "⚡ متاح لمشروعك التالي" */}
-            <a
-              href="#contact-form"
-              className="flex items-center gap-2 p-3 rounded-lg bg-neon-green/5 border border-neon-green/20 mb-7 hover:bg-neon-green/10 transition-colors group"
-            >
-              <Zap size={18} className="text-neon-green shrink-0 group-hover:scale-110 transition-transform" />
-              <p className="text-sm text-fg/80 group-hover:text-white transition-colors">
-                {t("about.cta_available")}
-              </p>
-            </a>
+            {/* CTA line — "⚡ متاح لمشروعك التالي" + Download Profile PDF */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-7">
+              <a
+                href="#contact-form"
+                className="flex-1 flex items-center gap-2 p-3 rounded-lg bg-neon-green/5 border border-neon-green/20 hover:bg-neon-green/10 transition-colors group min-h-[44px] touch-manipulation"
+              >
+                <Zap size={18} className="text-neon-green shrink-0 group-hover:scale-110 transition-transform" />
+                <p className="text-sm text-fg/80 group-hover:text-white transition-colors">
+                  {t("about.cta_available")}
+                </p>
+              </a>
+              <a
+                href="/certs/cpd-record-detailed.pdf"
+                download
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg border-2 border-neon-blue/40 text-neon-blue font-bold text-sm hover:bg-neon-blue/10 transition-all min-h-[44px] touch-manipulation whitespace-nowrap"
+              >
+                <Download size={16} />
+                {isAr ? "تحميل الملف التعريفي" : "Download Profile"}
+              </a>
+            </div>
 
             {/* Professional Work Experience — خبراتي المهنية */}
             <div className="flex items-center gap-2 mb-1">
