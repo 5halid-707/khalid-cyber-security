@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cairo, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -18,6 +18,14 @@ const shareTechMono = Share_Tech_Mono({
   weight: "400",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#05080f",
+};
 
 export const metadata: Metadata = {
   title: "م. خالد الحربي | خبير أمن سيبراني معتمد",
