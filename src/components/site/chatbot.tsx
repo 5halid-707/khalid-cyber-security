@@ -88,15 +88,12 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3">
-      {/* Chat window */}
-      <div
-        className={`w-[min(92vw,360px)] h-[min(70vh,520px)] bg-surface border border-neon-green rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right ${
-          open
-            ? "opacity-100 scale-100 pointer-events-auto"
-            : "opacity-0 scale-90 pointer-events-none"
-        }`}
-      >
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3 pointer-events-none">
+      {/* Chat window — absolutely positioned so it doesn't block clicks when closed */}
+      {open && (
+        <div
+          className="w-[min(92vw,360px)] h-[min(70vh,520px)] bg-surface border border-neon-green rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden origin-bottom-right pointer-events-auto"
+        >
         {/* Header */}
         <div className="bg-[#161b22] px-4 py-3 flex items-center justify-between border-b border-edge">
           <div className="flex items-center gap-2">
@@ -190,12 +187,13 @@ export default function Chatbot() {
           </button>
         </form>
       </div>
+      )}
 
       {/* Toggler */}
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close chat" : "Open chat"}
-        className="w-14 h-14 rounded-full bg-neon-green text-[#05080f] flex items-center justify-center shadow-[0_0_15px_var(--neon-green)] animate-pulse-bot hover:scale-110 transition-transform"
+        className="w-14 h-14 rounded-full bg-neon-green text-[#05080f] flex items-center justify-center shadow-[0_0_15px_var(--neon-green)] animate-pulse-bot hover:scale-110 transition-transform pointer-events-auto"
       >
         {open ? <X size={24} /> : <MessageSquare size={24} />}
       </button>

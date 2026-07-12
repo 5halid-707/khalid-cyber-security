@@ -180,7 +180,8 @@ export default function MusicPlayer() {
   const currentTrack = PLAYLIST[trackIndex];
 
   return (
-    <div className="fixed bottom-24 left-6 z-[998] flex flex-col items-start gap-2">
+    <div className="fixed bottom-24 left-6 z-[998] flex flex-col items-start gap-2 pointer-events-none">
+      {/* Only the controls are interactive */}
       {/* Expanded volume slider */}
       {expanded && playing && (
         <div className="bg-surface/95 backdrop-blur-md border border-neon-blue/40 rounded-xl p-3 shadow-[0_0_20px_rgba(0,168,232,0.2)] mb-1">
@@ -247,13 +248,13 @@ export default function MusicPlayer() {
       )}
 
       {/* Main control cluster */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 pointer-events-auto">
         {/* Previous track */}
         {playing && (
           <button
             onClick={() => skipTo(-1)}
             aria-label="Previous track"
-            className="w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-blue transition-colors"
+            className="w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-blue transition-colors pointer-events-auto"
           >
             <SkipBack size={14} />
           </button>
@@ -263,7 +264,7 @@ export default function MusicPlayer() {
         <button
           onClick={togglePlay}
           aria-label={playing ? "Pause music" : "Play music"}
-          className={`w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_18px_var(--neon-blue)] hover:scale-110 transition-transform ${
+          className={`w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_18px_var(--neon-blue)] hover:scale-110 transition-transform pointer-events-auto ${
             playing
               ? "bg-neon-blue text-white"
               : "bg-neon-blue text-white animate-pulse"
@@ -277,7 +278,7 @@ export default function MusicPlayer() {
           <button
             onClick={stopMusic}
             aria-label="Stop music"
-            className="w-10 h-10 rounded-full bg-red-600/90 text-white flex items-center justify-center hover:bg-red-700 hover:scale-110 transition-all shadow-[0_0_15px_rgba(220,38,38,0.6)]"
+            className="w-10 h-10 rounded-full bg-red-600/90 text-white flex items-center justify-center hover:bg-red-700 hover:scale-110 transition-all shadow-[0_0_15px_rgba(220,38,38,0.6)] pointer-events-auto"
           >
             <X size={18} />
           </button>
@@ -288,7 +289,7 @@ export default function MusicPlayer() {
           <button
             onClick={() => skipTo(1)}
             aria-label="Next track"
-            className="w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-blue transition-colors"
+            className="w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-blue transition-colors pointer-events-auto"
           >
             <SkipForward size={14} />
           </button>
@@ -299,7 +300,7 @@ export default function MusicPlayer() {
           <button
             onClick={() => setExpanded((v) => !v)}
             aria-label="Volume controls"
-            className="w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-blue transition-colors"
+            className="w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md border border-edge text-fg/80 flex items-center justify-center hover:border-neon-blue transition-colors pointer-events-auto"
           >
             {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
           </button>

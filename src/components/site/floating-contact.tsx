@@ -34,15 +34,12 @@ export default function FloatingContact() {
   ];
 
   return (
-    <div className="fixed bottom-6 left-6 z-[998] flex flex-col items-center gap-3">
+    <div className="fixed bottom-6 left-6 z-[998] flex flex-col items-center gap-3 pointer-events-none">
       {/* Floating items */}
-      <div
-        className={`flex flex-col gap-3 transition-all duration-300 ${
-          open
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-4 pointer-events-none"
-        }`}
-      >
+      {open && (
+        <div
+          className="flex flex-col gap-3 pointer-events-auto"
+        >
         {items.map((item, idx) => {
           const Icon = item.icon;
           return (
@@ -68,12 +65,13 @@ export default function FloatingContact() {
           );
         })}
       </div>
+      )}
 
       {/* Main FAB */}
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "إغلاق القائمة" : "فتح قائمة التواصل"}
-        className="w-14 h-14 rounded-full bg-neon-blue text-white flex items-center justify-center shadow-[0_0_18px_var(--neon-blue)] hover:scale-110 transition-transform"
+        className="w-14 h-14 rounded-full bg-neon-blue text-white flex items-center justify-center shadow-[0_0_18px_var(--neon-blue)] hover:scale-110 transition-transform pointer-events-auto"
       >
         {open ? <X size={24} /> : <Share2 size={24} />}
       </button>
