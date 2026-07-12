@@ -11,6 +11,7 @@ import {
   Server,
   Eye,
   ScrollText,
+  ExternalLink,
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
@@ -34,6 +35,7 @@ const platforms = [
     short: "Coventry",
     role: { ar: "تعليم أكاديمي بريطاني", en: "UK Academic Education" },
     color: "#00ffcc",
+    url: "https://www.coventry.ac.uk/",
     svg: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <circle cx="50" cy="50" r="44" fill="none" stroke="#00ffcc" strokeWidth="3" />
@@ -46,6 +48,7 @@ const platforms = [
     short: "IBM",
     role: { ar: "أوسمة مهارية معتمدة", en: "Verified Skill Badges" },
     color: "#00a8e8",
+    url: "https://skillsbuild.org/",
     svg: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <rect x="20" y="20" width="60" height="60" fill="none" stroke="#00a8e8" strokeWidth="3" />
@@ -58,6 +61,7 @@ const platforms = [
     short: "Cisco",
     role: { ar: "شهادة Network Technician", en: "Network Technician Certified" },
     color: "#ff00cc",
+    url: "https://www.netacad.com/",
     svg: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <circle cx="50" cy="50" r="44" fill="none" stroke="#ff00cc" strokeWidth="3" />
@@ -70,6 +74,7 @@ const platforms = [
     short: "CPD UK",
     role: { ar: "250 ساعة تطوير مهني", en: "250 CPD Hours" },
     color: "#00ffcc",
+    url: "https://cpduk.co.uk/",
     svg: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <polygon points="50,8 60,38 92,38 66,58 76,90 50,70 24,90 34,58 8,38 40,38" fill="none" stroke="#00ffcc" strokeWidth="3" strokeLinejoin="round" />
@@ -81,6 +86,7 @@ const platforms = [
     short: "FutureLearn",
     role: { ar: "منصة التعليم العالمية", en: "Global Learning Platform" },
     color: "#de00a5",
+    url: "https://www.futurelearn.com/",
     svg: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <circle cx="50" cy="50" r="44" fill="none" stroke="#de00a5" strokeWidth="3" />
@@ -94,6 +100,7 @@ const platforms = [
     short: "Credly",
     role: { ar: "منصة التحقق العالمية", en: "Global Verification Platform" },
     color: "#ff6c00",
+    url: "https://www.credly.com/users/khalid-mohammed-alharbi",
     svg: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <circle cx="50" cy="45" r="22" fill="none" stroke="#ff6c00" strokeWidth="3" />
@@ -122,7 +129,7 @@ export default function About() {
               <div className="relative rounded-2xl overflow-hidden border-2 border-neon-green/60 shadow-[0_0_50px_rgba(0,255,204,0.2)]">
                 <img
                   src="/khalid-portrait-opt.jpg"
-                  alt="Eng. Khalid Al-harbi - Cyber Security Engineer"
+                  alt="Khalid Al-harbi - Cyber Security Expert"
                   className="w-full h-auto aspect-square object-cover"
                 />
                 {/* Subtle scan-line overlay for cyber aesthetic */}
@@ -295,13 +302,16 @@ export default function About() {
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {platforms.map((p) => (
-                <div
+                <a
                   key={p.name}
-                  className="group flex items-center gap-2.5 p-2.5 rounded-lg bg-surface/60 border border-edge hover:border-neon-green/40 transition-all"
-                  title={p.name}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2.5 p-2.5 rounded-lg bg-surface/60 border border-edge hover:border-neon-green/40 hover:bg-surface/80 transition-all cursor-pointer"
+                  title={`${p.name} — ${isAr ? "اضغط للزيارة" : "Click to visit"}`}
                 >
                   <span
-                    className="w-9 h-9 shrink-0 p-1 rounded-md border"
+                    className="w-9 h-9 shrink-0 p-1 rounded-md border group-hover:scale-110 transition-transform"
                     style={{
                       borderColor: `${p.color}50`,
                       backgroundColor: `${p.color}10`,
@@ -309,18 +319,19 @@ export default function About() {
                   >
                     {p.svg}
                   </span>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p
-                      className="text-xs font-bold truncate"
+                      className="text-xs font-bold truncate flex items-center gap-1"
                       style={{ color: p.color }}
                     >
                       {p.short}
+                      <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                     </p>
                     <p className="text-[10px] text-fg/50 truncate leading-tight">
                       {isAr ? p.role.ar : p.role.en}
                     </p>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </Reveal>

@@ -41,7 +41,7 @@ export default function Navbar() {
           <span className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-neon-green/60 group-hover:border-neon-green transition-colors">
             <img
               src="/khalid-avatar.jpg"
-              alt="Eng. Khalid Al-harbi"
+              alt="Khalid Al-harbi - Cyber Security Expert"
               className="w-full h-full object-cover"
             />
             <span className="absolute bottom-0 left-0 w-2.5 h-2.5 bg-neon-green rounded-full border-2 border-[#05080f] shadow-[0_0_6px_var(--neon-green)]" />

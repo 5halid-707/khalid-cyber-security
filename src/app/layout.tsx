@@ -28,9 +28,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "م. خالد الحربي | خبير أمن سيبراني معتمد",
+  title: "خالد الحربي | خبير أمن سيبراني معتمد",
   description:
-    "م. خالد محمد الحربي — خبير أمن سيبراني معتمد CPD. خدمات اختبار اختراق، حماية الشبكات، تأمين المواقع، والاستجابة للحوادث الأمنية.",
+    "خالد محمد الحربي — خبير أمن سيبراني معتمد CPD. خدمات اختبار اختراق، حماية الشبكات، تأمين المواقع، والاستجابة للحوادث الأمنية.",
   keywords: [
     "خالد الحربي",
     "أمن سيبراني",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "حماية الشبكات",
     "خبير أمن",
   ],
-  authors: [{ name: "Eng. Khalid Al-harbi" }],
+  authors: [{ name: "Khalid Al-harbi" }],
 };
 
 export default function RootLayout({

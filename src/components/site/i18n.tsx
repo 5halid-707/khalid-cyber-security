@@ -52,7 +52,7 @@ const dict: Record<Lang, Record<string, string>> = {
     "about.eyebrow": "// ABOUT ME",
     "about.title": "خبير أمن سيبراني معتمد",
     "about.nameplate.role": "// CYBER SECURITY EXPERT",
-    "about.nameplate.name": "م. خالد عودة الحربي",
+    "about.nameplate.name": "خالد عودة الحربي",
     "about.nameplate.rolefull": "Cyber Security Specialist",
     "about.chip.cpd_top": "معتمد من",
     "about.chip.cpd_val": "CPD UK",
@@ -122,14 +122,14 @@ const dict: Record<Lang, Record<string, string>> = {
     "footer.quick_links": "روابط سريعة",
     "footer.contact": "تواصل معنا",
     "footer.copyright":
-      "م. خالد الحربي — Cyber Security Services. جميع الحقوق محفوظة.",
+      "خالد الحربي — Cyber Security Services. جميع الحقوق محفوظة.",
 
     // Chatbot
-    "chatbot.title": "مساعد م. خالد الذكي",
+    "chatbot.title": "مساعد خالد الذكي",
     "chatbot.online": "متصل الآن",
     "chatbot.placeholder": "اكتب استفسارك هنا...",
     "chatbot.welcome":
-      "مرحباً بك! 👋 أنا مساعد م. خالد الحربي — خبير الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
+      "مرحباً بك! 👋 أنا مساعد خالد الحربي — خبير الأمن السيبراني المعتمد.\nكيف أقدر أساعدك اليوم؟ يمكنك سؤالي عن الخدمات أو الأسعار أو المؤهلات.",
   },
 
   en: {

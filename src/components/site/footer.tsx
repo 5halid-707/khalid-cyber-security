@@ -28,7 +28,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://wa.me/9665XXXXXXX"
+              href="https://wa.me/966575015019"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-neon-green text-[#05080f] font-bold px-7 py-3 rounded-md hover:shadow-[0_0_20px_rgba(0,255,204,0.5)] transition-all"
@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
             <p className="text-fg/60 text-sm leading-relaxed mb-3">
               {isAr
-                ? "م. خالد محمد عودة الحربي — خبير أمن سيبراني معتمد CPD. أحمي أنظمتك وبياناتك من التهديدات السيبرانية باحترافية."
+                ? "خالد محمد عودة الحربي — خبير أمن سيبراني معتمد CPD. أحمي أنظمتك وبياناتك من التهديدات السيبرانية باحترافية."
                 : "Khalid Mohammed Al-harbi — CPD-certified Cyber Security Expert. I protect your systems and data from cyber threats with professionalism."}
             </p>
             <p className="flex items-center gap-1.5 text-xs text-fg/40">
@@ -88,7 +88,7 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">{t("footer.contact")}</h4>
             <div className="flex gap-3 md:justify-start justify-start">
               <a
-                href="https://wa.me/9665XXXXXXX"
+                href="https://wa.me/966575015019"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-edge flex items-center justify-center text-fg/70 hover:text-[#25D366] hover:border-[#25D366] transition-all"

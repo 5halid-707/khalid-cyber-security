@@ -166,7 +166,7 @@ export default function Hero() {
         </p>
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white text-glow-white mb-3 leading-tight">
-          {lang === "ar" ? "م. خالد الحربي" : "Khalid Al-harbi"}
+          {lang === "ar" ? "خالد الحربي" : "Khalid Al-harbi"}
         </h1>
 
         <p className="text-lg md:text-2xl text-fg/70 font-medium mb-2">

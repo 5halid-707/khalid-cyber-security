@@ -1005,3 +1005,46 @@ Stage Summary:
 - قسم About أعيد كتابته بنص تسويقي مقنع: سؤال جذّاب + بناء مصداقية + قيمة للعميل + trust indicators + CTA.
 - 6 أنميشن جديدة مضافة (shimmer, slide-in, scale-in, neon-flicker, border-glow, text-shimmer).
 - الموقع الآن أكثر احترافية وتسويقية وإقناعاً.
+
+---
+Task ID: 34
+Agent: main (Z.ai Code)
+Task: ارفع الموقع وغيّر — إصلاح المشاكل المتبقية بعد الرفع.
+
+Work Log:
+- تأكدت أن الموقع مرفوع على GitHub (Everything up-to-date على origin/main).
+- جعلت شعارات المنصات الـ6 في About روابط قابلة للنقر (<a> tags) مع:
+  • Coventry University → coventry.ac.uk
+  • IBM SkillsBuild → skillsbuild.org
+  • Cisco → netacad.com
+  • CPD UK → cpduk.co.uk
+  • FutureLearn → futurelearn.com
+  • Credly → credly.com/users/khalid-mohammed-alharbi
+  • أيقونة ExternalLink تظهر عند hover + title tooltip + group-hover:scale-110.
+- أضفت import ExternalLink في about.tsx.
+- أصلحت alt text من "Eng. Khalid Al-harbi - Cyber Security Engineer" → "Khalid Al-harbi - Cyber Security Expert" في about.tsx.
+- أصلحت alt text من "Eng. Khalid Al-harbi" → "Khalid Al-harbi - Cyber Security Expert" في navbar.tsx.
+- أزلت البادئة "م." (مهندس) من جميع الملفات:
+  • i18n.tsx: about.nameplate.name, footer.copyright, chatbot.title, chatbot.welcome
+  • chatbot.tsx: WELCOME message (AR + EN) + "Engineer" → "Expert"
+  • hero.tsx: "م. خالد الحربي" → "خالد الحربي"
+  • footer.tsx: "م. خالد محمد عودة الحربي" → "خالد محمد عودة الحربي"
+  • layout.tsx: title + description + authors (Eng. Khalid → Khalid)
+  • contact-section.tsx: "مرحبا م. خالد" → "مرحبا خالد"
+  • api/chat/route.ts: "نبذة عن م. خالد الحربي" + "التزام م. خالد" → خالد
+- أصلحت رقم واتساب الوهمي في footer.tsx (9665XXXXXXX → 966575015019) في مكانين.
+- أصلحت رسالة واتساب في floating-contact.tsx ("مرحبا م. خالد" → "مرحبا خالد").
+- تحققت عبر curl:
+  • كل روابط المنصات الـ6 موجودة كـ href ✓
+  • 0 مرجع لـ "م. خالد" في HTML المُعروض ✓
+  • "Cyber Security Expert" موجود ✓
+  • كل روابط المشاريع الـ6 (Netflix/Amazon/Instagram/WhatsApp/Haraj/Uber) موجودة ✓
+  • لا يوجد "Engineer" في أي alt text ✓
+- ESLint نظيف.
+
+Stage Summary:
+- كل شعارات المنصات في About أصبحت روابط حقيقية قابلة للنقر تفتح في تبويب جديد.
+- كل مراجع "مهندس/Engineer/م." أُزيلت نهائياً واستُبدلت بـ "خبير/Expert" أو الاسم فقط.
+- رقم واتساب الوهمي في footer أُصلح وأصبح 966575015019.
+- رسالة واتساب في floating-contact أُصلحت.
+- الموقع جاهز للرفع النهائي على GitHub.

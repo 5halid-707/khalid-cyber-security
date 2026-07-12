@@ -192,7 +192,7 @@ export default function ContactSection() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href={`https://wa.me/966575015019?text=${encodeURIComponent(
-                  `مرحبا م. خالد، أنا ${form.name}. ${form.details}`
+                  `مرحبا خالد، أنا ${form.name}. ${form.details}`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

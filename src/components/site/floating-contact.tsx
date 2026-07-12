@@ -8,7 +8,7 @@ export default function FloatingContact() {
 
   const items = [
     {
-      href: "https://wa.me/966575015019?text=مرحبا%20م.%20خالد،%20أرغب%20بطلب%20إحدى%20خدماتك%20في%20الأمن%20السيبراني",
+      href: "https://wa.me/966575015019?text=مرحبا%20خالد،%20أرغب%20بطلب%20إحدى%20خدماتك%20في%20الأمن%20السيبراني",
       icon: MessageCircle,
       color: "#25D366",
       label: "WhatsApp",
