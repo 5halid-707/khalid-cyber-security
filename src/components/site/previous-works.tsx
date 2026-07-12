@@ -223,7 +223,7 @@ export default function PreviousWorks() {
                   }`}
                 >
                   {/* Background image with Ken Burns zoom */}
-                  <div className="absolute inset-0 overflow-hidden">
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <img
                       src={w.preview}
                       alt={isAr ? w.titleAr : w.title}
@@ -246,8 +246,8 @@ export default function PreviousWorks() {
                     />
                   </div>
 
-                  {/* Content overlay */}
-                  <div className="relative h-full flex flex-col justify-end p-6 md:p-10">
+                  {/* Content overlay — clickable */}
+                  <div className="relative h-full flex flex-col justify-end p-6 md:p-10 pointer-events-auto">
                     <div className="max-w-2xl">
                       {/* Category + LIVE badge */}
                       <div className="flex items-center gap-2 mb-3">
