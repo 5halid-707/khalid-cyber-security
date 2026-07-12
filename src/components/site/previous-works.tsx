@@ -146,6 +146,20 @@ const works: Work[] = [
     preview: "/work-previews/shein.svg",
     icon: Shirt,
   },
+  {
+    title: "Sephora — Beauty & Cosmetics Store",
+    titleAr: "سيفورا — متجر مستحضرات تجميل",
+    category: { ar: "متجر مستحضرات تجميل شامل", en: "Beauty & Cosmetics E-Commerce" },
+    categoryColor: "#e22d2d",
+    description: {
+      ar: "متجر إلكتروني نسخة طبق الأصل من سيفورا السعودية بكل مميزاته — شعار SEPHORA، 52 منتج تجميل حقيقية عبر 10 فئات (مكياج، عطور، عناية بالبشرة، عناية بالشعر، عناية بالجسم، أدوات، رجال، علامات تجارية، عروض، جديد)، Hero carousel، عروض + تخفيضات، وصل حديثاً + الأكثر مبيعاً، شبكة العلامات التجارية (Chanel, Dior, MAC, Fenty Beauty)، بطاقات منتجات بتصميم سيفورا (علامة + عنوان + سعر + تقييم)، سلة + مفضلة + بحث + فلاتر، صفحة دفع بـ 5 طرق دفع، RTL عربي كامل.",
+      en: "Exact Sephora Saudi Arabia clone with all features — SEPHORA logo, 52 real beauty products across 10 categories (makeup, perfumes, skincare, haircare, body care, tools, men, brands, offers, new), Hero carousel, offers + discounts, new arrivals + best sellers, brands grid (Chanel, Dior, MAC, Fenty Beauty), Sephora-style product cards (brand + title + price + rating), cart + wishlist + search + filters, checkout with 5 payment methods, full Arabic RTL.",
+    },
+    tech: ["Next.js", "React", "TypeScript", "Tailwind", "RTL", "Cart System", "Checkout", "Wishlist", "52 Products", "10 Categories"],
+    liveUrl: "https://sephora-store-mu.vercel.app/",
+    preview: "/work-previews/sephora.svg",
+    icon: ShoppingBag,
+  },
 ];
 
 const AUTOPLAY_MS = 6000; // 6 seconds per slide

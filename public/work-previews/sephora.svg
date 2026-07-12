@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <!-- Sephora logo text -->
+  <text x="600" y="120" text-anchor="middle" fill="white" font-family="Arial Black, sans-serif" font-size="72" font-weight="900" letter-spacing="8">SEPHORA</text>
+  <!-- Product grid mockup -->
+  <g transform="translate(150, 200)">
+    <!-- Product 1 -->
+    <rect x="0" y="0" width="180" height="200" fill="#222" rx="8" stroke="#444" stroke-width="1"/>
+    <rect x="20" y="20" width="140" height="100" fill="#e22d2d" rx="4" opacity="0.8"/>
+    <text x="90" y="150" text-anchor="middle" fill="#888" font-family="Arial" font-size="11">أحمر شفاه</text>
+    <text x="90" y="175" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">85 ر.س</text>
+    <!-- Product 2 -->
+    <rect x="230" y="0" width="180" height="200" fill="#222" rx="8" stroke="#444" stroke-width="1"/>
+    <rect x="250" y="20" width="140" height="100" fill="#d4a017" rx="4" opacity="0.8"/>
+    <text x="320" y="150" text-anchor="middle" fill="#888" font-family="Arial" font-size="11">عطر نسائي</text>
+    <text x="320" y="175" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">320 ر.س</text>
+    <!-- Product 3 -->
+    <rect x="460" y="0" width="180" height="200" fill="#222" rx="8" stroke="#444" stroke-width="1"/>
+    <rect x="480" y="20" width="140" height="100" fill="#ff69b4" rx="4" opacity="0.8"/>
+    <text x="550" y="150" text-anchor="middle" fill="#888" font-family="Arial" font-size="11">كريم أساس</text>
+    <text x="550" y="175" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">145 ر.س</text>
+    <!-- Product 4 -->
+    <rect x="690" y="0" width="180" height="200" fill="#222" rx="8" stroke="#444" stroke-width="1"/>
+    <rect x="710" y="20" width="140" height="100" fill="#9370db" rx="4" opacity="0.8"/>
+    <text x="780" y="150" text-anchor="middle" fill="#888" font-family="Arial" font-size="11">سيروم فيتامين</text>
+    <text x="780" y="175" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">210 ر.س</text>
+  </g>
+  <!-- Category chips -->
+  <g transform="translate(100, 480)">
+    <rect x="0" y="0" width="100" height="35" fill="#333" rx="17" stroke="#555"/>
+    <text x="50" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">مكياج</text>
+    <rect x="120" y="0" width="100" height="35" fill="#333" rx="17" stroke="#555"/>
+    <text x="170" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">عطور</text>
+    <rect x="240" y="0" width="130" height="35" fill="#333" rx="17" stroke="#555"/>
+    <text x="305" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">العناية بالبشرة</text>
+    <rect x="390" y="0" width="120" height="35" fill="#333" rx="17" stroke="#555"/>
+    <text x="450" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">العناية بالشعر</text>
+    <rect x="530" y="0" width="100" height="35" fill="#333" rx="17" stroke="#555"/>
+    <text x="580" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">أدوات</text>
+    <rect x="650" y="0" width="100" height="35" fill="#333" rx="17" stroke="#555"/>
+    <text x="700" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">رجال</text>
+    <rect x="770" y="0" width="100" height="35" fill="#e22d2d" rx="17" stroke="#ff4444"/>
+    <text x="820" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="12">عروض</text>
+  </g>
+  <!-- Bottom tagline -->
+  <text x="600" y="600" text-anchor="middle" fill="#666" font-family="Arial" font-size="14">متجر مستحضرات تجميل · 52 منتج · 10 فئات · RTL عربي</text>
+</svg>
