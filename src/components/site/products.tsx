@@ -54,7 +54,7 @@ export default function Products() {
   const goPrev = useCallback(() => setIndex((prev) => (prev - 1 + total) % total), [total]);
 
   return (
-    <section id="products" className="py-24 px-5 relative overflow-hidden" style={{ paddingBottom: "80px" }}>
+    <section id="products" className="py-24 px-5 relative overflow-hidden" style={{ paddingBottom: "80px", "--card-w": "min(85vw, 340px)" } as React.CSSProperties}>
       <div className="absolute inset-0 cyber-grid-bg opacity-20 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl">
         <Reveal className="text-center mb-10">
@@ -77,12 +77,12 @@ export default function Products() {
         </div>
 
         <div className="relative overflow-hidden" dir="ltr" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-          <div ref={trackRef} className="flex gap-5 transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(calc(-${index} * (340px + 1.25rem)))` }}>
+          <div ref={trackRef} className="flex gap-4 transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(calc(-${index} * (var(--card-w) + 1rem)))` }}>
             {products.map((p) => {
               const Icon = p.icon;
               return (
-                <div key={p.name.en} className="shrink-0" style={{ width: "340px" }}>
+                <div key={p.name.en} className="shrink-0" style={{ width: "var(--card-w)" }}>
                   <article className={`group relative h-full bg-surface rounded-xl overflow-hidden border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_50px_-10px_rgba(0,0,0,0.6)] flex flex-col ${p.popular ? "border-neon-green/60 shadow-[0_0_20px_rgba(0,255,204,0.12)]" : "border-edge hover:border-neon-green/40"}`} style={{ minHeight: "460px" }}>
                     {p.popular && <div className="bg-neon-green text-[#05080f] text-center text-[10px] font-bold py-1">{t("products.popular")} ⚡</div>}
                     <div className="p-5 pb-3" style={{ background: `linear-gradient(135deg, ${p.color}10, transparent)` }}>
