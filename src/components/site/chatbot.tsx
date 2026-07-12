@@ -189,14 +189,22 @@ export default function Chatbot() {
       </div>
       )}
 
-      {/* Toggler */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Close chat" : "Open chat"}
-        className="w-14 h-14 rounded-full bg-neon-green text-[#05080f] flex items-center justify-center shadow-[0_0_15px_var(--neon-green)] animate-pulse-bot hover:scale-110 transition-transform pointer-events-auto"
-      >
-        {open ? <X size={24} /> : <MessageSquare size={24} />}
-      </button>
+      {/* Toggler with label */}
+      <div className="flex flex-col items-end gap-1 pointer-events-auto">
+        {!open && (
+          <span className="text-[10px] bg-neon-green/15 border border-neon-green/40 text-neon-green px-2 py-0.5 rounded-full whitespace-nowrap mono-tech">
+            موظف .م خالد الحربي
+          </span>
+        )}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Close chat" : "Open chat"}
+          className="w-14 h-14 rounded-full bg-neon-green text-[#05080f] flex items-center justify-center shadow-[0_0_15px_var(--neon-green)] animate-pulse-bot hover:scale-110 transition-transform pointer-events-auto touch-manipulation"
+          style={{ touchAction: "manipulation" }}
+        >
+          {open ? <X size={24} /> : <MessageSquare size={24} />}
+        </button>
+      </div>
     </div>
   );
 }

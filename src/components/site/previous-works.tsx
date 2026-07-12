@@ -46,6 +46,7 @@ const works: Work[] = [
     tech: ["React", "JavaScript", "CSS3", "Toastify", "Authentication"],
     liveUrl: "https://kmhflix.netlify.app/",
     preview: "/work-previews/netflix.svg",
+    icon: Film,
   },
   {
     title: "Amazon Clone — E-Commerce Store",
@@ -59,6 +60,7 @@ const works: Work[] = [
     tech: ["React", "JavaScript", "CSS3", "Cart System", "Product Catalog"],
     liveUrl: "https://bright-5halid-amazon.netlify.app/",
     preview: "/work-previews/amazon.svg",
+    icon: ShoppingBag,
   },
   {
     title: "Instagram Clone — Social App",
@@ -72,6 +74,7 @@ const works: Work[] = [
     tech: ["React", "JavaScript", "CSS3", "Auth", "Bilingual UI"],
     liveUrl: "https://bright-khalid-insta-app.netlify.app/",
     preview: "/work-previews/instagram.svg",
+    icon: Camera,
   },
   {
     title: "WhatsApp Clone — Chat Messenger",
@@ -85,6 +88,7 @@ const works: Work[] = [
     tech: ["React", "JavaScript", "CSS3", "Auth", "Real-time Chat"],
     liveUrl: "https://bright-khalid-whats-app.netlify.app/",
     preview: "/work-previews/whatsapp.svg",
+    icon: MessageCircle,
   },
   {
     title: "Haraj — Saudi Classifieds Marketplace",
@@ -98,6 +102,7 @@ const works: Work[] = [
     tech: ["Next.js", "React", "TypeScript", "Service Worker", "PWA", "SEO", "20+ Categories", "Scalable"],
     liveUrl: "https://haraj-v2.vercel.app/",
     preview: "/work-previews/haraj.svg",
+    icon: Store,
   },
   {
     title: "Uber — Smart Ride & Delivery Platform",
@@ -111,6 +116,7 @@ const works: Work[] = [
     tech: ["React", "Next.js", "Map API", "Geolocation", "Real-time Tracking", "Dark UI", "Scalable"],
     liveUrl: "https://uber-new-omega.vercel.app/",
     preview: "/work-previews/uber.svg",
+    icon: Car,
   },
   {
     title: "The Ritz-Carlton Jeddah — Luxury Hotel",
@@ -124,6 +130,7 @@ const works: Work[] = [
     tech: ["Next.js", "React", "TypeScript", "Tailwind", "RTL", "Booking System", "Admin Panel", "Dashboard"],
     liveUrl: "https://hotel-ritz.vercel.app/",
     preview: "/work-previews/ritz.svg",
+    icon: Hotel,
   },
   {
     title: "SHEIN — E-Commerce Fashion Store",

@@ -148,7 +148,7 @@ const dict: Record<Lang, Record<string, string>> = {
       "خالد الحربي — Cyber Security Services. جميع الحقوق محفوظة.",
 
     // Chatbot
-    "chatbot.title": "مساعد خالد الذكي",
+    "chatbot.title": "موظف .م خالد الحربي",
     "chatbot.online": "متصل الآن",
     "chatbot.placeholder": "اكتب استفسارك هنا...",
     "chatbot.welcome":
@@ -271,7 +271,7 @@ const dict: Record<Lang, Record<string, string>> = {
     "footer.copyright":
       "Khalid Al-harbi — Cyber Security Services. All rights reserved.",
 
-    "chatbot.title": "Khalid's AI Assistant",
+    "chatbot.title": "موظف .م خالد الحربي",
     "chatbot.online": "Online now",
     "chatbot.placeholder": "Type your inquiry here...",
     "chatbot.welcome":
