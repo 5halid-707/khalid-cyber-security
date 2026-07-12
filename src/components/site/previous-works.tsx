@@ -11,6 +11,7 @@ import {
   Store,
   Car,
   Hotel,
+  Shirt,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -130,6 +131,20 @@ const works: Work[] = [
     liveUrl: "https://hotel-ritz.vercel.app/",
     preview: "/work-uber-preview.png",
     icon: Hotel,
+  },
+  {
+    title: "KMH Fashion — Shein-Inspired E-Commerce",
+    titleAr: "متجر KMH للأزياء — متجر إلكتروني بأسلوب Shein",
+    category: { ar: "متجر إلكتروني شامل", en: "Full E-Commerce Store" },
+    categoryColor: "#ee296d",
+    description: {
+      ar: "متجر إلكتروني احترافي مستوحى من Shein بكل مميزاته — صفحة رئيسية بـ Hero carousel + Flash Sale مع countdown timer، 27 منتج عبر 6 فئات (نسائي/رجالي/أطفال/تجميل/منزل/إكسسوارات)، صفحة تفاصيل المنتج مع gallery + مقاسات + ألوان + تقييمات، سلة تسوق + كوبونات خصم، صفحة دفع كاملة بـ 5 طرق دفع، صفحة فئات مع فلاتر، مفضلة، صفحة حساب، RTL عربي كامل.",
+      en: "Professional Shein-inspired e-commerce store with all features — homepage with Hero carousel + Flash Sale countdown timer, 27 products across 6 categories, product detail page with gallery + sizes + colors + reviews, cart with discount coupons, full checkout with 5 payment methods, category pages with filters, wishlist, account page, full Arabic RTL.",
+    },
+    tech: ["Next.js", "React", "TypeScript", "Tailwind", "RTL", "Cart System", "Checkout", "Wishlist", "Flash Sale", "27 Products"],
+    liveUrl: "https://shein-store-teal.vercel.app/",
+    preview: "/work-uber-preview.png",
+    icon: Shirt,
   },
 ];
 

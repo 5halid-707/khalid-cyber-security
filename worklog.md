@@ -1576,3 +1576,90 @@ Next Actions (optional, for main agent):
 - The designs.tsx component currently uses a grid of service categories with no images. To wire these SVGs in, add an `image` field to each designService entry pointing to `/designs/{filename}.svg` and render an <img> (or Next.js <Image>) at top of each card.
 - Alternatively, build a separate "Design Portfolio Gallery" section that renders all 18 SVGs in a filterable grid by category (Logos/Identity/Ads/3D/UI/Social).
 - All SVGs are static and will be served from /public at /designs/*.svg.
+
+---
+Task ID: 45-shein
+Agent: main (Z.ai Code)
+Task: بناء متجر إلكتروني كامل مستوحى من Shein لمتجر KMH Fashion (لمالك المتجر خالد الحربي) كـ standalone Next.js project منفصل في /home/z/shein-store، مع النشر على GitHub و Vercel.
+
+Work Log:
+- شغّلت init-fullstack script للتأكد من البيئة، ثم أنشأت مشروع Next.js 16 منفصل في /home/z/shein-store (مشروع مستقل تماماً عن /home/z/my-project).
+- بنيت البنية التحتية للمشروع يدوياً (بدون create-next-app):
+  • package.json مع next@16.2.10 + react@19 + tailwindcss@4 + framer-motion + lucide-react + clsx + tailwind-merge.
+  • next.config.ts (images.remotePatterns لـ picsum.photos)، tsconfig.json، postcss.config.mjs، eslint.config.mjs، .gitignore.
+- صممت نظام الألوان والثيم في globals.css:
+  • ألوان Shein: وردي #ee296d، أسود #0a0a0a، رمادي #f5f5f5.
+  • خط Cairo (next/font/google) للعربية.
+  • components layer: .btn-primary / .btn-outline / .btn-dark / .chip / .container-app / .line-clamp-1/2.
+  • keyframes: marquee, pulse-dot, fade-up, shimmer.
+  • Scrollbar مخصص + no-scrollbar utility.
+  • html { direction: rtl } + touch-action: manipulation.
+- أنشأت types/index.ts بكل الأنواع (Product, CartItem, Category, Review, ProductColor).
+- بنيت بيانات وهمية شاملة في data/products.ts:
+  • 28 منتج موزع: 8 نسائي، 6 رجالي، 3 أطفال، 4 تجميل، 3 إكسسوارات، 3 منزل.
+  • كل منتج: id, title, category, subcategory, price, oldPrice, discount, image + 5 images gallery, sizes[], colors[], description, rating, reviewsCount, reviews[3], isFlashSale/isNewArrival/isBestSeller flags, stock, brand, tags.
+  • Helper functions: getProductById, getProductsByCategory, getFlashSaleProducts, getNewArrivals, getBestSellers, getRelatedProducts, searchProducts, formatPrice (ر.س بالعربية).
+  • 6 فئات (نسائي/رجالي/أطفال/تجميل/منزل/إكسسوارات) + 8 trending categories.
+- بنيت State Management عبر React Context:
+  • cart-context.tsx: items, addItem, removeItem, updateQuantity, clearCart, totalCount, subtotal, isOpen (drawer), حفظ في localStorage.
+  • wishlist-context.tsx: ids, toggle, has, remove, count, حفظ في localStorage.
+  • toast-context.tsx: toasts, showToast (success/error/info), auto-dismiss بعد 2.5s.
+- بنيت Layout في layout.tsx:
+  • ToastProvider > WishlistProvider > CartProvider > (AnnouncementBar + SiteHeader + main + SiteFooter + MobileTabBar + CartDrawer + Toaster).
+  • min-h-screen flex flex-col, main pb-20 للموبايل (لشريط التنقل السفلي).
+  • metadata عربية كاملة (title, description, keywords, openGraph, viewport themeColor #ee296d).
+- مكوّنات الواجهة (components/):
+  • announcement-bar.tsx: شريط علوي أسود متناوب 4 رسائل (شحن مجاني، إرجاع، دفع آمن، تخفيضات) كل 3.5s.
+  • site-header.tsx: sticky، شعار KMH، بحث (desktop + mobile)، أيقونات مفضلة/حساب/سلة مع badges، قائمة فئات أفقية، mobile drawer.
+  • site-footer.tsx: trust bar (4 مزايا)، 5 أعمدة (عن المتجر + contact info + تسوق + خدمة العملاء + عن المتجر)، بريد خالد + واتساب + سعودية، طرق دفع (مدى/visa/MC/Apple/STC/كاش).
+  • mobile-tab-bar.tsx: شريط سفلي 5 تبويبات (الرئيسية/الأقسام/السلة/المفضلة/حسابي) مع badges.
+  • product-card.tsx: صورة 4/5، discount badge، new badge، wishlist heart (toggle)، quick view hover، rating، title 2 lines، price (old+new)، colors dots، add to cart button.
+  • hero-carousel.tsx: 4 شرائح (تخفيضات/سهرة/رجالي/جمال) مع gradient backgrounds، auto-play 5s، أسهم، نقاط.
+  • flash-sale-timer.tsx: countdown timer (ساعة/دقيقة/ثانية) بـ useEffect و setInterval.
+  • cart-drawer.tsx: drawer جانبي يسار مع overlay، list items مع qty controls + remove، subtotal/shipping/total، CTA checkout.
+  • toaster.tsx: toasts stack في الأسفل مع أيقونات success/error/info.
+  • product-gallery.tsx: معرض صور بـ 5 thumbnails + main image مع state.
+  • product-info.tsx: brand, title, rating stars, price box, color selector (dots), size selector, qty stepper, add to cart + buy now + wishlist + share buttons, benefits row.
+  • product-reviews.tsx: summary box (rating + distribution bars)، reviews list مع show more.
+  • category-client.tsx: صفحة فئة كاملة بفلاتر (مقاس/لون/سعر)، sort dropdown (6 خيارات)، grid toggle (2/5 cols)، pagination "عرض المزيد"، mobile filter drawer.
+- بنيت الصفحات (app/):
+  • page.tsx (الرئيسية): Hero carousel → Quick categories grid → Promo strip (4 مزايا) → Flash sale section (مع timer) → Trending categories (8) → Mid promo banners (نسائي/رجالي) → New arrivals → Best sellers → Recommended → Newsletter signup.
+  • product/[id]/page.tsx: generateStaticParams + breadcrumb + gallery + info + description + size guide table + reviews + related products. 27 صفحة SSG.
+  • cart/page.tsx: list items + qty controls + remove + promo codes (KMH15=15%, WELCOME=10%) + free shipping progress + summary + checkout CTA.
+  • checkout/page.tsx: shipping form (name/email/phone/address/city/zip/notes) + 5 payment methods (COD/mada/visa/Apple Pay/STC) + order summary + place order → redirect to confirmation.
+  • order-confirmation/page.tsx: success animation + order details + status tracker (4 steps) + contact info.
+  • category/[name]/page.tsx: generateStaticParams لـ 7 فئات (all + 6) مع Suspense boundary.
+  • wishlist/page.tsx: عرض المنتجات المفضلة + empty state.
+  • account/page.tsx: profile card + contact info (email + WhatsApp) + menu list (طلباتي/عناوين/دفع/إعدادات/مساعدة).
+- اختبرت محلياً:
+  • bun run build نجح: 42 صفحة (Static + SSG) في 6.1s compile.
+  • OOM قتل dev server عدة مرات (النظام 3.9GB RAM مع chrome-headless و main project يستخدمان 2.5GB) لذا اعتمدت على production build للتأكد.
+  • بعد تحديث next من 16.0.0 إلى 16.2.10 (security fix)، الـ build نجح من جديد.
+- نشرت على GitHub:
+  • أنشأت repo عبر API: https://github.com/5halid-707/shein-store (public).
+  • git init + commit + push (37 ملف، commit message مفصّل).
+- نشرت على Vercel:
+  • أنشأت project عبر API (prj_c4yczZKGdRuzBqOVNAaUnczsff65) بـ framework=nextjs (بدون git link لأن Vercel GitHub App غير مثبت).
+  • trigger deployment عبر /v13/deployments مع gitSource {org:5halid-707, repo:shein-store, ref:main}.
+  • المحاولة الأولى فشلت: "Vulnerable version of Next.js detected" مع next@16.0.0.
+  • بعد التحديث لـ next@16.2.10 + push + redeploy: BUILDING → READY في 30s.
+  • Production URL: https://shein-store-teal.vercel.app
+  • Aliases: shein-store-5halid-707s-projects.vercel.app, shein-store-git-main-5halid-707s-projects.vercel.app.
+- تحققت من الإنتاج:
+  • GET / → 200 (يحتوي: KMH Fashion، متجر KMH، khalid-alharbi@zohomail.sa، +966 57 501 5019، عروض اليوم المميزة، وصل حديثاً، الأكثر مبيعاً، اشترك واحصل، تخفيضات الموسم).
+  • GET /product/w-dress-01 → 200.
+  • GET /category/women → 200.
+  • GET /cart → 200.
+  • GET /checkout → 200.
+
+Stage Summary:
+- متجر KMH Fashion الإلكتروني مبني ومنشور بالكامل: https://shein-store-teal.vercel.app
+- GitHub: https://github.com/5halid-707/shein-store
+- 28 منتج وهمي عبر 6 فئات (نسائي/رجالي/أطفال/تجميل/منزل/إكسسوارات).
+- 9 صفحات تعمل: الرئيسية، المنتج، السلة، الدفع، تأكيد الطلب، الفئات (7 variants)، المفضلة، الحساب.
+- ميزات Shein كاملة: hero carousel، flash sale countdown، trending categories، product cards بـ discount/wishlist/quick view، cart drawer، promo codes (KMH15/WELCOME)، 5 payment methods، mobile bottom tab bar، RTL عربية.
+- معلومات المالك في الفوتر + صفحة الحساب: khalid-alharbi@zohomail.sa / +966 57 501 5019 / السعودية.
+- Tech: Next.js 16.2.10 + TypeScript 5 + Tailwind CSS 4 + Framer Motion + Lucide icons + React Context + localStorage.
+- المشروع مستقل تماماً عن /home/z/my-project ولا يؤثر عليه.
+- الرابط جاهز للإضافة في قسم Previous Works للموقع الرئيسي.
+
