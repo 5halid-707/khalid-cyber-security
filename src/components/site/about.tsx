@@ -16,6 +16,14 @@ import {
   Search,
   Building2,
   Calendar,
+  FlaskConical,
+  ClipboardCheck,
+  FolderKanban,
+  Hotel,
+  ShoppingCart,
+  Settings,
+  Calculator,
+  Gem,
 } from "lucide-react";
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
@@ -26,7 +34,6 @@ const workExperience = [
   {
     role: { ar: "باحث أمني", en: "Security Researcher" },
     company: { ar: "ذا هكر ون", en: "TheHackerOne" },
-    companyEn: "TheHackerOne",
     period: { ar: "حالياً", en: "Current" },
     current: true,
     url: "https://thehackerone.com",
@@ -38,17 +45,100 @@ const workExperience = [
     color: "var(--neon-green)",
   },
   {
-    role: { ar: "خبير أمن سيبراني", en: "Cyber Security Expert" },
-    company: { ar: "مشاريع حررة", en: "Freelance Projects" },
-    companyEn: "Freelance",
+    role: { ar: "مدير مختبر جيوتقنية", en: "Geotechnical Lab Manager" },
+    company: { ar: "شركة الدكتور عايد عيد العصيمي", en: "Dr. Aied Eid Al-Osaimi Co." },
     period: { ar: "سابقاً", en: "Previous" },
     current: false,
     desc: {
-      ar: "عملت مع عدة شركات ومؤسسات كمستشار أمني حر — نفّذت اختبارات اختراق، أمنت شبكات، وحميت بيانات حساسة لعملاء في قطاعات متنوعة.",
-      en: "Worked with multiple companies as a freelance security consultant — performed penetration tests, secured networks, and protected sensitive data across various sectors.",
+      ar: "أدرت المختبر الجيوتقني وأشرفت على الفحوصات والتجارب التقنية — ضمان دقة النتائج ومراقبة جودة العمل المخبري وفق المعايير المعتمدة.",
+      en: "Managed the geotechnical lab and supervised technical tests and experiments — ensuring result accuracy and monitoring lab work quality per approved standards.",
     },
-    icon: Briefcase,
+    icon: FlaskConical,
     color: "var(--neon-blue)",
+  },
+  {
+    role: { ar: "فني مختبر", en: "Lab Technician" },
+    company: { ar: "شركة أر آر سي", en: "RRC Company" },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "عملت كفني مختبر — أجريت الفحوصات والتجارب المخبرية، جهّزت العينات، ووثّقت النتائج التقنية بدقة عالية.",
+      en: "Worked as a lab technician — conducted lab tests and experiments, prepared samples, and documented technical results with high accuracy.",
+    },
+    icon: ClipboardCheck,
+    color: "var(--neon-pink)",
+  },
+  {
+    role: { ar: "مشرف مشاريع", en: "Projects Supervisor" },
+    company: { ar: "شركة المرجان", en: "Al-Mirjan Company" },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "أشرفت على تنفيذ المشاريع وضمان إنجازها وفق الجدول الزمني والمواصفات — تنسيق الفرق ومراقبة جودة التنفيذ.",
+      en: "Supervised project execution ensuring on-time delivery per specs — coordinating teams and monitoring execution quality.",
+    },
+    icon: FolderKanban,
+    color: "var(--neon-green)",
+  },
+  {
+    role: { ar: "مشرف منتجع + مصمم مواقع ومتاجر", en: "Resort Supervisor & Web/Store Designer" },
+    company: { ar: "منتجع سيشيلز + فندق بلو كورال", en: "Seychelles Resort + Blue Coral Hotel" },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "أشرفت على إدارة منتجع سيشيلز، ومصمم مواقع ومتاجر إلكترونية لفندق بلو كورال ومنتجع سيشيلز — جمعت بين الإدارة والتصميم التقني.",
+      en: "Supervised Seychelles Resort operations and designed websites & e-commerce stores for Blue Coral Hotel and Seychelles Resort — blending management with technical design.",
+    },
+    icon: Hotel,
+    color: "var(--neon-blue)",
+  },
+  {
+    role: { ar: "مصمم ومبرمج وحامي متجر سوبر ماركت الجبال", en: "Designer, Developer & Security Specialist" },
+    company: { ar: "شركة الجبال الاقتصادية المحدودة", en: "Al-Jibal Economic Co. Ltd." },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "صمّمت وبرمجت وحميت متجر سوبر ماركت الجبال الإلكتروني — من التصميم والتطوير حتى تأمين الموقع وحماية بيانات العملاء.",
+      en: "Designed, developed, and secured Al-Jibal Supermarket e-commerce store — from design and development to site security and customer data protection.",
+    },
+    icon: ShoppingCart,
+    color: "var(--neon-pink)",
+  },
+  {
+    role: { ar: "مدير إداري", en: "Administrative Manager" },
+    company: { ar: "الخدمات المساندة المحدودة للدعم اللوجستي (كامباوند سعودي أوجيه)", en: "Supportive Services Co. (Saudi Oger Compound)" },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "أدرت العمليات الإدارية في موقع كامباوند شركة سعودي أوجيه — الإشراف على الفرق اللوجستية وضمان سير العمليات بكفاءة.",
+      en: "Managed administrative operations at Saudi Oger Compound site — supervising logistics teams and ensuring efficient operations.",
+    },
+    icon: Settings,
+    color: "var(--neon-green)",
+  },
+  {
+    role: { ar: "مدير حسابات", en: "Accounts Manager" },
+    company: { ar: "شركة STC", en: "STC (Saudi Telecom Company)" },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "أدرت الحسابات المالية في شركة الاتصالات السعودية STC — متابعة الفواتير والمصروفات والتقارير المالية بدقة.",
+      en: "Managed financial accounts at STC — tracking invoices, expenses, and financial reports with accuracy.",
+    },
+    icon: Calculator,
+    color: "var(--neon-blue)",
+  },
+  {
+    role: { ar: "مشرف معرض", en: "Exhibition Supervisor" },
+    company: { ar: "تيفاني العالمية للمجوهرات", en: "Tiffany & Co. International Jewelry" },
+    period: { ar: "سابقاً", en: "Previous" },
+    current: false,
+    desc: {
+      ar: "أشرفت على معرض تيفاني العالمية للمجوهرات — إدارة العرض وتنسيق القطع وتقديم تجربة عملاء راقية.",
+      en: "Supervised Tiffany International Jewelry exhibition — managing displays, coordinating pieces, and delivering premium customer experience.",
+    },
+    icon: Gem,
+    color: "var(--neon-pink)",
   },
 ];
 
@@ -312,23 +402,26 @@ export default function About() {
               <h3 className="text-lg font-bold text-white">
                 {isAr ? "خبراتي المهنية" : "Professional Experience"}
               </h3>
+              <span className="text-xs text-fg/40 mono-tech mr-1">
+                ({workExperience.length} {isAr ? "وظائف" : "roles"})
+              </span>
             </div>
             <p className="text-xs text-fg/50 mb-4">
               {isAr
-                ? "مسيرتي المهنية في الأمن السيبراني — من العمل الحر حتى باحث أمني في شركة عالمية"
-                : "My career in cyber security — from freelance work to security researcher at a global firm"}
+                ? "مسيرة مهنية متنوعة عبر شركات رائدة — من الإدارة والمختبرات إلى الأمن السيبراني والبحث العلمي"
+                : "A diverse career across leading companies — from management and labs to cyber security and research"}
             </p>
-            <div className="space-y-3 mb-8">
+            <div className="space-y-2.5 mb-8 max-h-[640px] overflow-y-auto pr-1 custom-scroll">
               {workExperience.map((job, i) => {
                 const Icon = job.icon;
                 return (
                   <div
                     key={i}
-                    className="relative p-4 rounded-xl bg-surface/60 border transition-all hover:bg-surface/80"
+                    className="relative p-3 sm:p-4 rounded-xl bg-surface/60 border transition-all hover:bg-surface/80"
                     style={{ borderColor: job.current ? `${job.color}60` : "#1f2937" }}
                   >
                     {job.current && (
-                      <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-green/15 border border-neon-green/40">
+                      <span className="absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-green/15 border border-neon-green/40">
                         <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
                         <span className="text-[9px] text-neon-green font-bold mono-tech">
                           {isAr ? "حالياً" : "NOW"}
@@ -336,45 +429,56 @@ export default function About() {
                       </span>
                     )}
                     <div className="flex items-start gap-3">
+                      {/* Number badge */}
                       <span
-                        className="w-11 h-11 shrink-0 rounded-lg flex items-center justify-center border"
+                        className="shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-black mono-tech border"
+                        style={{
+                          color: job.color,
+                          borderColor: `${job.color}50`,
+                          backgroundColor: `${job.color}10`,
+                        }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {/* Icon */}
+                      <span
+                        className="w-10 h-10 shrink-0 rounded-lg flex items-center justify-center border"
                         style={{
                           borderColor: `${job.color}50`,
                           backgroundColor: `${job.color}10`,
                           boxShadow: job.current ? `0 0 12px ${job.color}30` : "none",
                         }}
                       >
-                        <Icon size={20} style={{ color: job.color }} />
+                        <Icon size={18} style={{ color: job.color }} />
                       </span>
-                      <div className="flex-1 min-w-0 pr-12">
-                        <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                          <h4 className="text-sm font-bold" style={{ color: job.color }}>
+                      <div className="flex-1 min-w-0 pr-14">
+                        <div className="flex items-center gap-1.5 flex-wrap mb-0.5">
+                          <h4 className="text-xs sm:text-sm font-bold leading-tight" style={{ color: job.color }}>
                             {isAr ? job.role.ar : job.role.en}
                           </h4>
-                          <span className="text-fg/30">•</span>
-                          {job.url ? (
-                            <a
-                              href={job.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-sm font-bold text-white hover:text-neon-green transition-colors"
-                            >
-                              <Building2 size={12} />
-                              {isAr ? job.company.ar : job.company.en}
-                              <ExternalLink size={10} className="opacity-50" />
-                            </a>
-                          ) : (
-                            <span className="text-sm font-bold text-white inline-flex items-center gap-1">
-                              <Building2 size={12} />
-                              {isAr ? job.company.ar : job.company.en}
-                            </span>
-                          )}
                         </div>
-                        <p className="text-xs text-fg/60 leading-relaxed mb-2">
+                        {job.url ? (
+                          <a
+                            href={job.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs font-bold text-white hover:text-neon-green transition-colors mb-1"
+                          >
+                            <Building2 size={11} className="shrink-0" />
+                            <span className="truncate">{isAr ? job.company.ar : job.company.en}</span>
+                            <ExternalLink size={9} className="shrink-0 opacity-50" />
+                          </a>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 text-xs font-bold text-white mb-1">
+                            <Building2 size={11} className="shrink-0" />
+                            <span className="truncate">{isAr ? job.company.ar : job.company.en}</span>
+                          </span>
+                        )}
+                        <p className="text-[11px] sm:text-xs text-fg/55 leading-relaxed mb-1.5 line-clamp-2">
                           {isAr ? job.desc.ar : job.desc.en}
                         </p>
-                        <span className="inline-flex items-center gap-1 text-[10px] text-fg/40 mono-tech">
-                          <Calendar size={10} />
+                        <span className="inline-flex items-center gap-1 text-[9px] text-fg/40 mono-tech">
+                          <Calendar size={9} />
                           {isAr ? job.period.ar : job.period.en}
                         </span>
                       </div>
@@ -383,6 +487,18 @@ export default function About() {
                 );
               })}
             </div>
+            <style>{`
+              .custom-scroll::-webkit-scrollbar { width: 5px; }
+              .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+              .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,168,232,0.3); border-radius: 3px; }
+              .custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0,168,232,0.5); }
+              .line-clamp-2 {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+              }
+            `}</style>
 
             {/* Expertise grid — خبراتي العملية */}
             <div className="flex items-center gap-2 mb-1">
