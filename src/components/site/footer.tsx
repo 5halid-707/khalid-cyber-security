@@ -37,7 +37,7 @@ export default function Footer() {
               {t("footer.cta.whatsapp")}
             </a>
             <a
-              href="mailto:kmalharbi.c@gmail.com"
+              href="mailto:khalid-alharbi@zohomail.sa"
               className="inline-flex items-center justify-center gap-2 border-2 border-neon-blue text-neon-blue font-bold px-7 py-3 rounded-md hover:bg-neon-blue/10 transition-all"
             >
               <Mail size={18} />
@@ -115,7 +115,7 @@ export default function Footer() {
                 <Github size={18} />
               </a>
               <a
-                href="mailto:kmalharbi.c@gmail.com"
+                href="mailto:khalid-alharbi@zohomail.sa"
                 className="w-10 h-10 rounded-full border border-edge flex items-center justify-center text-fg/70 hover:text-neon-pink hover:border-neon-pink transition-all"
                 aria-label="Email"
               >
