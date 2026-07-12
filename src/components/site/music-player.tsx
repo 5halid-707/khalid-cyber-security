@@ -180,7 +180,7 @@ export default function MusicPlayer() {
   const currentTrack = PLAYLIST[trackIndex];
 
   return (
-    <div className="fixed bottom-24 left-6 z-[998] flex flex-col items-start gap-2 pointer-events-none">
+    <div className="fixed bottom-6 left-6 z-[997] flex flex-col items-start gap-2 pointer-events-none">
       {/* Only the controls are interactive */}
       {/* Expanded volume slider */}
       {expanded && playing && (
