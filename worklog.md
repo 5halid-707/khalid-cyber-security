@@ -1094,3 +1094,84 @@ Stage Summary:
 - الفوتر مثبت في الأسفل (top=786، docHeight=7793).
 - ملاحظات (ليست regressions من Task 34): ملفات فيديو مفقودة (marketing-video-khalid.mp4, bg-hacking.mp4, bg-marketing.mp4) وأيقونات devicon محجوبة بـ ORB — يُستحسن إصلاحها في task منفصل.
 - لم تُجرَ أي تعديلات على الكود (تحقق فقط).
+
+---
+Task ID: 35-verify
+Agent: sub-agent (general-purpose verifier)
+Task: تحقق من أن قسم InteractiveShowcase (id="showcase") يعرض كل الـ4 أقسام الفرعية مفتوحة افتراضياً (وليس واحداً فقط)، مع التأكد أن الـ toggle ما زال يعمل على كل قسم على حدة وأن عدة أقسام يمكن أن تكون مفتوحة معاً.
+
+Work Log:
+- قرأت worklog.md وفهمت سياق Task 35 (تحويل الأكورديون من single-open إلى all-open-by-default في src/components/site/interactive-showcase.tsx).
+- تأكدت أن dev server يعمل (HTTP 200 على http://localhost:3000).
+- راجعت الكود المصدري في src/components/site/interactive-showcase.tsx:
+  • السطر 573: `const [openSet, setOpenSet] = useState<Set<number>>(new Set([0, 1, 2, 3]));` → كل الـ4 أقسام مفتوحة افتراضياً ✓
+  • السطور 575-582: `toggle(i)` يضيف/يحذف عنصر واحد فقط من الـ Set (لا يعتمد على غيره) → دعم تعدد الأقسام المفتوحة ✓
+  • السطر 666: `isOpen={openSet.has(i)}` و `onToggle={() => toggle(i)}` لكل قسم ✓
+  • السطور 158-166: محتوى الـ accordion يستخدم maxHeight: 3000px عند isOpen و 0px عند الـ collapse (يُبقى الـ content في DOM) ✓
+- جلبت HTML المُعروض عبر curl (240KB) ونفّذت فحوصات نصية:
+  • كل عناوين الـ4 أقسام موجودة (مرة واحدة لكل واحد): "منصات الاعتماد والأدوات"، "الشهادات المهنية الموثّقة"، "التعليم الأكاديمي المعتمد"، "الاستشارات الأكاديمية Premium" ✓
+  • مصطلحات المحتوى الرئيسية: Cybersecurity Fundamentals (1)، Coventry University (6)، Digital Security Training (2)، Information Security Design (2)، Network Security (8)، OPSWAT (5)، Alison (3)، TryHackMe (1)، Credly (8)، FutureLearn (5)، CPD UK (5)، IBM SkillsBuild (3)، Cisco (12)، Kali (3)، Python (2)، $2,000 (1)، $3,000 (1)، $2,800 (1) ✓
+  • max-height:3000px → 4 تكرارات (واحدة لكل قسم مفتوح) ✓
+  • max-height:0px → 0 تكرارات (لا يوجد قسم مطوي افتراضياً) ✓
+- استخدمت Playwright (Python، chromium headless) لفحص DOM الديناميكي بعد hydration:
+  • عدد عناصر الأكورديون = 4 ✓
+  • الحالة الابتدائية لكل قسم (maxHeight من style): كل الـ4 = "3000px" (مفتوحة) ✓
+  • عناوين الـ4 أقسام تُقرأ من DOM ومطابقة ✓
+  • محتوى كل قسم موجود في DOM بشكل مرئي (وليس خلف click) — تم التحقق عبر inner_html: كل المصطلحات الـ21 (Python, PayPal, Cybersecurity Fundamentals, Cloud Security, Coventry University, Digital/Information Security/Network Security tracks, OPSWAT, Alison, TryHackMe, Credly, FutureLearn, CPD UK, IBM SkillsBuild, Cisco, Kali, SkillsBuild, $2,000/$3,000/$2,800) موجودة في body innerHTML ✓
+- اختبرت سلوك الـ toggle عبر Playwright:
+  • TEST 1 — نقر header القسم 1: انطوى القسم 1 (maxHeight=0px) وبقية الأقسام 2/3/4 مفتوحة (maxHeight=3000px) ✓
+  • TEST 2 — إعادة نقر header القسم 1: عاد القسم 1 مفتوحاً والـ4 كلها مفتوحة الآن ✓
+  • TEST 3 — نقر header الأقسام 2 و 4 معاً: النتيجة (s1=open, s2=closed, s3=open, s4=closed) → أثبت أن عدة أقسام يمكن أن تكون مفتوحة معاً (s1 و s3 معاً) ✓
+- التقطت screenshots عبر Playwright:
+  • showcase_element_full.png — لقطة كاملة لقسم الـ showcase (الـ4 أقسام مفتوحة) (876KB)
+  • section_1.png, section_2.png, section_3.png, section_4.png — لقطات لكل قسم على حدة
+  • showcase_multi_toggle.png — الحالة بعد طي قسم 2 و 4 (s1+s3 مفتوحة، s2+s4 مطوية)
+- استخدمت z-ai CLI (vision / glm-4.6v) لتحليل لقطة الـ showcase الكاملة:
+  • "4 accordion sections are visible (all expanded)" ✓
+  • رأى أيقونات الأدوات (Python, Kali Linux, Cisco, IBM) + badges المنصات (Alison, CPD UK, TryHackMe) في القسم 1 ✓
+  • رأى "Cybersecurity Fundamentals" + badges (Cisco, IBM) في القسم 2 ✓
+  • رأى Coventry University banner + "Digital Security Training" + progress bars في القسم 3 ✓
+  • رأى بطاقات الأسعار ($2,000, $2,800, $3,000) في القسم 4 ✓
+- استخدمت z-ai vision على لقطة الـ multi-toggle:
+  • "2 sections expanded, 2 sections collapsed" ✓
+  • "Sections 1 and 3 are expanded with content visible" ✓
+  • "Sections 2 and 4 are collapsed (just header)" ✓
+- console errors: خطأ واحد فقط — 404 على مورد (الموجود مسبقاً من Task 34: ملف فيديو مفقود، ليس regression من Task 35). لا pageerror.
+
+Stage Summary:
+- ✅ PASS: كل الـ4 أقسام الفرعية في InteractiveShowcase مفتوحة ومرئية افتراضياً (maxHeight=3000px لكل واحد، 0 sections مطوية).
+- ✅ PASS: كل المحتوى المتوقع موجود في DOM المرئي في وقت واحد (Cybersecurity Fundamentals، Coventry University، Digital Security Training، OPSWAT، Alison، TryHackMe، Credly، FutureLearn، CPD UK، IBM SkillsBuild، Cisco، Kali، Python، $2,000، $3,000، $2,800، PayPal).
+- ✅ PASS: الـ toggle ما زال يعمل على كل قسم على حدة — النقر يطوي القسم المحدد فقط دون التأثير على الآخرين.
+- ✅ PASS: عدة أقسام يمكن أن تكون مفتوحة معاً (تم التحقق بصرياً: s1+s3 مفتوحة معاً بعد طي s2+s4).
+- ✅ VLM (glm-4.6v) يؤكد بصرياً: "4 accordion sections are visible (all expanded)" + كل المحتوى المتوقع مرئي.
+- ملاحظة (ليست regression): خطأ 404 واحد على ملف فيديو مفقود (موجود من Task 34-verify، خارج نطاق هذا الـ task).
+- لم تُجرَ أي تعديلات على الكود (تحقق فقط).
+
+---
+Task ID: 35
+Agent: main (Z.ai Code)
+Task: إصلاح "الأقسام المحذوفة" — الأقسام لم تُحذف، كانت مخفية داخل accordion يفتح قسماً واحداً فقط.
+
+Work Log:
+- تشخيص المشكلة: InteractiveShowcase كان يستخدم useState<number | null>(0) — أي قسم واحد فقط مفتوح افتراضياً، والثلاثة الأخرى مخفية حتى يضغط المستخدم.
+- غيّرت المنطق إلى useState<Set<number>> مع كل الأقسام الأربعة مفتوحة افتراضياً (new Set([0,1,2,3])).
+- غيّرت toggle function للسماح بطيّ/فتح كل قسم على حدة (multi-open accordion).
+- غيّرت isOpen={openIndex === i} → isOpen={openSet.has(i)}.
+- غيّرت onToggle={() => setOpenIndex(...)} → onToggle={() => toggle(i)}.
+- حدّثت النص التسويقي: "اضغط على أي قسم لعرض..." → "كل الأقسام مفتوحة بالكامل — يمكنك طيّ أي قسم أو إعادة فتحه بالضغط عليه".
+- تحققت عبر curl: كل المحتوى من الأقسام الأربعة موجود في HTML المُعروض (Coventry, IBM SkillsBuild, Cybersecurity Fundamentals, Digital Security Training, الاستشارات الأكاديمية Premium).
+- تحقق بصري عبر sub-agent (Playwright + VLM glm-4.6v):
+  • كل الأقسام الأربعة maxHeight=3000px (مفتوحة) من بدء تحميل الصفحة ✓
+  • كل المصطلحات الـ21 موجودة في DOM (Cybersecurity Fundamentals, Coventry, $2,000, $3,000, $2,800, PayPal x10) ✓
+  • Toggle ما زال يعمل: الضغط على قسم يطويه، والضغط مرة أخرى يعيده ✓
+  • أقسام متعددة مفتوحة في نفس الوقت (s1+s3 مفتوحان معاً) ✓
+- ESLint نظيف.
+
+Stage Summary:
+- كل الأقسام الأربعة أصبحت مرئية بالكامل افتراضياً بدون الحاجة للضغط:
+  1. منصات الاعتماد والأدوات (Tools & Platforms)
+  2. الشهادات المهنية الموثّقة (Verified Credentials) — IBM/Cisco/OPSWAT/Alison/CPD
+  3. التعليم الأكاديمي المعتمد (Coventry University — 3 مسارات + 15 دورة)
+  4. الاستشارات الأكاديمية Premium (3 بطاقات بأسعار + PayPal)
+- الـ accordion أصبح multi-open (عدة أقسام مفتوحة معاً) بدلاً من single-open.
+- المستخدم يمكنه طيّ أي قسم لا يحتاجه لتنظيف العرض.

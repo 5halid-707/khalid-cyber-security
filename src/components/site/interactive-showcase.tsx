@@ -569,7 +569,17 @@ function AcademicProductsContent() {
 export default function InteractiveShowcase() {
   const { lang } = useI18n();
   const isAr = lang === "ar";
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // first open by default
+  // All 4 sections open by default — user can collapse any individually
+  const [openSet, setOpenSet] = useState<Set<number>>(new Set([0, 1, 2, 3]));
+
+  const toggle = (i: number) => {
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
 
   const sections = [
     {
@@ -633,8 +643,8 @@ export default function InteractiveShowcase() {
           />
           <p className="text-fg/60 max-w-2xl mx-auto mb-5">
             {isAr
-              ? "اضغط على أي قسم لعرض الخدمة المقدمة بالكامل — كل قسم يحتوي على تفاصيل احترافية وشاملة"
-              : "Click any section to reveal the full service offered — each section contains professional, comprehensive details"}
+              ? "كل الأقسام مفتوحة بالكامل — يمكنك طيّ أي قسم أو إعادة فتحه بالضغط عليه"
+              : "All sections are fully open — click any section to collapse or re-expand it"}
           </p>
           <div className="w-20 h-1 mx-auto bg-neon-blue rounded-full shadow-[0_0_10px_var(--neon-blue)]" />
         </Reveal>
@@ -653,8 +663,8 @@ export default function InteractiveShowcase() {
               subtitleEn={s.subtitleEn}
               marketingAr={s.marketingAr}
               marketingEn={s.marketingEn}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              isOpen={openSet.has(i)}
+              onToggle={() => toggle(i)}
             >
               {s.content}
             </AccordionItem>
