@@ -32,8 +32,8 @@ const reports: Report[] = [
       en: "Protection, Penetration Testing & Vulnerability Remediation Report",
     },
     desc: {
-      ar: "تقرير أمني احترافي شامل (53 خطوة موثّقة) يحمي شبكاتك ومواقعك وتطبيقاتك الإلكترونية مع تحليل اختبارات اختراق لاكتشاف الثغرات وحماية قاعدة بياناتك. صُمم للمؤسسات الصغيرة والمتوسطة والكبيرة وللأفراد — يغطي إعداد pfSense Firewall + Windows Server 2025 + اختبار اختراق Active Directory كامل + إغلاق الثغرات + إعادة الاختبار.",
-      en: "Comprehensive professional security report (53 documented steps) protecting your networks, websites, and electronic applications with penetration test analysis to discover vulnerabilities and protect your database. Designed for small, medium, and large organizations plus individuals — covers pfSense Firewall setup + Windows Server 2025 + full Active Directory penetration test + vulnerability remediation + re-testing.",
+      ar: "تقرير أمني احترافي شامل (53 خطوة موثّقة) يحمي شبكاتك ومواقعك وتطبيقاتك الإلكترونية وقواعد بياناتك وكاميراتك من الاختراق مع تحليل اختبارات اختراق لاكتشاف الثغرات وإغلاق جميع الثغرات على شبكتك. صُمم للمؤسسات الصغيرة والمتوسطة والكبيرة وللأفراد — يغطي إعداد pfSense Firewall + Windows Server 2025 + اختبار اختراق Active Directory كامل + إغلاق الثغرات + إعادة الاختبار.",
+      en: "Comprehensive professional security report (53 documented steps) protecting your networks, websites, electronic applications, databases, and cameras from breaches with penetration test analysis to discover vulnerabilities and close all vulnerabilities on your network. Designed for small, medium, and large organizations plus individuals — covers pfSense Firewall setup + Windows Server 2025 + full Active Directory penetration test + vulnerability remediation + re-testing.",
     },
     file: "/reports/pfSense-AD-Penetration-Test-Report.docx",
     icon: ShieldCheck,
@@ -46,9 +46,10 @@ const reports: Report[] = [
     highlights: [
       { ar: "🛡️ حماية شبكاتك: إعداد pfSense Firewall (ZFS + WAN/LAN + DHCP + قواعد جدار الحماية + حظر Nmap)", en: "🛡️ Network Protection: pfSense Firewall setup (ZFS + WAN/LAN + DHCP + firewall rules + Nmap blocking)" },
       { ar: "🔐 حماية مواقعك وتطبيقاتك: Windows Server 2025 + Active Directory (Domain Controller + OUs + GPO + 5 مستخدمين)", en: "🔐 Web & App Protection: Windows Server 2025 + Active Directory (DC + OUs + GPO + 5 users)" },
+      { ar: "📷 حماية كاميراتك من الاختراق: تأمين كاميرات المراقبة + منع الوصول غير المصرّح + عزلها عن شبكة البيانات", en: "📷 Camera Protection: secure surveillance cameras + block unauthorized access + network segmentation" },
       { ar: "🔍 تحليل اختبارات الاختراق لاكتشاف الثغرات: Nmap + Impacket + Responder + BloodHound + Hashcat + Wireshark", en: "🔍 Penetration Test Analysis: Nmap + Impacket + Responder + BloodHound + Hashcat + Wireshark" },
       { ar: "🚨 اكتشاف الثغرات: SMB Null Session + LLMNR Poisoning + GPP Passwords + LDAP RootDSE + Credential Interception", en: "🚨 Vulnerability Discovery: SMB Null Session + LLMNR Poisoning + GPP Passwords + LDAP RootDSE + Credential Interception" },
-      { ar: "✅ إغلاق الثغرات: GPO + Registry Hardening + Re-Testing ناجح 100%", en: "✅ Vulnerability Remediation: GPO + Registry Hardening + successful Re-Testing 100%" },
+      { ar: "🔒 إغلاق جميع الثغرات على شبكتك: GPO + Registry Hardening + عزل الكاميرات + إعادة اختبار ناجح 100%", en: "🔒 Close All Network Vulnerabilities: GPO + Registry Hardening + camera isolation + successful Re-Testing 100%" },
       { ar: "💾 حماية قاعدة بياناتك: منع اعتراض بيانات الاعتماد + حظر الوصول غير المصرّح", en: "💾 Database Protection: prevent credential interception + block unauthorized access" },
     ],
   },
@@ -255,9 +256,10 @@ export default function SecurityReports() {
               {[
                 { ar: "🛡️ حماية شبكاتك من الاختراق والهجمات السيبرانية", en: "🛡️ Network protection from breaches and cyber attacks" },
                 { ar: "🔐 تأمين مواقعك وتطبيقاتك الإلكترونية", en: "🔐 Secure your websites and electronic applications" },
+                { ar: "📷 حماية كاميراتك من الاختراق والتجسس", en: "📷 Protect your cameras from breaches and spying" },
                 { ar: "💾 حماية قاعدة بياناتك من السرقة والتسريب", en: "💾 Protect your database from theft and leakage" },
                 { ar: "🔍 تحليل اختبارات اختراق لاكتشاف الثغرات", en: "🔍 Penetration test analysis to discover vulnerabilities" },
-                { ar: "✅ إغلاق كل الثغرات المكتشفة + إعادة اختبار", en: "✅ Close all discovered vulnerabilities + re-testing" },
+                { ar: "🔒 إغلاق جميع الثغرات على شبكتك + إعادة اختبار", en: "🔒 Close all vulnerabilities on your network + re-testing" },
                 { ar: "📋 توثيق احترافي ثنائي اللغة (عربي/إنجليزي)", en: "📋 Professional bilingual documentation (AR/EN)" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-2 text-sm text-fg/80">
