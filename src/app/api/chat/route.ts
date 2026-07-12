@@ -1,26 +1,20 @@
 import { NextResponse } from "next/server";
 import ZAI from "z-ai-web-dev-sdk";
-import fs from "fs/promises";
-import path from "path";
 
 export const runtime = "nodejs";
 
-// Ensure .z-ai-config exists (write from env vars on Vercel if missing)
-async function ensureConfig() {
-  const configPath = path.join(process.cwd(), ".z-ai-config");
-  try {
-    await fs.access(configPath);
-  } catch {
-    // File doesn't exist — create from environment variables
-    const config = {
-      baseUrl: process.env.ZAI_BASE_URL || "https://internal-api.z.ai/v1",
-      apiKey: process.env.ZAI_API_KEY || "Z.ai",
-      chatId: process.env.ZAI_CHAT_ID || "",
-      token: process.env.ZAI_TOKEN || "",
-      userId: process.env.ZAI_USER_ID || "",
-    };
-    await fs.writeFile(configPath, JSON.stringify(config), "utf-8").catch(() => {});
-  }
+// Create ZAI instance directly from env vars (bypasses config file which
+// doesn't exist on Vercel's read-only filesystem)
+function createZAI() {
+  const config = {
+    baseUrl: process.env.ZAI_BASE_URL || "https://internal-api.z.ai/v1",
+    apiKey: process.env.ZAI_API_KEY || "Z.ai",
+    chatId: process.env.ZAI_CHAT_ID || "",
+    token: process.env.ZAI_TOKEN || "",
+    userId: process.env.ZAI_USER_ID || "",
+  };
+  // @ts-expect-error — ZAI constructor accepts config object
+  return new ZAI(config) as InstanceType<typeof ZAI>;
 }
 
 const SYSTEM_PROMPT = `أنت المساعد الذكي الشخصي للخبير خالد محمد عودة الحربي — خبير أمن سيبراني معتمد وباحث أمني. تعمل على موققه الإلكتروني للرد على استفسارات العملاء وتسويق خدماته وإقناعهم بالتعامل معه بلغة عربية فصحى مبسطة وجذابة. لديك معرفة شاملة بكل محتوى الموقع.
@@ -198,8 +192,7 @@ export async function POST(req: Request) {
       history.splice(1, history.length - (MAX_HISTORY + 1));
     }
 
-    await ensureConfig();
-    const zai = await ZAI.create();
+    const zai = createZAI();
 
     const completion = await zai.chat.completions.create({
       messages: history,
