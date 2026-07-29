@@ -6,16 +6,16 @@ const TOOLS = [
   // === Credentials & Education platforms ===
   {
     name: "IBM",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ibm/ibm-original.svg",
+    src: "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/ibm/default.svg",
   },
   {
     name: "Cisco",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg",
+    src: "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/cisco/light.svg",
   },
   // === Cyber security tools ===
   {
     name: "Kali Linux",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kali/kali-linux-wordmark.svg",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kalilinux/kalilinux-original.svg",
   },
   // === Programming & frameworks ===
   {

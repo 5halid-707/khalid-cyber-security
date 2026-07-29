@@ -172,9 +172,9 @@ function AccordionItem({
    SECTION 1: TOOLS & PLATFORMS
    ============================================================ */
 const TOOLS = [
-  { name: "IBM", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ibm/ibm-original.svg" },
-  { name: "Cisco", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg" },
-  { name: "Kali Linux", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kali/kali-linux-wordmark.svg" },
+  { name: "IBM", src: "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/ibm/default.svg" },
+  { name: "Cisco", src: "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/cisco/light.svg" },
+  { name: "Kali Linux", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kalilinux/kalilinux-original.svg" },
   { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
   { name: "Flutter", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
   { name: "MySQL", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
