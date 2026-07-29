@@ -31,6 +31,7 @@ import Reveal from "./reveal";
 import TypedHeading from "./typed-heading";
 import { useI18n } from "./i18n";
 import PayPalButton from "./paypal-button";
+import { TECH_LOGOS, TEXT_PLATFORMS, TechLogoImg } from "./tech-logos";
 
 /* ============================================================
    ACCORDION ITEM WRAPPER
@@ -171,37 +172,17 @@ function AccordionItem({
 /* ============================================================
    SECTION 1: TOOLS & PLATFORMS
    ============================================================ */
-const TOOLS = [
-  { name: "IBM", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ibm/ibm-original.svg" },
-  { name: "Cisco", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg" },
-  { name: "Kali Linux", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kali/kali-linux-wordmark.svg" },
-  { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-  { name: "Flutter", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
-  { name: "MySQL", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-  { name: "WordPress", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
-  { name: "Photoshop", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
-  { name: "Premiere Pro", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-plain.svg" },
-];
-const TEXT_PLATFORMS = [
-  { name: "Coventry University", color: "#00ffcc" },
-  { name: "FutureLearn", color: "#de00a5" },
-  { name: "Credly", color: "#ff6c00" },
-  { name: "TryHackMe", color: "#88cc14" },
-  { name: "CPD UK", color: "#00a8e8" },
-  { name: "Alison", color: "#00ffcc" },
-];
-
 function ToolsContent() {
   return (
     <div>
       <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3 mb-6">
-        {TOOLS.map((t) => (
+        {TECH_LOGOS.map((t) => (
           <div
             key={t.name}
             className="aspect-square rounded-xl bg-surface border border-edge flex items-center justify-center p-2 hover:border-neon-green/40 hover:scale-105 transition-all"
             title={t.name}
           >
-            <img src={t.src} alt={t.name} className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
+            <TechLogoImg logo={t} className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity" />
           </div>
         ))}
       </div>

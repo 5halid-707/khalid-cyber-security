@@ -1,67 +1,12 @@
 "use client";
 
 import { useI18n } from "./i18n";
-
-const TOOLS = [
-  // === Credentials & Education platforms ===
-  {
-    name: "IBM",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ibm/ibm-original.svg",
-  },
-  {
-    name: "Cisco",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg",
-  },
-  // === Cyber security tools ===
-  {
-    name: "Kali Linux",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kali/kali-linux-wordmark.svg",
-  },
-  // === Programming & frameworks ===
-  {
-    name: "Python",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  },
-  {
-    name: "Flutter",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
-  },
-  // === Databases & web ===
-  {
-    name: "MySQL",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-  },
-  {
-    name: "WordPress",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
-  },
-  // === Design & media ===
-  {
-    name: "Photoshop",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
-  },
-  {
-    name: "Premiere Pro",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-plain.svg",
-  },
-];
-
-/**
- * Platforms that don't have devicon SVGs — rendered as branded text chips.
- */
-const TEXT_PLATFORMS = [
-  { name: "Coventry University", color: "#00ffcc" },
-  { name: "FutureLearn", color: "#de00a5" },
-  { name: "Credly", color: "#ff6c00" },
-  { name: "TryHackMe", color: "#88cc14" },
-  { name: "CPD UK", color: "#00a8e8" },
-  { name: "Alison", color: "#00ffcc" },
-];
+import { TECH_LOGOS, TEXT_PLATFORMS, TechLogoImg } from "./tech-logos";
 
 export default function ToolsMarquee() {
   const { t } = useI18n();
   // Duplicate both lists for seamless infinite scroll
-  const loop = [...TOOLS, ...TOOLS];
+  const loop = [...TECH_LOGOS, ...TECH_LOGOS];
   const textLoop = [...TEXT_PLATFORMS, ...TEXT_PLATFORMS];
 
   return (
@@ -84,11 +29,9 @@ export default function ToolsMarquee() {
               className="shrink-0 w-20 h-20 flex items-center justify-center opacity-65 hover:opacity-100 hover:scale-110 transition-all duration-300"
               title={tool.name}
             >
-              <img
-                src={tool.src}
-                alt={tool.name}
+              <TechLogoImg
+                logo={tool}
                 className="w-full h-full object-contain"
-                loading="lazy"
               />
             </div>
           ))}
