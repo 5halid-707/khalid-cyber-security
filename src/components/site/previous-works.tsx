@@ -160,6 +160,20 @@ const works: Work[] = [
     preview: "/work-previews/sephora.svg",
     icon: ShoppingBag,
   },
+  {
+    title: "KMH ERP Suite — Business Management System",
+    titleAr: "KMH ERP Suite — نظام إدارة متكامل",
+    category: { ar: "نظام إدارة أعمال احترافي", en: "Enterprise Management System" },
+    categoryColor: "#00a8e8",
+    description: {
+      ar: "نظام إدارة أعمال متكامل يحاكي SAP و Odoo بـ 8 وحدات: نقطة بيع (POS)، محاسبة (ميزان مراجعة + قائمة دخل + ميزانية عمومية)، موارد بشرية (موظفين + رواتب + إجازات)، مخزون، عملاء، تقارير. مع مصادقة JWT، 6 أدوار صلاحيات (RBAC)، أتمتة كاملة بين الوحدات (بيع → قيد محاسبي + حركة مخزون)، سجل تدقيق، وقاعدة بيانات PostgreSQL على Neon.",
+      en: "Comprehensive business management system rivaling SAP/Odoo with 8 modules: POS, Accounting (trial balance + income statement + balance sheet), HR (employees + payroll + leaves), Inventory, Customers, Reports. Features JWT auth, 6-role RBAC, cross-module automation (sale → journal entry + stock movement), audit log, and PostgreSQL on Neon.",
+    },
+    tech: ["Next.js 16", "TypeScript", "PostgreSQL", "Prisma", "Tailwind 4", "JWT Auth", "RBAC", "8 Modules", "18+ APIs"],
+    liveUrl: "https://kmh-erp-suite.vercel.app/",
+    preview: "/work-previews/kmh-erp.svg",
+    icon: Globe,
+  },
 ];
 
 const AUTOPLAY_MS = 6000; // 6 seconds per slide

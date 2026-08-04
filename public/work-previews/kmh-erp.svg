@@ -1,0 +1,32 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0c1119"/>
+    </linearGradient>
+    <linearGradient id="k" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <pattern id="grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,168,232,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#grid)"/>
+  <!-- K logo -->
+  <rect x="160" y="80" width="80" height="80" rx="16" fill="url(#k)"/>
+  <path d="M180 100 L180 140 L188 140 L188 124 L204 140 L214 140 L196 122 L214 100 L204 100 L188 116 L188 100 Z" fill="white"/>
+  <!-- Text -->
+  <text x="200" y="190" text-anchor="middle" fill="white" font-family="monospace" font-size="16" font-weight="bold">KMH ERP Suite</text>
+  <text x="200" y="210" text-anchor="middle" fill="#00a8e8" font-family="monospace" font-size="10">نظام الإدارة المتكامل</text>
+  <!-- Module badges -->
+  <rect x="80" y="230" width="50" height="20" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)"/>
+  <text x="105" y="244" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="8">POS</text>
+  <rect x="140" y="230" width="50" height="20" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.4)"/>
+  <text x="165" y="244" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="8">HR</text>
+  <rect x="200" y="230" width="50" height="20" rx="4" fill="rgba(168,85,247,0.15)" stroke="rgba(168,85,247,0.4)"/>
+  <text x="225" y="244" text-anchor="middle" fill="#a855f7" font-family="monospace" font-size="8">ERP</text>
+  <rect x="260" y="230" width="60" height="20" rx="4" fill="rgba(0,168,232,0.15)" stroke="rgba(0,168,232,0.4)"/>
+  <text x="290" y="244" text-anchor="middle" fill="#00a8e8" font-family="monospace" font-size="8">Reports</text>
+</svg>
