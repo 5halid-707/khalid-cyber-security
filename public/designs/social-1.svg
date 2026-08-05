@@ -104,7 +104,7 @@
     </g>
 
     <!-- bottom URL -->
-    <text x="120" y="245" text-anchor="middle" font-family="monospace" font-size="6" fill="#4a6577" letter-spacing="2">www.kmh.studio · @kmh.studio</text>
+    <text x="120" y="245" text-anchor="middle" font-family="monospace" font-size="6" fill="#4a6577" letter-spacing="2">khalid-cyber-security.vercel.app · @khalid.alharbi</text>
 
     <!-- corner cuts -->
     <g stroke="url(#neon16)" stroke-width="1.5" fill="none" filter="url(#glow16)">

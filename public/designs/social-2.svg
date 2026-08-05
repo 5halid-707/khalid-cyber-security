@@ -79,7 +79,7 @@
     <g transform="translate(6,16)">
       <circle cx="4" cy="4" r="4" fill="none" stroke="url(#neon17)" stroke-width="0.8"/>
       <circle cx="4" cy="4" r="2" fill="#00ffcc"/>
-      <text x="12" y="6" font-family="'Arial Black', sans-serif" font-size="5" font-weight="900" fill="#e6f0ff">kmh.studio</text>
+      <text x="12" y="6" font-family="'Arial Black', sans-serif" font-size="5" font-weight="900" fill="#e6f0ff">khalid-alharbi@zohomail.sa</text>
       <text x="60" y="6" text-anchor="end" font-family="monospace" font-size="4" fill="#5a6a7a">2h</text>
       <circle cx="70" cy="4" r="1.5" fill="none" stroke="#5a6a7a" stroke-width="0.5"/>
     </g>
