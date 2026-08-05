@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="16" fill="#1ba0d7"/>
+  <!-- Cisco bridge lines -->
+  <g fill="white">
+    <rect x="28" y="40" width="6" height="48" rx="2"/>
+    <rect x="42" y="30" width="6" height="68" rx="2"/>
+    <rect x="56" y="50" width="6" height="28" rx="2"/>
+    <rect x="70" y="35" width="6" height="58" rx="2"/>
+    <rect x="84" y="45" width="6" height="38" rx="2"/>
+    <rect x="98" y="50" width="6" height="28" rx="2"/>
+  </g>
+  <text x="64" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="700">CISCO</text>
+</svg>

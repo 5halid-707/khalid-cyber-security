@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="16" fill="#367bf0"/>
+  <!-- Dragon head silhouette -->
+  <g fill="white">
+    <path d="M64 30 C50 30, 40 40, 40 55 C40 65, 45 72, 50 75 C45 78, 42 85, 42 92 L48 92 C48 85, 52 80, 58 78 C55 82, 53 87, 53 92 L60 92 C60 85, 64 80, 68 78 C72 80, 76 85, 76 92 L83 92 C83 87, 81 82, 78 78 C84 80, 88 85, 88 92 L94 92 C94 85, 91 78, 86 75 C91 72, 96 65, 96 55 C96 40, 86 30, 72 30 L64 30 Z"/>
+    <!-- Eye -->
+    <circle cx="72" cy="50" r="3" fill="#367bf0"/>
+  </g>
+  <text x="64" y="115" text-anchor="middle" fill="white" font-family="monospace" font-size="10" font-weight="700">KALI</text>
+</svg>
