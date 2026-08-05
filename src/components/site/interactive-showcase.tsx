@@ -175,12 +175,12 @@ const TOOLS = [
   { name: "IBM", src: "/tech-icons/ibm.svg" },
   { name: "Cisco", src: "/tech-icons/cisco.svg" },
   { name: "Kali Linux", src: "/tech-icons/kali.svg" },
-  { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-  { name: "Flutter", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
-  { name: "MySQL", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-  { name: "WordPress", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
-  { name: "Photoshop", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
-  { name: "Premiere Pro", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-plain.svg" },
+  { name: "Python", src: "/tech-icons/python.svg" },
+  { name: "Flutter", src: "/tech-icons/flutter.svg" },
+  { name: "MySQL", src: "/tech-icons/mysql.svg" },
+  { name: "WordPress", src: "/tech-icons/wordpress.svg" },
+  { name: "Photoshop", src: "/tech-icons/photoshop.svg" },
+  { name: "Premiere Pro", src: "/tech-icons/premierepro.svg" },
 ];
 const TEXT_PLATFORMS = [
   { name: "Coventry University", color: "#00ffcc" },
