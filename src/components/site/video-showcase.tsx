@@ -71,7 +71,7 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                 <video
                   ref={videoRef}
                   src={videoSrc}
-                  className="w-full aspect-video bg-black object-cover"
+                  className="w-full max-h-[70vh] aspect-[9/16] bg-black object-contain mx-auto"
                   autoPlay
                   loop
                   muted={muted}
@@ -146,7 +146,7 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                 )}
               </>
             ) : (
-              <div className="aspect-video bg-gradient-to-br from-[#0d1117] via-[#161b22] to-[#0d1117] flex flex-col items-center justify-center gap-4 p-8">
+              <div className="aspect-[9/16] max-h-[70vh] bg-gradient-to-br from-[#0d1117] via-[#161b22] to-[#0d1117] flex flex-col items-center justify-center gap-4 p-8">
                 <div className="relative">
                   <div className="w-20 h-20 rounded-full border-4 border-neon-pink/30 border-t-neon-pink animate-spin" />
                   <Play size={28} className="text-neon-pink/50 absolute inset-0 m-auto" />
