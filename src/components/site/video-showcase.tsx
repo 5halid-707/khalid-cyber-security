@@ -25,13 +25,8 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
-    if (playing) {
-      v.pause();
-      setPlaying(false);
-    } else {
-      v.play();
-      setPlaying(true);
-    }
+    if (playing) { v.pause(); setPlaying(false); }
+    else { v.play(); setPlaying(true); }
   };
 
   const toggleMute = () => {
@@ -84,8 +79,27 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                   preload="auto"
                   poster="/marketing-video-poster.png"
                 />
+
+                {/* Branding overlay - covers any "creatify" watermark */}
+                <div className="absolute top-0 right-0 z-20 pointer-events-none">
+                  <div className="bg-gradient-to-bl from-[#05080f] via-[#05080f]/80 to-transparent px-6 py-3 rounded-bl-2xl">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center font-extrabold text-white text-sm">
+                        K
+                      </div>
+                      <div>
+                        <div className="text-white font-bold text-sm leading-tight">Khalid Alharbi</div>
+                        <div className="text-cyan-400 text-[9px] mono-tech leading-tight">CYBER SECURITY EXPERT</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom gradient to cover any bottom watermark */}
+                <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#05080f] to-transparent pointer-events-none z-10" />
+
                 {/* Custom controls overlay */}
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute bottom-0 inset-x-0 p-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2">
                       <button
@@ -103,21 +117,27 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                         {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                       </button>
                     </div>
-                    <button
-                      onClick={goFullscreen}
-                      aria-label="Fullscreen"
-                      className="w-9 h-9 rounded-full bg-surface/80 border border-edge text-white flex items-center justify-center hover:border-neon-pink transition-colors"
-                    >
-                      <Maximize2 size={16} />
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <span className="mono-tech text-[10px] text-neon-pink/70 tracking-widest hidden sm:block">
+                        K.AL-HARBI
+                      </span>
+                      <button
+                        onClick={goFullscreen}
+                        aria-label="Fullscreen"
+                        className="w-9 h-9 rounded-full bg-surface/80 border border-edge text-white flex items-center justify-center hover:border-neon-pink transition-colors"
+                      >
+                        <Maximize2 size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
+
                 {/* Play button overlay when paused */}
                 {!playing && (
                   <button
                     onClick={togglePlay}
                     aria-label="Play video"
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors"
+                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors z-30"
                   >
                     <span className="w-20 h-20 rounded-full bg-neon-pink/90 flex items-center justify-center shadow-[0_0_30px_rgba(255,0,204,0.6)] hover:scale-110 transition-transform">
                       <Play size={32} className="text-white ml-1" />
@@ -126,7 +146,6 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                 )}
               </>
             ) : (
-              /* Placeholder when video not yet generated */
               <div className="aspect-video bg-gradient-to-br from-[#0d1117] via-[#161b22] to-[#0d1117] flex flex-col items-center justify-center gap-4 p-8">
                 <div className="relative">
                   <div className="w-20 h-20 rounded-full border-4 border-neon-pink/30 border-t-neon-pink animate-spin" />
@@ -134,11 +153,6 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                 </div>
                 <p className="text-neon-pink mono-tech text-sm tracking-widest">
                   {isAr ? "// جاري تجهيز المقطع التسويقي //" : "// PREPARING MARKETING VIDEO //"}
-                </p>
-                <p className="text-fg/50 text-xs text-center max-w-md">
-                  {isAr
-                    ? "سيكون المقطع جاهزاً قريباً — يغطي أمن الشبكات، تصميم المتاجر، المواقع، المونتاج، التسويق، والاختراق"
-                    : "Video coming soon — covers network security, store design, websites, editing, marketing, and penetration testing"}
                 </p>
               </div>
             )}
@@ -157,10 +171,7 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                 >
                   <span
                     className="w-10 h-10 rounded-lg flex items-center justify-center border"
-                    style={{
-                      borderColor: `${s.color}50`,
-                      backgroundColor: `${s.color}10`,
-                    }}
+                    style={{ borderColor: `${s.color}50`, backgroundColor: `${s.color}10` }}
                   >
                     <Icon size={18} style={{ color: s.color }} />
                   </span>

@@ -28,7 +28,7 @@ export default function Home() {
         <Products />
         <Credentials />
         <AcademicCredentials />
-        <VideoShowcase videoSrc="/marketing-video.mp4" />
+        <VideoShowcase videoSrc="/khalid-shop-video.mp4" />
         <Designs />
         <PreviousWorks />
         <TrainingLabs />
