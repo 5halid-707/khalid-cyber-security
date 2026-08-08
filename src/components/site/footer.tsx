@@ -97,7 +97,7 @@ export default function Footer() {
                 <MessageCircle size={18} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/khalid-alharbi-8953a4b3"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-edge flex items-center justify-center text-fg/70 hover:text-[#0A66C2] hover:border-[#0A66C2] transition-all"
@@ -106,7 +106,7 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/5halid-707"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-edge flex items-center justify-center text-fg/70 hover:text-white hover:border-white transition-all"

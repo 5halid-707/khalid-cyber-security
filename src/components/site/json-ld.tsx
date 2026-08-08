@@ -59,7 +59,7 @@ const personSchema = {
       url: "https://www.credly.com/",
     },
   ],
-  sameAs: ["https://wa.me/966575015019"],
+  sameAs: ["https://wa.me/966575015019", "https://github.com/5halid-707", "https://www.linkedin.com/in/khalid-alharbi-8953a4b3"],
 };
 
 const serviceSchema = {

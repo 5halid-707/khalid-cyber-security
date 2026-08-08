@@ -14,13 +14,13 @@ export default function FloatingContact() {
       label: "WhatsApp",
     },
     {
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/khalid-alharbi-8953a4b3",
       icon: Linkedin,
       color: "#0A66C2",
       label: "LinkedIn",
     },
     {
-      href: "https://github.com",
+      href: "https://github.com/5halid-707",
       icon: Github,
       color: "#ffffff",
       label: "GitHub",
