@@ -12,6 +12,7 @@ import {
   Car,
   Hotel,
   Shirt,
+  Stethoscope,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -173,6 +174,20 @@ const works: Work[] = [
     liveUrl: "https://kmh-erp-suite.vercel.app/",
     preview: "/work-previews/kmh-erp.svg",
     icon: Globe,
+  },
+  {
+    title: "Khalid Clinic — Luxury Medical Website",
+    titleAr: "عيادة خالد الطبية — موقع طبي فاخر",
+    category: { ar: "موقع طبي احترافي بتصميم 3D", en: "Premium 3D Medical Website" },
+    categoryColor: "#c9a55a",
+    description: {
+      ar: "موقع عيادة طبية فاخر بتصميم عالمي يحاكي أرقى العيادات الدولية — ثيم ذهبي/داكن فاخر، تأثيرات 3D حية (Tilt Cards)، Parallax scrolling، أنميشن Framer Motion متقدم، Marquee متحرك، جزيئات عائمة، Glass Morphism، Hero متعدد الصور مع Ken Burns، صور حقيقية احترافية من Unsplash لكل قسم (8 خدمات طبية + 4 أطباء)، نموذج حجز كامل (اسم + جوال + بريد + خدمة + تاريخ + وقت + ملاحظات) مع منتقي تواريخ، ثنائي اللغة (عربي/إنجليزي) RTL/LTR، تصميم متجاوب بالكامل.",
+      en: "Luxury medical clinic website with world-class design rivaling top international clinics — premium gold/dark theme, live 3D Tilt Cards, parallax scrolling, advanced Framer Motion animations, animated marquee, floating particles, Glass Morphism, multi-image Hero with Ken Burns, real professional Unsplash images for every section (8 medical services + 4 doctors), full booking form (name + phone + email + service + date + time + notes) with date picker, bilingual (Arabic/English) RTL/LTR, fully responsive.",
+    },
+    tech: ["Next.js 16", "React", "TypeScript", "Tailwind 4", "Framer Motion", "3D Tilt Cards", "Parallax", "Glass Morphism", "Bilingual RTL/LTR", "Booking System"],
+    liveUrl: "https://my-project-pi-ten-97.vercel.app/",
+    preview: "/work-previews/khalid-clinic.svg",
+    icon: Stethoscope,
   },
 ];
 
