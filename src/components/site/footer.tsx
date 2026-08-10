@@ -1,7 +1,8 @@
 "use client";
 
-import { Github, Linkedin, Mail, MessageCircle, ShieldCheck, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, MapPin } from "lucide-react";
 import { useI18n } from "./i18n";
+import AnimatedLogo from "./animated-logo";
 
 export default function Footer() {
   const { lang, t } = useI18n();
@@ -50,7 +51,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <ShieldCheck size={22} className="text-neon-green" />
+              <AnimatedLogo
+                src="/khalid-avatar.jpg"
+                size={32}
+                variant="footer"
+              />
               <span className="mono-tech text-xl text-glow-green">
                 {t("brand.name")}
               </span>

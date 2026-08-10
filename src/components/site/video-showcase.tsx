@@ -5,6 +5,7 @@ import { Play, Pause, Volume2, VolumeX, Maximize2, ShieldCheck, ShoppingBag, Glo
 import Reveal from "./reveal";
 import { useI18n } from "./i18n";
 import TypedHeading from "./typed-heading";
+import AnimatedLogo from "./animated-logo";
 
 const SERVICES = [
   { icon: ShieldCheck, color: "var(--neon-green)", ar: "أمن الشبكات", en: "Network Security" },
@@ -84,9 +85,11 @@ export default function VideoShowcase({ videoSrc }: { videoSrc?: string }) {
                 <div className="absolute top-0 right-0 z-20 pointer-events-none">
                   <div className="bg-gradient-to-bl from-[#05080f] via-[#05080f]/80 to-transparent px-6 py-3 rounded-bl-2xl">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center font-extrabold text-white text-sm">
-                        K
-                      </div>
+                      <AnimatedLogo
+                        src="/khalid-avatar.jpg"
+                        size={36}
+                        variant="showcase"
+                      />
                       <div>
                         <div className="text-white font-bold text-sm leading-tight">Khalid Alharbi</div>
                         <div className="text-cyan-400 text-[9px] mono-tech leading-tight">CYBER SECURITY EXPERT</div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useI18n } from "./i18n";
 import LanguageToggle from "./language-toggle";
+import AnimatedLogo from "./animated-logo";
 
 export default function Navbar() {
   const { t } = useI18n();
@@ -39,14 +40,12 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between gap-4">
         <a href="#home" className="flex items-center gap-2.5 group shrink-0">
-          <span className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-neon-green/60 group-hover:border-neon-green transition-colors">
-            <img
-              src="/khalid-avatar.jpg"
-              alt="Khalid Al-harbi - Cyber Security Expert"
-              className="w-full h-full object-cover"
-            />
-            <span className="absolute bottom-0 left-0 w-2.5 h-2.5 bg-neon-green rounded-full border-2 border-[#05080f] shadow-[0_0_6px_var(--neon-green)]" />
-          </span>
+          <AnimatedLogo
+            src="/khalid-avatar.jpg"
+            size={36}
+            variant="navbar"
+            className="group-hover:scale-110 transition-transform duration-300"
+          />
           <span className="flex flex-col leading-tight">
             <span className="mono-tech text-base md:text-lg text-glow-green">
               {t("brand.name")}

@@ -346,6 +346,92 @@ body {
 }
 
 /* ============================================================
+   ANIMATED LOGO — shine sweep + 3D tilt + neon ring pulse
+   ============================================================ */
+@keyframes logo-shine-sweep {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateX(150%) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(150%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes logo-3d-tilt {
+  0% {
+    transform: perspective(400px) rotateY(0deg) rotateX(0deg);
+  }
+  25% {
+    transform: perspective(400px) rotateY(8deg) rotateX(-4deg);
+  }
+  50% {
+    transform: perspective(400px) rotateY(0deg) rotateX(0deg);
+  }
+  75% {
+    transform: perspective(400px) rotateY(-8deg) rotateX(4deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(0deg) rotateX(0deg);
+  }
+}
+
+@keyframes logo-ring-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logo-glow-breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px var(--color-neon-green),
+      0 0 16px rgba(0, 255, 204, 0.4),
+      0 0 0 0 rgba(0, 255, 204, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 14px var(--color-neon-green),
+      0 0 28px rgba(0, 255, 204, 0.6),
+      0 0 0 4px rgba(0, 255, 204, 0.15);
+  }
+}
+
+@keyframes logo-pulse-scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes logo-sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* ============================================================
    COMPONENT / UTILITY CLASSES
    ============================================================ */
 @layer components {
@@ -378,6 +464,26 @@ body {
   }
   .animate-border-glow {
     animation: border-glow 2s ease-in-out infinite;
+  }
+
+  /* Animated logo utility classes */
+  .animate-logo-tilt {
+    animation: logo-3d-tilt 8s ease-in-out infinite;
+  }
+  .animate-logo-shine {
+    animation: logo-shine-sweep 4s ease-in-out infinite;
+  }
+  .animate-logo-ring {
+    animation: logo-ring-rotate 6s linear infinite;
+  }
+  .animate-logo-glow {
+    animation: logo-glow-breathe 3s ease-in-out infinite;
+  }
+  .animate-logo-pulse {
+    animation: logo-pulse-scale 2.5s ease-in-out infinite;
+  }
+  .animate-logo-sparkle {
+    animation: logo-sparkle 2s ease-in-out infinite;
   }
 
   /* Shimmer text effect for marketing highlights */
@@ -464,5 +570,19 @@ body {
   .shine-wrap:hover::before {
     left: 150%;
     transition: left 0.8s ease;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY — respect reduced motion preference
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-logo-tilt,
+  .animate-logo-shine,
+  .animate-logo-ring,
+  .animate-logo-glow,
+  .animate-logo-pulse,
+  .animate-logo-sparkle {
+    animation: none !important;
   }
 }
