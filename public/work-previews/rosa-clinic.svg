@@ -31,7 +31,7 @@
   <g transform="translate(60, 40)">
     <rect x="0" y="-18" width="40" height="40" rx="10" fill="url(#gold)"/>
     <path d="M 12 -2 L 28 -2 L 28 4 L 22 4 L 22 8 L 18 8 L 18 4 L 12 4 Z M 14 8 L 16 8 L 16 14 L 14 14 Z M 24 8 L 26 8 L 26 14 L 24 14 Z" fill="#fff"/>
-    <text x="55" y="-2" fill="#faf6f0" font-family="Cairo, sans-serif" font-size="20" font-weight="700">عيادة خالد</text>
+    <text x="55" y="-2" fill="#faf6f0" font-family="Cairo, sans-serif" font-size="20" font-weight="700">عيادة روزا</text>
     <text x="55" y="18" fill="#c9a55a" font-family="Poppins, sans-serif" font-size="9" font-weight="600" letter-spacing="2">MEDICAL CARE</text>
   </g>
 
@@ -51,7 +51,7 @@
   <g transform="translate(60, 200)">
     <rect x="0" y="0" width="280" height="36" rx="18" fill="#c9a55a" opacity="0.15" stroke="#c9a55a" stroke-opacity="0.4"/>
     <circle cx="20" cy="18" r="4" fill="#e6c885"/>
-    <text x="35" y="23" fill="#e6c885" font-family="Cairo, sans-serif" font-size="13" font-weight="500">عيادة خالد الطبية</text>
+    <text x="35" y="23" fill="#e6c885" font-family="Cairo, sans-serif" font-size="13" font-weight="500">عيادة روزا الطبية</text>
 
     <text x="0" y="90" fill="#fff" font-family="Cairo, sans-serif" font-size="62" font-weight="800">رعاية صحية</text>
     <text x="0" y="160" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="62" font-weight="800">بمعايير عالمية</text>

@@ -176,8 +176,8 @@ const works: Work[] = [
     icon: Globe,
   },
   {
-    title: "Khalid Clinic — Luxury Medical Website",
-    titleAr: "عيادة خالد الطبية — موقع طبي فاخر",
+    title: "Rosa Clinic — Luxury Medical Website",
+    titleAr: "عيادة روزا الطبية — موقع طبي فاخر",
     category: { ar: "موقع طبي احترافي بتصميم 3D", en: "Premium 3D Medical Website" },
     categoryColor: "#c9a55a",
     description: {
@@ -186,7 +186,7 @@ const works: Work[] = [
     },
     tech: ["Next.js 16", "React", "TypeScript", "Tailwind 4", "Framer Motion", "3D Tilt Cards", "Parallax", "Glass Morphism", "Bilingual RTL/LTR", "Booking System"],
     liveUrl: "https://rosa-clinic.vercel.app/",
-    preview: "/work-previews/khalid-clinic.svg",
+    preview: "/work-previews/rosa-clinic.svg",
     icon: Stethoscope,
   },
 ];
