@@ -1,14 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
+    <!-- Background gradient (dark base matching site theme) -->
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0ea5e9"/>
-      <stop offset="100%" stop-color="#1d4ed8"/>
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a0f1c"/>
     </linearGradient>
+    <!-- Neon green glow gradient -->
     <linearGradient id="k" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#e0f2fe"/>
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="50%" stop-color="#5effe0"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
     </linearGradient>
+    <!-- Rotating conic gradient ring -->
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="33%" stop-color="#00a8e8"/>
+      <stop offset="66%" stop-color="#ff00cc"/>
+      <stop offset="100%" stop-color="#00ffcc"/>
+    </linearGradient>
+    <!-- Outer glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
+
+  <!-- Background -->
   <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <path d="M22 16 L22 48 L28 48 L28 36 L42 48 L50 48 L34 32 L50 16 L42 16 L28 28 L28 16 Z" fill="url(#k)"/>
+
+  <!-- Rotating neon ring (animated) -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#ring)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="40 30" opacity="0.85">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0 32 32"
+      to="360 32 32"
+      dur="6s"
+      repeatCount="indefinite"
+    />
+  </circle>
+
+  <!-- Inner static ring -->
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#00ffcc" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Pulsing outer halo -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#00ffcc" stroke-width="0.8" opacity="0.4">
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="27;29;27" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- K letter with glow -->
+  <path d="M22 16 L22 48 L28 48 L28 36 L42 48 L50 48 L34 32 L50 16 L42 16 L28 28 L28 16 Z" fill="url(#k)" filter="url(#glow)">
+    <animate attributeName="opacity" values="0.85;1;0.85" dur="2.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Sparkle accents -->
+  <circle cx="14" cy="14" r="1.2" fill="#00ffcc">
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0s"/>
+  </circle>
+  <circle cx="50" cy="14" r="1" fill="#00a8e8">
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+  </circle>
+  <circle cx="50" cy="50" r="1.2" fill="#ff00cc">
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.4s"/>
+  </circle>
 </svg>

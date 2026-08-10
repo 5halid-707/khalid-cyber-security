@@ -221,13 +221,26 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Portrait */}
           <Reveal className="order-2 lg:order-1">
-            <div className="relative mx-auto max-w-sm">
-              {/* Decorative neon glow frame */}
+            <div className="relative mx-auto max-w-sm animate-logo-pulse">
+              {/* Decorative neon glow frame — pulsing halo */}
               <div className="absolute -inset-4 bg-gradient-to-br from-neon-green/25 via-neon-blue/15 to-neon-pink/20 rounded-3xl blur-2xl animate-glow-pulse" />
               <div className="absolute -inset-2 bg-gradient-to-br from-neon-green/30 via-transparent to-neon-blue/30 rounded-2xl" />
 
-              {/* Photo container with cyber corners */}
-              <div className="relative rounded-2xl overflow-hidden border-2 border-neon-green/60 shadow-[0_0_50px_rgba(0,255,204,0.2)]">
+              {/* Rotating neon conic ring */}
+              <div
+                aria-hidden
+                className="absolute -inset-1 rounded-2xl animate-logo-ring opacity-60"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, var(--color-neon-green), var(--color-neon-blue), var(--color-neon-pink), var(--color-neon-green))",
+                  WebkitMask:
+                    "radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px))",
+                  mask: "radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px))",
+                }}
+              />
+
+              {/* Photo container with cyber corners + 3D tilt */}
+              <div className="relative rounded-2xl overflow-hidden border-2 border-neon-green/60 shadow-[0_0_50px_rgba(0,255,204,0.2)] animate-logo-tilt">
                 <img
                   src="/khalid-portrait-opt.jpg"
                   alt="Khalid Al-harbi - Cyber Security Expert"
@@ -242,6 +255,17 @@ export default function About() {
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-transparent to-transparent" />
+
+                {/* Shine sweep beam crossing the photo every 4s */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 animate-logo-shine"
+                  style={{
+                    background:
+                      "linear-gradient(115deg, transparent 0%, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%, transparent 100%)",
+                    mixBlendMode: "screen",
+                  }}
+                />
 
                 {/* Name plate */}
                 <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-[#05080f] via-[#05080f]/80 to-transparent">
@@ -260,6 +284,18 @@ export default function About() {
                 <span className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-neon-green rounded-tr-md" />
                 <span className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-neon-green rounded-tl-md" />
               </div>
+
+              {/* Sparkle accents at corners */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -top-1 -right-1 h-2 w-2 rounded-full bg-white animate-logo-sparkle"
+                style={{ animationDelay: "0s" }}
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -bottom-1 -left-1 h-1.5 w-1.5 rounded-full bg-neon-green animate-logo-sparkle"
+                style={{ animationDelay: "0.8s" }}
+              />
 
               {/* Floating credential chips */}
               <div className="absolute -top-3 -right-3 bg-surface border border-neon-green/60 rounded-lg px-3 py-2 shadow-[0_0_15px_rgba(0,255,204,0.3)]">
