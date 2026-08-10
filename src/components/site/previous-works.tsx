@@ -185,7 +185,7 @@ const works: Work[] = [
       en: "Luxury medical clinic website with world-class design rivaling top international clinics — premium gold/dark theme, live 3D Tilt Cards, parallax scrolling, advanced Framer Motion animations, animated marquee, floating particles, Glass Morphism, multi-image Hero with Ken Burns, real professional Unsplash images for every section (8 medical services + 4 doctors), full booking form (name + phone + email + service + date + time + notes) with date picker, bilingual (Arabic/English) RTL/LTR, fully responsive.",
     },
     tech: ["Next.js 16", "React", "TypeScript", "Tailwind 4", "Framer Motion", "3D Tilt Cards", "Parallax", "Glass Morphism", "Bilingual RTL/LTR", "Booking System"],
-    liveUrl: "https://my-project-pi-ten-97.vercel.app/",
+    liveUrl: "https://rosa-clinic.vercel.app/",
     preview: "/work-previews/khalid-clinic.svg",
     icon: Stethoscope,
   },
