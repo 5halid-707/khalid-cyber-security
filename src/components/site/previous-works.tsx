@@ -13,6 +13,7 @@ import {
   Hotel,
   Shirt,
   Stethoscope,
+  GraduationCap,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -188,6 +189,20 @@ const works: Work[] = [
     liveUrl: "https://rosa-clinic.vercel.app/",
     preview: "/work-previews/rosa-clinic.svg",
     icon: Stethoscope,
+  },
+  {
+    title: "Future-Oriented Kindergarten — Smart Admission System",
+    titleAr: "روضة نحو المستقبل — نظام قبول وتسجيل إلكتروني",
+    category: { ar: "نظام إداري متكامل مع حماية 10 طبقات", en: "Full Admin System with 10-Layer Security" },
+    categoryColor: "#f97316",
+    description: {
+      ar: "تطبيق ويب احترافي عالمي لروضة نحو المستقبل — نظام قبول وتسجيل إلكتروني متكامل. استمارة تسجيل ذكية من 6 خطوات (بيانات الطالب + ولي الأمر + التواصل + السجل الطبي + رفع مستندات + مراجعة)، نظام متابعة الطلب برقم الطلب أو الجوال مع شريط تقدم بصري للمراحل الأربع، لوحة تحكم إدارة شاملة (إحصائيات + جدول طلبات + Modal تفاصيل + تغيير الحالة + جدولة مقابلات + أتمتة تحويل الطلبات المقبولة لملفات طلاب رسمية)، مساعد ذكي تفاعلي (كيف أقدر أخدمك؟)، زر واتساب عائم نابض، خريطة Google مدمجة، إشعارات بريد إلكتروني تلقائية عبر Resend للإدارة وولي الأمر، PWA قابل للتثبيت كتطبيق، ثنائي اللغة (عربي/إنجليزي) RTL/LTR، حماية قوية من 10 طبقات (SQL Injection + XSS + CSRF + Brute Force + Session Hijacking + Clickjacking + HSTS + CSP + Rate Limiting + Audit Logging)، تصميم ثلاثي الأبعاد بألوان طفولية جذابة.",
+      en: "World-class web app for Future-Oriented Kindergarten — complete online admission & registration system. Smart 6-step application form (student info + parent + contact + medical + document upload + review), application tracking by ID or phone with visual 4-stage progress bar, comprehensive admin dashboard (stats + applications table + detail modal + status changes + interview scheduling + auto-conversion of accepted applications to official student profiles), interactive AI chatbot (How can I serve you?), floating pulsing WhatsApp button, embedded Google Maps, automatic email notifications via Resend to admin + parent, installable PWA, bilingual (Arabic/English) RTL/LTR, 10-layer enterprise security (SQL Injection + XSS + CSRF + Brute Force + Session Hijacking + Clickjacking + HSTS + CSP + Rate Limiting + Audit Logging), 3D design with playful kid-friendly colors.",
+    },
+    tech: ["Next.js 16", "TypeScript", "PostgreSQL", "Prisma 6", "Tailwind 4", "PWA", "10-Layer Security", "Resend Email", "Bilingual RTL/LTR", "Admin Dashboard"],
+    liveUrl: "https://future-oriented-school.vercel.app/",
+    preview: "/work-previews/future-kindergarten.svg",
+    icon: GraduationCap,
   },
 ];
 

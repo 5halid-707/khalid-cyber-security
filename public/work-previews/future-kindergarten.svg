@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2c5c"/>
+      <stop offset="50%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#0f2c5c"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a55a"/>
+      <stop offset="50%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#facc15" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#facc15" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#facc15" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+
+  <!-- Decorative blobs -->
+  <circle cx="1000" cy="120" r="80" fill="#facc15" opacity="0.1" filter="blur(20px)"/>
+  <circle cx="200" cy="550" r="120" fill="#f97316" opacity="0.1" filter="blur(30px)"/>
+
+  <!-- Top nav -->
+  <rect x="0" y="0" width="1200" height="80" fill="#05080f" opacity="0.6"/>
+  <g transform="translate(60, 40)">
+    <rect x="0" y="-18" width="40" height="40" rx="10" fill="url(#gold)"/>
+    <text x="20" y="8" fill="#fff" font-family="Cairo, sans-serif" font-size="22" font-weight="800" text-anchor="middle">ر</text>
+    <text x="55" y="-2" fill="#faf6f0" font-family="Cairo, sans-serif" font-size="20" font-weight="700">روضة نحو المستقبل</text>
+    <text x="55" y="18" fill="#facc15" font-family="Poppins, sans-serif" font-size="9" font-weight="600" letter-spacing="2">KINDERGARTEN</text>
+  </g>
+
+  <!-- Nav links -->
+  <g fill="#faf6f0" opacity="0.7" font-family="Cairo, sans-serif" font-size="13" font-weight="500">
+    <text x="700" y="45" text-anchor="end">تواصل</text>
+    <text x="780" y="45" text-anchor="end">كيف أخدمك</text>
+    <text x="860" y="45" text-anchor="end">متابعة</text>
+    <text x="940" y="45" text-anchor="end">التسجيل</text>
+    <text x="1010" y="45" text-anchor="end">من نحن</text>
+    <text x="1080" y="45" text-anchor="end">الرئيسية</text>
+  </g>
+  <rect x="760" y="68" width="160" height="36" rx="18" fill="url(#gold)"/>
+  <text x="840" y="91" fill="#fff" font-family="Cairo, sans-serif" font-size="12" font-weight="700" text-anchor="middle">سجّل الآن</text>
+
+  <!-- Hero content -->
+  <g transform="translate(60, 200)">
+    <rect x="0" y="0" width="280" height="36" rx="18" fill="#facc15" opacity="0.15" stroke="#facc15" stroke-opacity="0.4"/>
+    <circle cx="20" cy="18" r="4" fill="#facc15"/>
+    <text x="35" y="23" fill="#facc15" font-family="Cairo, sans-serif" font-size="13" font-weight="500">بوابة القبول الإلكتروني</text>
+
+    <text x="0" y="90" fill="#fff" font-family="Cairo, sans-serif" font-size="58" font-weight="800">ابدأ رحلة طفلك</text>
+    <text x="0" y="155" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="58" font-weight="800">نحو المستقبل</text>
+
+    <text x="0" y="215" fill="#fff" opacity="0.7" font-family="Cairo, sans-serif" font-size="16">نظام قبول وتسجيل إلكتروني متكامل — قدّم طلبك وتابع</text>
+    <text x="0" y="240" fill="#fff" opacity="0.7" font-family="Cairo, sans-serif" font-size="16">حالته لحظة بلحظة من أي مكان.</text>
+
+    <!-- CTAs -->
+    <rect x="0" y="280" width="220" height="56" rx="28" fill="url(#gold)"/>
+    <text x="110" y="314" fill="#fff" font-family="Cairo, sans-serif" font-size="16" font-weight="700" text-anchor="middle">سجّل الآن</text>
+
+    <rect x="240" y="280" width="180" height="56" rx="28" fill="#fff" opacity="0.1" stroke="#fff" stroke-opacity="0.3"/>
+    <text x="330" y="314" fill="#fff" font-family="Cairo, sans-serif" font-size="16" font-weight="700" text-anchor="middle">تابع طلبك</text>
+
+    <!-- Stats -->
+    <line x1="0" y1="375" x2="500" y2="375" stroke="#fff" stroke-opacity="0.1"/>
+    <g transform="translate(0, 405)">
+      <text x="0" y="0" fill="url(#gold)" font-family="Poppins, sans-serif" font-size="28" font-weight="800">1,200+</text>
+      <text x="0" y="22" fill="#fff" opacity="0.6" font-family="Cairo, sans-serif" font-size="11">طالب</text>
+    </g>
+    <g transform="translate(130, 405)">
+      <text x="0" y="0" fill="url(#gold)" font-family="Poppins, sans-serif" font-size="28" font-weight="800">85+</text>
+      <text x="0" y="22" fill="#fff" opacity="0.6" font-family="Cairo, sans-serif" font-size="11">معلم</text>
+    </g>
+    <g transform="translate(260, 405)">
+      <text x="0" y="0" fill="url(#gold)" font-family="Poppins, sans-serif" font-size="28" font-weight="800">98%</text>
+      <text x="0" y="22" fill="#fff" opacity="0.6" font-family="Cairo, sans-serif" font-size="11">نجاح</text>
+    </g>
+    <g transform="translate(380, 405)">
+      <text x="0" y="0" fill="url(#gold)" font-family="Poppins, sans-serif" font-size="28" font-weight="800">★</text>
+      <text x="0" y="22" fill="#fff" opacity="0.6" font-family="Cairo, sans-serif" font-size="11">جمعية ترتيل</text>
+    </g>
+  </g>
+
+  <!-- Right side - 3D card with images -->
+  <g transform="translate(720, 140)">
+    <rect x="0" y="0" width="420" height="440" rx="32" fill="#facc15" opacity="0.1"/>
+    <rect x="20" y="20" width="380" height="400" rx="24" fill="#1a1410" stroke="#facc15" stroke-opacity="0.3" stroke-width="2"/>
+
+    <!-- Floating logo -->
+    <rect x="320" y="0" width="80" height="80" rx="16" fill="#fff" stroke="#facc15" stroke-width="3"/>
+    <text x="360" y="50" fill="#0f2c5c" font-family="Cairo, sans-serif" font-size="36" font-weight="800" text-anchor="middle">ر</text>
+
+    <!-- Step indicator (kindergarten levels) -->
+    <g transform="translate(40, 80)">
+      <rect x="0" y="0" width="80" height="30" rx="15" fill="#facc15" opacity="0.2"/>
+      <text x="40" y="20" fill="#facc15" font-family="Cairo, sans-serif" font-size="11" font-weight="700" text-anchor="middle">تمهيدي</text>
+
+      <rect x="90" y="0" width="80" height="30" rx="15" fill="#22c55e" opacity="0.2"/>
+      <text x="130" y="20" fill="#22c55e" font-family="Cairo, sans-serif" font-size="11" font-weight="700" text-anchor="middle">KG1</text>
+
+      <rect x="180" y="0" width="80" height="30" rx="15" fill="#3b82f6" opacity="0.2"/>
+      <text x="220" y="20" fill="#3b82f6" font-family="Cairo, sans-serif" font-size="11" font-weight="700" text-anchor="middle">KG2</text>
+
+      <rect x="270" y="0" width="80" height="30" rx="15" fill="#a855f7" opacity="0.2"/>
+      <text x="310" y="20" fill="#a855f7" font-family="Cairo, sans-serif" font-size="11" font-weight="700" text-anchor="middle">KG3</text>
+    </g>
+
+    <!-- Form fields mockup -->
+    <g transform="translate(40, 150)">
+      <rect x="0" y="0" width="340" height="40" rx="8" fill="#0f0a07" stroke="#facc15" stroke-opacity="0.2"/>
+      <text x="10" y="25" fill="#fff" opacity="0.4" font-family="Cairo, sans-serif" font-size="12">اسم الطالب</text>
+
+      <rect x="0" y="50" width="165" height="40" rx="8" fill="#0f0a07" stroke="#facc15" stroke-opacity="0.2"/>
+      <text x="10" y="75" fill="#fff" opacity="0.4" font-family="Cairo, sans-serif" font-size="12">تاريخ الميلاد</text>
+
+      <rect x="175" y="50" width="165" height="40" rx="8" fill="#0f0a07" stroke="#facc15" stroke-opacity="0.2"/>
+      <text x="185" y="75" fill="#fff" opacity="0.4" font-family="Cairo, sans-serif" font-size="12">المستوى</text>
+
+      <rect x="0" y="100" width="340" height="40" rx="8" fill="#0f0a07" stroke="#facc15" stroke-opacity="0.2"/>
+      <text x="10" y="125" fill="#fff" opacity="0.4" font-family="Cairo, sans-serif" font-size="12">رفع المستندات (شهادة ميلاد + هوية)</text>
+
+      <!-- Submit button -->
+      <rect x="0" y="160" width="340" height="44" rx="22" fill="url(#gold)"/>
+      <text x="170" y="188" fill="#fff" font-family="Cairo, sans-serif" font-size="14" font-weight="700" text-anchor="middle">إرسال الطلب</text>
+    </g>
+
+    <!-- Security badge -->
+    <g transform="translate(40, 360)">
+      <circle cx="20" cy="20" r="15" fill="#22c55e"/>
+      <text x="20" y="26" fill="#fff" font-family="Poppins, sans-serif" font-size="14" font-weight="800" text-anchor="middle">🔒</text>
+      <text x="45" y="18" fill="#22c55e" font-family="Cairo, sans-serif" font-size="11" font-weight="700">حماية 10 طبقات</text>
+      <text x="45" y="32" fill="#fff" opacity="0.5" font-family="Cairo, sans-serif" font-size="9">SSL + Rate Limit + XSS Protection</text>
+    </g>
+  </g>
+
+  <!-- Floating particles -->
+  <circle cx="150" cy="120" r="3" fill="#facc15" opacity="0.5"/>
+  <circle cx="600" cy="80" r="2" fill="#f97316" opacity="0.4"/>
+  <circle cx="900" cy="540" r="4" fill="#facc15" opacity="0.3"/>
+  <circle cx="350" cy="600" r="2" fill="#22c55e" opacity="0.5"/>
+
+  <!-- Bottom indicator dots -->
+  <rect x="540" y="640" width="60" height="4" rx="2" fill="#facc15"/>
+  <rect x="610" y="640" width="20" height="4" rx="2" fill="#fff" opacity="0.3"/>
+</svg>
