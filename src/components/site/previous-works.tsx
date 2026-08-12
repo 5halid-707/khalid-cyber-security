@@ -204,6 +204,20 @@ const works: Work[] = [
     preview: "/work-previews/future-kindergarten.svg",
     icon: GraduationCap,
   },
+  {
+    title: "Luxury Jewelry Store — E-Commerce Platform",
+    titleAr: "متجر مجوهرات فاخرة — منصة تجارة إلكترونية",
+    category: { ar: "متجر مجوهرات فاخر متكامل", en: "Luxury Jewelry E-Commerce Platform" },
+    categoryColor: "#c9a96a",
+    description: {
+      ar: "متجر مجوهرات فاخرة بتصميم عالمي راقٍ مستوحى من أرقى المتاجر العالمية. واجهة Hero فاخرة بصور احترافية، 6 فئات (خواتم + أقراط + قلائد + أساور + ساعات + أطقم)، 12+ منتج بصور حقيقية من Unsplash، Modal تفاصيل المنتج مع الخامة والوزن والتقييمات، سلة تسوّق كاملة + قائمة رغبات، فلترة المنتجات حسب الفئة، قسم الأكثر مبيعاً، صفحة دفع متعددة الخطوات مع دعم Tabby و Tamara (تقسيط)، شريط إعلاني متحرك (marquee)، شريط مميزات (شحن مجاني + ضمان + استرجاع + دعم 24/7)، قسم \"من نحن\" بإحصائيات، Footer كامل بالسوشل ميديا، ألوان فاخرة (ذهبي + داكن + كريمي)، تصميم متجاوب بالكامل Mobile-first، RTL عربي، أنميشن احترافي (card lift + shine effect + float).",
+      en: "Luxury jewelry e-commerce store with world-class design inspired by top global jewelers. Hero section with professional imagery, 6 categories (rings + earrings + necklaces + bracelets + watches + sets), 12+ products with real Unsplash photos, product detail modal with material/weight/ratings, full shopping cart + wishlist, category filtering, bestsellers section, multi-step checkout with Tabby + Tamara (installment) support, animated marquee announcement bar, features bar (free shipping + warranty + returns + 24/7 support), About section with stats, complete footer with social media, luxury color palette (gold + dark + cream), fully responsive Mobile-first, Arabic RTL, professional animations (card lift + shine effect + float).",
+    },
+    tech: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "Shopping Cart", "Wishlist", "Tabby + Tamara", "Multi-step Checkout", "Bilingual RTL", "Responsive", "Lucide Icons"],
+    liveUrl: "https://lazurde.vercel.app/",
+    preview: "/work-previews/lazurde-jewelry.svg",
+    icon: ShoppingBag,
+  },
 ];
 
 const AUTOPLAY_MS = 6000; // 6 seconds per slide

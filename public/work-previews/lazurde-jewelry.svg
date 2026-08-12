@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf8f5"/>
+      <stop offset="100%" stop-color="#f5efe5"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a96a"/>
+      <stop offset="50%" stop-color="#e6c885"/>
+      <stop offset="100%" stop-color="#8a7448"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1410"/>
+      <stop offset="100%" stop-color="#2d2418"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#c9a96a" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#c9a96a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+
+  <!-- Top announcement bar -->
+  <rect x="0" y="0" width="1200" height="32" fill="url(#dark)"/>
+  <text x="600" y="21" fill="#c9a96a" font-family="Cairo, sans-serif" font-size="11" text-anchor="middle">✦ شحن مجاني للطلبات فوق 500 ر.س ✦ خصم 25% على الألماس ✦</text>
+
+  <!-- Navbar -->
+  <rect x="0" y="32" width="1200" height="70" fill="#fff" stroke="#c9a96a" stroke-opacity="0.2" stroke-width="1"/>
+  <g transform="translate(60, 67)">
+    <rect x="0" y="-18" width="40" height="40" rx="20" fill="url(#gold)"/>
+    <text x="20" y="8" fill="#fff" font-family="Cairo, sans-serif" font-size="20" font-weight="800" text-anchor="middle">م</text>
+    <text x="55" y="-2" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="18" font-weight="800">مجوهرات فاخرة</text>
+    <text x="55" y="14" fill="#8a7448" font-family="Poppins, sans-serif" font-size="8" letter-spacing="2">LUXURY JEWELRY</text>
+  </g>
+  <!-- Nav links -->
+  <g fill="#1a1410" font-family="Cairo, sans-serif" font-size="13" font-weight="600" opacity="0.8">
+    <text x="700" y="73" text-anchor="end">تواصل</text>
+    <text x="780" y="73" text-anchor="end">من نحن</text>
+    <text x="870" y="73" text-anchor="end">الأكثر مبيعاً</text>
+    <text x="960" y="73" text-anchor="end">المنتجات</text>
+    <text x="1050" y="73" text-anchor="end">الفئات</text>
+    <text x="1120" y="73" text-anchor="end">الرئيسية</text>
+  </g>
+  <!-- Action icons -->
+  <g transform="translate(60, 67)" fill="#1a1410" opacity="0.7">
+    <circle cx="980" cy="0" r="14" fill="none" stroke="#1a1410" stroke-width="1.5"/>
+    <text x="980" y="5" font-size="14" text-anchor="middle">⌕</text>
+    <text x="1020" y="5" font-size="16" text-anchor="middle">♡</text>
+    <text x="1060" y="5" font-size="14" text-anchor="middle">🛍</text>
+    <circle cx="1062" cy="-8" r="8" fill="#c9a96a"/>
+    <text x="1062" y="-4" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Hero section -->
+  <g transform="translate(0, 102)">
+    <!-- Hero image background -->
+    <rect x="0" y="0" width="1200" height="450" fill="url(#dark)"/>
+    <!-- Jewelry image representation -->
+    <g transform="translate(750, 225)">
+      <circle cx="0" cy="0" r="160" fill="#c9a96a" opacity="0.1"/>
+      <circle cx="0" cy="0" r="120" fill="#c9a96a" opacity="0.15"/>
+      <!-- Diamond shape -->
+      <polygon points="0,-100 80,-30 60,80 -60,80 -80,-30" fill="url(#gold)" stroke="#fff" stroke-width="1.5" opacity="0.95"/>
+      <polygon points="0,-100 80,-30 0,-30" fill="#fff" opacity="0.3"/>
+      <polygon points="-80,-30 0,-30 -60,80" fill="#fff" opacity="0.15"/>
+      <polygon points="0,-100 -80,-30 0,-30" fill="#fff" opacity="0.2"/>
+      <line x1="-80" y1="-30" x2="80" y2="-30" stroke="#fff" stroke-width="0.5" opacity="0.4"/>
+      <line x1="-60" y1="80" x2="0" y2="-30" stroke="#fff" stroke-width="0.5" opacity="0.3"/>
+      <line x1="60" y1="80" x2="0" y2="-30" stroke="#fff" stroke-width="0.5" opacity="0.3"/>
+    </g>
+    <!-- Hero text -->
+    <g transform="translate(60, 130)">
+      <rect x="0" y="0" width="200" height="32" rx="16" fill="#c9a96a" fill-opacity="0.2" stroke="#c9a96a" stroke-opacity="0.4"/>
+      <text x="100" y="21" fill="#e6c885" font-family="Cairo, sans-serif" font-size="12" font-weight="500" text-anchor="middle">✦ مجموعة 2026 الجديدة</text>
+      <text x="0" y="70" fill="#fff" font-family="Cairo, sans-serif" font-size="44" font-weight="800">فخامة تليق</text>
+      <text x="0" y="120" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="44" font-weight="800">بأناقتك</text>
+      <text x="0" y="160" fill="#fff" opacity="0.7" font-family="Cairo, sans-serif" font-size="14">اكتشف مجموعتنا الحصرية من المجوهرات الفاخرة</text>
+      <text x="0" y="180" fill="#fff" opacity="0.7" font-family="Cairo, sans-serif" font-size="14">المرصّعة بأرقى الأحجار الكريمة</text>
+      <!-- CTA -->
+      <rect x="0" y="210" width="160" height="48" rx="24" fill="url(#gold)"/>
+      <text x="80" y="240" fill="#fff" font-family="Cairo, sans-serif" font-size="15" font-weight="700" text-anchor="middle">تسوّق الآن</text>
+      <rect x="170" y="210" width="140" height="48" rx="24" fill="#fff" fill-opacity="0.1" stroke="#fff" stroke-opacity="0.3"/>
+      <text x="240" y="240" fill="#fff" font-family="Cairo, sans-serif" font-size="15" font-weight="700" text-anchor="middle">استكشف</text>
+    </g>
+  </g>
+
+  <!-- Features bar -->
+  <g transform="translate(0, 552)">
+    <rect x="0" y="0" width="1200" height="60" fill="#fff" stroke="#c9a96a" stroke-opacity="0.2"/>
+    <g transform="translate(60, 30)">
+      <!-- Feature 1 -->
+      <text x="0" y="0" font-size="20" text-anchor="middle">🚚</text>
+      <text x="20" y="-5" fill="#1a1410" font-family="Cairo, sans-serif" font-size="12" font-weight="700">شحن مجاني</text>
+      <text x="20" y="10" fill="#8a7448" font-family="Cairo, sans-serif" font-size="9">للطلبات فوق 500 ر.س</text>
+      <!-- Feature 2 -->
+      <text x="280" y="0" font-size="20" text-anchor="middle">🛡</text>
+      <text x="300" y="-5" fill="#1a1410" font-family="Cairo, sans-serif" font-size="12" font-weight="700">ضمان أصلي</text>
+      <text x="300" y="10" fill="#8a7448" font-family="Cairo, sans-serif" font-size="9">شهادة أصالة لكل قطعة</text>
+      <!-- Feature 3 -->
+      <text x="560" y="0" font-size="20" text-anchor="middle">↻</text>
+      <text x="580" y="-5" fill="#1a1410" font-family="Cairo, sans-serif" font-size="12" font-weight="700">استرجاع 30 يوم</text>
+      <text x="580" y="10" fill="#8a7448" font-family="Cairo, sans-serif" font-size="9">إرجاع مجاني وسهل</text>
+      <!-- Feature 4 -->
+      <text x="840" y="0" font-size="20" text-anchor="middle">🎧</text>
+      <text x="860" y="-5" fill="#1a1410" font-family="Cairo, sans-serif" font-size="12" font-weight="700">دعم 24/7</text>
+      <text x="860" y="10" fill="#8a7448" font-family="Cairo, sans-serif" font-size="9">خدمة عملاء متميزة</text>
+    </g>
+  </g>
+
+  <!-- Tabby + Tamara badges -->
+  <g transform="translate(60, 635)">
+    <rect x="0" y="0" width="80" height="22" rx="4" fill="#2d5f4e"/>
+    <text x="40" y="15" fill="#fff" font-family="Poppins, sans-serif" font-size="10" font-weight="700" text-anchor="middle">tabby</text>
+    <rect x="90" y="0" width="80" height="22" rx="4" fill="#1a3a5c"/>
+    <text x="130" y="15" fill="#fff" font-family="Poppins, sans-serif" font-size="10" font-weight="700" text-anchor="middle">tamara</text>
+  </g>
+
+  <!-- Floating particles -->
+  <circle cx="200" cy="200" r="2" fill="#c9a96a" opacity="0.6"/>
+  <circle cx="400" cy="350" r="1.5" fill="#c9a96a" opacity="0.5"/>
+  <circle cx="900" cy="200" r="2" fill="#c9a96a" opacity="0.4"/>
+  <circle cx="1050" cy="450" r="1.5" fill="#c9a96a" opacity="0.5"/>
+</svg>
