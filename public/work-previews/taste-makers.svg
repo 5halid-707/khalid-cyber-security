@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1208"/>
+      <stop offset="50%" stop-color="#2a1f10"/>
+      <stop offset="100%" stop-color="#1a1208"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5d061"/>
+      <stop offset="50%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#a07c10"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#d4a017" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+
+  <!-- Top nav -->
+  <rect x="0" y="0" width="1200" height="80" fill="#1a1208" opacity="0.8"/>
+  <g transform="translate(60, 40)">
+    <rect x="0" y="-18" width="40" height="40" rx="10" fill="url(#gold)"/>
+    <text x="20" y="8" fill="#1a1208" font-family="Cairo, sans-serif" font-size="22" font-weight="900" text-anchor="middle">ص</text>
+    <text x="55" y="-2" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="18" font-weight="800">صناع الطعم</text>
+    <text x="55" y="14" fill="#d4a017" font-family="Poppins, sans-serif" font-size="8" letter-spacing="2">TASTE MAKERS</text>
+  </g>
+  <g fill="#fff8ee" opacity="0.7" font-family="Cairo, sans-serif" font-size="13" font-weight="600">
+    <text x="1080" y="48" text-anchor="end">الرئيسية</text>
+    <text x="1000" y="48" text-anchor="end">القائمة</text>
+    <text x="920" y="48" text-anchor="end">احجز</text>
+    <text x="840" y="48" text-anchor="end">تواصل</text>
+  </g>
+
+  <!-- Hero text -->
+  <g transform="translate(60, 180)">
+    <rect x="0" y="0" width="200" height="32" rx="16" fill="#d4a017" fill-opacity="0.15" stroke="#d4a017" stroke-opacity="0.4"/>
+    <text x="100" y="21" fill="#f5d061" font-family="Cairo, sans-serif" font-size="12" font-weight="500" text-anchor="middle">✦ مطبخ شعبي فاخر</text>
+    <text x="0" y="80" fill="#fff8ee" font-family="Cairo, sans-serif" font-size="48" font-weight="800">نُبدع</text>
+    <text x="0" y="130" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="48" font-weight="800">الطعم</text>
+    <text x="0" y="170" fill="#fff8ee" opacity="0.6" font-family="Cairo, sans-serif" font-size="14">بأيدي صنّاع مهرة — أطباق شعبية أصيلة</text>
+    <!-- CTA -->
+    <rect x="0" y="200" width="160" height="48" rx="24" fill="url(#gold)"/>
+    <text x="80" y="230" fill="#1a1208" font-family="Cairo, sans-serif" font-size="15" font-weight="700" text-anchor="middle">تصفّح القائمة</text>
+  </g>
+
+  <!-- 3D floating dish images -->
+  <g transform="translate(750, 340)">
+    <!-- Ring -->
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#d4a017" stroke-width="2" stroke-dasharray="8 6" opacity="0.2"/>
+    <!-- Main circle -->
+    <circle cx="0" cy="0" r="100" fill="#2a1f10" stroke="#d4a017" stroke-width="3" opacity="0.8"/>
+    <text x="0" y="-10" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="36" font-weight="900" text-anchor="middle">🍛</text>
+    <text x="0" y="25" fill="#fff8ee" font-family="Cairo, sans-serif" font-size="14" font-weight="700" text-anchor="middle">مندي لحم</text>
+    <text x="0" y="45" fill="url(#gold)" font-family="Cairo, sans-serif" font-size="16" font-weight="800" text-anchor="middle">65 ر.س</text>
+    <!-- Floating dish 1 -->
+    <rect x="120" y="-80" width="100" height="100" rx="16" fill="#2a1f10" stroke="#d4a017" stroke-width="2" opacity="0.8"/>
+    <text x="170" y="-30" font-size="30" text-anchor="middle">🍕</text>
+    <!-- Floating dish 2 -->
+    <rect x="-220" y="60" width="100" height="100" rx="16" fill="#2a1f10" stroke="#d4a017" stroke-width="2" opacity="0.8"/>
+    <text x="-170" y="110" font-size="30" text-anchor="middle">🍰</text>
+  </g>
+
+  <!-- Category badges -->
+  <g transform="translate(60, 520)">
+    <rect x="0" y="0" width="80" height="28" rx="14" fill="url(#gold)" opacity="0.2"/>
+    <text x="40" y="19" fill="#f5d061" font-family="Cairo, sans-serif" font-size="10" font-weight="700" text-anchor="middle">🍛 رئيسية</text>
+    <rect x="90" y="0" width="70" height="28" rx="14" fill="url(#gold)" opacity="0.2"/>
+    <text x="125" y="19" fill="#f5d061" font-family="Cairo, sans-serif" font-size="10" font-weight="700" text-anchor="middle">🍕 بيتزا</text>
+    <rect x="170" y="0" width="80" height="28" rx="14" fill="url(#gold)" opacity="0.2"/>
+    <text x="210" y="19" fill="#f5d061" font-family="Cairo, sans-serif" font-size="10" font-weight="700" text-anchor="middle">🥐 معجنات</text>
+    <rect x="260" y="0" width="80" height="28" rx="14" fill="url(#gold)" opacity="0.2"/>
+    <text x="300" y="19" fill="#f5d061" font-family="Cairo, sans-serif" font-size="10" font-weight="700" text-anchor="middle">🥗 سلطات</text>
+    <rect x="350" y="0" width="80" height="28" rx="14" fill="url(#gold)" opacity="0.2"/>
+    <text x="390" y="19" fill="#f5d061" font-family="Cairo, sans-serif" font-size="10" font-weight="700" text-anchor="middle">🎉 بوفيهات</text>
+  </g>
+
+  <!-- Features -->
+  <g transform="translate(60, 570)">
+    <text x="0" y="0" fill="#d4a017" font-size="16">🔥</text>
+    <text x="25" y="0" fill="#fff8ee" opacity="0.6" font-family="Cairo, sans-serif" font-size="10">طازج يومياً</text>
+    <text x="130" y="0" fill="#d4a017" font-size="16">🚚</text>
+    <text x="155" y="0" fill="#fff8ee" opacity="0.6" font-family="Cairo, sans-serif" font-size="10">توصيل سريع</text>
+    <text x="260" y="0" fill="#d4a017" font-size="16">⭐</text>
+    <text x="285" y="0" fill="#fff8ee" opacity="0.6" font-family="Cairo, sans-serif" font-size="10">جودة عالية</text>
+  </g>
+
+  <!-- WhatsApp badge -->
+  <g transform="translate(1050, 600)">
+    <rect x="-60" y="-16" width="120" height="32" rx="16" fill="#25D366" opacity="0.2" stroke="#25D366" stroke-opacity="0.4"/>
+    <text x="0" y="5" fill="#25D366" font-family="Cairo, sans-serif" font-size="10" font-weight="700" text-anchor="middle">📱 طلب عبر واتساب</text>
+  </g>
+
+  <!-- QR code indicator -->
+  <g transform="translate(60, 620)">
+    <rect x="0" y="0" width="24" height="24" rx="4" fill="#fff8ee" opacity="0.9"/>
+    <rect x="4" y="4" width="6" height="6" fill="#1a1208"/>
+    <rect x="14" y="4" width="6" height="6" fill="#1a1208"/>
+    <rect x="4" y="14" width="6" height="6" fill="#1a1208"/>
+    <rect x="14" y="14" width="6" height="6" fill="#1a1208"/>
+    <text x="32" y="18" fill="#fff8ee" opacity="0.5" font-family="Cairo, sans-serif" font-size="9">امسح للطلب</text>
+  </g>
+</svg>

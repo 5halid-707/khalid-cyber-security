@@ -14,6 +14,7 @@ import {
   Shirt,
   Stethoscope,
   GraduationCap,
+  UtensilsCrossed,
   ChevronLeft,
   ChevronRight,
   Play,
@@ -217,6 +218,20 @@ const works: Work[] = [
     liveUrl: "https://lazurde.vercel.app/",
     preview: "/work-previews/lazurde-jewelry.svg",
     icon: ShoppingBag,
+  },
+  {
+    title: "Taste Makers — 3D Restaurant & Food Ordering",
+    titleAr: "صناع الطعم — مطعم ومتجر أكلات شعبية بتصميم 3D",
+    category: { ar: "متجر طعام فاخر مع طلب واتساب + باركود", en: "3D Restaurant with WhatsApp Ordering + QR Code" },
+    categoryColor: "#d4a017",
+    description: {
+      ar: "متجر طعام شعبي فاخر بتصميم ثلاثي الأبعاد احترافي. 55+ طبق شعبي (مندي + مرسة + خمير + مظغوط + زقني + عريكة + إيدامات + مكرونة + بيتزا + معجنات + سلطات + حلويات + بوفيهات مناسبات)، 10 فئات، سلة طلبات كاملة مع إرسال الطلب عبر واتساب برسالة مفصّلة (الأطباق + الكميات + الأسعار + الإجمالي)، حجز طاولات بنموذج كامل (اسم + جوال + تاريخ + وقت + ضيوف)، تصميم 3D (floating dishes + perspective + card lift + shine effect)، شعار SVG ثلاثي الأبعاد بـ 5 طبقات تأثيرات (gold gradient + drop shadow + inner shadow + glow + text 3D)، علامة مائية على كل صور المنتجات، باركود QR Code للطلب السريع، ألوان ذهبية فاخرة (#d4a017 + #1a1208 + #fff8ee)، شارات (الأكثر طلباً + جديد + حار + خصم)، رقم واتساب +966 55 161 3755، رابط سناب شات، تصميم متجاوب بالكامل، RTL عربي، Framer Motion animations.",
+      en: "Premium 3D restaurant & food ordering platform for traditional Arabic cuisine. 55+ dishes (mandi + marsa + khameer + pressed + zigni + areekah + stews + pasta + pizza + pastries + salads + desserts + event buffets), 10 categories, full shopping cart with WhatsApp order submission (detailed message with items + quantities + prices + total), table reservation form (name + phone + date + time + guests), 3D design (floating dishes + perspective + card lift + shine effect), professional 3D SVG logo with 5 effect layers (gold gradient + drop shadow + inner shadow + glow + text 3D), watermark on all product images, QR code barcode for quick ordering, luxury gold palette (#d4a017 + #1a1208 + #fff8ee), badges (popular + new + spicy + discount), WhatsApp +966 55 161 3755, Snapchat link, fully responsive, Arabic RTL, Framer Motion animations.",
+    },
+    tech: ["Next.js 16", "TypeScript", "Tailwind CSS 3", "Framer Motion", "3D Design", "WhatsApp Ordering", "QR Code", "Shopping Cart", "55+ Dishes", "10 Categories"],
+    liveUrl: "https://taste-makers-cyan.vercel.app/",
+    preview: "/work-previews/taste-makers.svg",
+    icon: UtensilsCrossed,
   },
 ];
 
